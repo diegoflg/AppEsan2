@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by Diego  flg on 7/13/2015.
+ * Created by Diegoflg on 7/13/2015.
  */
 public class Notas extends Fragment {
 
