@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-/*Hola mundo cruel*/
+/*Hola mundo crueluighkuh*/
 
 
 public class MainActivity extends ActionBarActivity {
