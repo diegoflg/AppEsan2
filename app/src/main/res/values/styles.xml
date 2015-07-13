@@ -9,7 +9,7 @@
     </style>
 
     <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">#ffc90039</item>
+        <item name="android:background">#C90039</item>
     </style>
 
 </resources>
