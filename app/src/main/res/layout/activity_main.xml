@@ -63,6 +63,4 @@
         android:id="@+id/imageView"
         android:layout_alignParentBottom="true"
         android:background="@drawable/franja" />
-
-
 </RelativeLayout>
