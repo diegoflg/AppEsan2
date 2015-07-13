@@ -1,17 +1,9 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme01" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#ccc90039</item>
-
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#FFB0141A</item>
         <!-- Customize your  theme here. -->
-    </style>
-    <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
-    </style>
-
-    <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">#C90039</item>
     </style>
 
 </resources>
