@@ -62,7 +62,12 @@ public class MainActivity2Activity extends ActionBarActivity
                 fragment= new Horario();
                 break;
             case 2:
+                fragment= new Notas();
                 break;
+            case 3:
+                fragment= new Calendario();
+                break;
+
         }
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
