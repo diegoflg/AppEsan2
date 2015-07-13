@@ -8,6 +8,7 @@
     <string name="title_section1">Noticias</string>
     <string name="title_section2">Horario</string>
     <string name="title_section3">Notas</string>
+    <string name="title_section4">Calendario</string>
     <string name="title_activity_activity_main_2">activity_main_2</string>
     <string name="title_activity_noticias">noticiasActivity</string>
 
