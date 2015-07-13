@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void acceder(View v){
-        Intent i = new Intent(this,activity_main_2.class);
+        Intent i = new Intent(this,MainActivity2Activity.class);
         startActivity(i);
     }
 }
