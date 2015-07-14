@@ -17,13 +17,8 @@ public class Noticia extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_noticia, container, false);
 
-
-
-        View V = inflater.inflate(R.layout.lay_noticia, container, false);
-
-
-        WebView myWebView = (WebView) V.findViewById(R.id.webview);
-        myWebView.loadUrl("http://www.google.com.pe");
+        WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
+        myWebView.loadUrl("http://blog.ue.edu.pe/");
 
         return rootView;
 
