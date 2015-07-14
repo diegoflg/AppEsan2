@@ -70,6 +70,19 @@ public class MainActivity2Activity extends ActionBarActivity
             case 3:
                 fragment= new Calendario();
                 break;
+            case 4:
+                fragment= new Cafeteria();
+                break;
+            case 5:
+                fragment= new Mapa();
+                break;
+            case 6:
+                fragment= new Directorio();
+                break;
+            case 7:
+                fragment= new Talleres();
+                break;
+
 
         }
         fragmentManager.beginTransaction()
