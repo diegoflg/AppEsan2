@@ -21,7 +21,8 @@ public class Noticia extends Fragment {
         myWebView.loadUrl("http://blog.ue.edu.pe/");
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
+        myWebView.getSettings().setBuiltInZoomControls(true);
+        myWebView.getSettings().setSupportZoom(true);
         return rootView;
-
     }
 }
