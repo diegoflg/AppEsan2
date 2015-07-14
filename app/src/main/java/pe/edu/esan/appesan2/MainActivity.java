@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
-    EditText et1,et2;
+    EditText et1,et2,et3;
 
 
     @Override
@@ -25,16 +25,16 @@ public class MainActivity extends ActionBarActivity {
 
         et1=(EditText)findViewById(R.id.et1);
         et2=(EditText)findViewById(R.id.et2);
+        et3=(EditText)findViewById(R.id.et3);
 
 
 
-        //Abrimos la base de datos 'DBUsuarios' en modo escritura
-        AdminBD usdbh = new AdminBD(this, "DB1", null, 1);
-        SQLiteDatabase db = usdbh.getWritableDatabase();
+        AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
+        SQLiteDatabase bd=admin.getWritableDatabase();
 
-        Log.v("prueba","1");
+        Log.v("prueba", "1");
 
-        Cursor fila1 = db.rawQuery("select usuario from Persona",null);
+        Cursor fila1 = bd.rawQuery("select usuario from Persona",null);
         if(fila1.moveToFirst())
         {
             Toast t=Toast.makeText(this,"haydatos", Toast.LENGTH_SHORT);
@@ -50,38 +50,91 @@ public class MainActivity extends ActionBarActivity {
             ContentValues registro = new ContentValues();
             registro.put("usuario",usuario);
             registro.put("password",password);
-            db.insert("Persona", null, registro);
+            bd.insert("Persona", null, registro);
+
+
+            String usuario2="alumnodos";
+            String password2="alumnodos";
+
+            ContentValues registro2 = new ContentValues();
+            registro2.put("usuario",usuario2);
+            registro2.put("password",password2);
+            bd.insert("Persona", null, registro2);
+
+            String usuario3="servicios";
+            String password3="servicios";
+
+            ContentValues registro3 = new ContentValues();
+            registro3.put("usuario",usuario3);
+            registro3.put("password",password3);
+            bd.insert("Persona", null, registro3);
 
             Toast t=Toast.makeText(this,"Se grabaron los datos de la persona", Toast.LENGTH_SHORT);
             t.show();
         }
 
             //Cerramos la base de datos
-            db.close();
+            bd.close();
 
 
     }
 
     public void acceder(View v){
 
-        AdminBD usdbh = new AdminBD(this, "DB1", null, 1);
-        SQLiteDatabase db = usdbh.getWritableDatabase();
+        String usuario, password,todo,us,pass;
+        us=et1.getText().toString();
+        pass=et2.getText().toString();
 
-        String usuario=et1.getText().toString();;
-        String password=et2.getText().toString();
-
-        Log.v("prueba", usuario);
-
-
-
-        Cursor fila = db.rawQuery("select password from Persona where usuario = "+usuario, null);
-
-        Log.v("prueba", "3");
+        Log.v("us", us);
+        Log.v("pass", pass);
 
 
 
-        db.close();
 
+
+
+
+        AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
+        SQLiteDatabase bd=admin.getWritableDatabase();
+
+        String mensaje="usuario o password invalida";
+
+        Cursor c=bd.rawQuery("SELECT usuario,password FROM Persona",null);
+        todo="";
+
+        if(c.moveToFirst())
+        {
+            do {
+                            usuario=c.getString(0);
+                    Log.v("usuario", usuario);
+                    password=c.getString(1);
+                    Log.v("password", password);
+
+                    if(us.equals(usuario) && pass.equals(password)){
+
+                        mensaje="usuario y password correctos";
+
+                    Intent i = new Intent(this,MainActivity2Activity.class);
+                    startActivity(i);
+
+
+
+
+
+
+
+
+                }
+
+
+                todo=todo+usuario+" " +password+" " + "\n";
+            }while(c.moveToNext());
+
+            Toast t=Toast.makeText(this,"usuario o password invalida", Toast.LENGTH_SHORT);
+            t.show();
+
+            et3.setText(todo);
+        }
 
 
         //Intent i = new Intent(this,MainActivity2Activity.class);
