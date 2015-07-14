@@ -23,17 +23,29 @@
         <item>Horario</item>
         <item>Notas</item>
         <item>Calendario</item>
+        <item>Cafeteria</item>
+        <item>Mapas</item>
+        <item>Directorio</item>
+        <item>Talleres</item>
     </string-array>
     <string-array name="section_titles">
         <item>Section T1</item>
         <item>Section T2</item>
         <item>Section T3</item>
         <item>Section T4</item>
+        <item>Section T5</item>
+        <item>Section T6</item>
+        <item>Section T7</item>
+        <item>Section T8</item>
     </string-array>
     <string-array name="sections_icons">
         <item>@android:drawable/ic_btn_speak_now</item>
         <item>@android:drawable/ic_dialog_alert</item>
         <item>@android:drawable/ic_btn_speak_now</item>
+        <item>@android:drawable/ic_dialog_map</item>
+        <item>@android:drawable/ic_dialog_map</item>
+        <item>@android:drawable/ic_dialog_map</item>
+        <item>@android:drawable/ic_dialog_map</item>
         <item>@android:drawable/ic_dialog_map</item>
     </string-array>
 
