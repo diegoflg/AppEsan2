@@ -27,6 +27,9 @@ public class MainActivity extends ActionBarActivity {
         et2=(EditText)findViewById(R.id.et2);
         et3=(EditText)findViewById(R.id.et3);
 
+        et1.setText("alumno");
+        et2.setText("alumno");
+
 
 
         AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
@@ -114,7 +117,7 @@ public class MainActivity extends ActionBarActivity {
 
                         mensaje="usuario y password correctos";
 
-                    Intent i = new Intent(this,MapsActivity.class);
+                    Intent i = new Intent(this,MainActivity2Activity.class);
                     startActivity(i);
 
 
