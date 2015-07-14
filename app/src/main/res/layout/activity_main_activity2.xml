@@ -25,14 +25,19 @@
         android:orientation="vertical"
         android:layout_gravity="start"
         android:id="@+id/slider_list_with_image"
+        android:background="#ff6b6c6e"
         >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:src="@drawable/ic_action_language">
-        </ImageView>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/mood"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="38dp"
+            android:id="@+id/circleView"
+            />
 
         <fragment android:id="@+id/navigation_drawer"
             android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
