@@ -114,7 +114,7 @@ public class MainActivity extends ActionBarActivity {
 
                         mensaje="usuario y password correctos";
 
-                    Intent i = new Intent(this,MainActivity2Activity.class);
+                    Intent i = new Intent(this,MapsActivity.class);
                     startActivity(i);
 
 
