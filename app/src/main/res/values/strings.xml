@@ -39,14 +39,14 @@
         <item>Section T8</item>
     </string-array>
     <string-array name="sections_icons">
-        <item>@android:drawable/ic_btn_speak_now</item>
-        <item>@android:drawable/ic_dialog_alert</item>
-        <item>@android:drawable/ic_btn_speak_now</item>
-        <item>@android:drawable/ic_dialog_map</item>
-        <item>@android:drawable/ic_dialog_map</item>
-        <item>@android:drawable/ic_dialog_map</item>
-        <item>@android:drawable/ic_dialog_map</item>
-        <item>@android:drawable/ic_dialog_map</item>
+        <item name="android:icon">@drawable/noticias</item>
+        <item name="android:icon">@drawable/horario</item>
+        <item name="android:icon">@drawable/notas</item>
+        <item name="android:icon">@drawable/calendario</item>
+        <item name="android:icon">@drawable/cafeteria</item>
+        <item name="android:icon">@drawable/mapa</item>
+        <item name="android:icon">@drawable/directorio</item>
+        <item name="android:icon">@drawable/talleres</item>
     </string-array>
 
 <!-- TODO: Remove or change this placeholder text -->
