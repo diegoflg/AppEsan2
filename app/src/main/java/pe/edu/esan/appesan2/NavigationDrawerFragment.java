@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,7 +34,13 @@ import android.widget.Toast;
  */
 public class NavigationDrawerFragment extends Fragment {
 
-    private int tipo=2;
+    private int tipo=1;
+
+    Bundle bundle = getArguments();
+
+
+
+
 
     /**
      * Remember the position of the selected item.
@@ -70,6 +77,7 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
 
         // Read in the flag indicating whether or not the user has demonstrated awareness of the

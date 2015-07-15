@@ -1,6 +1,5 @@
 package pe.edu.esan.appesan2;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
@@ -29,7 +28,7 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    private int tipo=2;
+    private int tipo=1;
 
 
     /**
@@ -42,9 +41,13 @@ public class MainActivity2Activity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
 
+
+
         Intent i=getIntent();
         Bundle b=i.getExtras();
         tipo=b.getInt("tipo");
+
+        mNavigationDrawerFragment.setArguments(b);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.esan);
