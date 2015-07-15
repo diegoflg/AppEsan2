@@ -44,7 +44,8 @@ public class Mapa extends Fragment {
 
         // create marker
         MarkerOptions marker = new MarkerOptions().position(
-                new LatLng(latitude, longitude)).title("Hola ESAN");
+                new LatLng(latitude, longitude)).title("UNIVERSIDAD ESAN");
+
 
         // Changing marker icon
         marker.icon(BitmapDescriptorFactory
