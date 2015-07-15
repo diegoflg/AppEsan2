@@ -52,7 +52,7 @@ public class Mapa extends Fragment {
         // adding marker
         googleMap.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(-12.105019, -76.961066)).zoom(20).build();
+                .target(new LatLng(-12.105019, -76.961066)).zoom(16).build();
         googleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
 
