@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Mapa extends Fragment {
 
     MapView m;
-    private GoogleMap googleMap;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,26 +36,6 @@ public class Mapa extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        googleMap = m.getMap();
-        // latitude and longitude
-        double latitude = -12.105381;
-        double longitude = -76.961944;
-
-        // create marker
-        MarkerOptions marker = new MarkerOptions().position(
-                new LatLng(latitude, longitude)).title("Hello Maps");
-
-        // Changing marker icon
-        marker.icon(BitmapDescriptorFactory
-                .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-        // adding marker
-        googleMap.addMarker(marker);
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(-12.105381,-76.961944 )).zoom(12).build();
-        googleMap.animateCamera(CameraUpdateFactory
-                .newCameraPosition(cameraPosition));
 
         return v;
     }
