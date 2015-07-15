@@ -31,6 +31,7 @@ public class Mapa extends Fragment {
         m = (MapView) v.findViewById(R.id.mapView);
         m.onCreate(savedInstanceState);
         m.onResume();
+
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
         } catch (Exception e) {
