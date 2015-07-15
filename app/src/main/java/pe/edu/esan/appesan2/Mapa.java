@@ -15,10 +15,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-
-/**
- * Created by Diegoflg on 7/14/2015.
- */
 public class Mapa extends Fragment {
     private GoogleMap googleMap;
     MapView m;
@@ -30,36 +26,6 @@ public class Mapa extends Fragment {
         View v = inflater.inflate(R.layout.lay_mapa, container, false);
         m = (MapView) v.findViewById(R.id.mapView);
         m.onCreate(savedInstanceState);
-        m.onResume();
-
-        try {
-            MapsInitializer.initialize(getActivity().getApplicationContext());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        googleMap = m.getMap();
-        // latitude and longitude
-        double latitude = -12.105019;
-        double longitude = -76.961066;
-
-        // create marker
-        MarkerOptions marker = new MarkerOptions().position(
-                new LatLng(latitude, longitude)).title("UNIVERSIDAD ESAN");
-
-
-        // Changing marker icon
-        marker.icon(BitmapDescriptorFactory
-                .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-        // adding marker
-        googleMap.addMarker(marker);
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(-12.105019, -76.961066)).zoom(16).build();
-        googleMap.animateCamera(CameraUpdateFactory
-                .newCameraPosition(cameraPosition));
-
-        // Perform any camera updates here
-
         return v;
     }
 
