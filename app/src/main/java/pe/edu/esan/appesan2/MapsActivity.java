@@ -81,6 +81,5 @@ public class MapsActivity extends FragmentActivity {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         mMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).title("Estás aquí").snippet("Considerate localizado"));
-
     }
 }
