@@ -101,6 +101,9 @@ public class MainActivity extends ActionBarActivity {
         SQLiteDatabase bd=admin.getWritableDatabase();
 
         String mensaje="usuario o password invalida";
+        int tipo=1;
+        Bundle b=new Bundle();
+
 
         Cursor c=bd.rawQuery("SELECT usuario,password FROM Persona",null);
         todo="";
@@ -117,14 +120,19 @@ public class MainActivity extends ActionBarActivity {
 
                         mensaje="usuario y password correctos";
 
-                    Intent i = new Intent(this,MainActivity2Activity.class);
-                    startActivity(i);
+                        if(us.equals("alumno")){
+                            tipo=1;
+                        }
+                        if(us.equals("servicios")){
+                            tipo=2;
+                        }
 
+                        b.putInt("tipo",tipo);
 
+                        Intent i = new Intent(this,MainActivity2Activity.class);
+                        i.putExtras(b);
 
-
-
-
+                        startActivity(i);
 
 
                 }

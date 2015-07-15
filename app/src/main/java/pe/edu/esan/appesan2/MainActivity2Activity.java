@@ -1,6 +1,8 @@
 package pe.edu.esan.appesan2;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -27,6 +29,9 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
+    private int tipo=2;
+
+
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
@@ -36,6 +41,10 @@ public class MainActivity2Activity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
+
+        Intent i=getIntent();
+        Bundle b=i.getExtras();
+        tipo=b.getInt("tipo");
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.esan);
@@ -56,45 +65,88 @@ public class MainActivity2Activity extends ActionBarActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment=null;
 
+        if(tipo==1){
 
-        switch (position){
-            case 0:
-                fragment= new Noticia();
-                break;
-            case 1:
-                fragment= new Horario();
-                break;
-            case 2:
-                fragment= new Notas();
-                break;
-            case 3:
-                fragment= new Calendario();
-                break;
-            case 4:
-                fragment= new Cafeteria();
-                break;
-            case 5:
-                fragment= new Mapa();
-                break;
-            case 6:
-                fragment= new Directorio();
-                break;
-            case 7:
-                fragment= new Talleres();
-                break;
+            switch (position){
+                case 0:
+                    fragment= new Noticia();
+                    break;
+                case 1:
+                    fragment= new Horario();
+                    break;
+                case 2:
+                    fragment= new Notas();
+                    break;
+                case 3:
+                    fragment= new Calendario();
+                    break;
+                case 4:
+                    fragment= new Cafeteria();
+                    break;
+                case 5:
+                    fragment= new Mapa();
+                    break;
+                case 6:
+                    fragment= new Directorio();
+                    break;
+                case 7:
+                    fragment= new Talleres();
+                    break;
 
+            }
 
         }
+
+        if(tipo==2){
+
+            switch (position){
+                case 0:
+                    fragment= new Noticia();
+                    break;
+                case 1:
+                    fragment= new Calendario();
+                    break;
+                case 2:
+                    fragment= new Cafeteria();
+                    break;
+                case 3:
+                    fragment= new IngresoCafeteria();
+                    break;
+
+
+            }
+
+        }
+
+
+
+
+
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
     }
 
     public void onSectionAttached(int number) {
-        String[] stringArray = getResources().getStringArray(R.array.section_titles);
-        if (number >= 1) {
-            mTitle = stringArray[number - 1];
+
+        if(tipo==1){
+
+            String[] stringArray = getResources().getStringArray(R.array.section_titles);
+            if (number >= 1) {
+                mTitle = stringArray[number - 1];
+            }
         }
+
+        if(tipo==2){
+
+            String[] stringArray = getResources().getStringArray(R.array.section_titles2);
+            if (number >= 1) {
+                mTitle = stringArray[number - 1];
+            }
+        }
+
+
+
     }
 
     public void restoreActionBar() {
@@ -131,6 +183,10 @@ public class MainActivity2Activity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getTipo() {
+        return tipo;
     }
 
     /**

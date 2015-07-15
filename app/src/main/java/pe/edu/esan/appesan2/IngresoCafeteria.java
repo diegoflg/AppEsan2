@@ -5,24 +5,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TabHost;
 
 /**
- * Created by Diegoflg on 7/14/2015.
+ * Created by Diegoflg on 7/15/2015.
  */
-public class Cafeteria extends Fragment {
+public class IngresoCafeteria extends Fragment {
 
-    TabHost mTabHost;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.lay_cafeteria, container, false);
+        View rootView = inflater.inflate(R.layout.lay_ingresocafeteria, container, false);
         return rootView;
-
-
-
     }
-
-
 }

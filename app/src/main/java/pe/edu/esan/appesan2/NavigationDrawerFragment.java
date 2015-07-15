@@ -33,6 +33,8 @@ import android.widget.Toast;
  */
 public class NavigationDrawerFragment extends Fragment {
 
+    private int tipo=2;
+
     /**
      * Remember the position of the selected item.
      */
@@ -69,6 +71,7 @@ public class NavigationDrawerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         // Read in the flag indicating whether or not the user has demonstrated awareness of the
         // drawer. See PREF_USER_LEARNED_DRAWER for details.
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -101,22 +104,49 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
-        final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
-                getActionBar().getThemedContext(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                getResources().getStringArray(R.array.sections)
-        ) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View v = super.getView(position, convertView, parent);
-                int resourceId = typedArray.getResourceId(position, 0);
-                Drawable drawable = getResources().getDrawable(resourceId);
-                ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
-                return v;
-            }
-        });
+
+
+
+
+        if(tipo==1){
+
+            final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);
+            mDrawerListView.setAdapter(new ArrayAdapter<String>(
+                    getActionBar().getThemedContext(),
+                    android.R.layout.simple_list_item_activated_1,
+                    android.R.id.text1,
+                    getResources().getStringArray(R.array.sections)
+            ) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+                    int resourceId = typedArray.getResourceId(position, 0);
+                    Drawable drawable = getResources().getDrawable(resourceId);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                    return v;
+                }
+            });
+        }
+
+        if(tipo==2){
+
+            final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons2);
+            mDrawerListView.setAdapter(new ArrayAdapter<String>(
+                    getActionBar().getThemedContext(),
+                    android.R.layout.simple_list_item_activated_1,
+                    android.R.id.text1,
+                    getResources().getStringArray(R.array.sections2)
+            ) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+                    int resourceId = typedArray.getResourceId(position, 0);
+                    Drawable drawable = getResources().getDrawable(resourceId);
+                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                    return v;
+                }
+            });
+        }
 
 
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
@@ -214,6 +244,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
     }
 
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -222,6 +253,9 @@ public class NavigationDrawerFragment extends Fragment {
         } catch (ClassCastException e) {
             throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
         }
+
+
+
     }
 
     @Override
