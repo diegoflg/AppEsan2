@@ -64,9 +64,24 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:text="Entrada"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="tab2" />
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="Plato de fondo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="Postre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="Refresco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
