@@ -14,7 +14,7 @@ public class Notas extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.lay_notaas, container, false);
+        View rootView = inflater.inflate(R.layout.lay_nootas, container, false);
         return rootView;
     }
 }
