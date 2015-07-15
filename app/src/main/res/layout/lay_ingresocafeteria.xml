@@ -38,16 +38,19 @@
 
                         <RadioButton
                             android:text="Menú Ejecutivo"
+                            android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <RadioButton
                             android:text="Menu Económico"
+                            android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <RadioButton
                             android:text="Menú Dieta"
+                            android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </RadioGroup>

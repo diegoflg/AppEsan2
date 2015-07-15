@@ -108,7 +108,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
 
 
-<<<<<<< Updated upstream
+
 
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 
@@ -120,8 +120,7 @@ public class NavigationDrawerFragment extends Fragment {
 
         tipo=tip;
         Log.v("tipoini", String.valueOf(tipo));
-=======
->>>>>>> Stashed changes
+
         if(tipo==1){
 
             final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);

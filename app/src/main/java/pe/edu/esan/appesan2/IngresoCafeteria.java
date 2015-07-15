@@ -16,13 +16,14 @@ public class IngresoCafeteria extends Fragment {
 
         mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
         mTabHost.setup();
+
         TabHost.TabSpec spec = mTabHost.newTabSpec("Tab 1");
-        spec.setContent(R.id.DeliSabores);
+        spec.setContent(R.id.LaRuta);
         spec.setIndicator("La Ruta");
         mTabHost.addTab(spec);
 
         spec=mTabHost.newTabSpec("Tab 2");
-        spec.setContent(R.id.LaRuta);
+        spec.setContent(R.id.DeliSabores);
         spec.setIndicator("Deli Sabores");
         mTabHost.addTab(spec);
 
