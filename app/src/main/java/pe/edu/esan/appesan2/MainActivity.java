@@ -129,6 +129,8 @@ public class MainActivity extends ActionBarActivity {
 
                         b.putInt("tipo",tipo);
 
+                        Log.v("tipo", String.valueOf(tipo));
+
                         Intent i = new Intent(this,MainActivity2Activity.class);
                         i.putExtras(b);
 

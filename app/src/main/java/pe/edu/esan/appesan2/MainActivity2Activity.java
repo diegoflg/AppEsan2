@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,33 +29,40 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    private int tipo=1;
+
 
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-
+    public int tipo=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
 
 
-
         Intent i=getIntent();
         Bundle b=i.getExtras();
+
+
         tipo=b.getInt("tipo");
+
+        Log.v("tipo", String.valueOf(tipo));
 
 
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.esan);
 
+
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+
+        mNavigationDrawerFragment.ini(tipo);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -188,9 +196,8 @@ public class MainActivity2Activity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public int getTipo() {
-        return tipo;
-    }
+
+
 
     /**
      * A placeholder fragment containing a simple view.

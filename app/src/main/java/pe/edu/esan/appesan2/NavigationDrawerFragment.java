@@ -102,6 +102,7 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -113,7 +114,16 @@ public class NavigationDrawerFragment extends Fragment {
 
 
 
+        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 
+        return mDrawerListView;
+
+    }
+
+    public void ini(int tip){
+
+        tipo=tip;
+        Log.v("tipoini", String.valueOf(tipo));
         if(tipo==1){
 
             final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);
@@ -155,9 +165,11 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
 
-        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-        return mDrawerListView;
     }
+
+
+
+
 
     public boolean isDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mlinearLayout);
@@ -172,6 +184,7 @@ public class NavigationDrawerFragment extends Fragment {
     public void setUp(int fragmentId, DrawerLayout drawerLayout) {
         mlinearLayout=(LinearLayout)getActivity().findViewById(R.id.slider_list_with_image);
         mDrawerLayout = drawerLayout;
+
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
