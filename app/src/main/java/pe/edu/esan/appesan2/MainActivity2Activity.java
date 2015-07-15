@@ -47,7 +47,7 @@ public class MainActivity2Activity extends ActionBarActivity
         Bundle b=i.getExtras();
         tipo=b.getInt("tipo");
 
-        mNavigationDrawerFragment.setArguments(b);
+
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.esan);
