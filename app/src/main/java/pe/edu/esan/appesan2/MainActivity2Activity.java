@@ -29,7 +29,11 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
+<<<<<<< Updated upstream
 
+=======
+    private int tipo=2;
+>>>>>>> Stashed changes
 
 
     /**
@@ -42,17 +46,23 @@ public class MainActivity2Activity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         Intent i=getIntent();
         Bundle b=i.getExtras();
 
 
         tipo=b.getInt("tipo");
 
+<<<<<<< Updated upstream
         Log.v("tipo", String.valueOf(tipo));
 
 
 
+=======
+>>>>>>> Stashed changes
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.esan);
 
@@ -123,14 +133,8 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 3:
                     fragment= new IngresoCafeteria();
                     break;
-
-
             }
-
         }
-
-
-
 
 
         fragmentManager.beginTransaction()
@@ -155,9 +159,6 @@ public class MainActivity2Activity extends ActionBarActivity
                 mTitle = stringArray[number - 1];
             }
         }
-
-
-
     }
 
     public void restoreActionBar() {

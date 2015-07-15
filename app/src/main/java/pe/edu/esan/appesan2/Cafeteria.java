@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,17 +13,13 @@ import android.widget.TabHost;
  */
 public class Cafeteria extends Fragment {
 
-    TabHost mTabHost;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.lay_cafeteria, container, false);
-        return rootView;
+        View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
 
-
-
+        return v;
     }
-
 
 }

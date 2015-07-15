@@ -30,8 +30,6 @@ public class MainActivity extends ActionBarActivity {
         et1.setText("alumno");
         et2.setText("alumno");
 
-
-
         AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
         SQLiteDatabase bd=admin.getWritableDatabase();
 
@@ -90,12 +88,6 @@ public class MainActivity extends ActionBarActivity {
 
         Log.v("us", us);
         Log.v("pass", pass);
-
-
-
-
-
-
 
         AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
         SQLiteDatabase bd=admin.getWritableDatabase();

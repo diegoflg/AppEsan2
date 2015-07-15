@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
@@ -34,12 +35,7 @@ import android.widget.Toast;
  */
 public class NavigationDrawerFragment extends Fragment {
 
-    private int tipo=1;
-
-
-
-
-
+    private int tipo=2;
 
     /**
      * Remember the position of the selected item.
@@ -77,7 +73,6 @@ public class NavigationDrawerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         // Read in the flag indicating whether or not the user has demonstrated awareness of the
         // drawer. See PREF_USER_LEARNED_DRAWER for details.
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -113,6 +108,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
 
 
+<<<<<<< Updated upstream
 
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 
@@ -124,6 +120,8 @@ public class NavigationDrawerFragment extends Fragment {
 
         tipo=tip;
         Log.v("tipoini", String.valueOf(tipo));
+=======
+>>>>>>> Stashed changes
         if(tipo==1){
 
             final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);

@@ -20,7 +20,6 @@ public class Mapa extends Fragment {
     private GoogleMap googleMap;
     MapView m;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
