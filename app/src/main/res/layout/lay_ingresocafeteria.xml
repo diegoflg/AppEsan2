@@ -37,12 +37,14 @@
                         android:layout_height="wrap_content">
 
                         <RadioButton
+                            android:id="@+id/rbEjec"
                             android:text="Menú Ejecutivo"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <RadioButton
+                            android:id="@+id/rbEcon"
                             android:text="Menu Económico"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
@@ -53,8 +55,7 @@
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-                    </RadioGroup>
-
+                        </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
@@ -63,25 +64,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:text="Entrada"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:text="Plato de fondo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:text="Postre"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:text="Refresco"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
