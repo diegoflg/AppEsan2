@@ -16,12 +16,14 @@ public class Talleres extends Fragment {
 
         WebView myWebView = (WebView) v.findViewById(R.id.webview);
 
-        myWebView.loadUrl("https://drive.google.com/open?id=0B3dtjYaYsFeheTlXOVJQTkF1Zkk");
+        myWebView.loadUrl("https://docs.google.com/document/d/1Pwx1xVJ0JnHNtuo-JuHcuaybyLDxOFWJt8ZfGykVnjM/pub");
 
-        myWebView.getSettings().setUseWideViewPort(true);
+        //myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
+        //myWebView.setInitialScale((int)(100*myWebView.getScale()));
+        myWebView.setInitialScale(200);
 
         myWebView.setWebViewClient(new WebViewClient(){
             @Override
