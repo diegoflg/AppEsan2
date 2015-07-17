@@ -16,7 +16,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example"> </string>
-    <string name="title_activity_main_activity2">MainActivity2Activity</string>
+    <string name="title_activity_main_activity2"> </string>
 
     <string-array name="sections">
         <item>Noticias</item>
