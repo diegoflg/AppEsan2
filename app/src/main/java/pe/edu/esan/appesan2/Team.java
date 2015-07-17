@@ -9,14 +9,16 @@ public class Team {
     private String plato;
     private String postre;
     private String refresco;
+    private String sabado;
 
-    public Team(String dia,String entrada, String plato, String postre, String refresco)
+    public Team(String dia,String entrada, String plato, String postre, String refresco,String sabado)
     {
         this.setDia(dia);
         this.setEntrada(entrada);
         this.setPlato(plato);
         this.setPostre(postre);
         this.setRefresco(refresco);
+        this.setSabado(sabado);
 
     }
 
@@ -61,5 +63,13 @@ public class Team {
         this.refresco = refresco;
     }
 
+
+    public String getSabado() {
+        return sabado;
+    }
+
+    public void setSabado(String sabado) {
+        this.sabado = sabado;
+    }
 
 }
