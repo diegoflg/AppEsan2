@@ -36,6 +36,7 @@ import java.util.ArrayList;
             TextView plato = (TextView) v.findViewById(R.id.wins);
             TextView postre = (TextView) v.findViewById(R.id.draws);
             TextView refresco = (TextView) v.findViewById(R.id.losses);
+            TextView sabado = (TextView) v.findViewById(R.id.sabado);
 
 
             dia.setText(String.valueOf(o.getdDia()));
@@ -43,6 +44,7 @@ import java.util.ArrayList;
             plato.setText(String.valueOf(o.getPlato()));
             postre.setText(String.valueOf(o.getPostre()));
             refresco.setText(String.valueOf(o.getRefresco()));
+            sabado.setText(String.valueOf(o.getSabado()));
 
         }
         return v;

@@ -6,11 +6,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TabHost;
 
 import org.json.JSONArray;
@@ -27,6 +29,8 @@ public class Cafeteria extends Fragment {
     private static final String DEBUG_TAG = "HttpExample";
     ArrayList<Team> teams = new ArrayList<Team>();
     ListView listview;
+    TabHost mTabHost;
+    RadioButton rb1,rb2,rb3;
 
 
 
@@ -36,12 +40,49 @@ public class Cafeteria extends Fragment {
         View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
 
+        rb1 = (RadioButton) v.findViewById(R.id.rb1);
+        rb2 = (RadioButton) v.findViewById(R.id.rb2);
+        rb3 = (RadioButton) v.findViewById(R.id.rb3);
+
+        mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
+        mTabHost.setup();
+
+        TabHost.TabSpec spec = mTabHost.newTabSpec("Tab 1");
+        spec.setContent(R.id.LaRuta);
+        spec.setIndicator("La Ruta");
+        mTabHost.addTab(spec);
+
+        spec=mTabHost.newTabSpec("Tab 2");
+        spec.setContent(R.id.DeliSabores);
+        spec.setIndicator("Deli Sabores");
+        mTabHost.addTab(spec);
+
+        mTabHost.setCurrentTab(0);
+
+
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
 
-
         go(v);
+
+        rb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Test", "onClickListener ist gestartet");
+
+            }
+        });
+
+        rb2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Log.d("Test", "onClickListener ist gestartet");
+
+            }
+        });
 
 
 
@@ -58,21 +99,24 @@ public class Cafeteria extends Fragment {
 
     }
 
+
+
     private void processJson(JSONObject object) {
 
         try {
             JSONArray columns = object.getJSONArray("rows");
 
-            for (int r = 0; r < columns.length(); ++r) {
+            for (int r = 10; r < 13; ++r) {
                 JSONObject column = columns.getJSONObject(r);
                 JSONArray rows = column.getJSONArray("c");
-                String dia = rows.getJSONObject(0).getString("v");
-                String entrada = rows.getJSONObject(1).getString("v");
-                String plato = rows.getJSONObject(2).getString("v");
-                String postre = rows.getJSONObject(3).getString("v");
-                String refresco = rows.getJSONObject(4).getString("v");
+                String dia = rows.getJSONObject(2).getString("v");
+                String entrada = rows.getJSONObject(3).getString("v");
+                String plato = rows.getJSONObject(4).getString("v");
+                String postre = rows.getJSONObject(5).getString("v");
+                String refresco = rows.getJSONObject(6).getString("v");
+                String sabado = rows.getJSONObject(7).getString("v");
 
-                Team team = new Team(dia, entrada, plato, postre, refresco);
+                Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
                 teams.add(team);
             }
 
@@ -83,5 +127,9 @@ public class Cafeteria extends Fragment {
             e.printStackTrace();
         }
     }
+
+
+
+
 
 }

@@ -14,20 +14,7 @@ public class IngresoCafeteria extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_ingresocafeteria, container, false);
 
-        mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
-        mTabHost.setup();
 
-        TabHost.TabSpec spec = mTabHost.newTabSpec("Tab 1");
-        spec.setContent(R.id.LaRuta);
-        spec.setIndicator("La Ruta");
-        mTabHost.addTab(spec);
-
-        spec=mTabHost.newTabSpec("Tab 2");
-        spec.setContent(R.id.DeliSabores);
-        spec.setIndicator("Deli Sabores");
-        mTabHost.addTab(spec);
-
-        mTabHost.setCurrentTab(0);
         return v;
     }
 }
