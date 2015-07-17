@@ -4,67 +4,38 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-/**
- * Created by Diegoflg on 7/14/2015.
- */
-public class Directorio extends Fragment{
-    ListView lv;
+public class Directorio extends Fragment {
+    ListView listViewSearch;
+    SearchView searchView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_directorio, container, false);
-        lv = (ListView) rootView.findViewById(R.id.listview2);
 
-        String[] values = new String[] { "Message1", "Message2", "Message3" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, values);
-        lv.setAdapter(adapter);
-        lv.setTextFilterEnabled(true);
+        listViewSearch = (ListView) rootView.findViewById(R.id.listview);
+        searchView = (SearchView) rootView.findViewById(R.id.searchView);
+
+        String[] values = new String[]{"Profesor X", "Oficina Y", "Uevirtual", "Universidad"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+        listViewSearch.setAdapter(adapter);
+        listViewSearch.setTextFilterEnabled(true);
         setHasOptionsMenu(true);
 
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        TextView textView = (TextView) searchView.findViewById(id);
+        textView.setHint("Buscar...");
 
-
-
-        return rootView;
-
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        // Implementing ActionBar Search inside a fragment
-        MenuItem item = menu.add("Search");
-        item.setIcon(R.drawable.ic_action_language); // sets icon
-        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-        SearchView sv = new SearchView(getActivity());
-
-        // modifying the text inside edittext component
-        int id = sv.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView textView = (TextView) sv.findViewById(id);
-        textView.setHint("Search location...");
-
-
-        // implementing the listener
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                if (s.length() < 4) {
-                    Toast.makeText(getActivity(),
-                            "Your search query must not be less than 3 characters",
-                            Toast.LENGTH_LONG).show();
+                if (s.length() < 3) {
                     return true;
                 } else {
                     doSearch(s);
@@ -74,14 +45,18 @@ public class Directorio extends Fragment{
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                if (TextUtils.isEmpty(newText)) {
+                    listViewSearch.clearTextFilter();
+                } else {
+                    listViewSearch.setFilterText(newText.toString());
+                }
                 return true;
             }
         });
-        item.setActionView(sv);
+        return rootView;
     }
 
-    private void doSearch(String s) {
+    private void doSearch (String s){
+
     }
-
-
 }
