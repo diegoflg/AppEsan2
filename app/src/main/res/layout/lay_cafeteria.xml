@@ -34,7 +34,8 @@
 
                     <RadioGroup
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rg1">
 
                         <RadioButton
                             android:text="Menú Ejecutivo"
@@ -59,7 +60,16 @@
 
 
 
+
+
+
                     </RadioGroup>
+                    <ListView
+                        android:id="@+id/listview2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rg1"
+                        />
 
                 </RelativeLayout>
 

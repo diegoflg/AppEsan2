@@ -28,9 +28,11 @@ public class Cafeteria extends Fragment {
 
     private static final String DEBUG_TAG = "HttpExample";
     ArrayList<Team> teams = new ArrayList<Team>();
-    ListView listview;
+    ArrayList<Team> teams2 = new ArrayList<Team>();
+    ListView listview,listview2;
     TabHost mTabHost;
     RadioButton rb1,rb2,rb3;
+    int num=0;
 
 
 
@@ -39,6 +41,7 @@ public class Cafeteria extends Fragment {
                              Bundle savedInstanceState) {
         View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
+        listview2 = (ListView) v.findViewById(R.id.listview2);
 
         rb1 = (RadioButton) v.findViewById(R.id.rb1);
         rb2 = (RadioButton) v.findViewById(R.id.rb2);
@@ -60,11 +63,13 @@ public class Cafeteria extends Fragment {
         mTabHost.setCurrentTab(0);
 
 
+
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
 
         go(v);
+
 
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,10 +108,12 @@ public class Cafeteria extends Fragment {
 
     private void processJson(JSONObject object) {
 
+
+
         try {
             JSONArray columns = object.getJSONArray("rows");
 
-            for (int r = 10; r < 13; ++r) {
+            for (int r = 1; r < 8; ++r) {
                 JSONObject column = columns.getJSONObject(r);
                 JSONArray rows = column.getJSONArray("c");
                 String dia = rows.getJSONObject(2).getString("v");
@@ -126,6 +133,9 @@ public class Cafeteria extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+
     }
 
 
