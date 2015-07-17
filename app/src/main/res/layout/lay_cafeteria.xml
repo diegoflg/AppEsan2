@@ -4,7 +4,7 @@
 
     <TabHost
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/tabHost2"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -64,12 +64,7 @@
 
 
                     </RadioGroup>
-                    <ListView
-                        android:id="@+id/listview2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/rg1"
-                        />
+
 
                 </RelativeLayout>
 
@@ -80,14 +75,18 @@
                     android:orientation="vertical">
 
 
-                    <ListView
-                        android:id="@+id/listview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+
                 </RelativeLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabHost2"
+        />
 </RelativeLayout>
 
 
