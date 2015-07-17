@@ -15,6 +15,7 @@ public class Directorio extends Fragment {
     ListView listViewSearch;
     SearchView searchView;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_directorio, container, false);
@@ -23,13 +24,13 @@ public class Directorio extends Fragment {
         searchView = (SearchView) rootView.findViewById(R.id.searchView);
 
         String[] values = new String[]{"Profesor X", "Oficina Y", "Uevirtual", "Universidad"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         listViewSearch.setAdapter(adapter);
-        listViewSearch.setTextFilterEnabled(true);
+        listViewSearch.setTextFilterEnabled(false);
         setHasOptionsMenu(true);
 
         int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        TextView textView = (TextView) searchView.findViewById(id);
+        final TextView textView = (TextView) searchView.findViewById(id);
         textView.setHint("Buscar...");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -45,11 +46,8 @@ public class Directorio extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (TextUtils.isEmpty(newText)) {
-                    listViewSearch.clearTextFilter();
-                } else {
-                    listViewSearch.setFilterText(newText.toString());
-                }
+                android.widget.Filter filter = adapter.getFilter();
+                filter.filter(newText);
                 return true;
             }
         });

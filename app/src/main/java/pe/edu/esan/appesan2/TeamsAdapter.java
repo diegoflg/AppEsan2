@@ -31,19 +31,19 @@ import java.util.ArrayList;
         }
         Team o = teams.get(position);
         if (o != null) {
-            TextView dia = (TextView) v.findViewById(R.id.position);
-            TextView entrada = (TextView) v.findViewById(R.id.name);
-            TextView plato = (TextView) v.findViewById(R.id.wins);
-            TextView postre = (TextView) v.findViewById(R.id.draws);
-            TextView refresco = (TextView) v.findViewById(R.id.losses);
+            TextView lunes = (TextView) v.findViewById(R.id.position);
+            TextView martes = (TextView) v.findViewById(R.id.name);
+            TextView miercoles = (TextView) v.findViewById(R.id.wins);
+            TextView jueves = (TextView) v.findViewById(R.id.draws);
+            TextView viernes = (TextView) v.findViewById(R.id.losses);
             TextView sabado = (TextView) v.findViewById(R.id.sabado);
 
 
-            dia.setText(String.valueOf(o.getdDia()));
-            entrada.setText(String.valueOf(o.getEntrada()));
-            plato.setText(String.valueOf(o.getPlato()));
-            postre.setText(String.valueOf(o.getPostre()));
-            refresco.setText(String.valueOf(o.getRefresco()));
+            lunes.setText(String.valueOf(o.getdDia()));
+            martes.setText(String.valueOf(o.getEntrada()));
+            miercoles.setText(String.valueOf(o.getPlato()));
+            jueves.setText(String.valueOf(o.getPostre()));
+            viernes.setText(String.valueOf(o.getRefresco()));
             sabado.setText(String.valueOf(o.getSabado()));
 
         }
