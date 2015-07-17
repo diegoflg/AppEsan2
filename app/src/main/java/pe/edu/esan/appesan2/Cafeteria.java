@@ -63,15 +63,14 @@ public class Cafeteria extends Fragment {
         try {
             JSONArray columns = object.getJSONArray("rows");
 
-            for (int r = 1; r < columns.length(); ++r) {
+            for (int r = 0; r < columns.length(); ++r) {
                 JSONObject column = columns.getJSONObject(r);
                 JSONArray rows = column.getJSONArray("c");
-
-                String dia = rows.getJSONObject(1).getString("v");
-                String entrada = rows.getJSONObject(2).getString("v");
-                String plato = rows.getJSONObject(3).getString("v");
-                String postre = rows.getJSONObject(4).getString("v");
-                String refresco = rows.getJSONObject(5).getString("v");
+                String dia = rows.getJSONObject(0).getString("v");
+                String entrada = rows.getJSONObject(1).getString("v");
+                String plato = rows.getJSONObject(2).getString("v");
+                String postre = rows.getJSONObject(3).getString("v");
+                String refresco = rows.getJSONObject(4).getString("v");
 
                 Team team = new Team(dia, entrada, plato, postre, refresco);
                 teams.add(team);
