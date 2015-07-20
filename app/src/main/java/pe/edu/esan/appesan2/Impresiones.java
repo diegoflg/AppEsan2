@@ -11,6 +11,8 @@ import android.webkit.HttpAuthHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import org.apache.http.util.EncodingUtils;
+
 /**
  * Created by educacionadistancia on 20/07/2015.
  */
@@ -19,12 +21,13 @@ public class Impresiones extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_impresiones, container, false);
-        WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
-        myWebView.loadUrl("http://blog.ue.edu.pe/");
+        WebView myWebView = (WebView) rootView.findViewById(R.id.webviewI);
+        myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm?dest=index.cfm&");
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
+
         myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -46,9 +49,9 @@ public class Impresiones extends Fragment {
         });
 
         myWebView.setWebViewClient(new WebViewClient() {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            return false;
+                                       @Override
+                                       public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                           return false;
         }
         }
         );
