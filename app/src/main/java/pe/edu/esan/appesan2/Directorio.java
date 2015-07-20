@@ -178,6 +178,7 @@ public class Directorio extends Fragment {
 
 
 
+
         close.setOnClickListener(new View.OnClickListener() {
 
             @Override
