@@ -99,6 +99,12 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 7:
                     fragment= new Talleres();
                     break;
+                case 8:
+                    fragment = new Biblioteca();
+                    break;
+                case 9:
+                    fragment = new Impresiones();
+                    break;
 
             }
 
