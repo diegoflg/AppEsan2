@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
-    EditText et1,et2,et3;
+    EditText et1,et2;
 
 
     @Override
@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
 
         et1=(EditText)findViewById(R.id.et1);
         et2=(EditText)findViewById(R.id.et2);
-        et3=(EditText)findViewById(R.id.et3);
+
 
         et1.setText("alumno");
         et2.setText("alumno");
@@ -135,10 +135,10 @@ public class MainActivity extends ActionBarActivity {
                 todo=todo+usuario+" " +password+" " + "\n";
             }while(c.moveToNext());
 
-            Toast t=Toast.makeText(this,"usuario o password invalida", Toast.LENGTH_SHORT);
+            Toast t=Toast.makeText(this,mensaje, Toast.LENGTH_SHORT);
             t.show();
 
-            et3.setText(todo);
+
         }
 
 
