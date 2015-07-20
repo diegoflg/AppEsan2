@@ -18,7 +18,7 @@ public class Calendario extends Fragment{
             View c = inflater.inflate(R.layout.lay_talleres, container, false);
 
             WebView myWebView = (WebView) c.findViewById(R.id.webview);
-            myWebView.loadUrl("https://www.google.com/calendar/feeds/ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com/public/basic");
+            myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");
 
             //myWebView.getSettings().setUseWideViewPort(true);
             myWebView.getSettings().setLoadWithOverviewMode(true);
