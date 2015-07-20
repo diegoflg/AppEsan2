@@ -52,6 +52,10 @@ public class MainActivity2Activity extends ActionBarActivity
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.esan);
 
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setDisplayHomeAsUpEnabled(true);
+
 
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
