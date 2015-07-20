@@ -32,11 +32,13 @@ import java.util.ArrayList;
         Team o = teams.get(position);
         if (o != null) {
             TextView lunes = (TextView) v.findViewById(R.id.position);
-            TextView martes = (TextView) v.findViewById(R.id.name);
+            /**  TextView martes = (TextView) v.findViewById(R.id.name);
             TextView miercoles = (TextView) v.findViewById(R.id.wins);
             TextView jueves = (TextView) v.findViewById(R.id.draws);
             TextView viernes = (TextView) v.findViewById(R.id.losses);
             TextView sabado = (TextView) v.findViewById(R.id.sabado);
+             *
+             */
 
 
             lunes.setText(String.valueOf(o.getdDia()));
