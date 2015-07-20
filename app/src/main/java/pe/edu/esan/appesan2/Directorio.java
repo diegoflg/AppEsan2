@@ -92,8 +92,8 @@ public class Directorio extends Fragment {
 
 
     private void showPopup(final Activity context,int opc) {
-        int popupWidth = 350;
-        int popupHeight = 300;
+        int popupWidth = 250;
+        int popupHeight = 200;
 
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
         LayoutInflater layoutInflater = (LayoutInflater) context
@@ -109,7 +109,7 @@ public class Directorio extends Fragment {
 
 
         // Displaying the popup at the specified location, + offsets.
-        popup.showAtLocation(layout, Gravity.NO_GRAVITY, 100, 200);
+        popup.showAtLocation(layout,  Gravity.CENTER, 0, 0);
 
         // Getting a reference to Close button, and close the popup when clicked.
         Button call = (Button) layout.findViewById(R.id.call);
