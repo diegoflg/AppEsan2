@@ -8,12 +8,15 @@ public class AdminBD extends SQLiteOpenHelper {
 
     String sqlCreate="CREATE TABLE Persona (usuario TEXT, password TEXT)";
 
+
+
     public AdminBD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(sqlCreate);
     }
 
