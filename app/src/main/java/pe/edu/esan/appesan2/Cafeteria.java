@@ -39,7 +39,7 @@ public class Cafeteria extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
+        final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
 
 
@@ -83,11 +83,9 @@ public class Cafeteria extends Fragment {
             }
         });
 
-        rb2.setOnClickListener(new View.OnClickListener()
-        {
+        rb2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 clearData();
 
 
@@ -97,19 +95,6 @@ public class Cafeteria extends Fragment {
             }
         });
 
-        mTabHost.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                clearData();
-
-
-                Log.d("Test", "onClickListener ist gestartet");
-                go(v);
-
-            }
-        });
 
         rb3.setOnClickListener(new View.OnClickListener()
         {
@@ -125,6 +110,17 @@ public class Cafeteria extends Fragment {
             }
         });
 
+        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                clearData();
+
+
+                go(v);
+
+
+            }
+        });
 
 
         return v;
@@ -150,6 +146,10 @@ public class Cafeteria extends Fragment {
             JSONArray columns = object.getJSONArray("rows");
 
             if (mTabHost.getCurrentTab()==1){
+                Log.d("Test", "taaaaaaaaab");
+
+
+
 
                 for (int r = 1; r < 8; ++r) {
                     JSONObject column = columns.getJSONObject(r);
@@ -200,7 +200,7 @@ public class Cafeteria extends Fragment {
                         String plato = rows.getJSONObject(4).getString("v");
                         String postre = rows.getJSONObject(5).getString("v");
                         String refresco = rows.getJSONObject(6).getString("v");
-                        String sabado = "no hay";
+                        String sabado = rows.getJSONObject(7).getString("v");
 
                         Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
                         teams.add(team);
@@ -220,7 +220,7 @@ public class Cafeteria extends Fragment {
                         String plato = rows.getJSONObject(4).getString("v");
                         String postre = rows.getJSONObject(5).getString("v");
                         String refresco = rows.getJSONObject(6).getString("v");
-                        String sabado = "no hay";
+                        String sabado = rows.getJSONObject(7).getString("v");
 
                         Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
                         teams.add(team);
