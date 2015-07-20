@@ -40,11 +40,14 @@ import java.util.ArrayList;
 
 
             lunes.setText(String.valueOf(o.getdDia()));
+            /**
             martes.setText(String.valueOf(o.getEntrada()));
             miercoles.setText(String.valueOf(o.getPlato()));
             jueves.setText(String.valueOf(o.getPostre()));
             viernes.setText(String.valueOf(o.getRefresco()));
             sabado.setText(String.valueOf(o.getSabado()));
+             *
+             */
 
         }
         return v;

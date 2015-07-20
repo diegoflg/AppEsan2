@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TabHost;
@@ -20,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Diegoflg on 7/14/2015.
@@ -33,6 +35,9 @@ public class Cafeteria extends Fragment {
     TabHost mTabHost;
     RadioButton rb1,rb2,rb3;
     int num=0;
+    int diadelasemana=0;
+
+
 
 
 
@@ -46,6 +51,7 @@ public class Cafeteria extends Fragment {
         rb1 = (RadioButton) v.findViewById(R.id.rb1);
         rb2 = (RadioButton) v.findViewById(R.id.rb2);
         rb3 = (RadioButton) v.findViewById(R.id.rb3);
+
 
         mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
         mTabHost.setup();
@@ -66,6 +72,13 @@ public class Cafeteria extends Fragment {
 
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        Calendar calendar = Calendar.getInstance();
+
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        String dia=String.valueOf(day);
+        Log.d("el dia esss",dia);
+        diadelasemana=day;
+
 
 
         go(v);
@@ -137,7 +150,113 @@ public class Cafeteria extends Fragment {
     }
 
 
+    private void processJson(JSONObject object) {
 
+
+
+        try {
+            JSONArray columns = object.getJSONArray("rows");
+
+            if (mTabHost.getCurrentTab()==1){
+                Log.d("Test", "taaaaaaaaab");
+
+
+
+
+                for (int r = 1; r < 8; ++r) {
+                    JSONObject column = columns.getJSONObject(r);
+                    JSONArray rows = column.getJSONArray("c");
+                    String dia = rows.getJSONObject(diadelasemana).getString("v");
+
+                    Team team = new Team(dia);
+                    teams.add(team);
+                }
+
+            }
+
+            if (mTabHost.getCurrentTab()==0){
+
+                if(rb1.isChecked()){
+
+
+                    for (int r = 10; r < 18; ++r) {
+                        JSONObject column = columns.getJSONObject(r);
+                        JSONArray rows = column.getJSONArray("c");
+                        String dia = rows.getJSONObject(2).getString("v");
+                        String entrada = rows.getJSONObject(3).getString("v");
+                        String plato = rows.getJSONObject(4).getString("v");
+                        String postre = rows.getJSONObject(5).getString("v");
+                        String refresco = rows.getJSONObject(6).getString("v");
+                        String sabado = rows.getJSONObject(7).getString("v");
+
+                        Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
+                        teams.add(team);
+                    }
+
+
+                }
+
+                if(rb2.isChecked()){
+
+
+                    for (int r = 19; r < 25; ++r) {
+                        JSONObject column = columns.getJSONObject(r);
+                        JSONArray rows = column.getJSONArray("c");
+                        String dia = rows.getJSONObject(2).getString("v");
+                        String entrada = rows.getJSONObject(3).getString("v");
+                        String plato = rows.getJSONObject(4).getString("v");
+                        String postre = rows.getJSONObject(5).getString("v");
+                        String refresco = rows.getJSONObject(6).getString("v");
+                        String sabado = rows.getJSONObject(7).getString("v");
+
+                        Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
+                        teams.add(team);
+                    }
+
+
+                }
+
+                if(rb3.isChecked()){
+
+
+                    for (int r = 26; r < 32; ++r) {
+                        JSONObject column = columns.getJSONObject(r);
+                        JSONArray rows = column.getJSONArray("c");
+                        String dia = rows.getJSONObject(2).getString("v");
+                        String entrada = rows.getJSONObject(3).getString("v");
+                        String plato = rows.getJSONObject(4).getString("v");
+                        String postre = rows.getJSONObject(5).getString("v");
+                        String refresco = rows.getJSONObject(6).getString("v");
+                        String sabado = rows.getJSONObject(7).getString("v");
+
+                        Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
+                        teams.add(team);
+                    }
+
+
+                }
+
+
+            }
+
+
+
+
+            final TeamsAdapter adapter = new TeamsAdapter(getActivity(), R.layout.team, teams);
+            listview.setAdapter(adapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+    }
+
+
+/**
     private void processJson(JSONObject object) {
 
 
@@ -247,6 +366,7 @@ public class Cafeteria extends Fragment {
 
 
     }
+ */
 
     public void clearData(){
 
