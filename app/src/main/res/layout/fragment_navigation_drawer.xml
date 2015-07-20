@@ -2,4 +2,4 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:choiceMode="singleChoice"
     android:divider="@android:color/transparent" android:dividerHeight="0dp"
-    android:background="#FFB0141A" tools:context="pe.edu.esan.appesan2.NavigationDrawerFragment" />
+    android:background="#ffcf1313" tools:context="pe.edu.esan.appesan2.NavigationDrawerFragment" />
