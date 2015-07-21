@@ -15,8 +15,10 @@
     <GridView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:id="@+id/gridView"
+        android:id="@+id/gridView1"
         android:layout_gravity="center_horizontal"
         android:layout_below="@id/textView2"
-        android:numColumns="8" />
+        android:numColumns="8"
+        android:stretchMode="columnWidth"
+        />
 </LinearLayout>

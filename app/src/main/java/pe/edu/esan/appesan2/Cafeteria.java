@@ -182,14 +182,9 @@ public class Cafeteria extends Fragment {
                     for (int r = 10; r < 18; ++r) {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
-                        String dia = rows.getJSONObject(2).getString("v");
-                        String entrada = rows.getJSONObject(3).getString("v");
-                        String plato = rows.getJSONObject(4).getString("v");
-                        String postre = rows.getJSONObject(5).getString("v");
-                        String refresco = rows.getJSONObject(6).getString("v");
-                        String sabado = rows.getJSONObject(7).getString("v");
+                        String dia = rows.getJSONObject(diadelasemana).getString("v");
 
-                        Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
+                        Team team = new Team(dia);
                         teams.add(team);
                     }
 
@@ -202,14 +197,9 @@ public class Cafeteria extends Fragment {
                     for (int r = 19; r < 25; ++r) {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
-                        String dia = rows.getJSONObject(2).getString("v");
-                        String entrada = rows.getJSONObject(3).getString("v");
-                        String plato = rows.getJSONObject(4).getString("v");
-                        String postre = rows.getJSONObject(5).getString("v");
-                        String refresco = rows.getJSONObject(6).getString("v");
-                        String sabado = rows.getJSONObject(7).getString("v");
+                        String dia = rows.getJSONObject(diadelasemana).getString("v");
 
-                        Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
+                        Team team = new Team(dia);
                         teams.add(team);
                     }
 
@@ -222,14 +212,9 @@ public class Cafeteria extends Fragment {
                     for (int r = 26; r < 32; ++r) {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
-                        String dia = rows.getJSONObject(2).getString("v");
-                        String entrada = rows.getJSONObject(3).getString("v");
-                        String plato = rows.getJSONObject(4).getString("v");
-                        String postre = rows.getJSONObject(5).getString("v");
-                        String refresco = rows.getJSONObject(6).getString("v");
-                        String sabado = rows.getJSONObject(7).getString("v");
+                        String dia = rows.getJSONObject(diadelasemana).getString("v");
 
-                        Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
+                        Team team = new Team(dia);
                         teams.add(team);
                     }
 
