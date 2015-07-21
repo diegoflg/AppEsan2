@@ -3,11 +3,13 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TableLayout
-        android:layout_marginTop="20dp"
         android:id="@+id/Tabla"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stretchColumns="0" >
+        android:stretchColumns="0"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TableRow
             android:id="@+id/Cabecera"
@@ -82,7 +84,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/Anio1"
+                android:id="@+id/curso1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -90,7 +92,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Cuidad1"
+                android:id="@+id/ep1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -98,7 +100,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Oro1"
+                android:id="@+id/ta1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -106,7 +108,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Oro22"
+                android:id="@+id/ef1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -114,7 +116,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Oro231"
+                android:id="@+id/pg1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -128,7 +130,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/Anio2"
+                android:id="@+id/curso2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -136,14 +138,14 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Cuidad2"
+                android:id="@+id/ep2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0"
                 android:textSize="20sp" />
             <TextView
-                android:id="@+id/Cuidad52"
+                android:id="@+id/ta2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -151,7 +153,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Plata2"
+                android:id="@+id/ef2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
@@ -159,7 +161,7 @@
                 android:text="0"
                 android:textSize="20sp" />
             <TextView
-                android:id="@+id/Plata332"
+                android:id="@+id/pg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
@@ -175,7 +177,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/Anio3"
+                android:id="@+id/curso3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -183,7 +185,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Cuidad3"
+                android:id="@+id/ep3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -191,7 +193,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Oro3"
+                android:id="@+id/ta3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -199,7 +201,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Plata3"
+                android:id="@+id/ef3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -207,7 +209,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Bronce3"
+                android:id="@+id/pg3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -221,7 +223,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/Anio4"
+                android:id="@+id/curso4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -229,7 +231,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Cuidad4"
+                android:id="@+id/ep4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -237,7 +239,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Oro4"
+                android:id="@+id/ta4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -245,7 +247,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Plata4"
+                android:id="@+id/ef4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -253,7 +255,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Bronce4"
+                android:id="@+id/pg4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

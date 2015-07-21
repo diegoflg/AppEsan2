@@ -38,8 +38,8 @@ public class MainActivity extends ActionBarActivity {
         Cursor fila1 = bd.rawQuery("select usuario from Persona",null);
         if(fila1.moveToFirst())
         {
-            Toast t=Toast.makeText(this,"haydatos", Toast.LENGTH_SHORT);
-            t.show();
+            //Toast t=Toast.makeText(this,"haydatos", Toast.LENGTH_SHORT);
+           // t.show();
 
         }else{
 
@@ -76,6 +76,92 @@ public class MainActivity extends ActionBarActivity {
 
             //Cerramos la base de datos
             bd.close();
+
+
+        NotasBD notas= new NotasBD(this, "BDNOTAS2",null, 1);
+        SQLiteDatabase bdn=notas.getWritableDatabase();
+
+        Cursor filanotas = bdn.rawQuery("select usuario from Notas",null);
+        if(filanotas.moveToFirst())
+        {
+            Toast t=Toast.makeText(this,"haydatosnotas", Toast.LENGTH_SHORT);
+            t.show();
+
+        }else{
+
+
+            String usuarionota="alumno";
+            String cursonota="Matematicas";
+            String cursonota2="Lengua";
+            String cursonota3="Programacion";
+            String cursonota4="Filosofia";
+            int ep1=10;
+            int ep2=07;
+            int ep3=13;
+            int ep4=12;
+            int ta1=18;
+            int ta2=03;
+            int ta3=13;
+            int ta4=10;
+            int ef1=11;
+            int ef2=17;
+            int ef3=12;
+            int ef4=17;
+            int pg1=15;
+            int pg2=14;
+            int pg3=12;
+            int pg4=9;
+
+
+            ContentValues registronota1 = new ContentValues();
+            registronota1.put("usuario",usuarionota);
+            registronota1.put("curso",cursonota);
+            registronota1.put("ep",ep1);
+            registronota1.put("ta",ta1);
+            registronota1.put("ef",ef1);
+            registronota1.put("pg", pg1);
+
+            bdn.insert("Notas", null, registronota1);
+
+            ContentValues registronota2 = new ContentValues();
+            registronota2.put("usuario",usuarionota);
+            registronota2.put("curso",cursonota2);
+            registronota2.put("ep", ep2);
+            registronota2.put("ta",ta2);
+            registronota2.put("ef",ef2);
+            registronota2.put("pg",pg2);
+
+            bdn.insert("Notas", null, registronota2);
+
+            ContentValues registronota3 = new ContentValues();
+            registronota3.put("usuario",usuarionota);
+            registronota3.put("curso",cursonota3);
+            registronota3.put("ep",ep3);
+            registronota3.put("ta",ta3);
+            registronota3.put("ef",ef3);
+            registronota3.put("pg",pg3);
+
+            bdn.insert("Notas", null, registronota3);
+
+            ContentValues registronota4 = new ContentValues();
+            registronota4.put("usuario",usuarionota);
+            registronota4.put("curso", cursonota4);
+            registronota4.put("ep",ep4);
+            registronota4.put("ta",ta4);
+            registronota4.put("ef",ef4);
+            registronota4.put("pg",pg4);
+
+            bdn.insert("Notas", null, registronota4);
+
+
+
+
+            Toast t=Toast.makeText(this,"Se grabaron los datos de las notas", Toast.LENGTH_SHORT);
+            t.show();
+        }
+
+        //Cerramos la base de datos
+        bd.close();
 
 
     }
