@@ -48,16 +48,14 @@ public class Impresiones extends Fragment {
         myWebView.setWebViewClient(new WebViewClient() {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
             return false;
         };
+        //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
         public void onPageFinished(WebView view, String url) {
-            String user="14100015";
-            String pwd="N7N2U2F7";
-            //  view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+user+"';document.getElementsByName('Password')[0].value='"+pwd+"';");
-
-            //view.loadUrl("javascript:document.forms[0].submit()");
+            view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+"14100015"+"';document.getElementsByName('Password')[0].value='"+"N7N2U2F7"+"';");
+            //view.loadUrl("javascript:document.forms[0].submit();");
         }
-
         }
         );
 

@@ -1,7 +1,7 @@
 package pe.edu.esan.appesan2;
 
-import android.app.ActionBar;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -10,11 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,10 +35,6 @@ public class Cafeteria extends Fragment {
     RadioButton rb1,rb2,rb3;
     int num=0;
     int diadelasemana=0;
-
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,6 +62,17 @@ public class Cafeteria extends Fragment {
         mTabHost.addTab(spec);
 
         mTabHost.setCurrentTab(0);
+        mTabHost.getTabWidget().setStripEnabled(true);
+        mTabHost.getTabWidget().setRightStripDrawable(R.drawable.greyline);
+        mTabHost.getTabWidget().setLeftStripDrawable(R.drawable.greyline);
+
+        for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
+        {
+            TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+            tv.setTextColor(Color.parseColor("#FFFFFF"));
+        }
+        mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
+        mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
 
 
 
@@ -126,6 +132,7 @@ public class Cafeteria extends Fragment {
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
+
                 clearData();
 
 
