@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cursos MOOC"
+        android:id="@+id/tvmooc"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
+
+        android:layout_marginBottom="20dp"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/coursera"
+        android:id="@+id/cv1"
+        android:layout_below="@+id/tvmooc"
+        android:layout_alignParentLeft="true"
+
+
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_toRightOf="@+id/cv1"
+        android:src="@drawable/edx"
+        android:id="@+id/cv2"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/tvmooc"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/mirx"
+        android:id="@+id/cv3"
+        android:layout_below="@+id/cv2"
+
+        />
+
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/hx"
+        android:id="@+id/cv4"
+        android:layout_below="@+id/cv2"
+        android:layout_toRightOf="@+id/cv1"
+        android:layout_marginLeft="10dp"
+         />
+
+
+
+
+</RelativeLayout>

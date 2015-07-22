@@ -53,7 +53,7 @@ public class Impresiones extends Fragment {
         public void onPageFinished(WebView view, String url) {
             String user="14100015";
             String pwd="N7N2U2F7";
-            view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+user+"';document.getElementsByName('Password')[0].value='"+pwd+"';");
+            //  view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+user+"';document.getElementsByName('Password')[0].value='"+pwd+"';");
 
             //view.loadUrl("javascript:document.forms[0].submit()");
         }
