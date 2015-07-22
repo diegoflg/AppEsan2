@@ -17,7 +17,6 @@
         android:layout_height="200dp"
         android:id="@+id/gridView1"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@id/textView2"
         android:numColumns="8"
         android:stretchMode="columnWidth"
         />

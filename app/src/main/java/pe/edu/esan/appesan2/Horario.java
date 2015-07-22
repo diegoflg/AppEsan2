@@ -34,7 +34,7 @@ public class Horario extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
-        rootView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
+
 
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
@@ -53,16 +53,21 @@ public class Horario extends Fragment {
 
 
         final String[] numbers = new String[] { "-", "Lunes", "Martes",
-                "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "7 a 8", "1",
-                "2", "3", "4", "5", "6","7", "8 a 9", "1",
-                "2", "3", "4", "5", "6","7", "9 a 10", "1",
-                "2", "3", "4", "5", "6","7", "10 a 11", "1",
-                "2", "3", "4", "5", "6","7", "12 a 1", "1",
-                "2", "3", "4", "5", "6","7", "1 a 2", "1",
-                "2", "3", "4", "5", "6","7", "2 a 3", "1",
-                "2", "3", "4", "5", "6","7", "3 a 4", "1",
-                "2", "3", "4", "5", "6","7", "4 a 5", "1",
-                "2", "3", "4", "5", "6","7", "5 a 6", "1",
+                "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "07:00-08:00", "1",
+                "2", "3", "4", "5", "6","7", "08:00-09:00", "1",
+                "2", "3", "4", "5", "6","7", "09:00-10:00", "1",
+                "2", "3", "4", "5", "6","7", "10:00-11:00", "1",
+                "2", "3", "4", "5", "6","7", "11:00-12:00", "1",
+                "2", "3", "4", "5", "6","7", "12:00-13:00", "1",
+                "2", "3", "4", "5", "6","7", "13:00-14:00", "1",
+                "2", "3", "4", "5", "6","7", "14:00-15:00", "1",
+                "2", "3", "4", "5", "6","7", "15:00-16:00", "1",
+                "2", "3", "4", "5", "6","7", "16:00-17:00", "1",
+                "2", "3", "4", "5", "6","7", "17:00-18:00", "1",
+                "2", "3", "4", "5", "6","7", "18:00-19:00", "1",
+                "2", "3", "4", "5", "6","7", "19:00-20:00", "1",
+                "2", "3", "4", "5", "6","7", "20:00-21:00", "1",
+                "2", "3", "4", "5", "6","7", "21:00-22:00", "1",
                 "2", "3", "4", "5", "6","7" };
 
         gridView=(GridView)rootView.findViewById(R.id.gridView1);
@@ -104,6 +109,7 @@ public class Horario extends Fragment {
             }
             tv.setText(objects[position]);
             tv.setTextSize(10);
+
             if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
                 tv.setBackgroundColor(Color.parseColor("#FFCF1313"));
                 tv.setTextColor(Color.WHITE);
@@ -111,6 +117,49 @@ public class Horario extends Fragment {
                 tv.setBackgroundColor(Color.WHITE);
 
             }
+
+            if(position>16 && position<24){
+                tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
+
+
+            }
+
+            if(position>32 && position<40){
+                tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
+
+
+            }
+
+            if(position>48 && position<56){
+                tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
+
+
+            }
+
+            if(position>64 && position<72){
+                tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
+
+
+            }
+
+            if(position>80 && position<88){
+                tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
+
+
+            }
+
+            if(position>96 && position<104){
+                tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
+
+
+            }
+            if(position>112 && position<120){
+                tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
+
+
+            }
+
+
 
             return tv;
         }
