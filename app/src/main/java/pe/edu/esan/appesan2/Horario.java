@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class Horario extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
+        rootView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
 
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
@@ -101,7 +103,7 @@ public class Horario extends Fragment {
                 tv = (TextView) convertView;
             }
             tv.setText(objects[position]);
-            tv.setTextSize(5);
+            tv.setTextSize(10);
             if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
                 tv.setBackgroundColor(Color.parseColor("#FFCF1313"));
                 tv.setTextColor(Color.WHITE);
