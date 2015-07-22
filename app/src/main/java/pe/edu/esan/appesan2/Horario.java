@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,7 +23,8 @@ import java.util.List;
  */
 public class Horario extends Fragment {
 
-    private GridView gv;
+    private GridView gridView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,9 +32,9 @@ public class Horario extends Fragment {
 
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
 
-        gv=(GridView)rootView.findViewById(R.id.gridView1);
 
-        final String[] items = new String[] { "-", "Lunes", "Martes",
+
+        final String[] numbers = new String[] { "-", "Lunes", "Martes",
                 "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "7 a 8", "1",
                 "2", "3", "4", "5", "6","7", "8 a 9", "1",
                 "2", "3", "4", "5", "6","7", "9 a 10", "1",
@@ -44,22 +47,53 @@ public class Horario extends Fragment {
                 "2", "3", "4", "5", "6","7", "5 a 6", "1",
                 "2", "3", "4", "5", "6","7" };
 
-        ArrayAdapter<String> ad = new ArrayAdapter<String>(
-                getActivity().getApplicationContext(), android.R.layout.simple_list_item_1,
-                items);
-
-        gv.setBackgroundColor(Color.GRAY);
-        gv.setNumColumns(8);
-        gv.setGravity(Gravity.CENTER);
-        gv.setAdapter(ad);
+        gridView=(GridView)rootView.findViewById(R.id.gridView1);
+        MyAdapter adapter = new MyAdapter(getActivity().getBaseContext(),
+                R.layout.item, numbers);
 
 
 
+        gridView.setAdapter(adapter);
 
 
 
 
 
         return rootView;
+    }
+
+    public class MyAdapter extends ArrayAdapter<String> {
+
+        String[] objects;
+        Context context;
+
+        public MyAdapter(Context context, int textViewResourceId, String[] objects) {
+            super(context, textViewResourceId, objects);
+            this.context = context;
+            this.objects = objects;
+        }
+
+
+        @Override
+        public View getView(int position, android.view.View convertView, android.view.ViewGroup parent) {
+            TextView tv;
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                tv = (TextView)inflater.inflate(R.layout.item,parent,false);
+            } else {
+                tv = (TextView) convertView;
+            }
+            tv.setText(objects[position]);
+            tv.setTextSize(5);
+            if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
+                tv.setBackgroundColor(Color.parseColor("#FFCF1313"));
+                tv.setTextColor(Color.WHITE);
+            }else{
+                tv.setBackgroundColor(Color.WHITE);
+
+            }
+
+            return tv;
+        }
     }
 }
