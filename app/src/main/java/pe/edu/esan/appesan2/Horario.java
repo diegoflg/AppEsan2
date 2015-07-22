@@ -18,6 +18,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.polidea.view.ZoomView;
+
 /**
  * Created by Diegoflg on 7/13/2015.
  */
@@ -31,6 +33,20 @@ public class Horario extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
+
+        ZoomView zoomView;
+        zoomView = new ZoomView(getActivity());
+        zoomView.addView(rootView);
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,7 +75,7 @@ public class Horario extends Fragment {
 
 
 
-        return rootView;
+        return zoomView;
     }
 
     public class MyAdapter extends ArrayAdapter<String> {
