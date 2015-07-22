@@ -37,6 +37,7 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private CharSequence mTitle;
     public int tipo=1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,6 +200,8 @@ public class MainActivity2Activity extends ActionBarActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
 
 

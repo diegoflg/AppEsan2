@@ -29,16 +29,20 @@ public class CursosMooc extends Fragment {
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                Fragment fragment=null;
+                Webfragment fragment;
                 fragment = new Webfragment();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("url", "https://es.coursera.org/");
+                fragment.setArguments(bundle);
 
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
                         .commit();
 
-
-                Log.d("click", "1");
 
             }
         });
@@ -47,8 +51,17 @@ public class CursosMooc extends Fragment {
             @Override
             public void onClick(View v) {
 
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                Webfragment fragment;
+                fragment = new Webfragment();
 
-                Log.d("click", "2");
+                Bundle bundle = new Bundle();
+                bundle.putString("url", "https://www.edx.org/");
+                fragment.setArguments(bundle);
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .commit();
 
             }
         });
@@ -57,9 +70,17 @@ public class CursosMooc extends Fragment {
         cv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                Webfragment fragment;
+                fragment = new Webfragment();
 
+                Bundle bundle = new Bundle();
+                bundle.putString("url", "https://www.miriadax.net/");
+                fragment.setArguments(bundle);
 
-                Log.d("click", "3");
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .commit();
 
             }
         });
@@ -69,8 +90,17 @@ public class CursosMooc extends Fragment {
             @Override
             public void onClick(View v) {
 
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                Webfragment fragment;
+                fragment = new Webfragment();
 
-                Log.d("click", "4");
+                Bundle bundle = new Bundle();
+                bundle.putString("url", "http://harvardx.harvard.edu/");
+                fragment.setArguments(bundle);
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .commit();
 
             }
         });
