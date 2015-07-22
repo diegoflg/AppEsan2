@@ -1,17 +1,13 @@
 package pe.edu.esan.appesan2;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.HttpAuthHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import org.apache.http.util.EncodingUtils;
 
 /**
  * Created by educacionadistancia on 20/07/2015.
@@ -22,7 +18,8 @@ public class Impresiones extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_impresiones, container, false);
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewI);
-        myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm?dest=index.cfm&");
+        myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm");
+        myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
@@ -49,10 +46,17 @@ public class Impresiones extends Fragment {
         });
 
         myWebView.setWebViewClient(new WebViewClient() {
-                                       @Override
-                                       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                           return false;
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return false;
+        };
+        public void onPageFinished(WebView view, String url) {
+            String user="14100015";
+            String pwd="N7N2U2F7";
+            view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+user+"';document.getElementsByName('Password')[0].value='"+pwd+"';");
+            //view.loadUrl("javascript:document.forms[0].submit()");
         }
+
         }
         );
 
