@@ -110,6 +110,10 @@ public class MainActivity2Activity extends ActionBarActivity
                     fragment = new Impresiones();
                     break;
 
+                case 10:
+                    fragment = new CursosMooc();
+                    break;
+
             }
 
         }

@@ -29,6 +29,7 @@
         <item>Talleres</item>
         <item>Biblioteca</item>
         <item>Impresiones</item>
+        <item>Cursos Mooc</item>
     </string-array>
 
     <string-array name="sections2">
@@ -51,6 +52,7 @@
         <item>Section T8</item>
         <item>Section T9</item>
         <item>Section T10</item>
+        <item>Section T11</item>
     </string-array>
 
     <string-array name="section_titles2">
@@ -70,6 +72,7 @@
         <item name="android:icon">@drawable/directorio</item>
         <item name="android:icon">@drawable/talleres</item>
         <item name="android:icon">@drawable/biblioteca</item>
+        <item name="android:icon">@drawable/impresiones</item>
         <item name="android:icon">@drawable/impresiones</item>
 
     </string-array>
