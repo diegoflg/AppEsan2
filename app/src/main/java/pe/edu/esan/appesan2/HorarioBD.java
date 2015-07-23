@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class HorarioBD extends SQLiteOpenHelper {
 
-    String sqlCreate="CREATE TABLE Horario (usuario TEXT, curso TEXT,horario TEXT, salon TEXT)";
+    String sqlCreate="CREATE TABLE Horario (usuario TEXT, curso TEXT,dia TEXT, hora TEXT, salon TEXT)";
 
 
 
