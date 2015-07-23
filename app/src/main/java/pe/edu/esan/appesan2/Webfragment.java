@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -37,19 +38,24 @@ public class Webfragment extends Fragment {
 
 
 
-        wb.setOnKeyListener(new View.OnKeyListener() {
+        rootView.setFocusableInTouchMode(true);
+        rootView.requestFocus();
+        rootView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    WebView webView = (WebView) v;
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_BACK:
-                            getActivity().getFragmentManager().popBackStack();
-                            break;
-                    }
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    CursosMooc fragment;
+                    fragment = new CursosMooc();
+
+
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .commit();
+
+                    return true;
                 }
-
                 return false;
             }
         });
