@@ -1,6 +1,7 @@
 package pe.edu.esan.appesan2;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -41,6 +42,7 @@ public class Cafeteria extends Fragment {
                              Bundle savedInstanceState) {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
 
         rb1 = (RadioButton) v.findViewById(R.id.rb1);

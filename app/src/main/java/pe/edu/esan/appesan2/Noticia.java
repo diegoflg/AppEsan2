@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.content.pm.ActivityInfo;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -18,6 +19,8 @@ public class Noticia extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_noticia, container, false);
+
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
         myWebView.loadUrl("http://blog.ue.edu.pe/");

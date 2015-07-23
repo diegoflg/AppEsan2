@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -59,6 +60,7 @@ public class Notas extends Fragment {
 
         NotasBD notas= new NotasBD(v.getContext(), "BDNOTAS2",null, 1);
         SQLiteDatabase bdn=notas.getWritableDatabase();
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
 
         Cursor filanotaas = bdn.rawQuery("select curso,ep,ta,ef,pg from Notas" , null);

@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +23,8 @@ public class CursosMooc extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_mooc, container, false);
+
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         cv1=(CircleImageView)rootView.findViewById(R.id.cv1);
         cv2=(CircleImageView)rootView.findViewById(R.id.cv2);
         cv3=(CircleImageView)rootView.findViewById(R.id.cv3);

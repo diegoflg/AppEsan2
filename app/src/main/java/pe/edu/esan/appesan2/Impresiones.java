@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -16,6 +17,7 @@ public class Impresiones extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         View rootView = inflater.inflate(R.layout.lay_impresiones, container, false);
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewI);
         myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm");
