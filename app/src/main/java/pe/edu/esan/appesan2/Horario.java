@@ -37,11 +37,9 @@ public class Horario extends Fragment {
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
 ;
 
-
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
         zoomView.addView(rootView);
-
 
         final String[] numbers = new String[] { "-", "Lunes", "Martes",
                 "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "07:00-08:00", "1",
