@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -34,22 +35,12 @@ public class Horario extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
+;
 
 
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
         zoomView.addView(rootView);
-
-
-
-
-
-
-
-
-
-
-
 
 
         final String[] numbers = new String[] { "-", "Lunes", "Martes",
@@ -76,6 +67,8 @@ public class Horario extends Fragment {
 
 
 
+
+
         gridView.setAdapter(adapter);
 
 
@@ -91,10 +84,12 @@ public class Horario extends Fragment {
         String[] objects;
         Context context;
 
+
         public MyAdapter(Context context, int textViewResourceId, String[] objects) {
             super(context, textViewResourceId, objects);
             this.context = context;
             this.objects = objects;
+
         }
 
 
