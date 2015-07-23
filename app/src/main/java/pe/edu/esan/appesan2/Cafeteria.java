@@ -175,8 +175,9 @@ public class Cafeteria extends Fragment {
                     JSONObject column = columns.getJSONObject(r);
                     JSONArray rows = column.getJSONArray("c");
                     String dia = rows.getJSONObject(diadelasemana).getString("v");
+                    String tipo = rows.getJSONObject(1).getString("v");
 
-                    Team team = new Team(dia);
+                    Team team = new Team(dia, tipo);
                     teams.add(team);
                 }
 
@@ -191,8 +192,9 @@ public class Cafeteria extends Fragment {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
                         String dia = rows.getJSONObject(diadelasemana).getString("v");
+                        String tipo = rows.getJSONObject(1).getString("v");
 
-                        Team team = new Team(dia);
+                        Team team = new Team(dia, tipo);
                         teams.add(team);
                     }
 
@@ -206,8 +208,9 @@ public class Cafeteria extends Fragment {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
                         String dia = rows.getJSONObject(diadelasemana).getString("v");
+                        String tipo = rows.getJSONObject(1).getString("v");
 
-                        Team team = new Team(dia);
+                        Team team = new Team(dia, tipo);
                         teams.add(team);
                     }
 
@@ -220,14 +223,10 @@ public class Cafeteria extends Fragment {
                     for (int r = 26; r < 32; ++r) {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
-                        String dia = rows.getJSONObject(2).getString("v");
-                        String entrada = rows.getJSONObject(3).getString("v");
-                        String plato = rows.getJSONObject(4).getString("v");
-                        String postre = rows.getJSONObject(5).getString("v");
-                        String refresco = rows.getJSONObject(6).getString("v");
-                        String sabado = rows.getJSONObject(7).getString("v");
+                        String dia = rows.getJSONObject(diadelasemana).getString("v");
+                        String tipo = rows.getJSONObject(1).getString("v");
 
-                        Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
+                        Team team = new Team(dia, tipo);
                         teams.add(team);
                     }
 

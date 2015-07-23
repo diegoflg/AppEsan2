@@ -35,24 +35,25 @@
                     <RadioGroup
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rg1">
+                        android:id="@+id/rg1"
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:text="Menu Económico"
+                            android:text="Económico"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb1"/>
 
                         <RadioButton
-                            android:text="Menú Ejecutivo"
+                            android:text="Ejecutivo"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb2"/>
 
                         <RadioButton
-                            android:text="Menú Dieta"
+                            android:text="Dieta"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -84,11 +85,15 @@
 
 
     <ListView
+        android:background="@drawable/hoja"
         android:id="@+id/listview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tabHost2"
         android:layout_margin="15dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="10dp"
+
 
         />
 </RelativeLayout>

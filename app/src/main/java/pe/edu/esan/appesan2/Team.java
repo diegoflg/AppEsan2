@@ -29,6 +29,14 @@ public class Team {
 
     }
 
+    public Team(String dia, String entrada){
+
+        this.setDia(dia);
+        this.setEntrada(entrada);
+
+
+    }
+
     public String getdDia() {
         return dia;
     }
