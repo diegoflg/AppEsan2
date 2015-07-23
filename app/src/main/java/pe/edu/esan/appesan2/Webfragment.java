@@ -82,7 +82,49 @@ public class Webfragment extends Fragment {
                     Log.v("link", "webUrl");
 
 
-                    if (webUrl.equals("https://www.edx.org/")) {
+                    if (webUrl.equals("https://www.edx.org/" )) {
+                        Log.v("tipo", "es");
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        CursosMooc fragment;
+                        fragment = new CursosMooc();
+
+
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.container, fragment)
+                                .commit();
+
+
+                    }
+
+                    if (webUrl.equals("https://es.coursera.org/")) {
+                        Log.v("tipo", "es");
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        CursosMooc fragment;
+                        fragment = new CursosMooc();
+
+
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.container, fragment)
+                                .commit();
+
+
+                    }
+
+                    if (webUrl.equals("https://www.miriadax.net/" )) {
+                        Log.v("tipo", "es");
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        CursosMooc fragment;
+                        fragment = new CursosMooc();
+
+
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.container, fragment)
+                                .commit();
+
+
+                    }
+
+                    if (webUrl.equals("http://harvardx.harvard.edu/")) {
                         Log.v("tipo", "es");
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;
