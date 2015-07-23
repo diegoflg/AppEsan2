@@ -73,7 +73,7 @@
         <item name="android:icon">@drawable/talleres</item>
         <item name="android:icon">@drawable/biblioteca</item>
         <item name="android:icon">@drawable/impresiones</item>
-        <item name="android:icon">@drawable/impresiones</item>
+        <item name="android:icon">@drawable/cursosmoc</item>
 
     </string-array>
 

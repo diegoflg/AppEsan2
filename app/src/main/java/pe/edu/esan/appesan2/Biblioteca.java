@@ -19,12 +19,13 @@ public class Biblioteca extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_biblioteca, container, false);
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewB);
-        myWebView.loadUrl("http://catalogo.esan.edu.pe/F/QDVGDQE3JRUTNULI2DPBI13N81FQX3QJN2XUXKM1NJKBI9YBP2-17493?func=find-b-0");
+        myWebView.loadUrl("http://catalogo.esan.edu.pe/F/F2C85HLVEM91LSU341VF4NX97QRGV2MDYTLXVNA3561H174KYX-20583?func=find-b-0");
 
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
+
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override

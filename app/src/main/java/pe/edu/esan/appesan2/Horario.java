@@ -1,9 +1,11 @@
 package pe.edu.esan.appesan2;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -29,13 +31,11 @@ public class Horario extends Fragment {
 
     private GridView gridView;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
-;
 
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
@@ -63,17 +63,7 @@ public class Horario extends Fragment {
         MyAdapter adapter = new MyAdapter(getActivity().getBaseContext(),
                 R.layout.item, numbers);
 
-
-
-
-
         gridView.setAdapter(adapter);
-
-
-
-
-
-
         return zoomView;
     }
 
@@ -102,6 +92,7 @@ public class Horario extends Fragment {
             }
             tv.setText(objects[position]);
             tv.setTextSize(10);
+            tv.setGravity(Gravity.CENTER);
 
             if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
                 tv.setBackgroundColor(Color.parseColor("#FFCF1313"));

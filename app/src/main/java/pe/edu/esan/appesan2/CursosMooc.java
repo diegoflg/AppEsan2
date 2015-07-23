@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +30,6 @@ public class CursosMooc extends Fragment {
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 Webfragment fragment;
                 fragment = new Webfragment();
@@ -42,10 +41,10 @@ public class CursosMooc extends Fragment {
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
                         .commit();
-
-
             }
         });
+
+
 
         cv2.setOnClickListener(new View.OnClickListener() {
             @Override
