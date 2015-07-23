@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 /**
  * Created by Diegoflg on 7/22/2015.
@@ -29,7 +30,7 @@ public class Webfragment extends Fragment {
         Bundle bundle = this.getArguments();
         String link = bundle.getString("url");
 
-        WebView wb = (WebView) rootView.findViewById(R.id.webfragment);
+        final WebView wb = (WebView) rootView.findViewById(R.id.webfragment);
         wb.loadUrl(link);
         wb.getSettings().setUseWideViewPort(true);
         wb.getSettings().setLoadWithOverviewMode(true);
@@ -40,19 +41,61 @@ public class Webfragment extends Fragment {
 
         rootView.setFocusableInTouchMode(true);
         rootView.requestFocus();
+
+
+        wb.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    WebView webView = (WebView) v;
+
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_BACK:
+                            if (webView.canGoBack()) {
+                                webView.goBack();
+                                return true;
+                            } else {
+                                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                CursosMooc fragment;
+                                fragment = new CursosMooc();
+
+
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.container, fragment)
+                                        .commit();
+
+                            }
+                            break;
+                    }
+                }
+
+                return false;
+            }
+        });
+
         rootView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                    CursosMooc fragment;
-                    fragment = new CursosMooc();
+                    String webUrl = wb.getUrl();
+                    Log.v("link", "webUrl");
 
 
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.container, fragment)
-                            .commit();
+                    if (webUrl.equals("https://www.edx.org/")) {
+                        Log.v("tipo", "es");
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        CursosMooc fragment;
+                        fragment = new CursosMooc();
+
+
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.container, fragment)
+                                .commit();
+
+
+                    }
+
 
                     return true;
                 }
@@ -60,12 +103,24 @@ public class Webfragment extends Fragment {
             }
         });
 
+
+
+
+
+
+
+
+
+
+
+
+
         wb.setWebViewClient(new WebViewClient() {
-                                       @Override
-                                       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                           return false;
-                                       }
-                                   }
+                                @Override
+                                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                    return false;
+                                }
+                            }
         );
 
 
@@ -75,6 +130,10 @@ public class Webfragment extends Fragment {
 
         return rootView;
     }
+
+
+
+
 
 
 

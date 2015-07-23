@@ -213,6 +213,7 @@ public class MainActivity extends ActionBarActivity {
                         i.putExtras(b);
 
                         startActivity(i);
+                        finish();
 
 
                 }

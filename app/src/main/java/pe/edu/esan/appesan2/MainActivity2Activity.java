@@ -201,6 +201,13 @@ public class MainActivity2Activity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        // do nothing. We want to force user to stay in this activity and not drop out.
+
+
+            }
+
 
 
 
