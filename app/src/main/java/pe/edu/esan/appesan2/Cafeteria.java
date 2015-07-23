@@ -62,12 +62,13 @@ public class Cafeteria extends Fragment {
         mTabHost.addTab(spec);
 
         mTabHost.setCurrentTab(0);
-        mTabHost.getTabWidget().setStripEnabled(true);
-        mTabHost.getTabWidget().setRightStripDrawable(R.drawable.greyline);
-        mTabHost.getTabWidget().setLeftStripDrawable(R.drawable.greyline);
+
 
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
-        {
+        { mTabHost.getTabWidget().setStripEnabled(true);
+            mTabHost.getTabWidget().setRightStripDrawable(R.drawable.greyline);
+            mTabHost.getTabWidget().setLeftStripDrawable(R.drawable.greyline);
+
             TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             tv.setTextColor(Color.parseColor("#FFFFFF"));
         }
