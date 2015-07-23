@@ -43,15 +43,6 @@ public class Horario extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
         final String[] numbers = new String[] { "-", "Lunes", "Martes",
                 "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "07:00-08:00", "1",
                 "2", "3", "4", "5", "6","7", "08:00-09:00", "1",
