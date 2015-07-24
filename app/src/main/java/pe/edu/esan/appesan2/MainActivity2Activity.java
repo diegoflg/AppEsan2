@@ -114,6 +114,16 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 10:
                     fragment = new CursosMooc();
                     break;
+                case 11:
+                    fragment = new EstadoDePagos();
+                    break;
+                case 12:
+                    fragment = new ConexionEsan();
+                    break;
+                case 13:
+                    fragment = new EducacionEjecutiva();
+                    break;
+
             }
 
         }
