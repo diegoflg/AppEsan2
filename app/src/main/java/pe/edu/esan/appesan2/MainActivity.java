@@ -211,6 +211,84 @@ public class MainActivity extends ActionBarActivity {
         }
         //Cerramos la base de datos
         bdH.close();
+
+
+
+        PagosBD adminP = new PagosBD(this, "BDPAGOS", null, 1);
+        SQLiteDatabase bdP = adminP.getWritableDatabase();
+
+        Cursor j = bdP.rawQuery("SELECT usuario,concepto,monto,vencimiento FROM Pagos", null);
+
+        if(j.moveToFirst())
+        {   }else{
+
+
+            String usuarioP="alumno";
+            String concepto= "Matricula";
+            String monto="500";
+            String vencimiento="08/09/2017";
+
+            ContentValues p1 = new ContentValues();
+            p1.put("usuario",usuarioP);
+            p1.put("concepto",concepto);
+            p1.put("monto",monto);
+            p1.put("vencimiento",vencimiento);
+            bdP.insert("Horario",null,p1);
+
+
+
+
+
+
+            String concepto2= "Cuota 1";
+            String monto2="1200";
+            String vencimiento2="15/09/2017";
+
+            ContentValues p2 = new ContentValues();
+            p2.put("usuario",usuarioP);
+            p2.put("concepto",concepto2);
+            p2.put("monto",monto2);
+            p2.put("vencimiento",vencimiento2);
+            bdP.insert("Horario",null,p2);
+
+
+            String concepto3= "Cuota 2";
+            String monto3="1400";
+            String vencimiento3="18/10/2017";
+
+            ContentValues p3 = new ContentValues();
+            p3.put("usuario",usuarioP);
+            p3.put("concepto",concepto3);
+            p3.put("monto",monto3);
+            p3.put("vencimiento",vencimiento3);
+            bdP.insert("Horario",null,p3);
+
+
+
+            String concepto4= "Cuota 3";
+            String monto4="1100";
+            String vencimiento4="20/10/2017";
+
+            ContentValues p4 = new ContentValues();
+            p3.put("usuario",usuarioP);
+            p3.put("concepto",concepto4);
+            p3.put("monto",monto4);
+            p3.put("vencimiento",vencimiento4);
+            bdP.insert("Horario",null,p4);
+
+
+
+
+
+
+        }
+        //Cerramos la base de datos
+        bdP.close();
+
+
+
+
+
     }
 
     public void acceder(View v){

@@ -59,19 +59,22 @@
                 android:background="@drawable/tableborder3"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Matricula"/>
+                android:text="Matricula"
+                android:id="@+id/concepto1" />
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Monto"/>
+                android:text="Monto"
+                android:id="@+id/monto1" />
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Vencimiento"/>
+                android:text="Vencimiento"
+                android:id="@+id/vencimiento1" />
 
 
 
@@ -86,19 +89,22 @@
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Cuota 1"/>
+                android:text="Cuota 1"
+                android:id="@+id/concepto2" />
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Monto"/>
+                android:text="Monto"
+                android:id="@+id/monto2"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Vencimiento"/>
+                android:text="Vencimiento"
+                android:id="@+id/vencimiento2"/>
 
 
         </TableRow>
@@ -112,19 +118,52 @@
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Cuota2"/>
+                android:text="Cuota2"
+                android:id="@+id/concepto3"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Monto"/>
+                android:text="Monto"
+                android:id="@+id/monto3"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Vencimiento"/>
+                android:text="Vencimiento"
+                android:id="@+id/vencimiento3"/>
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:background="@drawable/tableborder3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Cuota3"
+                android:id="@+id/concepto4"/>
+
+            <TextView
+                android:background="@drawable/tableborder3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Monto"
+                android:id="@+id/monto4"/>
+
+            <TextView
+                android:background="@drawable/tableborder3"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Vencimiento"
+                android:id="@+id/vencimiento4"/>
 
 
 
