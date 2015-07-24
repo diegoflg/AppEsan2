@@ -17,9 +17,9 @@ public class EstadoDePagos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.lay_horario, container, false);
+        View rootView = inflater.inflate(R.layout.lay_estado, container, false);
 
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         return rootView;
 
