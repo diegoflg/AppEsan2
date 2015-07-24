@@ -159,7 +159,7 @@ public class MainActivity extends ActionBarActivity {
         //Cerramos la base de datos
         bd.close();
 
-        HorarioBD adminH = new HorarioBD(this, "BDHORARIO", null, 1);
+        HorarioBD adminH = new HorarioBD(this, "BDHORARIO1", null, 1);
         SQLiteDatabase bdH = adminH.getWritableDatabase();
 
         Cursor c = bdH.rawQuery("SELECT usuario FROM Horario", null);
@@ -171,7 +171,7 @@ public class MainActivity extends ActionBarActivity {
             String usuarioH="alumno1";
             String curso0= "Matemática II";
             String dia0="Lunes";
-            String dia1="Miércoles";
+            String dia1="Miercoles";
             String hora0= "7:00-8:00";
             String hora1="8:00-9:00";
             String hora2= "9:00-10:00";

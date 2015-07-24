@@ -155,7 +155,7 @@ public class Horario extends Fragment {
 
 
 
-            HorarioBD adminH = new HorarioBD(getContext(), "BDHORARIO", null, 1);
+            HorarioBD adminH = new HorarioBD(getContext(), "BDHORARIO1", null, 1);
             SQLiteDatabase bdH = adminH.getWritableDatabase();
 
 
@@ -167,39 +167,65 @@ public class Horario extends Fragment {
             if (filahorarios.moveToFirst())
             {
                 curs=filahorarios.getString(0);
-                di=filahorarios.getString(0);
-                hor=filahorarios.getString(0);
-                sa=filahorarios.getString(0);
+                di=filahorarios.getString(1);
+                hor=filahorarios.getString(2);
+                sa=filahorarios.getString(3);
 
-                if(position==9){
+                int pos;
+                pos=encontrarposicion(di, hor);
+                Log.v("pos", String.valueOf(pos));
+
+                if(position==pos){
                     tv.setText(curs+sa);
 
 
                 }
 
                 filahorarios.moveToNext();
+                curs=filahorarios.getString(0);
+                di=filahorarios.getString(1);
+                hor=filahorarios.getString(2);
+                sa=filahorarios.getString(3);
+                pos=encontrarposicion(di, hor);
 
+                if(position==pos){
+                    tv.setText(curs+sa);
 
-                Log.v("cursor", (filahorarios.getString(0)));
-                Log.v("cursor", filahorarios.getString(1));
-                Log.v("cursor", filahorarios.getString(2));
-                Log.v("cursor", filahorarios.getString(3));
-
+                }
 
                 filahorarios.moveToNext();
+                curs=filahorarios.getString(0);
+                di=filahorarios.getString(1);
+                hor=filahorarios.getString(2);
+                sa=filahorarios.getString(3);
 
-                Log.v("cursor", filahorarios.getString(0));
-                Log.v("cursor", filahorarios.getString(1));
-                Log.v("cursor", filahorarios.getString(2));
-                Log.v("cursor", filahorarios.getString(3));
+                pos=encontrarposicion(di, hor);
+                Log.v("pos", String.valueOf(pos));
 
+                Log.v("dia", (filahorarios.getString(1)));
+                Log.v("hor", (filahorarios.getString(2)));
 
+                if(position==pos){
+                    tv.setText(curs+sa);
 
+                }
 
+                filahorarios.moveToNext();
+                curs=filahorarios.getString(0);
+                di=filahorarios.getString(1);
+                hor=filahorarios.getString(2);
+                sa=filahorarios.getString(3);
 
+                pos=encontrarposicion(di, hor);
+                Log.v("pos", String.valueOf(pos));
 
+                Log.v("dia", (filahorarios.getString(1)));
+                Log.v("hor", (filahorarios.getString(2)));
 
+                if(position==pos){
+                    tv.setText(curs+sa);
 
+                }
 
 
 
@@ -220,7 +246,169 @@ public class Horario extends Fragment {
     }
 
 
-    public void encontrarposicion(String a,String b){
+    public int encontrarposicion(String finddia,String findhora){
+
+        if(finddia.equals("Lunes")){
+
+            if(findhora.equals("7:00-8:00")){
+                Log.v("entro", "lunes de 7 a 8");
+                return 9;
+
+            }if(findhora.equals("8:00-9:00")){
+                return 17;
+
+            }if(findhora.equals("9:00-10:00")){
+                return 25;
+
+            }if(findhora.equals("10:00-11:00")){
+                return 33;
+
+            }if(findhora.equals("11:00-12:00")){
+                return 41;
+
+            }if(findhora.equals("12:00-13:00")){
+                return 49;
+
+            }if(findhora.equals("13:00-14:00")){
+                return 57;
+
+            }if(findhora.equals("14:00-15:00")){
+                return 65;
+
+            }
+            if(findhora.equals("15:00-16:00")){
+                return 73;
+
+            }if(findhora.equals("16:00-17:00")){
+                return 81;
+
+            }if(findhora.equals("17:00-18:00")){
+                return 89;
+
+            }if(findhora.equals("18:00-19:00")){
+                return 97;
+
+            }if(findhora.equals("19:00-20:00")){
+                return 105;
+
+            }if(findhora.equals("20:00-21:00")){
+                return 113;
+
+            }if(findhora.equals("21:00-22:00")){
+                return 121;
+
+            }
+
+
+        }
+
+        if(finddia.equals("Martes")){
+
+            if(findhora.equals("7:00-8:00")){
+                Log.v("entro", "lunes de 7 a 8");
+                return 10;
+
+            }if(findhora.equals("8:00-9:00")){
+                return 18;
+
+            }if(findhora.equals("9:00-10:00")){
+                return 26;
+
+            }if(findhora.equals("10:00-11:00")){
+                return 34;
+
+            }if(findhora.equals("11:00-12:00")){
+                return 42;
+
+            }if(findhora.equals("12:00-13:00")){
+                return 50;
+
+            }if(findhora.equals("13:00-14:00")){
+                return 58;
+
+            }if(findhora.equals("14:00-15:00")){
+                return 66;
+
+            }
+            if(findhora.equals("15:00-16:00")){
+                return 74;
+
+            }if(findhora.equals("16:00-17:00")){
+                return 82;
+
+            }if(findhora.equals("17:00-18:00")){
+                return 90;
+
+            }if(findhora.equals("18:00-19:00")){
+                return 98;
+
+            }if(findhora.equals("19:00-20:00")){
+                return 106;
+
+            }if(findhora.equals("20:00-21:00")){
+                return 114;
+
+            }if(findhora.equals("21:00-22:00")){
+                return 122;
+            }
+
+
+        }
+
+        if(finddia.equals("Miercoles")){
+
+            if(findhora.equals("7:00-8:00")){
+                Log.v("entro", "lunes de 7 a 8");
+                return 11;
+
+            }if(findhora.equals("8:00-9:00")){
+                return 19;
+
+            }if(findhora.equals("9:00-10:00")){
+                return 27;
+
+            }if(findhora.equals("10:00-11:00")){
+                return 35;
+
+            }if(findhora.equals("11:00-12:00")){
+                return 43;
+
+            }if(findhora.equals("12:00-13:00")){
+                return 51;
+
+            }if(findhora.equals("13:00-14:00")){
+                return 59;
+
+            }if(findhora.equals("14:00-15:00")){
+                return 67;
+
+            }
+            if(findhora.equals("15:00-16:00")){
+                return 75;
+
+            }if(findhora.equals("16:00-17:00")){
+                return 83;
+
+            }if(findhora.equals("17:00-18:00")){
+                return 91;
+
+            }if(findhora.equals("18:00-19:00")){
+                return 99;
+
+            }if(findhora.equals("19:00-20:00")){
+                return 107;
+
+            }if(findhora.equals("20:00-21:00")){
+                return 115;
+
+            }if(findhora.equals("21:00-22:00")){
+                return 123;
+
+            }
+
+        }
+
+        return 0;
 
     }
 }

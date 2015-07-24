@@ -30,6 +30,7 @@
         <item>Biblioteca</item>
         <item>Impresiones</item>
         <item>Cursos Mooc</item>
+        <item>Estado de Pagos</item>
     </string-array>
 
     <string-array name="sections2">
@@ -53,6 +54,7 @@
         <item>Section T9</item>
         <item>Section T10</item>
         <item>Section T11</item>
+        <item>Section T12</item>
     </string-array>
 
     <string-array name="section_titles2">
@@ -73,6 +75,7 @@
         <item name="android:icon">@drawable/talleres</item>
         <item name="android:icon">@drawable/biblioteca</item>
         <item name="android:icon">@drawable/impresiones</item>
+        <item name="android:icon">@drawable/cursosmoc</item>
         <item name="android:icon">@drawable/cursosmoc</item>
 
     </string-array>

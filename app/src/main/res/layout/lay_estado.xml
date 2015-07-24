@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estado de Pagos"
+        android:id="@+id/ttvv"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#FFB0141A"
+        />
+    <TableLayout
+        android:layout_below="@+id/ttvv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="3">
+
+        <TableRow
+            android:background="#FFB0141A"
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:text="Concepto"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:text="Monto"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_weight="1"
+                android:text="Vencimiento"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+
+
+        </TableRow>
+
+        <TableRow
+
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Matricula"/>
+
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Monto"/>
+
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Vencimiento"/>
+
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Cuota 1"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Monto"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Vencimiento"/>
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Cuota2"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Monto"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Vencimiento"/>
+
+
+
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+
+</RelativeLayout>
