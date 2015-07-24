@@ -164,7 +164,7 @@ public class MainActivity extends ActionBarActivity {
 
         Cursor c = bdH.rawQuery("SELECT usuario FROM Horario", null);
 
-        if(filanotas.moveToFirst())
+        if(c.moveToFirst())
         {   }else{
 
 

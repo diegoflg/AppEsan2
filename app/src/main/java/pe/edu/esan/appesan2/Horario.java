@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +41,12 @@ public class Horario extends Fragment {
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
         zoomView.addView(rootView);
+
+
 
         final String[] numbers = new String[] { "-", "Lunes", "Martes",
                 "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "07:00-08:00", "1",
@@ -70,6 +74,8 @@ public class Horario extends Fragment {
         return zoomView;
     }
 
+
+
     public class MyAdapter extends ArrayAdapter<String> {
 
         String[] objects;
@@ -82,6 +88,9 @@ public class Horario extends Fragment {
             this.objects = objects;
 
         }
+
+
+
 
 
         @Override
@@ -145,6 +154,65 @@ public class Horario extends Fragment {
 
 
             }
+
+
+
+
+            HorarioBD adminH = new HorarioBD(getContext(), "BDHORARIO", null, 1);
+            SQLiteDatabase bdH = adminH.getWritableDatabase();
+
+
+            Cursor filahorarios = bdH.rawQuery("select curso,dia,hora,salon from Horario" , null);
+            Log.v("cursor", "cursor");
+
+            String curs,di,hor,sa;
+
+            if (filahorarios.moveToFirst())
+            {
+                curs=filahorarios.getString(0);
+                di=filahorarios.getString(0);
+                hor=filahorarios.getString(0);
+                sa=filahorarios.getString(0);
+
+                if(position==9){
+                    tv.setText(curs+sa);
+
+
+                }
+
+                filahorarios.moveToNext();
+
+
+                Log.v("cursor", (filahorarios.getString(0)));
+                Log.v("cursor", filahorarios.getString(1));
+                Log.v("cursor", filahorarios.getString(2));
+                Log.v("cursor", filahorarios.getString(3));
+
+
+                filahorarios.moveToNext();
+
+                Log.v("cursor", filahorarios.getString(0));
+                Log.v("cursor", filahorarios.getString(1));
+                Log.v("cursor", filahorarios.getString(2));
+                Log.v("cursor", filahorarios.getString(3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+            bdH.close();
 
 
 
