@@ -221,4 +221,9 @@ public class Horario extends Fragment {
             return tv;
         }
     }
+
+
+    public void encontrarposicion(String a,String b){
+
+    }
 }
