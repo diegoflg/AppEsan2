@@ -25,7 +25,9 @@ public class Impresiones extends Fragment {
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
+        //myWebView.getSettings().setDomStorageEnabled(true);
         myWebView.getSettings().setSupportZoom(true);
+        myWebView.setInitialScale(50);
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -50,13 +52,15 @@ public class Impresiones extends Fragment {
         myWebView.setWebViewClient(new WebViewClient() {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
             return false;
         };
-        //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
+        //http://stackoverflow.com/questions/16055800/how-to-enter-password-automatically-in-webview
         public void onPageFinished(WebView view, String url) {
-            view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+"14100015"+"';document.getElementsByName('Password')[0].value='"+"N7N2U2F7"+"';");
-            //view.loadUrl("javascript:document.forms[0].submit();");
+            //view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '" + "14100015" + "';document.getElementsByName('Password')[0].value='" + "N7N2U2F7" + "';");
+            //view.loadUrl("javascript:document.forms[0].login()");
+            view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '14100015'");
+            view.loadUrl("javascript:document.getElementsByName('Password')[0].value = 'N7N2U2F7'");
+            view.loadUrl("javascript:document.forms['loginform'].submit()");
         }
         }
         );

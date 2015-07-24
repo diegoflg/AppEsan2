@@ -5,16 +5,21 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,20 +27,92 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SearchView;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 public class Directorio extends Fragment {
+    TabHost tbDM;
+
     ListView listViewSearch;
     SearchView searchView;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.lay_directorio, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
-        listViewSearch = (ListView) rootView.findViewById(R.id.listview);
-        searchView = (SearchView) rootView.findViewById(R.id.searchView);
+        tbDM = (TabHost) rootView.findViewById(R.id.tbDM);
+        tbDM.setup();
+
+        listViewSearch = (ListView) rootView.findViewById(R.id.listViewD);
+        searchView = (SearchView) rootView.findViewById(R.id.searchViewD);
+
+        WebView wbD = (WebView)rootView.findViewById(R.id.wbD);
+        wbD.loadUrl("http://uemoodle.ue.edu.pe/message/index.php");
+        wbD.getSettings().setUseWideViewPort(true);
+        wbD.getSettings().setJavaScriptEnabled(true);
+        wbD.getSettings().setLoadWithOverviewMode(true);
+        wbD.getSettings().setBuiltInZoomControls(true);
+        wbD.getSettings().setSupportZoom(true);
+        wbD.setInitialScale(50);
+
+        wbD.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    WebView wbDi = (WebView) v;
+
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_BACK:
+                            if (wbDi.canGoBack()) {
+                                wbDi.goBack();
+                                return true;
+                            }
+                            break;
+                    }
+                }
+
+                return false;
+            }
+        });
+
+        wbD.setWebViewClient(new WebViewClient() {
+                                 @Override
+                                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                     return false;
+                                 }
+
+                                 public void onPageFinished(WebView view, String url) {
+                                     //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
+                                     view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
+                                     view.loadUrl("javascript:document.forms[0].login();");
+                                 }
+                             }
+        );
+
+        TabHost.TabSpec spec = tbDM.newTabSpec("Tab 1");
+        spec.setContent(R.id.Directorio);
+        spec.setIndicator("Directorio");
+        tbDM.addTab(spec);
+
+        spec = tbDM.newTabSpec("Tab 2");
+        spec.setContent(R.id.Mensajería);
+        spec.setIndicator("Mensajería");
+        tbDM.addTab(spec);
+
+        tbDM.setCurrentTab(0);
+
+        for(int i=0;i<tbDM.getTabWidget().getChildCount();i++)
+        {tbDM.getTabWidget().setStripEnabled(true);
+        tbDM.getTabWidget().setRightStripDrawable(R.drawable.greyline);
+        tbDM.getTabWidget().setLeftStripDrawable(R.drawable.greyline);
+
+            TextView tv = (TextView) tbDM.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+            tv.setTextColor(Color.parseColor("#FFFFFF"));
+        }
+    tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
+    tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
+
 
         String[] values = new String[]{"Central telefonica","Admisión y Registro de Pregrado", "Finanzas", "Dimensión Internacional", "Coordinación Académica de PAC","Servicios y Registros Académicos de Pregrado","Bienestar Estudiantil"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
@@ -53,12 +130,7 @@ public class Directorio extends Fragment {
                                     long id) {
                 Log.v("pos", String.valueOf(position));
 
-                showPopup(getActivity(),position);
-
-
-
-
-
+                showPopup(getActivity(), position);
             }
         });
 
@@ -80,11 +152,14 @@ public class Directorio extends Fragment {
                 return true;
             }
         });
+
+
+
+
         return rootView;
 
-
-
     }
+
 
     private void doSearch (String s){
 
@@ -111,7 +186,7 @@ public class Directorio extends Fragment {
 
 
         // Displaying the popup at the specified location, + offsets.
-        popup.showAtLocation(layout,  Gravity.CENTER, 0, 0);
+        popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
         // Getting a reference to Close button, and close the popup when clicked.
         Button call = (Button) layout.findViewById(R.id.call);
@@ -173,9 +248,6 @@ public class Directorio extends Fragment {
                         "Paola Pacheco\n" +
                         "Anx.: 2425");
                 break;
-
-
-
         }
 
 

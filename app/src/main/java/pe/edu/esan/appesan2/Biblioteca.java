@@ -21,8 +21,8 @@ public class Biblioteca extends Fragment {
         View rootView = inflater.inflate(R.layout.lay_biblioteca, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewB);
-        myWebView.loadUrl("http://catalogo.esan.edu.pe/F/F2C85HLVEM91LSU341VF4NX97QRGV2MDYTLXVNA3561H174KYX-20583?func=find-b-0");
-
+        myWebView.loadUrl("http://catalogo.esan.edu.pe/F?RN=73646055");
+        myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
@@ -44,16 +44,20 @@ public class Biblioteca extends Fragment {
                             break;
                     }
                 }
-
                 return false;
             }
         });
 
         myWebView.setWebViewClient(new WebViewClient() {
-                                       @Override
-                                       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                           return false;
-                                       }}
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return false;
+        }
+        public void onPageFinished(WebView view, String url) {
+            //view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '" + "14100015" + "';document.getElementsByName('Password')[0].value='" + "N7N2U2F7" + "';");
+            //view.loadUrl("javascript:document.forms[0].login()");
+            view.loadUrl("javascript:document.getElementsByName('bor_verification')[0].value = 'N7N2U2F7'");
+        }}
         );
         return rootView;
     }
