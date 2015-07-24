@@ -44,7 +44,6 @@ public class Biblioteca extends Fragment {
                             break;
                     }
                 }
-
                 return false;
             }
         });
