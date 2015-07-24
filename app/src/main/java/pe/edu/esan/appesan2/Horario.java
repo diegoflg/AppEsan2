@@ -89,10 +89,6 @@ public class Horario extends Fragment {
 
         }
 
-
-
-
-
         @Override
         public View getView(int position, android.view.View convertView, android.view.ViewGroup parent) {
             TextView tv;
@@ -105,7 +101,8 @@ public class Horario extends Fragment {
             tv.setText(objects[position]);
             tv.setTextSize(10);
             tv.setGravity(Gravity.CENTER);
-
+            tv.setHeight(50);
+            tv.setWidth(70);
             if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
                 tv.setBackgroundColor(Color.parseColor("#FFCF1313"));
                 tv.setTextColor(Color.WHITE);

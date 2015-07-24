@@ -1,21 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <SearchView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchView" />
+    <TabHost
+        android:id="@+id/tbDM"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </TabWidget>
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:id="@+id/Directorio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <SearchView
+                        android:id="@+id/searchViewD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </SearchView>
+
+                    <ListView
+                        android:id="@+id/listViewD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/searchViewD">
+                    </ListView>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/Mensajería"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <WebView
+                        android:id="@+id/wbD"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </WebView>
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+        
+    </TabHost>
+    
+    
 
 
 
 
 
-</LinearLayout>
+
+</RelativeLayout>

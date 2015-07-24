@@ -114,7 +114,6 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 10:
                     fragment = new CursosMooc();
                     break;
-
             }
 
         }
