@@ -1,6 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-</LinearLayout>
+    <Button
+        android:id="@+id/pade"
+        android:text="PADE"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/border2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_alignParentLeft="true"/>
+
+    <Button
+        android:id="@+id/pae"
+        android:text="PAE"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/border2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/pade"
+        android:layout_alignParentLeft="true"/>
+
+    <Button
+        android:id="@+id/pee"
+        android:text="PEE"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/border2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/peed"
+        android:text="PEE DERECHO"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/border2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/pee"/>
+
+    <Button
+        android:id="@+id/diplomas"
+        android:text="DIPLOMAS"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/border2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/idiomas"
+        android:text="IDIOMAS"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/border2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/diplomas"
+        android:layout_alignParentRight="true"/>
+
+    <Button
+        android:id="@+id/gestion"
+        android:textColor="#FFFFFF"
+        android:text="GESTIÓN PÚBLICA"
+        android:background="@drawable/border2"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/peed"/>
+
+    <WebView
+        android:id="@+id/wbEE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/gestion">
+    </WebView>
+</RelativeLayout>
