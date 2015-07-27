@@ -69,8 +69,7 @@ public class MainActivity extends ActionBarActivity {
             registro3.put("password", password3);
             bd.insert("Persona", null, registro3);
 
-            Toast t = Toast.makeText(this, "Se grabaron los datos de la persona", Toast.LENGTH_SHORT);
-            t.show();
+
         }
 
         //Cerramos la base de datos
@@ -82,8 +81,7 @@ public class MainActivity extends ActionBarActivity {
 
         Cursor filanotas = bdn.rawQuery("select usuario from Notas", null);
         if (filanotas.moveToFirst()) {
-            Toast t = Toast.makeText(this, "haydatosnotas", Toast.LENGTH_SHORT);
-            t.show();
+
 
         } else {
 
@@ -152,8 +150,7 @@ public class MainActivity extends ActionBarActivity {
             bdn.insert("Notas", null, registronota4);
 
 
-            Toast t = Toast.makeText(this, "Se grabaron los datos de las notas", Toast.LENGTH_SHORT);
-            t.show();
+
         }
 
         //Cerramos la base de datos
@@ -214,13 +211,16 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        PagosBD adminP = new PagosBD(this, "BDPAGOS", null, 1);
+        PagosBD adminP = new PagosBD(this, "BDPAGOS1", null, 1);
         SQLiteDatabase bdP = adminP.getWritableDatabase();
 
         Cursor j = bdP.rawQuery("SELECT usuario,concepto,monto,vencimiento FROM Pagos", null);
 
         if(j.moveToFirst())
-        {   }else{
+        {   Toast t = Toast.makeText(this, "hay datos pagos", Toast.LENGTH_SHORT);
+            t.show();
+
+        }else{
 
 
             String usuarioP="alumno";
@@ -233,7 +233,7 @@ public class MainActivity extends ActionBarActivity {
             p1.put("concepto",concepto);
             p1.put("monto",monto);
             p1.put("vencimiento",vencimiento);
-            bdP.insert("Horario",null,p1);
+            bdP.insert("Pagos",null,p1);
 
 
 
@@ -249,7 +249,7 @@ public class MainActivity extends ActionBarActivity {
             p2.put("concepto",concepto2);
             p2.put("monto",monto2);
             p2.put("vencimiento",vencimiento2);
-            bdP.insert("Horario",null,p2);
+            bdP.insert("Pagos",null,p2);
 
 
             String concepto3= "Cuota 2";
@@ -261,7 +261,7 @@ public class MainActivity extends ActionBarActivity {
             p3.put("concepto",concepto3);
             p3.put("monto",monto3);
             p3.put("vencimiento",vencimiento3);
-            bdP.insert("Horario",null,p3);
+            bdP.insert("Pagos",null,p3);
 
 
 
@@ -273,8 +273,12 @@ public class MainActivity extends ActionBarActivity {
             p3.put("usuario",usuarioP);
             p3.put("concepto",concepto4);
             p3.put("monto",monto4);
-            p3.put("vencimiento",vencimiento4);
-            bdP.insert("Horario",null,p4);
+            p3.put("vencimiento", vencimiento4);
+            bdP.insert("Pagos", null, p4);
+
+
+            Toast t = Toast.makeText(this, "Se grabaron los datos de pagos", Toast.LENGTH_SHORT);
+            t.show();
 
 
 
