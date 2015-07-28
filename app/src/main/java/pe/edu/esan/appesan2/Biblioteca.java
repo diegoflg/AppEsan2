@@ -56,6 +56,7 @@ public class Biblioteca extends Fragment {
         public void onPageFinished(WebView view, String url) {
             //view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '" + "14100015" + "';document.getElementsByName('Password')[0].value='" + "N7N2U2F7" + "';");
             //view.loadUrl("javascript:document.forms[0].login()");
+            view.loadUrl("javascript:document.getElementsByName('bor_id')[0].value = '14100015'");
             view.loadUrl("javascript:document.getElementsByName('bor_verification')[0].value = 'N7N2U2F7'");
         }}
         );

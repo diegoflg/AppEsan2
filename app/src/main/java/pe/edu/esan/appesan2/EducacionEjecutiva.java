@@ -27,6 +27,7 @@ public class EducacionEjecutiva extends Fragment {
         Button gestion  = (Button)rootView.findViewById(R.id.gestion);
 
         final WebView wbEE = (WebView)rootView.findViewById(R.id.wbEE);
+        wbEE.loadUrl("http://www.esan.edu.pe/pade/");
         wbEE.getSettings().setUseWideViewPort(true);
         wbEE.getSettings().setLoadWithOverviewMode(true);
         wbEE.getSettings().setBuiltInZoomControls(true);
