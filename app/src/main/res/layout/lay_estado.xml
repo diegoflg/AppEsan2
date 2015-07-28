@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#FFFFFF">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Estado de Pagos"
+        android:text="@string/tvEstado"
         android:id="@+id/ttvv"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
         android:layout_marginBottom="20dp"
-        android:textColor="#FFB0141A"
-        />
+        android:textColor="#FFB0141A" />
+
     <TableLayout
         android:layout_below="@+id/ttvv"
         android:layout_width="fill_parent"
@@ -23,157 +25,137 @@
             android:background="#FFB0141A"
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <TextView
                 android:layout_weight="1"
-                android:text="Concepto"
+                android:text="@string/tvConcepto"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:gravity="center"/>
 
             <TextView
                 android:layout_weight="1"
-                android:text="Monto"
+                android:text="@string/tvMonto"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:gravity="center" />
 
             <TextView
                 android:layout_weight="1"
-                android:text="Vencimiento"
+                android:text="@string/tvVencimiento"
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:gravity="center"/>
-
-
-
         </TableRow>
 
         <TableRow
 
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <TextView
                 android:background="@drawable/tableborder3"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Matricula"
+                android:text="@string/tvMatricula"
                 android:id="@+id/concepto1" />
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Monto"
+                android:text="@string/tvMonto"
                 android:id="@+id/monto1" />
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="Vencimiento"
+                android:text="@string/tvVencimiento"
                 android:id="@+id/vencimiento1" />
-
-
-
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Cuota 1"
+                android:text="@string/tvCuota1"
                 android:id="@+id/concepto2" />
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Monto"
+                android:text="@string/tvMonto"
                 android:id="@+id/monto2"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Vencimiento"
+                android:text="@string/tvVencimiento"
                 android:id="@+id/vencimiento2"/>
-
-
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Cuota2"
+                android:text="@string/tvCuota2"
                 android:id="@+id/concepto3"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Monto"
+                android:text="@string/tvMonto"
                 android:id="@+id/monto3"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Vencimiento"
+                android:text="@string/tvVencimiento"
                 android:id="@+id/vencimiento3"/>
-
-
-
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
+
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Cuota3"
+                android:text="@string/tvCuota3"
                 android:id="@+id/concepto4"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Monto"
+                android:text="@string/tvMonto"
                 android:id="@+id/monto4"/>
 
             <TextView
                 android:background="@drawable/tableborder3"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Vencimiento"
+                android:text="@string/tvVencimiento"
                 android:id="@+id/vencimiento4"/>
-
-
-
         </TableRow>
-
-
-
-
     </TableLayout>
-
-
 </RelativeLayout>

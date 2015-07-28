@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:id="@+id/popup"
     android:layout_height="fill_parent"
     android:background="@drawable/customborder"
     android:orientation="vertical" >
-    
-
         
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -19,15 +18,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true">
 
-
             <TextView
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/poptv1"
                 android:text="Area"
-                android:textColor="#ffff"
-                />
+                android:textColor="#ffff" />
 
             <TextView
                 android:id="@+id/poptv2"
@@ -35,10 +32,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="This is a simple popup"
+                android:text="@string/tvPoptv2"
                 android:textColor="#ffff"/>
-
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -52,7 +47,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Close" />
+                    android:text="@string/btCerrar" />
 
                 <Button
                     android:id="@+id/call"
@@ -60,14 +55,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="llamar"
-                    />
-
+                    android:text="llamar" />
             </LinearLayout>
-
-
-
-
     </LinearLayout>
         </RelativeLayout>
         

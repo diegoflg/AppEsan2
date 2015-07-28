@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#FFFFFF">
 
     <TabHost
@@ -40,34 +42,26 @@
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:text="Económico"
+                            android:text="@string/rbEconomico"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb1"/>
 
                         <RadioButton
-                            android:text="Ejecutivo"
+                            android:text="@string/rbEjecutivo"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb2"/>
 
                         <RadioButton
-                            android:text="Dieta"
+                            android:text="@string/rbDieta"
                             android:textSize="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb3"/>
-
-
-
-
-
-
                     </RadioGroup>
-
-
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -75,15 +69,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
-
-
                 </RelativeLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
-
-
 
     <ListView
         android:background="@drawable/hoja"
@@ -93,10 +82,7 @@
         android:layout_below="@+id/tabHost2"
         android:layout_margin="15dp"
         android:paddingLeft="35dp"
-        android:paddingRight="10dp"
-
-
-        />
+        android:paddingRight="10dp" />
 </RelativeLayout>
 
 

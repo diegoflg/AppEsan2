@@ -1,6 +1,54 @@
 <resources>
     <string name="app_name">Universidad ESAN</string>
 
+    <!-- ACTIVITY_MAIN.XML -->
+    <string name="hintUsuario">. Usuario</string>
+    <string name="hintPassword">. Contraseña</string>
+    <string name="btAcceder">Acceder</string>
+
+    <!-- LAY_CAFETERÍA.XML -->
+    <string name="rbEconomico">Económico</string>
+    <string name="rbEjecutivo">Ejecutivo</string>
+    <string name="rbDieta">Dieta</string>
+
+    <!-- LAY_EDUCACIONEJECUTIVA.XML -->
+    <string name="btPade">PADE</string>
+    <string name="btPae">PAE</string>
+    <string name="btPee">PEE</string>
+    <string name="btPeed">PEE DERECHO</string>
+    <string name="btDiplomas">DIPLOMAS</string>
+    <string name="btIdiomas">IDIOMAS</string>
+    <string name="btGestion">GESTIÓN PÚBLICA</string>
+
+    <!-- LAY_ESTADO.XML -->
+    <string name="tvEstado">Estado de Pagos</string>
+    <string name="tvConcepto">Concepto</string>
+    <string name="tvMonto">Monto</string>
+    <string name="tvVencimiento">Vencimiento</string>
+    <string name="tvMatricula">Matrícula</string>
+    <string name="tvCuota1">Cuota 1</string>
+    <string name="tvCuota2">Cuota 2</string>
+    <string name="tvCuota3">Cuota 3</string>
+
+    <!-- LAY_HORARIO.XML -->
+    <string name="tvHorario">HORARIO</string>
+
+    <!-- LAY_MOOC.XML -->
+    <string name="tvCursosMooc">Cursos MOOC</string>
+
+    <!-- LAY_NOOTAS.XML -->
+    <string name="tvCursos">Cursos</string>
+    <string name="tvEP">EP</string>
+    <string name="tvTA">TA</string>
+    <string name="tvEF">EF</string>
+    <string name="tvPG">PG</string>
+
+    <!-- LAY_POPUP.XML -->
+    <string name="tvPoptv2">Esto es un simple Popup</string>
+    <string name="btCerrar">Cerrar</string>
+
+    <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Cerrar</string>
     <string name="title_activity_prueba_tabbed">PruebaTabbed</string>
@@ -65,8 +113,8 @@
         <item>Section T2</item>
         <item>Section T3</item>
         <item>Section T4</item>
-
     </string-array>
+
     <string-array name="sections_icons">
         <item name="android:icon">@drawable/noticias</item>
         <item name="android:icon">@drawable/horario</item>
@@ -82,7 +130,6 @@
         <item name="android:icon">@drawable/estadodepago</item>
         <item name="android:icon">@drawable/conexionesan</item>
         <item name="android:icon">@drawable/educacionejecutiva</item>
-
     </string-array>
 
 
@@ -91,7 +138,6 @@
         <item name="android:icon">@drawable/horario</item>
         <item name="android:icon">@drawable/notas</item>
         <item name="android:icon">@drawable/calendario</item>
-
     </string-array>
 
 <!-- TODO: Remove or change this placeholder text -->

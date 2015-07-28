@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HORARIO"
+        android:text="@string/tvHorario"
         android:textSize="30dp"
         android:textColor="#FFB0141A"
         android:id="@+id/textView2"
@@ -21,6 +23,5 @@
         android:gravity="center"
         android:numColumns="8"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="3dp"
-        />
+        android:verticalSpacing="3dp" />
 </LinearLayout>
