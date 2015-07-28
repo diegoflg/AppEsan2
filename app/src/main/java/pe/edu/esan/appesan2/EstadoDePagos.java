@@ -55,7 +55,7 @@ public class EstadoDePagos extends Fragment {
 
     public void consultarpagos (View v){
 
-        PagosBD adminP = new PagosBD(v.getContext(), "BDPAGOS", null, 1);
+        PagosBD adminP = new PagosBD(v.getContext(), "BDPAGOS1", null, 1);
         SQLiteDatabase bdP = adminP.getWritableDatabase();
 
 
@@ -63,10 +63,13 @@ public class EstadoDePagos extends Fragment {
 
         if (filapago.moveToFirst())
         {
+            Log.v("fila", "entro");
+
+
 
             Log.v("pos", String.valueOf(filapago.getString(0)));
             Log.v("pos", String.valueOf(filapago.getString(1)));
-            Log.v("pos", String.valueOf(filapago.getString(3)));
+            Log.v("pos", String.valueOf(filapago.getString(2)));
 
             tvpag1.setText(filapago.getString(0));
             tvpag2.setText(filapago.getString(1));
@@ -88,6 +91,8 @@ public class EstadoDePagos extends Fragment {
             tvpag10.setText(filapago.getString(0));
             tvpag11.setText(filapago.getString(1));
             tvpag12.setText(filapago.getString(2));
+
+
 
 
 
