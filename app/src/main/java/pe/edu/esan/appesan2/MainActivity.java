@@ -318,31 +318,31 @@ public class MainActivity extends ActionBarActivity {
         if(c.moveToFirst())
         {
             do {
-                            usuario=c.getString(0);
-                    Log.v("usuario", usuario);
-                    password=c.getString(1);
-                    Log.v("password", password);
+                usuario=c.getString(0);
+                Log.v("usuario", usuario);
+                password=c.getString(1);
+                Log.v("password", password);
 
-                    if(us.equals(usuario) && pass.equals(password)){
+                if(us.equals(usuario) && pass.equals(password)){
 
-                        mensaje="usuario y password correctos";
+                    mensaje="usuario y password correctos";
 
-                        if(us.equals("alumno")){
-                            tipo=1;
-                        }
-                        if(us.equals("servicios")){
-                            tipo=2;
-                        }
+                    if(us.equals("alumno")){
+                        tipo=1;
+                    }
+                    if(us.equals("servicios")){
+                        tipo=2;
+                    }
 
-                        b.putInt("tipo",tipo);
+                    b.putInt("tipo",tipo);
 
-                        Log.v("tipo", String.valueOf(tipo));
+                    Log.v("tipo", String.valueOf(tipo));
 
-                        Intent i = new Intent(this,MainActivity2Activity.class);
-                        i.putExtras(b);
+                    Intent i = new Intent(this,MainActivity2Activity.class);
+                    i.putExtras(b);
 
-                        startActivity(i);
-                        finish();
+                    startActivity(i);
+                    finish();
 
 
                 }

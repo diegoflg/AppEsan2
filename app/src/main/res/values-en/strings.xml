@@ -2,54 +2,53 @@
     <string name="app_name">Universidad ESAN</string>
 
     <!-- ACTIVITY_MAIN.XML -->
-    <string name="hintUsuario">. Usuario</string>
-    <string name="hintPassword">. Contraseña</string>
-    <string name="btAcceder">Acceder</string>
+    <string name="hintUsuario">. User</string>
+    <string name="hintPassword">. Password</string>
+    <string name="btAcceder">Login</string>
 
     <!-- LAY_CAFETERÍA.XML -->
-    <string name="rbEconomico">Económico</string>
-    <string name="rbEjecutivo">Ejecutivo</string>
-    <string name="rbDieta">Dieta</string>
+    <string name="rbEconomico">Economic</string>
+    <string name="rbEjecutivo">Executive</string>
+    <string name="rbDieta">Diet</string>
 
     <!-- LAY_EDUCACIONEJECUTIVA.XML -->
     <string name="btPade">PADE</string>
     <string name="btPae">PAE</string>
     <string name="btPee">PEE</string>
-    <string name="btPeed">PEE DERECHO</string>
-    <string name="btDiplomas">DIPLOMAS</string>
-    <string name="btIdiomas">IDIOMAS</string>
-    <string name="btGestion">GESTIÓN PÚBLICA</string>
+    <string name="btPeed">PEE LAW</string>
+    <string name="btDiplomas">DIPLOMA</string>
+    <string name="btIdiomas">LANGUAGES</string>
+    <string name="btGestion">PUBLIC MANAGEMENT</string>
 
     <!-- LAY_HORARIO.XML -->
-    <string name="tvHorario">HORARIO</string>
+    <string name="tvHorario">SCHEDULE</string>
 
     <!-- LAY_MOOC.XML -->
-    <string name="tvCursosMooc">Cursos MOOC</string>
+    <string name="tvCursosMooc">Courses MOOC</string>
 
     <!-- LAY_NOOTAS.XML -->
-    <string name="tvCursos">Cursos</string>
-    <string name="tvEP">EP</string>
-    <string name="tvTA">TA</string>
-    <string name="tvEF">EF</string>
-    <string name="tvPG">PG</string>
+    <string name="tvCursos">Courses</string>
+    <string name="tvEP">ME</string>
+    <string name="tvTA">AT</string>
+    <string name="tvEF">FE</string>
+    <string name="tvPG">GA</string>
 
     <!-- LAY_POPUP.XML -->
-    <string name="tvPoptv2">Esto es un simple Popup</string>
-    <string name="btCerrar">Cerrar</string>
-
+    <string name="tvPoptv2">This is a simple Popup</string>
+    <string name="btCerrar">Close</string>
 
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Cerrar</string>
+    <string name="action_settings">Close</string>
     <string name="title_activity_prueba_tabbed">PruebaTabbed</string>
 
-    <string name="title_section1">Noticias</string>
-    <string name="title_section2">Horario</string>
-    <string name="title_section3">Notas</string>
-    <string name="title_section4">Calendario</string>
+    <string name="title_section1">News</string>
+    <string name="title_section2">Schedule</string>
+    <string name="title_section3">Notes</string>
+    <string name="title_section4">Calendar</string>
     <string name="title_activity_activity_main_2">activity_main_2</string>
-    <string name="title_activity_noticias">noticiasActivity</string>
+    <string name="title_activity_noticias">newsActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -58,28 +57,27 @@
     <string name="title_activity_main_activity2"> </string>
 
     <string-array name="sections">
-        <item>Noticias</item>
-        <item>Horario</item>
-        <item>Notas</item>
-        <item>Calendario</item>
-        <item>Cafeteria</item>
-        <item>Mapas</item>
-        <item>Directorio/Mensajería</item>
-        <item>Talleres</item>
-        <item>Biblioteca</item>
-        <item>Impresiones</item>
-        <item>Cursos Mooc</item>
-        <item>Estado de Pagos</item>
-        <item>Conexión Esan</item>
-        <item>Educación Ejecutiva</item>
+        <item>News</item>
+        <item>Schedule</item>
+        <item>Notes</item>
+        <item>Calendar</item>
+        <item>Coffee shop</item>
+        <item>Maps</item>
+        <item>Directory/Messaging</item>
+        <item>Workshops</item>
+        <item>Library</item>
+        <item>Prints</item>
+        <item>Courses Mooc</item>
+        <item>State payment</item>
+        <item>Conexion Esan</item>
+        <item>Executive education</item>
     </string-array>
 
     <string-array name="sections2">
-        <item>Noticias</item>
-        <item>Calendario</item>
-        <item>Cafeteria</item>
-        <item>Ingreso Cafeteria</item>
-
+        <item>News</item>
+        <item>Calendar</item>
+        <item>Coffee shop</item>
+        <item>Coffee shop(Data entry)</item>
     </string-array>
 
 

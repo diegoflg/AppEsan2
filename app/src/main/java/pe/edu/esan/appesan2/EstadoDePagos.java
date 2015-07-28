@@ -42,14 +42,7 @@ public class EstadoDePagos extends Fragment {
 
         consultarpagos(rootView);
 
-
-
-
-
-
         return rootView;
-
-
     }
 
 
@@ -66,7 +59,6 @@ public class EstadoDePagos extends Fragment {
             Log.v("fila", "entro");
 
 
-
             Log.v("pos", String.valueOf(filapago.getString(0)));
             Log.v("pos", String.valueOf(filapago.getString(1)));
             Log.v("pos", String.valueOf(filapago.getString(2)));
@@ -74,7 +66,6 @@ public class EstadoDePagos extends Fragment {
             tvpag1.setText(filapago.getString(0));
             tvpag2.setText(filapago.getString(1));
             tvpag3.setText(filapago.getString(2));
-
 
 
             filapago.moveToNext();
@@ -91,17 +82,6 @@ public class EstadoDePagos extends Fragment {
             tvpag10.setText(filapago.getString(0));
             tvpag11.setText(filapago.getString(1));
             tvpag12.setText(filapago.getString(2));
-
-
-
-
-
-
-
-
-
-
-
 
         }
 

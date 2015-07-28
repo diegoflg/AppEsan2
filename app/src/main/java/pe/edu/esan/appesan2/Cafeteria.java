@@ -55,12 +55,12 @@ public class Cafeteria extends Fragment {
 
         TabHost.TabSpec spec = mTabHost.newTabSpec("Tab 1");
         spec.setContent(R.id.LaRuta);
-        spec.setIndicator("La Ruta");
+        spec.setIndicator("La ruta");
         mTabHost.addTab(spec);
 
         spec=mTabHost.newTabSpec("Tab 2");
         spec.setContent(R.id.DeliSabores);
-        spec.setIndicator("Deli Sabores");
+        spec.setIndicator("Delisabores");
         mTabHost.addTab(spec);
 
         mTabHost.setCurrentTab(0);
