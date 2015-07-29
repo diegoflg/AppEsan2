@@ -1,85 +1,88 @@
 <resources>
-    <string name="app_name">Universidad ESAN</string>
+    <string name="app_name">ESAN</string>
+
+
+
 
 
 
     <!-- ACTIVITY_MAIN.XML -->
-    <string name="hintUsuario">. User</string>
-    <string name="hintPassword">. Password</string>
-    <string name="btAcceder">Login</string>
+    <string name="hintUsuario">. utilisateur</string>
+    <string name="hintPassword">. mot de passe</string>
+    <string name="btAcceder">se connecter</string>
 
     <!-- LAY_CAFETERÍA.XML -->
-    <string name="rbEconomico">Economic</string>
-    <string name="rbEjecutivo">Executive</string>
-    <string name="rbDieta">Diet</string>
+    <string name="rbEconomico">économique</string>
+    <string name="rbEjecutivo">exécutif</string>
+    <string name="rbDieta">régime</string>
 
     <!-- LAY_EDUCACIONEJECUTIVA.XML -->
     <string name="btPade">PADE</string>
     <string name="btPae">PAE</string>
     <string name="btPee">PEE</string>
-    <string name="btPeed">PEE LAW</string>
-    <string name="btDiplomas">DIPLOMA</string>
+    <string name="btPeed">PEE DROIT</string>
+    <string name="btDiplomas">DIPLÔME</string>
     <string name="btIdiomas">LANGUAGES</string>
-    <string name="btGestion">PUBLIC MANAGEMENT</string>
+    <string name="btGestion">GESTION PUBLIQUE</string>
 
     <!-- LAY_HORARIO.XML -->
-    <string name="tvHorario">SCHEDULE</string>
+    <string name="tvHorario">PROGRAMME</string>
 
     <!-- LAY_MOOC.XML -->
-    <string name="tvCursosMooc">Courses MOOC</string>
+    <string name="tvCursosMooc">cours FLOT</string>
 
     <!-- LAY_NOOTAS.XML -->
-    <string name="tvCursos">Courses</string>
+    <string name="tvCursos">cours</string>
     <string name="tvEP">ME</string>
     <string name="tvTA">AT</string>
     <string name="tvEF">FE</string>
     <string name="tvPG">GA</string>
 
     <!-- LAY_POPUP.XML -->
-    <string name="tvPoptv2">This is a simple Popup</string>
-    <string name="btCerrar">Close</string>
+    <string name="tvPoptv2">Ceci est un simple menu surgissant</string>
+    <string name="btCerrar">fermer</string>
 
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Close</string>
+    <string name="action_settings">fermer</string>
     <string name="title_activity_prueba_tabbed">PruebaTabbed</string>
 
-    <string name="title_section1">News</string>
-    <string name="title_section2">Schedule</string>
-    <string name="title_section3">Notes</string>
-    <string name="title_section4">Calendar</string>
+    <string name="title_section1">nouvelles</string>
+    <string name="title_section2">programme</string>
+    <string name="title_section3">Remarques</string>
+    <string name="title_section4">calendrier</string>
     <string name="title_activity_activity_main_2">activity_main_2</string>
     <string name="title_activity_noticias">newsActivity</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">ouvert navigation drawer</string>
+    <string name="navigation_drawer_close">fermer navigation drawer</string>
 
     <string name="action_example"> </string>
     <string name="title_activity_main_activity2"> </string>
 
     <string-array name="sections">
-        <item>News</item>
-        <item>Schedule</item>
-        <item>Notes</item>
-        <item>Calendar</item>
-        <item>Coffee shop</item>
-        <item>Maps</item>
-        <item>Directory/Messaging</item>
-        <item>Workshops</item>
-        <item>Library</item>
-        <item>Prints</item>
-        <item>Courses Mooc</item>
-        <item>State payment</item>
+        <item>nouvelles</item>
+        <item>calendrier</item>
+        <item>Remarques</item>
+        <item>calendrier</item>
+        <item>café restaurant</item>
+        <item>Plans</item>
+        <item>annuaire/Messagerie</item>
+        <item>ateliers</item>
+        <item>bibliothèque</item>
+        <item>Affiches</item>
+        <item>cours FLOT</item>
+        <item>Le paiement de lEtat</item>
         <item>Conexion Esan</item>
-        <item>Executive education</item>
+        <item>Executive Education</item>
     </string-array>
 
     <string-array name="sections2">
-        <item>News</item>
-        <item>Calendar</item>
-        <item>Coffee shop</item>
-        <item>Coffee shop(Data entry)</item>
+        <item>nouvelles</item>
+        <item>calendrier</item>
+        <item>café restaurant</item>
+        <item>café restaurant(Data entry)</item>
     </string-array>
 
 

@@ -1,7 +1,9 @@
 package pe.edu.esan.appesan2;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -10,18 +12,65 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
 
 public class MainActivity extends ActionBarActivity {
 
     EditText et1,et2;
+
+    int lang=0;
+
+
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        ArrayList<ItemData> list=new ArrayList<>();
+        list.add(new ItemData("Spanish",R.drawable.es));
+        list.add(new ItemData("english",R.drawable.um));
+        list.add(new ItemData("french",R.drawable.fr));
+        Spinner sp=(Spinner)findViewById(R.id.spinner);
+        SpinnerAdapter adapter=new SpinnerAdapter(this,
+                R.layout.spinerlayout,R.id.txt,list);
+        sp.setAdapter(adapter);
+
+
+        sp.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int arg2, long arg3) {
+                int index = arg0.getSelectedItemPosition();
+                lang=index;
+                Toast.makeText(getBaseContext(),
+                        "You have selected item : " + index,
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+
+
+
 
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
@@ -334,12 +383,55 @@ public class MainActivity extends ActionBarActivity {
                         tipo=2;
                     }
 
-                    b.putInt("tipo",tipo);
+                    b.putInt("tipo", tipo);
 
                     Log.v("tipo", String.valueOf(tipo));
 
                     Intent i = new Intent(this,MainActivity2Activity.class);
                     i.putExtras(b);
+
+
+
+
+                    switch(lang){
+                        case 0:
+
+                            Locale locale = new Locale("es");
+                            Locale.setDefault(locale);
+                            Configuration mConfig = new Configuration();
+                            mConfig.locale = locale;
+                            getBaseContext().getResources().updateConfiguration(mConfig,
+                                    getBaseContext().getResources().getDisplayMetrics());
+
+                            break;
+
+                        case 1:
+
+                            Locale locale2 = new Locale("en");
+                            Locale.setDefault(locale2);
+                            Configuration mConfig2 = new Configuration();
+                            mConfig2.locale = locale2;
+                            getBaseContext().getResources().updateConfiguration(mConfig2,
+                                    getBaseContext().getResources().getDisplayMetrics());
+
+                            break;
+
+                        case 2:
+
+                            Locale locale3 = new Locale("fr");
+                            Locale.setDefault(locale3);
+                            Configuration mConfig3 = new Configuration();
+                            mConfig3.locale = locale3;
+                            getBaseContext().getResources().updateConfiguration(mConfig3,
+                                    getBaseContext().getResources().getDisplayMetrics());
+
+                            break;
+
+                    }
+
+
+
+
 
                     startActivity(i);
                     finish();
