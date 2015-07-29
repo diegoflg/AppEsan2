@@ -211,7 +211,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        PagosBD adminP = new PagosBD(this, "BDPAGOS1", null, 1);
+        PagosBD adminP = new PagosBD(this, "BDPAGOS2", null, 1);
         SQLiteDatabase bdP = adminP.getWritableDatabase();
 
         Cursor j = bdP.rawQuery("SELECT usuario,concepto,monto,vencimiento FROM Pagos", null);
@@ -270,10 +270,10 @@ public class MainActivity extends ActionBarActivity {
             String vencimiento4="20/10/2017";
 
             ContentValues p4 = new ContentValues();
-            p3.put("usuario",usuarioP);
-            p3.put("concepto",concepto4);
-            p3.put("monto",monto4);
-            p3.put("vencimiento", vencimiento4);
+            p4.put("usuario",usuarioP);
+            p4.put("concepto",concepto4);
+            p4.put("monto",monto4);
+            p4.put("vencimiento", vencimiento4);
             bdP.insert("Pagos", null, p4);
 
 

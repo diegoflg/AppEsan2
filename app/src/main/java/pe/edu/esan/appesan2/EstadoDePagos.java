@@ -48,7 +48,7 @@ public class EstadoDePagos extends Fragment {
 
     public void consultarpagos (View v){
 
-        PagosBD adminP = new PagosBD(v.getContext(), "BDPAGOS1", null, 1);
+        PagosBD adminP = new PagosBD(v.getContext(), "BDPAGOS2", null, 1);
         SQLiteDatabase bdP = adminP.getWritableDatabase();
 
 
