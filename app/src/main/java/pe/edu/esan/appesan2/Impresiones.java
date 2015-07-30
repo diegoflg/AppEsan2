@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
@@ -32,6 +33,20 @@ public class Impresiones extends Fragment {
     private static final int FILECHOOSER_RESULTCODE   = 2888;
     private ValueCallback<Uri> mUploadMessage;
     private Uri mCapturedImageURI = null;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                    Intent intent) {
+        if(requestCode==FILECHOOSER_RESULTCODE)
+        {
+            if (null == mUploadMessage) return;
+            Uri result = intent == null || resultCode != Activity.RESULT_OK ? null
+                    : intent.getData();
+            mUploadMessage.onReceiveValue(result);
+            mUploadMessage = null;
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
@@ -54,43 +69,13 @@ public class Impresiones extends Fragment {
 
             // openFileChooser for Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType){
-
-                // Update message
                 mUploadMessage = uploadMsg;
-
-                try{
-
-                    // Create AndroidExampleFolder at sdcard
-
-                    File imageStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "AndroidExampleFolder");
-                    if (!imageStorageDir.exists()) {
-                        // Create AndroidExampleFolder at sdcard
-                        imageStorageDir.mkdirs();
-                    }
-
-                    // Create camera captured image file path and name
-                    File file = new File(
-                            imageStorageDir + File.separator + "IMG_" + String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    mCapturedImageURI = Uri.fromFile(file);
-
-                    // Camera capture image intent
-                    final Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
-
-                    Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-                    i.addCategory(Intent.CATEGORY_OPENABLE);
-                    i.setType("image/*");
-
-                    // Create file chooser intent
-                    Intent chooserIntent = Intent.createChooser(i, "Image Chooser");
-
-                    // Set camera intent to file chooser
-                    chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Parcelable[] { captureIntent });
-
-                    // On select image call onActivityResult method of activity
-                    startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
-                }
-                catch(Exception e){}
+                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("*/*");
+                startActivityForResult(
+                        Intent.createChooser(i, "File Browser"),
+                        FILECHOOSER_RESULTCODE);
             }
 
             // openFileChooser for Android < 3.0
@@ -101,7 +86,6 @@ public class Impresiones extends Fragment {
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
                 openFileChooser(uploadMsg, acceptType);
             }
-
 
 
             // The webPage has 2 filechoosers and will send a
@@ -123,7 +107,8 @@ public class Impresiones extends Fragment {
 
 
 
-    myWebView.setOnKeyListener(new View.OnKeyListener() {
+
+        myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
