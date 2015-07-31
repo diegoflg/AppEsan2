@@ -6,4 +6,5 @@
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
     android:background="#ffcf1313"
-    tools:context="pe.edu.esan.appesan2.NavigationDrawerFragment" />
+    tools:context="pe.edu.esan.appesan2.NavigationDrawerFragment"
+    />
