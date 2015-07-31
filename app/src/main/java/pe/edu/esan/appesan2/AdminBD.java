@@ -10,6 +10,7 @@ public class AdminBD extends SQLiteOpenHelper {
 
 
 
+
     public AdminBD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
