@@ -1,19 +1,12 @@
 package pe.edu.esan.appesan2;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -110,8 +103,6 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 9:
                     fragment = new Impresiones();
                     break;
-
-
                 case 10:
                     fragment = new CursosMooc();
                     break;
@@ -123,6 +114,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
                 case 13:
                     fragment = new EducacionEjecutiva();
+                    break;
+                case 14:
+                    fragment = new Gamificacion();
                     break;
 
             }
@@ -204,7 +198,8 @@ public class MainActivity2Activity extends ActionBarActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            finish();
+           Intent i = new Intent(this,MainActivity.class);
+            startActivity(i);
             return true;
         }
 
@@ -215,12 +210,7 @@ public class MainActivity2Activity extends ActionBarActivity
     public void onBackPressed() {
         // do nothing. We want to force user to stay in this activity and not drop out.
 
-
-            }
-
-
-
-
+    }
 
 
     /**
