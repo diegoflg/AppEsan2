@@ -55,7 +55,8 @@
         android:layout_below="@+id/et2"
         android:layout_centerHorizontal="true"
         android:background="@drawable/mybutton"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>
