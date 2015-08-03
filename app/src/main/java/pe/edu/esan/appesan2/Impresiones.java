@@ -21,6 +21,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.ipaulpro.afilechooser.utils.FileUtils;
+
 import java.io.File;
 
 
@@ -28,29 +30,35 @@ import java.io.File;
  * Created by educacionadistancia on 20/07/2015.
  */
 public class Impresiones extends Fragment {
-    public Uri imageUri;
-
-    private static final int FILECHOOSER_RESULTCODE   = 2888;
+    private static final int REQUEST_CHOOSER = 1234;
     private ValueCallback<Uri> mUploadMessage;
-    private Uri mCapturedImageURI = null;
+
+    //Librería importada como proyecto en módulo
+    //https://github.com/iPaulPro/aFileChooser
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode,
-                                    Intent intent) {
-        if(requestCode==FILECHOOSER_RESULTCODE)
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==REQUEST_CHOOSER)
         {
             if (null == mUploadMessage) return;
-            Uri result = intent == null || resultCode != Activity.RESULT_OK ? null
-                    : intent.getData();
-            mUploadMessage.onReceiveValue(result);
+            Uri uri = data == null || resultCode != Activity.RESULT_OK ? null : data.getData();
+            // Get the File path from the Uri
+            String path = FileUtils.getPath(getActivity(), uri);
+            // Alternatively, use FileUtils.getFile(Context, Uri)
+            if (path != null && FileUtils.isLocal(path)) {
+                File file = new File(path);
+            }
+            mUploadMessage.onReceiveValue(uri);
             mUploadMessage = null;
         }
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         View rootView = inflater.inflate(R.layout.lay_impresiones, container, false);
+
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewI);
         myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm");
         myWebView.getSettings().setJavaScriptEnabled(true);
@@ -73,9 +81,7 @@ public class Impresiones extends Fragment {
                 Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                 i.addCategory(Intent.CATEGORY_OPENABLE);
                 i.setType("*/*");
-                startActivityForResult(
-                        Intent.createChooser(i, "File Browser"),
-                        FILECHOOSER_RESULTCODE);
+                startActivityForResult(Intent.createChooser(i, "File Browser"), REQUEST_CHOOSER);
             }
 
             // openFileChooser for Android < 3.0
@@ -103,9 +109,6 @@ public class Impresiones extends Fragment {
 
             }
         });   // End setWebChromeClient
-
-
-
 
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
