@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/F:/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-ru/values-ru.xml -->
+    <!-- From: file:/C:/Users/diego/Downloads/AppEsan2/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-ru/values-ru.xml -->
     <eat-comment/>
     <string name="choose_file">Выберите файл</string>
     <string name="empty_directory">Пустая папка</string>
