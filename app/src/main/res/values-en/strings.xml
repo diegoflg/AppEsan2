@@ -42,7 +42,7 @@
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Close</string>
+    <string name="action_settings">Log out</string>
     <string name="title_activity_prueba_tabbed">PruebaTabbed</string>
 
     <string name="title_section1">News</string>
@@ -73,6 +73,7 @@
         <item>State payment</item>
         <item>Conexion Esan</item>
         <item>Executive education</item>
+        <item>Gamification</item>
     </string-array>
 
     <string-array name="sections2">
@@ -97,6 +98,7 @@
         <item>Section T11</item>
         <item>Section T12</item>
         <item>Section T14</item>
+        <item>Section T15</item>
     </string-array>
 
     <string-array name="section_titles2">
@@ -121,6 +123,7 @@
         <item name="android:icon">@drawable/estadodepago</item>
         <item name="android:icon">@drawable/conexionesan</item>
         <item name="android:icon">@drawable/educacionejecutiva</item>
+        <item name="android:icon">@drawable/gamificacion</item>
     </string-array>
 
 

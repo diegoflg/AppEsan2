@@ -11,8 +11,6 @@ public class NotasBD extends SQLiteOpenHelper {
 
     String sqlCreateNotas="CREATE TABLE Notas (usuario TEXT, curso TEXT, ep REAL, ta REAL, ef REAL, pg REAL)";
 
-
-
     public NotasBD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -29,6 +27,7 @@ public class NotasBD extends SQLiteOpenHelper {
         db.execSQL(sqlCreateNotas);
     }
 }
+
 
 
 //961062059

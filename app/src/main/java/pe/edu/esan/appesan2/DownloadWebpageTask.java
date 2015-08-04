@@ -1,9 +1,8 @@
 package pe.edu.esan.appesan2;
-import android.os.AsyncTask;
 
+import android.os.AsyncTask;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,11 +19,10 @@ public class DownloadWebpageTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... urls) {
-
         // params comes from the execute() call: params[0] is the url.
         try {
             return downloadUrl(urls[0]);
-        } catch (IOException e) {
+        }catch (IOException e) {
             return "Unable to download the requested page.";
         }
     }

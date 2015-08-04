@@ -1,8 +1,9 @@
 package pe.edu.esan.appesan2;
 
+
 import android.content.pm.ActivityInfo;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +12,17 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Created by Diegoflg on 7/13/2015.
+ * Created by educacionadistancia on 03/08/2015.
  */
-public class Noticia extends Fragment {
-
+public class Gamificacion extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.lay_noticia, container, false);
+        View rootView = inflater.inflate(R.layout.lay_gamificacion, container, false);
+
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
-        WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
-        myWebView.loadUrl("http://blog.ue.edu.pe/");
+        WebView myWebView = (WebView) rootView.findViewById(R.id.webviewGames);
+        myWebView.loadUrl("https://www.google.com.pe/");
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
@@ -31,6 +32,7 @@ public class Noticia extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     WebView webView = (WebView) v;
+
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_BACK:
                             if (webView.canGoBack()) {
@@ -38,21 +40,19 @@ public class Noticia extends Fragment {
                                 return true;
                             }
                             break;
-                    }}
+                    }
+                }
+
                 return false;
             }
         });
 
         myWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return false;
-            }}
+                                       @Override
+                                       public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                           return false;
+                                       }}
         );
         return rootView;
     }
 }
-
-
-
-

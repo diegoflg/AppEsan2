@@ -1,6 +1,5 @@
 package pe.edu.esan.appesan2;
 
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
@@ -36,43 +35,35 @@ import android.widget.Toast;
 public class NavigationDrawerFragment extends Fragment {
 
     private int tipo=2;
-
     /**
      * Remember the position of the selected item.
      */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-
     /**
      * Per the design guidelines, you should show the drawer on launch until the user manually
      * expands it. This shared preference tracks this.
      */
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
-
     /**
      * A pointer to the current callbacks instance (the Activity).
      */
     private NavigationDrawerCallbacks mCallbacks;
-
     /**
      * Helper component that ties the action bar to the navigation drawer.
      */
     private ActionBarDrawerToggle mDrawerToggle;
-
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerListView;
     private LinearLayout mlinearLayout;
-
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
-    public NavigationDrawerFragment() {
-    }
+    public NavigationDrawerFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Read in the flag indicating whether or not the user has demonstrated awareness of the
         // drawer. See PREF_USER_LEARNED_DRAWER for details.
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -82,7 +73,6 @@ public class NavigationDrawerFragment extends Fragment {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
-
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
     }
@@ -95,13 +85,8 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-
-        mDrawerListView = (ListView) inflater.inflate(
-                R.layout.fragment_navigation_drawer, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mDrawerListView = (ListView) inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -109,22 +94,15 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-
-
-
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-
         return mDrawerListView;
-
     }
 
     public void ini(int tip){
-
         tipo=tip;
         Log.v("tipoini", String.valueOf(tipo));
 
         if(tipo==1){
-
             final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons);
             mDrawerListView.setAdapter(new ArrayAdapter<String>(
                     getActionBar().getThemedContext(),
@@ -144,7 +122,6 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if(tipo==2){
-
             final TypedArray typedArray = getResources().obtainTypedArray(R.array.sections_icons2);
             mDrawerListView.setAdapter(new ArrayAdapter<String>(
                     getActionBar().getThemedContext(),
@@ -162,13 +139,7 @@ public class NavigationDrawerFragment extends Fragment {
                 }
             });
         }
-
-
     }
-
-
-
-
 
     public boolean isDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mlinearLayout);
@@ -183,7 +154,6 @@ public class NavigationDrawerFragment extends Fragment {
     public void setUp(int fragmentId, DrawerLayout drawerLayout) {
         mlinearLayout=(LinearLayout)getActivity().findViewById(R.id.slider_list_with_image);
         mDrawerLayout = drawerLayout;
-
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -208,7 +178,6 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
-
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
 
@@ -227,7 +196,6 @@ public class NavigationDrawerFragment extends Fragment {
                             .getDefaultSharedPreferences(getActivity());
                     sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
                 }
-
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
         };
@@ -245,7 +213,6 @@ public class NavigationDrawerFragment extends Fragment {
                 mDrawerToggle.syncState();
             }
         });
-
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
@@ -262,7 +229,6 @@ public class NavigationDrawerFragment extends Fragment {
         }
     }
 
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -271,9 +237,6 @@ public class NavigationDrawerFragment extends Fragment {
         } catch (ClassCastException e) {
             throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
         }
-
-
-
     }
 
     @Override
@@ -316,7 +279,6 @@ public class NavigationDrawerFragment extends Fragment {
             Toast.makeText(getActivity(), " ", Toast.LENGTH_SHORT).show();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -345,3 +307,5 @@ public class NavigationDrawerFragment extends Fragment {
         void onNavigationDrawerItemSelected(int position);
     }
 }
+
+

@@ -8,10 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Diegoflg on 7/24/2015.
  */
 public class PagosBD extends SQLiteOpenHelper{
-
     String sqlCreate="CREATE TABLE Pagos (usuario TEXT, concepto TEXT, monto TEXT, vencimiento TEXT)";
-
-
 
     public PagosBD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -29,3 +26,8 @@ public class PagosBD extends SQLiteOpenHelper{
         db.execSQL(sqlCreate);
     }
 }
+
+
+
+
+

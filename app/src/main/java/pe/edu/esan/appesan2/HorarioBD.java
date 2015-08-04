@@ -11,15 +11,12 @@ public class HorarioBD extends SQLiteOpenHelper {
 
     String sqlCreate="CREATE TABLE Horario (usuario TEXT, curso TEXT,dia TEXT, hora TEXT, salon TEXT)";
 
-
-
     public HorarioBD(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(sqlCreate);
     }
 
@@ -29,3 +26,9 @@ public class HorarioBD extends SQLiteOpenHelper {
         db.execSQL(sqlCreate);
     }
 }
+
+
+
+
+
+
