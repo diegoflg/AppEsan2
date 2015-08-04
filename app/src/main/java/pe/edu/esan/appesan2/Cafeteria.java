@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,15 @@ public class Cafeteria extends Fragment {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        double width = displaymetrics.widthPixels;
+        width=width*0.13;
+        int y = (int)Math.round(width);
+
+        listview.setPadding(y,0,0,0);
 
         rb1 = (RadioButton) v.findViewById(R.id.rb1);
         rb2 = (RadioButton) v.findViewById(R.id.rb2);

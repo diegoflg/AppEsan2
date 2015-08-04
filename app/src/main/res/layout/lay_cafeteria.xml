@@ -81,8 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tabHost2"
         android:layout_margin="15dp"
-        android:paddingLeft="35dp"
-        android:paddingRight="10dp" />
+        />
 </RelativeLayout>
 
 
