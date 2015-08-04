@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
@@ -37,6 +38,7 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private CharSequence mTitle;
     public int tipo=1;
+    public int menu=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,9 @@ public class MainActivity2Activity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        onNavigationDrawerItemSelected(Datah.getInstance().getData());
+
     }
 
     @Override
@@ -76,6 +81,7 @@ public class MainActivity2Activity extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment=null;
+        menu=position;
 
         if(tipo==1){
 
@@ -217,7 +223,7 @@ public class MainActivity2Activity extends ActionBarActivity
 
     }
 
-            }
+
 
 
     @Override
