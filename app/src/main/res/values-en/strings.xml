@@ -59,21 +59,21 @@
     <string name="title_activity_main_activity2"> </string>
 
     <string-array name="sections">
-        <item>  News</item>
-        <item>  Schedule</item>
-        <item>  Notes</item>
-        <item>  Calendar</item>
-        <item>  Coffee shop</item>
-        <item>  Maps</item>
-        <item>  Directory/Messaging</item>
-        <item>  Workshops</item>
-        <item>  Library</item>
-        <item>  Prints</item>
-        <item>  Courses Mooc</item>
-        <item>  State payment</item>
-        <item>  Conexion Esan</item>
-        <item>  Executive education</item>
-        <item>  Gamification</item>
+        <item>"  News"</item>
+        <item>"  Schedule"</item>
+        <item>"  Notes"</item>
+        <item>"  Calendar"</item>
+        <item>"  Coffee shop"</item>
+        <item>"  Maps"</item>
+        <item>"  Directory /\n  Messaging"</item>
+        <item>"  Workshops"</item>
+        <item>"  Library"</item>
+        <item>"  Prints"</item>
+        <item>"  Courses Mooc"</item>
+        <item>"  State payment"</item>
+        <item>"  Conexion Esan"</item>
+        <item>"  Executive\n  education"</item>
+        <item>"  Gamification"</item>
     </string-array>
 
     <string-array name="sections2">
