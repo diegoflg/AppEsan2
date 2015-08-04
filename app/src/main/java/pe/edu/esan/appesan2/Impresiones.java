@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Parcelable;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,12 +16,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
-
 import com.ipaulpro.afilechooser.utils.FileUtils;
-
 import java.io.File;
-
 
 /**
  * Created by educacionadistancia on 20/07/2015.
@@ -53,7 +46,6 @@ public class Impresiones extends Fragment {
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
@@ -74,7 +66,6 @@ public class Impresiones extends Fragment {
         myWebView.setInitialScale(50);
 
         myWebView.setWebChromeClient(new WebChromeClient() {
-
             // openFileChooser for Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType){
                 mUploadMessage = uploadMsg;
@@ -92,21 +83,17 @@ public class Impresiones extends Fragment {
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
                 openFileChooser(uploadMsg, acceptType);
             }
-
-
             // The webPage has 2 filechoosers and will send a
             // console message informing what action to perform,
             // taking a photo or updating the file
 
             public boolean onConsoleMessage(ConsoleMessage cm) {
-
                 onConsoleMessage(cm.message(), cm.lineNumber(), cm.sourceId());
                 return true;
             }
 
             public void onConsoleMessage(String message, int lineNumber, String sourceID) {
                 //Log.d("androidruntime", "Show console messages, Used for debugging: " + message);
-
             }
         });   // End setWebChromeClient
 
@@ -139,9 +126,7 @@ public class Impresiones extends Fragment {
                 view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '14100015'");
                 view.loadUrl("javascript:document.getElementsByName('Password')[0].value = 'N7N2U2F7'");
                 view.loadUrl("javascript:document.forms['loginform'].submit()");
-            }}
-
-        );
+            }});
         return rootView;
     }
 }

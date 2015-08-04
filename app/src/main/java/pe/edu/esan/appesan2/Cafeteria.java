@@ -15,11 +15,9 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TabHost;
 import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -38,17 +36,14 @@ public class Cafeteria extends Fragment {
     int diadelasemana=0;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
-
         rb1 = (RadioButton) v.findViewById(R.id.rb1);
         rb2 = (RadioButton) v.findViewById(R.id.rb2);
         rb3 = (RadioButton) v.findViewById(R.id.rb3);
-
 
         mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
         mTabHost.setup();
@@ -65,7 +60,6 @@ public class Cafeteria extends Fragment {
 
         mTabHost.setCurrentTab(0);
 
-
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
         { mTabHost.getTabWidget().setStripEnabled(true);
             mTabHost.getTabWidget().setRightStripDrawable(R.drawable.greyline);
@@ -77,8 +71,6 @@ public class Cafeteria extends Fragment {
         mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
         mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
 
-
-
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         Calendar calendar = Calendar.getInstance();
@@ -88,10 +80,7 @@ public class Cafeteria extends Fragment {
         Log.d("el dia esss",dia);
         diadelasemana=day;
 
-
-
         go(v);
-
 
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +90,6 @@ public class Cafeteria extends Fragment {
                 go(v);
 
                 Log.d("Test", "onClickListener ist gestartet");
-
             }
         });
 
@@ -110,10 +98,9 @@ public class Cafeteria extends Fragment {
             public void onClick(View v) {
                 clearData();
 
-
                 Log.d("Test", "onClickListener ist gestartet");
-                go(v);
 
+                go(v);
             }
         });
 
@@ -125,26 +112,20 @@ public class Cafeteria extends Fragment {
             {
                 clearData();
 
-
                 Log.d("Test", "onClickListener ist gestartet");
-                go(v);
 
+                go(v);
             }
         });
 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-
                 clearData();
 
-
                 go(v);
-
-
             }
         });
-
 
         return v;
     }
@@ -156,22 +137,16 @@ public class Cafeteria extends Fragment {
                 processJson(object);
             }
         }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms");
-
     }
 
 
     private void processJson(JSONObject object) {
-
-
 
         try {
             JSONArray columns = object.getJSONArray("rows");
 
             if (mTabHost.getCurrentTab()==1){
                 Log.d("Test", "taaaaaaaaab");
-
-
-
 
                 for (int r = 1; r < 8; ++r) {
                     JSONObject column = columns.getJSONObject(r);
@@ -182,13 +157,11 @@ public class Cafeteria extends Fragment {
                     Team team = new Team(dia, tipo);
                     teams.add(team);
                 }
-
             }
 
             if (mTabHost.getCurrentTab()==0){
 
                 if(rb1.isChecked()){
-
 
                     for (int r = 10; r < 18; ++r) {
                         JSONObject column = columns.getJSONObject(r);
@@ -199,12 +172,9 @@ public class Cafeteria extends Fragment {
                         Team team = new Team(dia, tipo);
                         teams.add(team);
                     }
-
-
                 }
 
                 if(rb2.isChecked()){
-
 
                     for (int r = 19; r < 25; ++r) {
                         JSONObject column = columns.getJSONObject(r);
@@ -215,8 +185,6 @@ public class Cafeteria extends Fragment {
                         Team team = new Team(dia, tipo);
                         teams.add(team);
                     }
-
-
                 }
 
                 if(rb3.isChecked()){
@@ -231,15 +199,8 @@ public class Cafeteria extends Fragment {
                         Team team = new Team(dia, tipo);
                         teams.add(team);
                     }
-
-
                 }
-
-
             }
-
-
-
 
             final TeamsAdapter adapter = new TeamsAdapter(getActivity(), R.layout.team, teams);
             listview.setAdapter(adapter);
@@ -247,12 +208,10 @@ public class Cafeteria extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-
-
     }
+
+
+
 
 
 /**

@@ -4,8 +4,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +14,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Diegoflg on 7/22/2015.
  */
 public class CursosMooc extends Fragment {
-
     CircleImageView cv1,cv2,cv3,cv4;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_mooc, container, false);
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
@@ -44,15 +40,11 @@ public class CursosMooc extends Fragment {
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
                         .commit();
-            }
-        });
-
-
+            }});
 
         cv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 Webfragment fragment;
                 fragment = new Webfragment();
@@ -64,10 +56,7 @@ public class CursosMooc extends Fragment {
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, fragment)
                         .commit();
-
-            }
-        });
-
+            }});
 
         cv3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,18 +69,12 @@ public class CursosMooc extends Fragment {
                 bundle.putString("url", "https://www.miriadax.net/");
                 fragment.setArguments(bundle);
 
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, fragment)
-                        .commit();
-
-            }
-        });
-
+                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+            }});
 
         cv4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 Webfragment fragment;
                 fragment = new Webfragment();
@@ -100,23 +83,13 @@ public class CursosMooc extends Fragment {
                 bundle.putString("url", "http://harvardx.harvard.edu/");
                 fragment.setArguments(bundle);
 
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, fragment)
-                        .commit();
-
-            }
-        });
-
-
-
+                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+            }});
         return rootView;
-
-
-
-
-
-
-
-
     }
 }
+
+
+
+
+

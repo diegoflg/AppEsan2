@@ -13,8 +13,7 @@ import android.webkit.WebViewClient;
  * Created by educacionadistancia on 24/07/2015.
  */
 public class ConexionEsan extends Fragment {
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View CE = inflater.inflate(R.layout.lay_conexionesan, container, false);
 
         WebView ceWB = (WebView) CE.findViewById(R.id.webviewCE);
@@ -37,20 +36,16 @@ public class ConexionEsan extends Fragment {
                                 return true;
                             }
                             break;
-                    }
-                }
-
+                    }}
                 return false;
             }
         });
         ceWB.setWebViewClient(new WebViewClient() {
-                                       @Override
-                                       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                           return false;
-                                       }
-                                   }
+         @Override
+         public boolean shouldOverrideUrlLoading(WebView view, String url) {
+             return false;
+         }}
         );
-
         return CE;
     }
 }

@@ -10,22 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 /**
  * Created by Diegoflg on 7/22/2015.
  */
 public class Webfragment extends Fragment {
-
-    private WebView wb;
-    private int num;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.webfragment, container, false);
         Bundle bundle = this.getArguments();
         String link = bundle.getString("url");
@@ -37,11 +28,8 @@ public class Webfragment extends Fragment {
         wb.getSettings().setBuiltInZoomControls(true);
         wb.getSettings().setSupportZoom(true);
 
-
-
         rootView.setFocusableInTouchMode(true);
         rootView.requestFocus();
-
 
         wb.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -58,20 +46,12 @@ public class Webfragment extends Fragment {
                                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                 CursosMooc fragment;
                                 fragment = new CursosMooc();
-
-
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.container, fragment)
-                                        .commit();
-
+                                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                             }
                             break;
-                    }
-                }
-
+                    }}
                 return false;
-            }
-        });
+            }});
 
         rootView.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -81,19 +61,12 @@ public class Webfragment extends Fragment {
                     String webUrl = wb.getUrl();
                     Log.v("link", "webUrl");
 
-
                     if (webUrl.equals("https://www.edx.org/" )) {
                         Log.v("tipo", "es");
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;
                         fragment = new CursosMooc();
-
-
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.container, fragment)
-                                .commit();
-
-
+                        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     }
 
                     if (webUrl.equals("https://es.coursera.org/")) {
@@ -101,13 +74,7 @@ public class Webfragment extends Fragment {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;
                         fragment = new CursosMooc();
-
-
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.container, fragment)
-                                .commit();
-
-
+                        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     }
 
                     if (webUrl.equals("https://www.miriadax.net/" )) {
@@ -115,13 +82,7 @@ public class Webfragment extends Fragment {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;
                         fragment = new CursosMooc();
-
-
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.container, fragment)
-                                .commit();
-
-
+                        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     }
 
                     if (webUrl.equals("http://harvardx.harvard.edu/")) {
@@ -129,55 +90,23 @@ public class Webfragment extends Fragment {
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;
                         fragment = new CursosMooc();
-
-
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.container, fragment)
-                                .commit();
-
-
+                        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     }
-
-
                     return true;
                 }
                 return false;
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
+            }});
 
         wb.setWebViewClient(new WebViewClient() {
-                                @Override
-                                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                    return false;
-                                }
-                            }
-        );
-
-
-
-
-
-
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return false;
+        }});
         return rootView;
     }
-
-
-
-
-
-
-
-
 }
+
+
+
+
+

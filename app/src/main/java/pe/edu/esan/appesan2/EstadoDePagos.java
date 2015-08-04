@@ -41,24 +41,19 @@ public class EstadoDePagos extends Fragment {
         tvpag12=(TextView)rootView.findViewById(R.id.vencimiento4);
 
         consultarpagos(rootView);
-
         return rootView;
     }
-
 
     public void consultarpagos (View v){
 
         PagosBD adminP = new PagosBD(v.getContext(), "BDPAGOS2", null, 1);
         SQLiteDatabase bdP = adminP.getWritableDatabase();
 
-
         Cursor filapago = bdP.rawQuery("select concepto,monto,vencimiento from Pagos", null);
 
         if (filapago.moveToFirst())
         {
             Log.v("fila", "entro");
-
-
             Log.v("pos", String.valueOf(filapago.getString(0)));
             Log.v("pos", String.valueOf(filapago.getString(1)));
             Log.v("pos", String.valueOf(filapago.getString(2)));
@@ -66,7 +61,6 @@ public class EstadoDePagos extends Fragment {
             tvpag1.setText(filapago.getString(0));
             tvpag2.setText(filapago.getString(1));
             tvpag3.setText(filapago.getString(2));
-
 
             filapago.moveToNext();
             tvpag4.setText(filapago.getString(0));
@@ -82,9 +76,7 @@ public class EstadoDePagos extends Fragment {
             tvpag10.setText(filapago.getString(0));
             tvpag11.setText(filapago.getString(1));
             tvpag12.setText(filapago.getString(2));
-
         }
-
         bdP.close();
     }
 }

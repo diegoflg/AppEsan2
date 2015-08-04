@@ -16,10 +16,8 @@ import android.webkit.WebViewClient;
 public class Noticia extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_noticia, container, false);
-
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
@@ -33,7 +31,6 @@ public class Noticia extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     WebView webView = (WebView) v;
-
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_BACK:
                             if (webView.canGoBack()) {
@@ -41,9 +38,7 @@ public class Noticia extends Fragment {
                                 return true;
                             }
                             break;
-                    }
-                }
-
+                    }}
                 return false;
             }
         });
@@ -57,3 +52,7 @@ public class Noticia extends Fragment {
         return rootView;
     }
 }
+
+
+
+

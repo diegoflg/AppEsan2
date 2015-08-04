@@ -19,22 +19,15 @@ public class Team {
         this.setPostre(postre);
         this.setRefresco(refresco);
         this.setSabado(sabado);
-
     }
 
     public Team(String dia){
-
         this.setDia(dia);
-
-
     }
 
     public Team(String dia, String entrada){
-
         this.setDia(dia);
         this.setEntrada(entrada);
-
-
     }
 
     public String getdDia() {
@@ -42,7 +35,6 @@ public class Team {
     }
 
     public void setDia(String dia) {
-
         this.dia = dia;
     }
 
@@ -88,3 +80,6 @@ public class Team {
     }
 
 }
+
+
+

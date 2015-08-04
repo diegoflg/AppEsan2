@@ -1,12 +1,10 @@
 package pe.edu.esan.appesan2;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,16 +12,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import pl.polidea.view.ZoomView;
 
 /**
@@ -34,19 +25,13 @@ public class Horario extends Fragment {
     private GridView gridView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
-
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
 
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
         zoomView.addView(rootView);
-
-
 
         final String[] numbers = new String[] { "-", "Lunes", "Martes",
                 "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "07:00-08:00", "1",
@@ -67,26 +52,19 @@ public class Horario extends Fragment {
                 "2", "3", "4", "5", "6","7" };
 
         gridView=(GridView)rootView.findViewById(R.id.gridView1);
-        MyAdapter adapter = new MyAdapter(getActivity().getBaseContext(),
-                R.layout.item, numbers);
-
+        MyAdapter adapter = new MyAdapter(getActivity().getBaseContext(), R.layout.item, numbers);
         gridView.setAdapter(adapter);
         return zoomView;
     }
 
-
-
     public class MyAdapter extends ArrayAdapter<String> {
-
         String[] objects;
         Context context;
-
 
         public MyAdapter(Context context, int textViewResourceId, String[] objects) {
             super(context, textViewResourceId, objects);
             this.context = context;
             this.objects = objects;
-
         }
 
         @Override
@@ -108,56 +86,37 @@ public class Horario extends Fragment {
                 tv.setTextColor(Color.WHITE);
             }else{
                 tv.setBackgroundColor(Color.WHITE);
-
             }
 
             if(position>16 && position<24){
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
-
-
             }
 
             if(position>32 && position<40){
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
-
-
             }
 
             if(position>48 && position<56){
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
-
-
             }
 
             if(position>64 && position<72){
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
-
-
             }
 
             if(position>80 && position<88){
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
-
-
             }
 
             if(position>96 && position<104){
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
-
-
             }
             if(position>112 && position<120){
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
-
-
             }
-
-
-
 
             HorarioBD adminH = new HorarioBD(getContext(), "BDHORARIO1", null, 1);
             SQLiteDatabase bdH = adminH.getWritableDatabase();
-
 
             Cursor filahorarios = bdH.rawQuery("select curso,dia,hora,salon from Horario" , null);
             Log.v("cursor", "cursor");
@@ -177,8 +136,6 @@ public class Horario extends Fragment {
 
                 if(position==pos){
                     tv.setText(curs+sa);
-
-
                 }
 
                 filahorarios.moveToNext();
@@ -190,24 +147,6 @@ public class Horario extends Fragment {
 
                 if(position==pos){
                     tv.setText(curs+sa);
-
-                }
-
-                filahorarios.moveToNext();
-                curs=filahorarios.getString(0);
-                di=filahorarios.getString(1);
-                hor=filahorarios.getString(2);
-                sa=filahorarios.getString(3);
-
-                pos=encontrarposicion(di, hor);
-                Log.v("pos", String.valueOf(pos));
-
-                Log.v("dia", (filahorarios.getString(1)));
-                Log.v("hor", (filahorarios.getString(2)));
-
-                if(position==pos){
-                    tv.setText(curs+sa);
-
                 }
 
                 filahorarios.moveToNext();
@@ -224,27 +163,28 @@ public class Horario extends Fragment {
 
                 if(position==pos){
                     tv.setText(curs+sa);
-
                 }
 
+                filahorarios.moveToNext();
+                curs=filahorarios.getString(0);
+                di=filahorarios.getString(1);
+                hor=filahorarios.getString(2);
+                sa=filahorarios.getString(3);
 
+                pos=encontrarposicion(di, hor);
+                Log.v("pos", String.valueOf(pos));
+                Log.v("dia", (filahorarios.getString(1)));
+                Log.v("hor", (filahorarios.getString(2)));
 
-
-
-
-
+                if(position==pos){
+                    tv.setText(curs+sa);
+                }
             }
 
             bdH.close();
-
-
-
-
-
             return tv;
         }
     }
-
 
     public int encontrarposicion(String finddia,String findhora){
 
@@ -296,10 +236,7 @@ public class Horario extends Fragment {
 
             }if(findhora.equals("21:00-22:00")){
                 return 121;
-
             }
-
-
         }
 
         if(finddia.equals("Martes")){
@@ -351,8 +288,6 @@ public class Horario extends Fragment {
             }if(findhora.equals("21:00-22:00")){
                 return 122;
             }
-
-
         }
 
         if(finddia.equals("Miercoles")){
@@ -403,12 +338,13 @@ public class Horario extends Fragment {
 
             }if(findhora.equals("21:00-22:00")){
                 return 123;
-
             }
-
         }
-
         return 0;
-
     }
 }
+
+
+
+
+

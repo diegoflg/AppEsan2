@@ -6,13 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 /**
  * Created by Diegoflg on 7/16/2015.
  */public class TeamsAdapter extends ArrayAdapter<Team> {
-
     Context context;
     private ArrayList<Team> teams;
 
@@ -34,15 +32,12 @@ import java.util.ArrayList;
             TextView lunes = (TextView) v.findViewById(R.id.position);
             /**
             TextView martes = (TextView) v.findViewById(R.id.name);
-
-             TextView miercoles = (TextView) v.findViewById(R.id.wins);
+            TextView miercoles = (TextView) v.findViewById(R.id.wins);
             TextView jueves = (TextView) v.findViewById(R.id.draws);
             TextView viernes = (TextView) v.findViewById(R.id.losses);
             TextView sabado = (TextView) v.findViewById(R.id.sabado);
              *
              */
-
-
 
             lunes.setText(String.valueOf(o.getEntrada())+": "+String.valueOf(o.getdDia()));
             /**
@@ -53,8 +48,10 @@ import java.util.ArrayList;
             sabado.setText(String.valueOf(o.getSabado()));
              *
              */
-
         }
         return v;
     }
 }
+
+
+

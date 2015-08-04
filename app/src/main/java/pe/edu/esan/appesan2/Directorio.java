@@ -6,12 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -71,23 +68,21 @@ public class Directorio extends Fragment {
                             break;
                     }
                 }
-
                 return false;
             }
         });
 
         wbD.setWebViewClient(new WebViewClient() {
-                                 @Override
-                                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                     return false;
-                                 }
-
-                                 public void onPageFinished(WebView view, String url) {
-                                     //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
-                                     view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
-                                     view.loadUrl("javascript:document.forms[0].login();");
-                                 }
-                             }
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return false;
+        }
+        public void onPageFinished(WebView view, String url) {
+            //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
+            view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
+                    "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
+            view.loadUrl("javascript:document.forms[0].login();");
+        }}
         );
 
         TabHost.TabSpec spec = tbDM.newTabSpec("Tab 1");
@@ -107,14 +102,15 @@ public class Directorio extends Fragment {
         tbDM.getTabWidget().setRightStripDrawable(R.drawable.greyline);
         tbDM.getTabWidget().setLeftStripDrawable(R.drawable.greyline);
 
-            TextView tv = (TextView) tbDM.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            tv.setTextColor(Color.parseColor("#FFFFFF"));
+        TextView tv = (TextView) tbDM.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+        tv.setTextColor(Color.parseColor("#FFFFFF"));
         }
-    tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
-    tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
+        tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
+        tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
 
-
-        String[] values = new String[]{"Central telefonica","Admisión y Registro de Pregrado", "Finanzas", "Dimensión Internacional", "Coordinación Académica de PAC","Servicios y Registros Académicos de Pregrado","Bienestar Estudiantil"};
+        String[] values = new String[]{"Central telefonica","Admisión y Registro de Pregrado", "Finanzas",
+                "Dimensión Internacional", "Coordinación Académica de PAC","Servicios y Registros Académicos de Pregrado",
+                "Bienestar Estudiantil"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         listViewSearch.setAdapter(adapter);
         listViewSearch.setTextFilterEnabled(false);
@@ -126,10 +122,8 @@ public class Directorio extends Fragment {
 
         listViewSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.v("pos", String.valueOf(position));
-
                 showPopup(getActivity(), position);
             }
         });
@@ -152,29 +146,17 @@ public class Directorio extends Fragment {
                 return true;
             }
         });
-
-
-
-
         return rootView;
-
     }
 
-
-    private void doSearch (String s){
-
-    }
-
-
-
+    private void doSearch (String s){}
 
     private void showPopup(final Activity context,int opc) {
         int popupWidth = 250;
         int popupHeight = 200;
 
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
-        LayoutInflater layoutInflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = layoutInflater.inflate(R.layout.popup, viewGroup);
 
         // Creating the PopupWindow
@@ -183,7 +165,6 @@ public class Directorio extends Fragment {
         popup.setWidth(popupWidth);
         popup.setHeight(popupHeight);
         popup.setFocusable(true);
-
 
         // Displaying the popup at the specified location, + offsets.
         popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
@@ -194,28 +175,23 @@ public class Directorio extends Fragment {
         TextView tv1 = (TextView) layout.findViewById(R.id.poptv1);
         TextView tv2 = (TextView) layout.findViewById(R.id.poptv2);
 
-
         switch(opc){
             case 0:
                 tv1.setText("Central telefonica");
                 tv2.setText("Central Telefónica: 712 7200 \n" +
                         "Fax: 345 1328");
-
-
                 break;
 
             case 1:
                 tv1.setText("Admisión y Registro de Pregrado");
                 tv2.setText("Linea directa: 712 7205 \n" +
                         "Anexo central: 4500");
-
                 break;
 
             case 2:
                 tv1.setText("Finanzas");
                 tv2.setText("Central telefónica 712-7200\n" +
                         "Anexos.: 4331/4329");
-
                 break;
 
             case 3:
@@ -225,7 +201,6 @@ public class Directorio extends Fragment {
                         "Anx.: 2257\n" +
                         "Sonia Ponte\n" +
                         "Anx.: 4159\n" );
-
                 break;
 
             case 4:
@@ -233,13 +208,11 @@ public class Directorio extends Fragment {
                 tv2.setText("Central telefónica 712-7200\n" +
                         "William Rojas\n" +
                         "Anx.: 4188");
-
                 break;
 
             case 5:
                 tv1.setText("Servicios");
                 tv2.setText("Anexo central.: 4545");
-
                 break;
 
             case 6:
@@ -250,17 +223,12 @@ public class Directorio extends Fragment {
                 break;
         }
 
-
-
-
         close.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 popup.dismiss();
             }
         });
-
 
         call.setOnClickListener(new View.OnClickListener() {
 
@@ -276,6 +244,9 @@ public class Directorio extends Fragment {
             }
         });
     }
-
-
 }
+
+
+
+
+
