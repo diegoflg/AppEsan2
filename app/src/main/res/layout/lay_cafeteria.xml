@@ -43,21 +43,21 @@
 
                         <RadioButton
                             android:text="@string/rbEconomico"
-                            android:textSize="20dp"
+                            android:textSize="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb1"/>
 
                         <RadioButton
                             android:text="@string/rbEjecutivo"
-                            android:textSize="20dp"
+                            android:textSize="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb2"/>
 
                         <RadioButton
                             android:text="@string/rbDieta"
-                            android:textSize="20dp"
+                            android:textSize="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/rb3"/>
