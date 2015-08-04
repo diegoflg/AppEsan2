@@ -26,29 +26,14 @@
         android:layout_gravity="start"
         android:id="@+id/slider_list_with_image">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="150dp"
-                    android:background="@drawable/fondocuadro">
-
-                    <!--  <de.hdodenhof.circleimageview.CircleImageView
-                          android:layout_width="70dp"
-                          android:layout_height="70dp"
-                          android:src="@drawable/mood"
-                          android:layout_marginLeft="16dp"
-                          android:layout_marginTop="38dp"
-                          android:id="@+id/circleView" />
-                          -->
-          </RelativeLayout>
 
 
+        <fragment android:id="@+id/navigation_drawer"
+            android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:name="pe.edu.esan.appesan2.NavigationDrawerFragment"
+            tools:layout="@layout/fragment_navigation_drawer" />
 
-          <fragment android:id="@+id/navigation_drawer"
-              android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
-              android:layout_gravity="start"
-              android:name="pe.edu.esan.appesan2.NavigationDrawerFragment"
-              tools:layout="@layout/fragment_navigation_drawer" />
+    </LinearLayout>
 
-      </LinearLayout>
-
-  </android.support.v4.widget.DrawerLayout>
+</android.support.v4.widget.DrawerLayout>

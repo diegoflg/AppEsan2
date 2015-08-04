@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
@@ -21,6 +22,7 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity2Activity extends ActionBarActivity
@@ -37,11 +39,21 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private CharSequence mTitle;
     public int tipo=1;
+    public int menu=0;
+
+    int data = Datah.getInstance().getData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
+
+        Log.v("datah", String.valueOf(Datah.getInstance().getData()));
+
+
+
+
+
 
         Intent i=getIntent();
         Bundle b=i.getExtras();
@@ -69,6 +81,8 @@ public class MainActivity2Activity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        onNavigationDrawerItemSelected(Datah.getInstance().getData());
     }
 
     @Override
@@ -76,6 +90,7 @@ public class MainActivity2Activity extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment=null;
+        menu=position;
 
         if(tipo==1){
 
@@ -219,7 +234,30 @@ public class MainActivity2Activity extends ActionBarActivity
             }
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            Datah.getInstance().setData(menu);
+
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+
+
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+
+            Datah.getInstance().setData(menu);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+
+
+        }
+    }
 
 
 
