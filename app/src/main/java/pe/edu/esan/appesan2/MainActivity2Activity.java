@@ -71,6 +71,7 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
 
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
