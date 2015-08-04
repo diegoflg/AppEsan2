@@ -62,21 +62,21 @@
     <string name="title_activity_main_activity2"> </string>
 
     <string-array name="sections">
-        <item>nouvelles</item>
-        <item>calendrier</item>
-        <item>Remarques</item>
-        <item>calendrier</item>
-        <item>café restaurant</item>
-        <item>Plans</item>
-        <item>annuaire/Messagerie</item>
-        <item>ateliers</item>
-        <item>bibliothèque</item>
-        <item>Affiches</item>
-        <item>cours FLOT</item>
-        <item>Le paiement de lEtat</item>
-        <item>Conexion Esan</item>
-        <item>Executive Education</item>
-        <item>Gamification</item>
+        <item>"  Nouvelles"</item>
+        <item>"  Calendrier"</item>
+        <item>"  Remarques"</item>
+        <item>"  Calendrier"</item>
+        <item>"  Café restaurant"</item>
+        <item>"  Plans"</item>
+        <item>"  Annuaire /\n  Messagerie"</item>
+        <item>"  Ateliers"</item>
+        <item>"  Bibliothèque"</item>
+        <item>"  Affiches"</item>
+        <item>"  cours FLOT"</item>
+        <item>"  Le paiement de lEtat"</item>
+        <item>"  Conexion Esan"</item>
+        <item>"  Executive\n  Education"</item>
+        <item>"  Gamification"</item>
     </string-array>
 
     <string-array name="sections2">

@@ -63,21 +63,21 @@
     <string name="title_activity_main_activity2"> </string>
 
     <string-array name="sections">
-        <item>Noticias</item>
-        <item>Horario</item>
-        <item>Notas</item>
-        <item>Calendario</item>
-        <item>Cafeteria</item>
-        <item>Mapas</item>
-        <item>Directorio/Mensajería</item>
-        <item>Talleres</item>
-        <item>Biblioteca</item>
-        <item>Impresiones</item>
-        <item>Cursos Mooc</item>
-        <item>Estado de Pagos</item>
-        <item>Conexión Esan</item>
-        <item>Educación Ejecutiva</item>
-        <item>Gamificación</item>
+        <item>"  Noticias"</item>
+        <item>"  Horario"</item>
+        <item>"  Notas"</item>
+        <item>"  Calendario"</item>
+        <item>"  Cafeteria"</item>
+        <item>"  Mapas"</item>
+        <item>"  Directorio /\n  Mensajería"</item>
+        <item>"  Talleres"</item>
+        <item>"  Biblioteca"</item>
+        <item>"  Impresiones"</item>
+        <item>"  Cursos Mooc"</item>
+        <item>"  Estado de Pagos"</item>
+        <item>"  Conexión Esan"</item>
+        <item>"  Educación\n  Ejecutiva"</item>
+        <item>"  Gamificación"</item>
     </string-array>
 
     <string-array name="sections2">
