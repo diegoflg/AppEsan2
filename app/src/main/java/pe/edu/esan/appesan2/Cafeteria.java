@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TabHost;
 import android.widget.TextView;
 import org.json.JSONArray;
@@ -35,6 +36,7 @@ public class Cafeteria extends Fragment {
     RadioButton rb1,rb2,rb3;
     int num=0;
     int diadelasemana=0;
+    RadioGroup rg1,rg2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +56,9 @@ public class Cafeteria extends Fragment {
         rb1 = (RadioButton) v.findViewById(R.id.rb1);
         rb2 = (RadioButton) v.findViewById(R.id.rb2);
         rb3 = (RadioButton) v.findViewById(R.id.rb3);
+
+        rg1 = (RadioGroup) v.findViewById(R.id.rg1);
+        rg2 = (RadioGroup) v.findViewById(R.id.rg2);
 
         mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
         mTabHost.setup();
@@ -90,11 +95,14 @@ public class Cafeteria extends Fragment {
         Log.d("el dia esss",dia);
         diadelasemana=day;
 
-        go(v);
 
+        go(v);
+//economico
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                rg2.clearCheck();
+
                 clearData();
 
                 go(v);
@@ -102,10 +110,12 @@ public class Cafeteria extends Fragment {
                 Log.d("Test", "onClickListener ist gestartet");
             }
         });
-
+//ejeecutio
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                rg1.clearCheck();
+
                 clearData();
 
                 Log.d("Test", "onClickListener ist gestartet");
@@ -114,12 +124,16 @@ public class Cafeteria extends Fragment {
             }
         });
 
-
+//dieta
         rb3.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+
+                rg2.clearCheck();
+
+
                 clearData();
 
                 Log.d("Test", "onClickListener ist gestartet");
