@@ -240,6 +240,7 @@ public class MainActivity2Activity extends ActionBarActivity
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
             int lang=Datah.getInstance().getLang();
+            Datah.getInstance().setData(menu);
 
 
             Intent intent = getIntent();
