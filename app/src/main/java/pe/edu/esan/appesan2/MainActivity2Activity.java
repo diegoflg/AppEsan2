@@ -23,6 +23,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 
 public class MainActivity2Activity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -237,19 +239,97 @@ public class MainActivity2Activity extends ActionBarActivity
         // Checks the orientation of the screen
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
-            Datah.getInstance().setData(menu);
+            int lang=Datah.getInstance().getLang();
+
 
             Intent intent = getIntent();
             finish();
             startActivity(intent);
+
+
+            switch(lang){
+                case 0:
+
+                    Locale locale = new Locale("es");
+                    Locale.setDefault(locale);
+                    Configuration mConfig = new Configuration();
+                    mConfig.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(mConfig,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    break;
+
+                case 1:
+
+                    Locale locale2 = new Locale("en");
+                    Locale.setDefault(locale2);
+                    Configuration mConfig2 = new Configuration();
+                    mConfig2.locale = locale2;
+                    getBaseContext().getResources().updateConfiguration(mConfig2,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    break;
+
+                case 2:
+
+                    Locale locale3 = new Locale("fr");
+                    Locale.setDefault(locale3);
+                    Configuration mConfig3 = new Configuration();
+                    mConfig3.locale = locale3;
+                    getBaseContext().getResources().updateConfiguration(mConfig3,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    break;
+
+            }
+
+
 
 
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
 
             Datah.getInstance().setData(menu);
+            int lang=Datah.getInstance().getLang();
             Intent intent = getIntent();
             finish();
             startActivity(intent);
+
+
+            switch(lang){
+                case 0:
+
+                    Locale locale = new Locale("es");
+                    Locale.setDefault(locale);
+                    Configuration mConfig = new Configuration();
+                    mConfig.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(mConfig,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    break;
+
+                case 1:
+
+                    Locale locale2 = new Locale("en");
+                    Locale.setDefault(locale2);
+                    Configuration mConfig2 = new Configuration();
+                    mConfig2.locale = locale2;
+                    getBaseContext().getResources().updateConfiguration(mConfig2,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    break;
+
+                case 2:
+
+                    Locale locale3 = new Locale("fr");
+                    Locale.setDefault(locale3);
+                    Configuration mConfig3 = new Configuration();
+                    mConfig3.locale = locale3;
+                    getBaseContext().getResources().updateConfiguration(mConfig3,
+                            getBaseContext().getResources().getDisplayMetrics());
+
+                    break;
+
+            }
 
 
         }

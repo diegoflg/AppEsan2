@@ -20,6 +20,8 @@ import java.util.Locale;
 public class MainActivity extends ActionBarActivity {
 
     EditText et1,et2;
+    String langloc=Locale.getDefault().getDisplayLanguage();
+    int langinicial;
 
     int lang=0;
 
@@ -33,11 +35,41 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(langloc.equals("es")){
+            langinicial=0;
+
+        }
+        if(langloc.equals("en")){
+            langinicial=1;
+
+        }
+        if(langloc.equals("fr")){
+            langinicial=2;
+
+        }
+
 
         ArrayList<ItemData> list=new ArrayList<>();
-        list.add(new ItemData("Spanish",R.drawable.es));
-        list.add(new ItemData("english",R.drawable.um));
-        list.add(new ItemData("french",R.drawable.fr));
+        switch(langinicial){
+            case 0:
+                list.add(new ItemData("Español",R.drawable.es));
+                list.add(new ItemData("Ingles",R.drawable.um));
+                list.add(new ItemData("Frances",R.drawable.fr));
+                break;
+            case 1:
+                list.add(new ItemData("Spanish",R.drawable.es));
+                list.add(new ItemData("English",R.drawable.um));
+                list.add(new ItemData("French",R.drawable.fr));
+                break;
+            case 2:
+                list.add(new ItemData("Espagnol",R.drawable.es));
+                list.add(new ItemData("Anglais",R.drawable.um));
+                list.add(new ItemData("Français",R.drawable.fr));
+                break;
+        }
+
+
+
         Spinner sp=(Spinner)findViewById(R.id.spinner);
         SpinnerAdapter adapter=new SpinnerAdapter(this,
                 R.layout.spinerlayout,R.id.txt,list);
@@ -381,6 +413,8 @@ public class MainActivity extends ActionBarActivity {
 
                     Intent i = new Intent(this,MainActivity2Activity.class);
                     i.putExtras(b);
+
+                    Datah.getInstance().setLang(lang);
 
 
 

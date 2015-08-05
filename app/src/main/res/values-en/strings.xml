@@ -8,6 +8,7 @@
     <string name="hintPassword">. Password</string>
     <string name="btAcceder">Login</string>
 
+
     <!-- LAY_CAFETERÍA.XML -->
     <string name="rbEconomico">Economic</string>
     <string name="rbEjecutivo">Executive</string>
