@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
 
     EditText et1,et2;
     String langloc=Locale.getDefault().getDisplayLanguage();
-    int langinicial;
+    int langinicial=0;
 
     int lang=0;
 
@@ -35,15 +35,17 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(langloc.equals("es")){
+        Log.v("lang", langloc);
+
+        if(langloc.equals("español")){
             langinicial=0;
 
         }
-        if(langloc.equals("en")){
+        if(langloc.equals("English")){
             langinicial=1;
 
         }
-        if(langloc.equals("fr")){
+        if(langloc.equals("français")){
             langinicial=2;
 
         }
