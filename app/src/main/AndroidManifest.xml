@@ -28,7 +28,9 @@
         <activity
             android:name=".MainActivity2Activity"
             android:label="@string/title_activity_main_activity2"
-            android:configChanges="orientation|screenSize|keyboardHidden">
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
+
         </activity>
 
         <meta-data

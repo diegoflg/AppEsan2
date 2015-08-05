@@ -27,7 +27,7 @@ public class Horario extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
 
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());
