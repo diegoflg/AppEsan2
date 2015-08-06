@@ -22,7 +22,7 @@ public class Gamificacion extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewGames);
-        myWebView.loadUrl("https://www.google.com.pe/");
+        myWebView.loadUrl("https://forio.com/simulate/mit/fishbanks-spanish/simulation/");
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
