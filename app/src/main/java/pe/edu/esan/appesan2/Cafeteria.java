@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -38,11 +39,15 @@ public class Cafeteria extends Fragment {
     int diadelasemana=0;
     RadioGroup rg1,rg2;
 
+    ProgressDialog pb;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
+
 
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
@@ -101,6 +106,11 @@ public class Cafeteria extends Fragment {
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pb = new ProgressDialog(v.getContext());
+                pb.setTitle("Cargando");
+                pb.setMessage("Please Wait....");
+                pb.setCancelable(false);
+                pb.show();
                 rg2.clearCheck();
 
                 clearData();
@@ -114,6 +124,11 @@ public class Cafeteria extends Fragment {
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pb = new ProgressDialog(v.getContext());
+                pb.setTitle("Cargando");
+                pb.setMessage("Please Wait....");
+                pb.setCancelable(false);
+                pb.show();
                 rg1.clearCheck();
 
                 clearData();
@@ -130,6 +145,11 @@ public class Cafeteria extends Fragment {
             @Override
             public void onClick(View v)
             {
+                pb = new ProgressDialog(v.getContext());
+                pb.setTitle("Cargando");
+                pb.setMessage("Please Wait....");
+                pb.setCancelable(false);
+                pb.show();
 
                 rg2.clearCheck();
 
@@ -145,6 +165,11 @@ public class Cafeteria extends Fragment {
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
+                pb = new ProgressDialog(v.getContext());
+                pb.setTitle("Cargando");
+                pb.setMessage("Please Wait....");
+                pb.setCancelable(false);
+                pb.show();
                 clearData();
 
                 go(v);
@@ -232,6 +257,8 @@ public class Cafeteria extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        pb.dismiss();
     }
 
 
