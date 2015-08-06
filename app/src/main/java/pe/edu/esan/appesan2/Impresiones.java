@@ -1,8 +1,10 @@
 package pe.edu.esan.appesan2;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,6 +52,8 @@ public class Impresiones extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         View rootView = inflater.inflate(R.layout.lay_impresiones, container, false);
+
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewI);
         myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm");
@@ -117,12 +121,21 @@ public class Impresiones extends Fragment {
         });
 
         myWebView.setWebViewClient(new WebViewClient() {
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon){
+                dialog.show();
+            }
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
             };
+
             //http://stackoverflow.com/questions/16055800/how-to-enter-password-automatically-in-webview
             public void onPageFinished(WebView view, String url) {
+                dialog.dismiss();
                 view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '14100015'");
                 view.loadUrl("javascript:document.getElementsByName('Password')[0].value = 'N7N2U2F7'");
                 view.loadUrl("javascript:document.forms['loginform'].submit()");
