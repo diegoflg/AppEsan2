@@ -11,6 +11,15 @@
     <string name="hintPassword">. Contraseña</string>
     <string name="btAcceder">Acceder</string>
 
+    <!-- DIRECTORIO.XML -->
+    <string name="d1">Central telefonica</string>
+    <string name="d2">Admisión y Registro de Pregrado</string>
+    <string name="d3">Finanzas</string>
+    <string name="d4">Dimensión Internacional</string>
+    <string name="d5">Coordinación Académica de PAC</string>
+    <string name="d6">Servicios y Registros Académicos de Pregrado</string>
+    <string name="d7">Bienestar Estudiantil</string>
+
     <!-- LAY_CAFETERÍA.XML -->
     <string name="rbEconomico">Económico</string>
     <string name="rbEjecutivo">Ejecutivo</string>
@@ -41,6 +50,7 @@
     <!-- LAY_POPUP.XML -->
     <string name="tvPoptv2">Esto es un simple Popup</string>
     <string name="btCerrar">Cerrar</string>
+    <string name="btLlamar">Llamar</string>
 
 
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->

@@ -8,6 +8,15 @@
     <string name="hintPassword">. Password</string>
     <string name="btAcceder">Login</string>
 
+    <!-- DIRECTORIO.XML -->
+    <string name="d1">Switchboard</string>
+    <string name="d2">Undergraduate Admission and Registration</string>
+    <string name="d3">Finances</string>
+    <string name="d4">International dimension</string>
+    <string name="d5">Academic Coordination of PAC</string>
+    <string name="d6">Services and Undergraduate Academic Records</string>
+    <string name="d7">Student Welfare</string>
+
 
     <!-- LAY_CAFETERÍA.XML -->
     <string name="rbEconomico">Economic</string>
@@ -39,6 +48,7 @@
     <!-- LAY_POPUP.XML -->
     <string name="tvPoptv2">This is a simple Popup</string>
     <string name="btCerrar">Close</string>
+    <string name="btLlamar">Call</string>
 
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
 
