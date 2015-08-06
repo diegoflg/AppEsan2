@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 /**
  * Created by educacionadistancia on 13/07/2015.
@@ -56,26 +55,22 @@ public class Calendario extends Fragment{
         });
 
         myWebView.setWebViewClient(new WebViewClient() {
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon){
+            dialog.show();
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url){
+            dialog.dismiss();
+        }
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             return false;
-        }}
-        );
-        myWebView.setWebViewClient(new WebViewClient() {
-
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon){
-                dialog.show();
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url){
-                dialog.dismiss();
-            }
-
-
+        }
         });
 
         return c;

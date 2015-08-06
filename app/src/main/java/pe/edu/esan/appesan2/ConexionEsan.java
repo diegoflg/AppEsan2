@@ -1,5 +1,7 @@
 package pe.edu.esan.appesan2;
 
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -15,6 +17,8 @@ import android.webkit.WebViewClient;
 public class ConexionEsan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View CE = inflater.inflate(R.layout.lay_conexionesan, container, false);
+
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         WebView ceWB = (WebView) CE.findViewById(R.id.webviewCE);
         ceWB.loadUrl("http://www.esan.edu.pe/conexion/");
@@ -41,6 +45,18 @@ public class ConexionEsan extends Fragment {
             }
         });
         ceWB.setWebViewClient(new WebViewClient() {
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon){
+            dialog.show();
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url){
+            dialog.dismiss();
+        }
+
          @Override
          public boolean shouldOverrideUrlLoading(WebView view, String url) {
              return false;
