@@ -108,9 +108,7 @@ public class Directorio extends Fragment {
         tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
         tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
 
-        String[] values = new String[]{"Central telefonica","Admisión y Registro de Pregrado", "Finanzas",
-                "Dimensión Internacional", "Coordinación Académica de PAC","Servicios y Registros Académicos de Pregrado",
-                "Bienestar Estudiantil"};
+        String[] values = new String[]{getString(R.string.d1),getString(R.string.d2),getString(R.string.d3),getString(R.string.d4),getString(R.string.d5),getString(R.string.d6),getString(R.string.d7)};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         listViewSearch.setAdapter(adapter);
         listViewSearch.setTextFilterEnabled(false);
@@ -177,26 +175,26 @@ public class Directorio extends Fragment {
 
         switch(opc){
             case 0:
-                tv1.setText("Central telefonica");
-                tv2.setText("Central Telefónica: 712 7200 \n" +
+                tv1.setText(getString(R.string.d1));
+                tv2.setText(getString(R.string.d1)+": 712 7200 \n" +
                         "Fax: 345 1328");
                 break;
 
             case 1:
-                tv1.setText("Admisión y Registro de Pregrado");
+                tv1.setText(getString(R.string.d2));
                 tv2.setText("Linea directa: 712 7205 \n" +
                         "Anexo central: 4500");
                 break;
 
             case 2:
-                tv1.setText("Finanzas");
-                tv2.setText("Central telefónica 712-7200\n" +
+                tv1.setText(getString(R.string.d3));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                         "Anexos.: 4331/4329");
                 break;
 
             case 3:
-                tv1.setText("Dimensión Internacional");
-                tv2.setText("Central telefónica 712-7200\n" +
+                tv1.setText(getString(R.string.d4));
+                tv2.setText(getString(R.string.d1)+":712-7200\n" +
                         "Mylene Sandoval\n" +
                         "Anx.: 2257\n" +
                         "Sonia Ponte\n" +
@@ -204,20 +202,20 @@ public class Directorio extends Fragment {
                 break;
 
             case 4:
-                tv1.setText("Coordinación Académica de PAC");
-                tv2.setText("Central telefónica 712-7200\n" +
+                tv1.setText(getString(R.string.d5));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                         "William Rojas\n" +
                         "Anx.: 4188");
                 break;
 
             case 5:
-                tv1.setText("Servicios");
+                tv1.setText(getString(R.string.d6));
                 tv2.setText("Anexo central.: 4545");
                 break;
 
             case 6:
-                tv1.setText("Bienestar Estudiantil ");
-                tv2.setText("Central telefónica 712-7200\n" +
+                tv1.setText(getString(R.string.d7));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                         "Paola Pacheco\n" +
                         "Anx.: 2425");
                 break;
