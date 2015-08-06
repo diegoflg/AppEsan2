@@ -24,8 +24,8 @@ public class Calendario extends Fragment{
             View c = inflater.inflate(R.layout.lay_talleres, container, false);
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
-        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Loading...Please wait", true);
 
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         myWebView = (WebView) c.findViewById(R.id.webview);
         myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");
