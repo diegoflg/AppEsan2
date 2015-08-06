@@ -9,7 +9,7 @@
     <!-- ACTIVITY_MAIN.XML -->
     <string name="hintUsuario">. utilisateur</string>
     <string name="hintPassword">. mot de passe</string>
-    <string name="btAcceder">se connecter</string>
+    <string name="btAcceder">Accéder</string>
 
     <!-- LAY_CAFETERÍA.XML -->
     <string name="rbEconomico">économique</string>
@@ -21,12 +21,12 @@
     <string name="btPae">PAE</string>
     <string name="btPee">PEE</string>
     <string name="btPeed">PEE DROIT</string>
-    <string name="btDiplomas">DIPLÔME</string>
+    <string name="btDiplomas">DIPLÔMES</string>
     <string name="btIdiomas">LANGUAGES</string>
     <string name="btGestion">GESTION PUBLIQUE</string>
 
     <!-- LAY_HORARIO.XML -->
-    <string name="tvHorario">PROGRAMME</string>
+    <string name="tvHorario">HORAIRE</string>
 
     <!-- LAY_MOOC.XML -->
     <string name="tvCursosMooc">cours FLOT</string>
@@ -48,8 +48,8 @@
     <string name="action_settings">Se déconnecter</string>
     <string name="title_activity_prueba_tabbed">PruebaTabbed</string>
 
-    <string name="title_section1">nouvelles</string>
-    <string name="title_section2">programme</string>
+    <string name="title_section1">Nouvelles</string>
+    <string name="title_section2">Horaire</string>
     <string name="title_section3">Remarques</string>
     <string name="title_section4">calendrier</string>
     <string name="title_activity_activity_main_2">activity_main_2</string>

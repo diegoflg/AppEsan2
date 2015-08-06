@@ -86,9 +86,7 @@ public class MainActivity extends ActionBarActivity {
                                        int arg2, long arg3) {
                 int index = arg0.getSelectedItemPosition();
                 lang=index;
-                Toast.makeText(getBaseContext(),
-                        "You have selected item : " + index,
-                        Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -294,8 +292,8 @@ public class MainActivity extends ActionBarActivity {
         Cursor j = bdP.rawQuery("SELECT usuario,concepto,monto,vencimiento FROM Pagos", null);
 
         if(j.moveToFirst())
-        {   Toast t = Toast.makeText(this, "hay datos pagos", Toast.LENGTH_SHORT);
-            t.show();
+        {   //Toast t = Toast.makeText(this, "hay datos pagos", Toast.LENGTH_SHORT);
+            //t.show();
 
         }else{
 
@@ -354,8 +352,6 @@ public class MainActivity extends ActionBarActivity {
             bdP.insert("Pagos", null, p4);
 
 
-            Toast t = Toast.makeText(this, "Se grabaron los datos de pagos", Toast.LENGTH_SHORT);
-            t.show();
 
 
 
@@ -378,13 +374,13 @@ public class MainActivity extends ActionBarActivity {
         us=et1.getText().toString();
         pass=et2.getText().toString();
 
-        Log.v("us", us);
-        Log.v("pass", pass);
 
         AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
         SQLiteDatabase bd=admin.getWritableDatabase();
 
-        String mensaje="usuario o password invalida";
+        String mensaje="Usuario o password invalida";
+        String mensaje2="Incorrect user or password";
+        String mensaje3="Mot de passe ou utilisateur incorrect";
         int tipo=1;
         Bundle b=new Bundle();
 
@@ -402,7 +398,7 @@ public class MainActivity extends ActionBarActivity {
 
                 if(us.equals(usuario) && pass.equals(password)){
 
-                    mensaje="usuario y password correctos";
+                    mensaje="correcto";
 
                     if(us.equals("alumno")){
                         tipo=1;
@@ -473,8 +469,48 @@ public class MainActivity extends ActionBarActivity {
                 todo=todo+usuario+" " +password+" " + "\n";
             }while(c.moveToNext());
 
-            Toast t=Toast.makeText(this,mensaje, Toast.LENGTH_SHORT);
-            t.show();
+
+            if(mensaje.equals("correcto")){
+
+            }else{
+
+                switch(lang){
+                    case 0:
+                        Toast t=Toast.makeText(this,mensaje, Toast.LENGTH_SHORT);
+                        t.show();
+
+
+
+                        break;
+
+                    case 1:
+                        Toast y=Toast.makeText(this,mensaje2, Toast.LENGTH_SHORT);
+                        y.show();
+
+
+
+                        break;
+
+                    case 2:
+                        Toast u=Toast.makeText(this,mensaje3, Toast.LENGTH_SHORT);
+                        u.show();
+
+
+
+                        break;
+
+                }
+
+
+
+
+
+
+
+
+            }
+
+
 
 
         }
