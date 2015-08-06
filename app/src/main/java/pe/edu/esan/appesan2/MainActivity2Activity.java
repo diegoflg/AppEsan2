@@ -152,9 +152,6 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 2:
                     fragment= new Cafeteria();
                     break;
-                case 3:
-                    fragment= new IngresoCafeteria();
-                    break;
             }
         }
 

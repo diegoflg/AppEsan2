@@ -85,7 +85,6 @@
         <item>Noticias</item>
         <item>Calendario</item>
         <item>Cafeteria</item>
-        <item>Ingreso Cafeteria</item>
 
     </string-array>
 
@@ -111,7 +110,6 @@
         <item>Section T1</item>
         <item>Section T2</item>
         <item>Section T3</item>
-        <item>Section T4</item>
     </string-array>
 
     <string-array name="sections_icons">
@@ -135,9 +133,8 @@
 
     <string-array name="sections_icons2">
         <item name="android:icon">@drawable/noticias</item>
-        <item name="android:icon">@drawable/horario</item>
-        <item name="android:icon">@drawable/notas</item>
         <item name="android:icon">@drawable/calendario</item>
+        <item name="android:icon">@drawable/cafeteria</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
