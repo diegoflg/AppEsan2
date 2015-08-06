@@ -73,26 +73,28 @@ public class Directorio extends Fragment {
         });
 
         wbD.setWebViewClient(new WebViewClient() {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            return false;
-        }
-        public void onPageFinished(WebView view, String url) {
-            //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
-            view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
-                    "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
-            view.loadUrl("javascript:document.forms[0].login();");
-        }}
+                                 @Override
+                                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                     return false;
+                                 }
+
+                                 public void onPageFinished(WebView view, String url) {
+                                     //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
+                                     view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
+                                             "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
+                                     view.loadUrl("javascript:document.forms[0].login();");
+                                 }
+                             }
         );
 
         TabHost.TabSpec spec = tbDM.newTabSpec("Tab 1");
         spec.setContent(R.id.Directorio);
-        spec.setIndicator("Directorio");
+        spec.setIndicator(getString(R.string.d8));
         tbDM.addTab(spec);
 
         spec = tbDM.newTabSpec("Tab 2");
         spec.setContent(R.id.Mensajería);
-        spec.setIndicator("Mensajería");
+        spec.setIndicator(getString(R.string.d9));
         tbDM.addTab(spec);
 
         tbDM.setCurrentTab(0);
