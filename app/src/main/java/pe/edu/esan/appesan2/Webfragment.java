@@ -1,5 +1,7 @@
 package pe.edu.esan.appesan2;
 
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +20,9 @@ public class Webfragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.webfragment, container, false);
+
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
         Bundle bundle = this.getArguments();
         String link = bundle.getString("url");
 
@@ -98,6 +103,17 @@ public class Webfragment extends Fragment {
             }});
 
         wb.setWebViewClient(new WebViewClient() {
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon){
+                dialog.show();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url){
+                dialog.dismiss();
+            }
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             return false;
