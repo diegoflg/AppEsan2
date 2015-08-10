@@ -20,7 +20,6 @@ public class ConexionEsan extends Fragment {
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-
         WebView ceWB = (WebView) CE.findViewById(R.id.webviewCE);
         ceWB.loadUrl("http://www.esan.edu.pe/conexion/");
         ceWB.getSettings().setUseWideViewPort(true);
