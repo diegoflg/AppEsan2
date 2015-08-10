@@ -16,6 +16,7 @@ import android.webkit.WebViewClient;
  * Created by educacionadistancia on 20/07/2015.
  */
 public class Biblioteca extends Fragment {
+    WebView myWebView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_biblioteca, container, false);
@@ -23,7 +24,7 @@ public class Biblioteca extends Fragment {
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-        WebView myWebView = (WebView) rootView.findViewById(R.id.webviewB);
+        myWebView = (WebView) rootView.findViewById(R.id.webviewB);
         myWebView.loadUrl("http://catalogo.esan.edu.pe/F?RN=73646055");
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setUseWideViewPort(true);
@@ -55,6 +56,10 @@ public class Biblioteca extends Fragment {
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
+            if(myWebView.getUrl() != myWebView.getOriginalUrl()){
+                myWebView.getSettings().setSupportZoom(true);
+                myWebView.setInitialScale(70);
+            }
             dialog.show();
         }
 

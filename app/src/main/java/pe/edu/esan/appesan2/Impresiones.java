@@ -27,6 +27,7 @@ import java.io.File;
 public class Impresiones extends Fragment {
     private static final int REQUEST_CHOOSER = 1234;
     private ValueCallback<Uri> mUploadMessage;
+    WebView myWebView;
 
     //Librería importada como proyecto en módulo
     //https://github.com/iPaulPro/aFileChooser
@@ -55,7 +56,7 @@ public class Impresiones extends Fragment {
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-        WebView myWebView = (WebView) rootView.findViewById(R.id.webviewI);
+        myWebView = (WebView) rootView.findViewById(R.id.webviewI);
         myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm");
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setUseWideViewPort(true);
@@ -125,6 +126,10 @@ public class Impresiones extends Fragment {
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon){
+                if(myWebView.getUrl() != myWebView.getOriginalUrl()){
+                    myWebView.getSettings().setSupportZoom(true);
+                    myWebView.setInitialScale(70);
+                }
                 dialog.show();
             }
 
