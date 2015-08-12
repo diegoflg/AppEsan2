@@ -88,6 +88,7 @@
         <item>"  Le paiement de lEtat"</item>
         <item>"  Conexion Esan"</item>
         <item>"  Executive\n  Education"</item>
+        <item>"  FABLAB"</item>
 
     </string-array>
 
@@ -112,6 +113,7 @@
         <item>Section T11</item>
         <item>Section T12</item>
         <item>Section T14</item>
+        <item>Section T15</item>
 
     </string-array>
 
@@ -136,6 +138,7 @@
         <item name="android:icon">@drawable/estadodepago</item>
         <item name="android:icon">@drawable/conexionesan</item>
         <item name="android:icon">@drawable/educacionejecutiva</item>
+        <item name="android:icon">@drawable/fab</item>
 
     </string-array>
 
