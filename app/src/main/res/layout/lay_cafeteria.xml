@@ -32,48 +32,85 @@
                 <RelativeLayout
                     android:id="@+id/LaRuta"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <RadioGroup
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rg1"
-                        android:orientation="horizontal"
-                        android:layout_centerHorizontal="true">
-
-                        <RadioButton
-                            android:text="@string/rbEconomico"
-                            android:textSize="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/rb1"/>
+                        android:text="Menus"
+                        android:id="@+id/tvcaf1"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/ec"
+                        android:layout_alignEnd="@+id/ec"
+                        android:layout_marginRight="28dp"
+                        android:layout_marginEnd="28dp" />
 
 
 
-                        <RadioButton
-                            android:text="@string/rbDieta"
-                            android:textSize="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/rb3"/>
-                    </RadioGroup>
-
-                    <RadioGroup
+                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rg1"
-                        android:layout_centerHorizontal="true"
-                        android:id="@+id/rg2">
-
-                    <RadioButton
-                        android:text="@string/rbEjecutivo"
-                        android:textSize="15dp"
+                        android:text="Economico"
+                        android:id="@+id/ec"
+                        android:layout_below="@+id/tvcaf1"
+                         />
+                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rb2"
-                        />
-                    </RadioGroup>
+                        android:text="Ejecutivo"
+                        android:id="@+id/ej"
+                        android:layout_below="@id/ec"
+                        android:layout_alignRight="@+id/ec"
+                        android:layout_alignEnd="@+id/ec"
+                        android:layout_alignLeft="@+id/ec"
+                        android:layout_alignStart="@+id/ec" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dieta"
+                        android:id="@+id/di"
+                        android:layout_below="@+id/ej"
+                        android:layout_alignRight="@+id/ej"
+                        android:layout_alignEnd="@+id/ej"
+                        android:layout_alignLeft="@+id/ej"
+                        android:layout_alignStart="@+id/ej" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Precio"
+                        android:id="@+id/precio"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8.5"
+                        android:id="@+id/precio1"
+                        android:layout_alignBaseline="@+id/ec"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8.5"
+                        android:id="@+id/precio2"
+                        android:layout_alignBaseline="@+id/ej"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8.5"
+                        android:id="@+id/precio3"
+                        android:layout_alignBaseline="@+id/di"
+                        android:layout_centerHorizontal="true" />
+
+
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -81,6 +118,72 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Menus"
+                        android:id="@+id/tvcaf2"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/ec2"
+                        android:layout_alignEnd="@+id/ec2"
+                        android:layout_marginRight="28dp"
+                        android:layout_marginEnd="28dp" />
+
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Economico"
+                        android:id="@+id/ec2"
+                        android:layout_below="@+id/tvcaf2"/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Especial"
+                        android:id="@+id/es"
+                        android:layout_below="@id/ec2"
+                        android:layout_alignRight="@+id/ec2"
+                        android:layout_alignEnd="@+id/ec2"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Precio"
+                        android:id="@+id/textViewd"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8.5"
+                        android:id="@+id/preciod1"
+                        android:layout_alignBaseline="@+id/ec2"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8.5"
+                        android:id="@+id/preciod2"
+                        android:layout_alignBaseline="@+id/es"
+                        android:layout_centerHorizontal="true" />
+
+
+
+
+
+
                 </RelativeLayout>
             </FrameLayout>
         </LinearLayout>
@@ -90,10 +193,13 @@
         android:background="@drawable/hoja"
         android:id="@+id/listview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tabHost2"
-        android:layout_margin="15dp"
-        />
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@+id/tabHost2" />
+
+
 </RelativeLayout>
 
 

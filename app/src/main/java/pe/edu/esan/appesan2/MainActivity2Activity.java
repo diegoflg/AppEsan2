@@ -229,8 +229,13 @@ public class MainActivity2Activity extends ActionBarActivity
 
     @Override
     public void onBackPressed() {
-        // do nothing. We want to force user to stay in this activity and not drop out.
+        if (menu==4){
+            //user defined onBackPressed method. Not of Fragment.
+            Cafeteria.onBackPressed();
+    }else{
+
     }
+}
 
 
 

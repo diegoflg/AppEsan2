@@ -8,16 +8,23 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,12 +39,28 @@ public class Cafeteria extends Fragment {
     private static final String DEBUG_TAG = "HttpExample";
     ArrayList<Team> teams = new ArrayList<Team>();
 
-    ListView listview;
+
+    RelativeLayout lay1;
+
+    static ListView listview;
     TabHost mTabHost;
-    RadioButton rb1,rb2,rb3;
+    static Button bc1;
+    static Button bc2;
+    static Button bc3;
+    static Button bc4;
+    static Button bc5;
     int num=0;
     int diadelasemana=0;
-    RadioGroup rg1,rg2;
+    static TextView tv1;
+    static TextView tv2;
+    static TextView tv3;
+    static TextView tv4;
+    static TextView tv5;
+    static TextView tv6;
+    static TextView tv7;
+    static TextView tv8;
+    static TextView tv9;
+
 
 
 
@@ -46,6 +69,24 @@ public class Cafeteria extends Fragment {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
+        lay1=(RelativeLayout)v.findViewById(R.id.LaRuta);
+
+        bc1=(Button)v.findViewById(R.id.ec);
+        bc2=(Button)v.findViewById(R.id.ej);
+        bc3=(Button)v.findViewById(R.id.di);
+        bc4=(Button)v.findViewById(R.id.ec2);
+        bc5=(Button)v.findViewById(R.id.es);
+        tv1=(TextView)v.findViewById(R.id.tvcaf1);
+        tv2=(TextView)v.findViewById(R.id.precio);
+        tv3=(TextView)v.findViewById(R.id.precio1);
+        tv4=(TextView)v.findViewById(R.id.precio2);
+        tv5=(TextView)v.findViewById(R.id.precio3);
+
+        tv6=(TextView)v.findViewById(R.id.tvcaf2);
+        tv7=(TextView)v.findViewById(R.id.textViewd);
+        tv8=(TextView)v.findViewById(R.id.preciod1);
+        tv9=(TextView)v.findViewById(R.id.preciod2);
 
 
 
@@ -57,13 +98,9 @@ public class Cafeteria extends Fragment {
         int y = (int)Math.round(width);
 
         listview.setPadding(y,0,0,0);
+        listview.setVisibility(View.INVISIBLE);
 
-        rb1 = (RadioButton) v.findViewById(R.id.rb1);
-        rb2 = (RadioButton) v.findViewById(R.id.rb2);
-        rb3 = (RadioButton) v.findViewById(R.id.rb3);
 
-        rg1 = (RadioGroup) v.findViewById(R.id.rg1);
-        rg2 = (RadioGroup) v.findViewById(R.id.rg2);
 
         mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
         mTabHost.setup();
@@ -97,88 +134,199 @@ public class Cafeteria extends Fragment {
 
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         String dia=String.valueOf(day);
-        Log.d("el dia esss",dia);
+        Log.d("el dia esss", dia);
         diadelasemana=day;
-
-
-        go(v);
-//economico
-        rb1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                rg2.clearCheck();
-
-                clearData();
-
-                go(v);
-
-                Log.d("Test", "onClickListener ist gestartet");
-            }
-        });
-//ejeecutio
-        rb2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                rg1.clearCheck();
-
-                clearData();
-
-                Log.d("Test", "onClickListener ist gestartet");
-
-                go(v);
-            }
-        });
-
-//dieta
-        rb3.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-
-                rg2.clearCheck();
-
-
-                clearData();
-
-                Log.d("Test", "onClickListener ist gestartet");
-
-                go(v);
-            }
-        });
 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
 
+                bc1.setVisibility(View.VISIBLE);
+                bc2.setVisibility(View.VISIBLE);
+                bc3.setVisibility(View.VISIBLE);
+                bc5.setVisibility(View.VISIBLE);
+                bc4.setVisibility(View.VISIBLE);
+                listview.setVisibility(View.GONE);
+                tv1.setVisibility(View.VISIBLE);
+                tv2.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                tv4.setVisibility(View.VISIBLE);
+                tv5.setVisibility(View.VISIBLE);
+                tv6.setVisibility(View.VISIBLE);
+                tv7.setVisibility(View.VISIBLE);
+                tv8.setVisibility(View.VISIBLE);
+                tv9.setVisibility(View.VISIBLE);
+
+
                 clearData();
 
-                go(v);
             }
         });
+
+//economico
+        bc1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                bc1.setVisibility(View.GONE);
+                bc2.setVisibility(View.GONE);
+                bc3.setVisibility(View.GONE);
+                listview.setVisibility(View.VISIBLE);
+                tv1.setVisibility(View.GONE);
+                tv2.setVisibility(View.GONE);
+                tv3.setVisibility(View.GONE);
+                tv4.setVisibility(View.GONE);
+                tv5.setVisibility(View.GONE);
+
+
+
+
+
+
+                clearData();
+
+                go(v, 1);
+
+                Log.d("Test", "onClickListener ist gestartet");
+            }
+        });
+//ejeecutio
+        bc2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                bc1.setVisibility(View.GONE);
+                bc2.setVisibility(View.GONE);
+                bc3.setVisibility(View.GONE);
+                listview.setVisibility(View.VISIBLE);
+                tv1.setVisibility(View.GONE);
+                tv2.setVisibility(View.GONE);
+                tv3.setVisibility(View.GONE);
+                tv4.setVisibility(View.GONE);
+                tv5.setVisibility(View.GONE);
+
+
+
+                clearData();
+
+                Log.d("Test", "onClickListener ist gestartet");
+
+                go(v,2);
+            }
+        });
+
+//dieta
+        bc3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                bc1.setVisibility(View.GONE);
+                bc2.setVisibility(View.GONE);
+                bc3.setVisibility(View.GONE);
+                listview.setVisibility(View.VISIBLE);
+                tv1.setVisibility(View.GONE);
+                tv2.setVisibility(View.GONE);
+                tv3.setVisibility(View.GONE);
+                tv4.setVisibility(View.GONE);
+                tv5.setVisibility(View.GONE);
+
+
+
+                clearData();
+
+                Log.d("Test", "onClickListener ist gestartet");
+
+                go(v,3);
+            }
+        });
+
+        bc4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                bc4.setVisibility(View.GONE);
+                bc5.setVisibility(View.GONE);
+                listview.setVisibility(View.VISIBLE);
+                tv6.setVisibility(View.GONE);
+                tv7.setVisibility(View.GONE);
+                tv8.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
+
+
+
+
+                clearData();
+
+                Log.d("Test", "onClickListener ist gestartet");
+
+                go(v,4);
+            }
+        });
+
+
+        bc5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clearData();
+
+                Log.d("Test", "onClickListener ist gestartet");
+
+                go(v,5);
+            }
+        });
+
 
         return v;
     }
 
-    public void go(View view) {
+
+    public static void onBackPressed() {
+        Log.d("back", "funconooo");
+
+        bc1.setVisibility(View.VISIBLE);
+        bc2.setVisibility(View.VISIBLE);
+        bc3.setVisibility(View.VISIBLE);
+        bc5.setVisibility(View.VISIBLE);
+        bc4.setVisibility(View.VISIBLE);
+        listview.setVisibility(View.GONE);
+        tv1.setVisibility(View.VISIBLE);
+        tv2.setVisibility(View.VISIBLE);
+        tv3.setVisibility(View.VISIBLE);
+        tv4.setVisibility(View.VISIBLE);
+        tv5.setVisibility(View.VISIBLE);
+        tv6.setVisibility(View.VISIBLE);
+        tv7.setVisibility(View.VISIBLE);
+        tv8.setVisibility(View.VISIBLE);
+        tv9.setVisibility(View.VISIBLE);
+
+
+
+    }
+
+
+
+
+
+
+    public void go(View view, final int num) {
         new DownloadWebpageTask(new AsyncResult() {
             @Override
             public void onResult(JSONObject object) {
-                processJson(object);
+                processJson(object,num);
             }
         }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms");
     }
 
 
-    private void processJson(JSONObject object) {
+    private void processJson(JSONObject object,int num2) {
+        int numf=num2;
 
         try {
             JSONArray columns = object.getJSONArray("rows");
 
-            if (mTabHost.getCurrentTab()==1){
+            if (num2==4){
                 Log.d("Test", "taaaaaaaaab");
 
                 for (int r = 1; r < 8; ++r) {
@@ -192,9 +340,9 @@ public class Cafeteria extends Fragment {
                 }
             }
 
-            if (mTabHost.getCurrentTab()==0){
 
-                if(rb1.isChecked()){
+
+                if(num2==1){
 
                     for (int r = 10; r < 18; ++r) {
                         JSONObject column = columns.getJSONObject(r);
@@ -207,7 +355,7 @@ public class Cafeteria extends Fragment {
                     }
                 }
 
-                if(rb2.isChecked()){
+                if(num2==2){
 
                     for (int r = 19; r < 25; ++r) {
                         JSONObject column = columns.getJSONObject(r);
@@ -220,7 +368,7 @@ public class Cafeteria extends Fragment {
                     }
                 }
 
-                if(rb3.isChecked()){
+                if(num2==3){
 
 
                     for (int r = 26; r < 32; ++r) {
@@ -233,7 +381,7 @@ public class Cafeteria extends Fragment {
                         teams.add(team);
                     }
                 }
-            }
+
 
             final TeamsAdapter adapter = new TeamsAdapter(getActivity(), R.layout.team, teams);
             listview.setAdapter(adapter);
@@ -365,6 +513,9 @@ public class Cafeteria extends Fragment {
 
         teams.clear();
     }
+
+
+
 
 
 
