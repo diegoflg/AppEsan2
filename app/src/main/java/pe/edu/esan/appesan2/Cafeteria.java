@@ -37,7 +37,10 @@ import java.util.Calendar;
 public class Cafeteria extends Fragment {
 
     private static final String DEBUG_TAG = "HttpExample";
-    ArrayList<Team> teams = new ArrayList<Team>();
+    ArrayList<Team> teams1 = new ArrayList<Team>();
+    ArrayList<Team> teams2 = new ArrayList<Team>();
+    ArrayList<Team> teams3 = new ArrayList<Team>();
+    ArrayList<Team> teams4 = new ArrayList<Team>();
 
 
     RelativeLayout lay1;
@@ -60,6 +63,10 @@ public class Cafeteria extends Fragment {
     static TextView tv7;
     static TextView tv8;
     static TextView tv9;
+
+    TeamsAdapter adapter1,adapter2,adapter3,adapter4;
+
+    Team team1,team2,team3,team4;
 
 
 
@@ -137,6 +144,8 @@ public class Cafeteria extends Fragment {
         Log.d("el dia esss", dia);
         diadelasemana=day;
 
+        go(v);
+
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -158,7 +167,6 @@ public class Cafeteria extends Fragment {
                 tv9.setVisibility(View.VISIBLE);
 
 
-                clearData();
 
             }
         });
@@ -183,9 +191,8 @@ public class Cafeteria extends Fragment {
 
 
 
-                clearData();
 
-                go(v, 1);
+                listar(1);
 
                 Log.d("Test", "onClickListener ist gestartet");
             }
@@ -206,12 +213,9 @@ public class Cafeteria extends Fragment {
                 tv5.setVisibility(View.GONE);
 
 
-
-                clearData();
-
                 Log.d("Test", "onClickListener ist gestartet");
 
-                go(v,2);
+                listar(2);
             }
         });
 
@@ -233,11 +237,9 @@ public class Cafeteria extends Fragment {
 
 
 
-                clearData();
-
                 Log.d("Test", "onClickListener ist gestartet");
 
-                go(v,3);
+                listar(3);
             }
         });
 
@@ -256,11 +258,9 @@ public class Cafeteria extends Fragment {
 
 
 
-                clearData();
-
                 Log.d("Test", "onClickListener ist gestartet");
 
-                go(v,4);
+                listar(4);
             }
         });
 
@@ -269,11 +269,11 @@ public class Cafeteria extends Fragment {
             @Override
             public void onClick(View v) {
 
-                clearData();
+
 
                 Log.d("Test", "onClickListener ist gestartet");
 
-                go(v,5);
+
             }
         });
 
@@ -306,27 +306,54 @@ public class Cafeteria extends Fragment {
     }
 
 
+    public void listar(int num){
+
+       int numero=num;
+
+        switch (numero){
+
+            case 1:
+                listview.setAdapter(adapter1);
+
+                break;
+            case 2:
+                listview.setAdapter(adapter2);
+
+                break;
+            case 3:
+                listview.setAdapter(adapter3);
+
+                break;
+            case 4:
+                listview.setAdapter(adapter4);
+
+                break;
+
+
+        }
+    }
 
 
 
 
-    public void go(View view, final int num) {
+
+
+    public void go(View view) {
         new DownloadWebpageTask(new AsyncResult() {
             @Override
             public void onResult(JSONObject object) {
-                processJson(object,num);
+                processJson(object);
             }
         }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms");
     }
 
 
-    private void processJson(JSONObject object,int num2) {
-        int numf=num2;
+    private void processJson(JSONObject object) {
 
         try {
             JSONArray columns = object.getJSONArray("rows");
 
-            if (num2==4){
+
                 Log.d("Test", "taaaaaaaaab");
 
                 for (int r = 1; r < 8; ++r) {
@@ -335,14 +362,14 @@ public class Cafeteria extends Fragment {
                     String dia = rows.getJSONObject(diadelasemana).getString("v");
                     String tipo = rows.getJSONObject(1).getString("v");
 
-                    Team team = new Team(dia, tipo);
-                    teams.add(team);
+                    team1 = new Team(dia, tipo);
+                    teams1.add(team1);
                 }
-            }
 
 
 
-                if(num2==1){
+
+
 
                     for (int r = 10; r < 18; ++r) {
                         JSONObject column = columns.getJSONObject(r);
@@ -350,12 +377,12 @@ public class Cafeteria extends Fragment {
                         String dia = rows.getJSONObject(diadelasemana).getString("v");
                         String tipo = rows.getJSONObject(1).getString("v");
 
-                        Team team = new Team(dia, tipo);
-                        teams.add(team);
+                        team2 = new Team(dia, tipo);
+                        teams2.add(team2);
                     }
-                }
 
-                if(num2==2){
+
+
 
                     for (int r = 19; r < 25; ++r) {
                         JSONObject column = columns.getJSONObject(r);
@@ -363,12 +390,12 @@ public class Cafeteria extends Fragment {
                         String dia = rows.getJSONObject(diadelasemana).getString("v");
                         String tipo = rows.getJSONObject(1).getString("v");
 
-                        Team team = new Team(dia, tipo);
-                        teams.add(team);
+                        team3 = new Team(dia, tipo);
+                        teams3.add(team3);
                     }
-                }
 
-                if(num2==3){
+
+
 
 
                     for (int r = 26; r < 32; ++r) {
@@ -377,14 +404,17 @@ public class Cafeteria extends Fragment {
                         String dia = rows.getJSONObject(diadelasemana).getString("v");
                         String tipo = rows.getJSONObject(1).getString("v");
 
-                        Team team = new Team(dia, tipo);
-                        teams.add(team);
+                        team4 = new Team(dia, tipo);
+                        teams4.add(team4);
                     }
-                }
 
 
-            final TeamsAdapter adapter = new TeamsAdapter(getActivity(), R.layout.team, teams);
-            listview.setAdapter(adapter);
+
+            adapter1 = new TeamsAdapter(getActivity(), R.layout.team, teams1);
+            adapter2 = new TeamsAdapter(getActivity(), R.layout.team, teams2);
+            adapter3 = new TeamsAdapter(getActivity(), R.layout.team, teams3);
+            adapter4 = new TeamsAdapter(getActivity(), R.layout.team, teams4);
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -509,10 +539,7 @@ public class Cafeteria extends Fragment {
     }
  */
 
-    public void clearData(){
 
-        teams.clear();
-    }
 
 
 
