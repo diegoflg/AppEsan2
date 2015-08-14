@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by educacionadistancia on 24/07/2015.
  */
@@ -20,12 +23,22 @@ public class ConexionEsan extends Fragment {
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
+
         WebView ceWB = (WebView) CE.findViewById(R.id.webviewCE);
         ceWB.loadUrl("http://www.esan.edu.pe/conexion/");
         ceWB.getSettings().setUseWideViewPort(true);
         ceWB.getSettings().setLoadWithOverviewMode(true);
         ceWB.getSettings().setBuiltInZoomControls(true);
         ceWB.getSettings().setSupportZoom(true);
+
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+
+                dialog.dismiss(); // when the task active then close the dialog
+                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+            }
+        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
 
         ceWB.setOnKeyListener(new View.OnKeyListener() {
             @Override

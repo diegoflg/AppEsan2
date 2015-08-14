@@ -12,6 +12,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by educacionadistancia on 24/07/2015.
  */
@@ -35,6 +38,15 @@ public class EducacionEjecutiva extends Fragment {
         wbEE.getSettings().setLoadWithOverviewMode(true);
         wbEE.getSettings().setBuiltInZoomControls(true);
         wbEE.getSettings().setSupportZoom(true);
+
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+
+                dialog.dismiss(); // when the task active then close the dialog
+                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+            }
+        }, 6000); // after 2 second (or 2000 miliseconds), the task will be active.
 
         wbEE.setOnKeyListener(new View.OnKeyListener() {
             @Override

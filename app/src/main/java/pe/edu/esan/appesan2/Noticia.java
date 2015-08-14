@@ -17,6 +17,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by Diegoflg on 7/13/2015.
  */
@@ -29,6 +32,7 @@ public class Noticia extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
 
@@ -58,6 +62,17 @@ public class Noticia extends Fragment {
             myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
 
         }
+
+
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+
+                dialog.dismiss(); // when the task active then close the dialog
+                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+            }
+        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
+
 
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {

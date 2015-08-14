@@ -17,6 +17,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by educacionadistancia on 13/07/2015.
  */
@@ -31,6 +34,8 @@ public class Calendario extends Fragment{
 
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+
 
         myWebView = (WebView) c.findViewById(R.id.webview);
         myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");
@@ -59,6 +64,15 @@ public class Calendario extends Fragment{
             myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
 
         }
+
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+
+                dialog.dismiss(); // when the task active then close the dialog
+                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+            }
+        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
 
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {

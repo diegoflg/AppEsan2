@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by educacionadistancia on 20/07/2015.
  */
@@ -24,6 +27,8 @@ public class Biblioteca extends Fragment {
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
+
+
         myWebView = (WebView) rootView.findViewById(R.id.webviewB);
         myWebView.loadUrl("http://catalogo.esan.edu.pe/F?RN=73646055");
         myWebView.getSettings().setJavaScriptEnabled(true);
@@ -31,6 +36,15 @@ public class Biblioteca extends Fragment {
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
+
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+
+                dialog.dismiss(); // when the task active then close the dialog
+                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+            }
+        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override

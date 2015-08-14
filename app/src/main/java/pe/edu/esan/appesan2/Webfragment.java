@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by Diegoflg on 7/22/2015.
  */
@@ -97,6 +100,16 @@ public class Webfragment extends Fragment {
                         fragment = new CursosMooc();
                         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     }
+
+
+                    final Timer t = new Timer();
+                    t.schedule(new TimerTask() {
+                        public void run() {
+
+                            dialog.dismiss(); // when the task active then close the dialog
+                            t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+                        }
+                    }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
                     return true;
                 }
                 return false;

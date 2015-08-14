@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
 /**
  * Created by Diegoflg on 7/14/2015.
  */
@@ -41,6 +42,7 @@ public class Cafeteria extends Fragment {
     ArrayList<Team> teams2 = new ArrayList<Team>();
     ArrayList<Team> teams3 = new ArrayList<Team>();
     ArrayList<Team> teams4 = new ArrayList<Team>();
+    ProgressDialog pb;
 
 
     RelativeLayout lay1;
@@ -124,10 +126,12 @@ public class Cafeteria extends Fragment {
 
         mTabHost.setCurrentTab(0);
 
+
+
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
-        { mTabHost.getTabWidget().setStripEnabled(true);
-            mTabHost.getTabWidget().setRightStripDrawable(R.drawable.greyline);
-            mTabHost.getTabWidget().setLeftStripDrawable(R.drawable.greyline);
+        {
+
+            mTabHost.getTabWidget().setStripEnabled(true);
 
             TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             tv.setTextColor(Color.parseColor("#FFFFFF"));
@@ -144,7 +148,43 @@ public class Cafeteria extends Fragment {
         Log.d("el dia esss", dia);
         diadelasemana=day;
 
-        go(v);
+        pb = new ProgressDialog(v.getContext());
+        pb.setTitle("Cargando");
+                        pb.setMessage("Please Wait....");
+                       pb.setCancelable(false);
+                       pb.show();
+
+
+
+
+
+        if(isNetworkAvailable()==true){
+
+            Log.d("internet", "hay");
+
+
+
+            go(v);
+
+
+
+
+
+
+        }else{
+
+            Log.d("internet", "no hay");
+
+
+            pb.dismiss();
+
+
+        }
+
+
+
+
+
 
         mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -415,10 +455,13 @@ public class Cafeteria extends Fragment {
             adapter3 = new TeamsAdapter(getActivity(), R.layout.team, teams3);
             adapter4 = new TeamsAdapter(getActivity(), R.layout.team, teams4);
 
+            pb.dismiss();
+
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
 
     }
@@ -539,7 +582,11 @@ public class Cafeteria extends Fragment {
     }
  */
 
-
+private boolean isNetworkAvailable() {
+    ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+}
 
 
 
