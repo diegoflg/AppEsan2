@@ -4,6 +4,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -344,9 +346,31 @@ public class MainActivity2Activity extends ActionBarActivity
         }
     }
 
-
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
     /**
+     *
+     *
+     *
+     if ( !isNetworkAvailable()) { // loading offline
+     myWebView.loadUrl("http://blog.ue.edu.pe/");
+     myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
+     //myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+     Log.i(TAG, "SIN INTERNET");
+     }else{
+     Log.i(TAG, "CON INTERNET");
+     myWebView.loadUrl("http://blog.ue.edu.pe/");
+
+     myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
+
+
+
+
+     }
      * A placeholder fragment containing a simple view.
      */
 

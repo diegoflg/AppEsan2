@@ -1,14 +1,19 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -16,6 +21,7 @@ import android.webkit.WebViewClient;
  * Created by educacionadistancia on 13/07/2015.
  */
 public class Calendario extends Fragment{
+    private static String TAG = "MUNDO CRUEL";
     public WebView myWebView;
 
     @Override
@@ -34,6 +40,25 @@ public class Calendario extends Fragment{
         myWebView.getSettings().setSupportZoom(true);
         myWebView.getSettings().setJavaScriptEnabled(true);
 
+        myWebView.getSettings().setDomStorageEnabled(true);
+        myWebView.getSettings().setAppCachePath("/data/data/pe.edu.esan.appesan2/cache");
+        myWebView.getSettings().setAllowFileAccess(true);
+        myWebView.getSettings().setAppCacheEnabled(true);
+        myWebView.getSettings().setLoadsImagesAutomatically(true);
+
+
+        if ( !isNetworkAvailable()) { // loading offline
+            myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");
+            myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
+            //myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            Log.i(TAG, "SIN INTERNET");
+        }else{
+            Log.i(TAG, "CON INTERNET");
+            myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");
+
+            myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
+
+        }
 
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
@@ -83,4 +108,9 @@ public class Calendario extends Fragment{
         return c;
 
         }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 }

@@ -1,10 +1,14 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +21,7 @@ import android.webkit.WebViewClient;
  * Created by Diegoflg on 7/13/2015.
  */
 public class Noticia extends Fragment {
+    private static String TAG = "MUNDO CRUEL";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,12 +31,34 @@ public class Noticia extends Fragment {
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
-        myWebView.loadUrl("http://blog.ue.edu.pe/");
+
 
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
+      //myWebView.getSettings().setAppCachePath(getActivity().getApplicationContext().getCacheDir().getAbsolutePath());
+        myWebView.getSettings().setDomStorageEnabled(true);
+        myWebView.getSettings().setAppCachePath("/data/data/pe.edu.esan.appesan2/cache");
+        myWebView.getSettings().setAllowFileAccess(true);
+        myWebView.getSettings().setAppCacheEnabled(true);
+        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setLoadsImagesAutomatically(true);
+
+
+        if ( !isNetworkAvailable()) { // loading offline
+            myWebView.loadUrl("http://blog.ue.edu.pe/");
+            myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
+            //myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            Log.i(TAG, "SIN INTERNET");
+        }else{
+            Log.i(TAG, "CON INTERNET");
+            myWebView.loadUrl("http://blog.ue.edu.pe/");
+
+            myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
+
+        }
+
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -69,6 +96,12 @@ public class Noticia extends Fragment {
         }}
         );
         return rootView;
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
 
