@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -30,6 +31,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -169,11 +172,10 @@ public class Cafeteria extends Fragment {
 
 
 
-
-
         }else{
 
             Log.d("internet", "no hay");
+
 
 
             pb.dismiss();

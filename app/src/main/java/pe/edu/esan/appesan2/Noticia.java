@@ -71,7 +71,7 @@ public class Noticia extends Fragment {
                 dialog.dismiss(); // when the task active then close the dialog
                 t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
             }
-        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
+        }, 10000); // after 2 second (or 2000 miliseconds), the task will be active.
 
 
 
