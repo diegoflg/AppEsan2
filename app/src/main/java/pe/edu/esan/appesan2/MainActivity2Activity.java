@@ -140,6 +140,9 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 15:
                     fragment = new Dpa();
                     break;
+                case 16:
+                    fragment = new Estacionamiento();
+                    break;
                 //case 14:
                //    fragment = new Gamificacion();
                  //   break;
