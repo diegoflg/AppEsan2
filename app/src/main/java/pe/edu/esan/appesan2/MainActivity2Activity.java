@@ -1110,6 +1110,10 @@ public class MainActivity2Activity extends ActionBarActivity
                     //if the other fragment is visible, hide it.
                     fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Calendario")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("Registroesta") != null) {
+                        //if the other fragment is visible, hide it.
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Registroesta")).commit();
+                    }
                     //fragment= new Noticia();
                     break;
                 case 1:
@@ -1122,12 +1126,34 @@ public class MainActivity2Activity extends ActionBarActivity
                         //if the other fragment is visible, hide it.
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("Registroesta") != null) {
+                        //if the other fragment is visible, hide it.
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Registroesta")).commit();
+                    }
                     //fragment= new Calendario();
                     break;
                 case 2:
                     fragment= new Cafeteria();
                     fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     break;
+
+                case 3:
+                    if(fragmentManager.findFragmentByTag("") != null){
+                        fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Registroesta")).commit();
+                    }else{
+                        fragmentManager.beginTransaction().add(R.id.container, new Registroesta(), "Registroesta").commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("Noticia") != null) {
+                        //if the other fragment is visible, hide it.
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("Calendario") != null){
+                        //if the other fragment is visible, hide it.
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Calendario")).commit();
+                    }
+                    //fragment= new Calendario();
+                    break;
+
             }
         }
 
@@ -1188,6 +1214,9 @@ public class MainActivity2Activity extends ActionBarActivity
             fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("DPA")).commit();
         }
         if(fragmentManager.findFragmentByTag("Estacionamiento") != null){
+            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
+        }
+        if(fragmentManager.findFragmentByTag("Registroesta") != null){
             fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
         }
     }

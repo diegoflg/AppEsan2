@@ -2,12 +2,54 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffffff">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sema"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/parte1e"
+            android:src="@drawable/parte1"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sema1e"
+            android:src="@drawable/rojoapagado"
+            android:layout_above="@+id/sema2e"
+            android:layout_toRightOf="@+id/parte1e"
+            android:layout_toEndOf="@+id/parte1e" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sema2e"
+            android:src="@drawable/amarilloapagado"
+            android:layout_above="@+id/sema3e"
+            android:layout_toRightOf="@+id/parte1e"
+            android:layout_toEndOf="@+id/parte1e" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sema3e"
+            android:src="@drawable/verdeprendido"
+            android:layout_alignBottom="@+id/parte1e"
+            android:layout_toRightOf="@+id/parte1e"
+            android:layout_toEndOf="@+id/parte1e" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/parte2e"
+            android:src="@drawable/parte2"
+            android:layout_toRightOf="@+id/sema1e"
+            android:layout_toEndOf="@+id/sema1e" />
+
+
+
 
     <ListView
         android:id="@+id/listAllProducts"
@@ -15,6 +57,6 @@
         android:layout_height="wrap_content"
         android:dividerHeight="3dp"
         android:background="#fff"
-        android:layout_toRightOf="@+id/sema"/>
+        android:layout_toRightOf="@+id/parte2e"/>
 
 </RelativeLayout>

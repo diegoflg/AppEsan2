@@ -2,60 +2,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffffff"
     >
 
 
-    <TextView
-        android:id="@+id/textView1esta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/password"
-        android:layout_centerVertical="true"
-        android:text="Username" />
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1esta"
-        android:layout_below="@+id/textView1esta"
-        android:ems="10" />
 
     <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/username"
-        android:layout_below="@+id/username"
-        android:text="Password" />
-
-    <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewesta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Base de datos remota tutorial"
+        android:text="Control Estacionamiento"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/password"
+    <RelativeLayout
+        android:layout_below="@+id/textViewesta"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView01"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textPassword" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/password"
-        android:layout_below="@+id/password"
-        android:text="Register" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/parte1"
+            android:src="@drawable/parte1"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sema1"
+            android:src="@drawable/rojoapagado"
+            android:layout_above="@+id/sema2"
+            android:layout_toRightOf="@+id/parte1"
+            android:layout_toEndOf="@+id/parte1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sema2"
+            android:src="@drawable/amarilloapagado"
+            android:layout_above="@+id/sema3"
+            android:layout_toRightOf="@+id/parte1"
+            android:layout_toEndOf="@+id/parte1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sema3"
+            android:src="@drawable/verdeprendido"
+            android:layout_alignBottom="@+id/parte1"
+            android:layout_toRightOf="@+id/parte1"
+            android:layout_toEndOf="@+id/parte1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/parte2"
+            android:src="@drawable/parte2"
+            android:layout_toRightOf="@+id/sema1"
+            android:layout_toEndOf="@+id/sema1" />
+
+
+    </RelativeLayout>
+
+
+
 
 </RelativeLayout>

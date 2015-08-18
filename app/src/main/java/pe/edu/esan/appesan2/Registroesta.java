@@ -19,6 +19,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -35,6 +36,8 @@ import java.util.TimerTask;
  */
 public class Registroesta extends Fragment {
 
+    private ImageView sem1,sem2,sem3;
+
     private EditText user, pass;
     private Button mRegister;
 
@@ -48,7 +51,7 @@ public class Registroesta extends Fragment {
     // private static final String REGISTER_URL = "http://xxx.xxx.x.x:1234/cas/register.php";
 
     //testing on Emulator:
-    private static final String REGISTER_URL = "http://10.0.2.2:1234/cas/register.php";
+    private static final String REGISTER_URL = "http://basededatosestacionamiento.16mb.com/cas/register.php";
 
     //ids
     private static final String TAG_SUCCESS = "success";
@@ -61,14 +64,52 @@ public class Registroesta extends Fragment {
         View v = inflater.inflate(R.layout.lay_registroesta, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
+        sem1=(ImageView)v.findViewById(R.id.sema1);
+        sem2=(ImageView)v.findViewById(R.id.sema2);
+        sem3=(ImageView)v.findViewById(R.id.sema3);
 
 
 
-        user = (EditText)v.findViewById(R.id.username);
-        pass = (EditText)v.findViewById(R.id.password);
+        sem1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sem1.setImageResource(R.drawable.rojoprendido);
+                sem2.setImageResource(R.drawable.amarilloapagado);
+                sem3.setImageResource(R.drawable.verdeapagado);
+
+            }
+        });
+
+        sem2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sem1.setImageResource(R.drawable.rojoapagado);
+                sem2.setImageResource(R.drawable.amarilloprendido);
+                sem3.setImageResource(R.drawable.verdeapagado);
+
+            }
+        });
+
+        sem3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sem1.setImageResource(R.drawable.rojoapagado);
+                sem2.setImageResource(R.drawable.amarilloapagado);
+                sem3.setImageResource(R.drawable.verdeprendido);
+
+            }
+        });
 
 
-        mRegister = (Button)v.findViewById(R.id.register);
+
+
+
+
+        ///user = (EditText)v.findViewById(R.id.username);
+     //   pass = (EditText)v.findViewById(R.id.password);
+
+
+   //     mRegister = (Button)v.findViewById(R.id.register);
 
 
         return v;
