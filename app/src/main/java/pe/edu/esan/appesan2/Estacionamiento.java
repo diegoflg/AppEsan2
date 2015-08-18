@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -43,6 +44,7 @@ import static com.google.android.gms.internal.zzhl.runOnUiThread;
 public class Estacionamiento extends Fragment {
 
     private ProgressDialog pDialog;
+    private ImageView sema;
 
 
 
@@ -80,6 +82,9 @@ public class Estacionamiento extends Fragment {
             // Cargar los productos en el Background Thread
             new LoadAllProducts().execute();
             lista = (ListView) v.findViewById(R.id.listAllProducts);
+        sema=(ImageView)v.findViewById(R.id.sema);
+        sema.setImageResource(R.drawable.green);
+
 
 
 
