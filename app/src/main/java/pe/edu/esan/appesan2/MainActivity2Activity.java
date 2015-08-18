@@ -984,6 +984,9 @@ public class MainActivity2Activity extends ActionBarActivity
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("FabLab")).commit();
                     }
                     break;
+                case 16:
+                    fragment = new Estacionamiento();
+                    break;
                 //case 14:
                //    fragment = new Gamificacion();
                  //   break;
