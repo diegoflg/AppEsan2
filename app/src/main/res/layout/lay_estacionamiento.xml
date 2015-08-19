@@ -27,7 +27,6 @@
             android:id="@+id/parte1e"
             android:src="@drawable/parte1"
             android:layout_below="@+id/textViewestareg"
-            android:layout_marginLeft="30dp"
             />
         <ImageView
             android:layout_width="wrap_content"
