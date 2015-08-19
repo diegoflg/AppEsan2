@@ -1,13 +1,18 @@
 package pe.edu.esan.appesan2;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,13 +20,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends ActionBarActivity {
-
+    private final String TAG= "APP";
     EditText et1,et2;
     String langloc=Locale.getDefault().getDisplayLanguage();
     int langinicial=0;
@@ -101,7 +107,18 @@ public class MainActivity extends ActionBarActivity {
         });
 
 
+        SpannableString s = new SpannableString("ESAN");
+        s.setSpan(new TypefaceSpan("HelveticaNeue-Roman.ttf"), 0 , s.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+        // Update the action bar title with the TypefaceSpan instance
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(s);
+
+
+        android.support.v7.app.ActionBar abLogin = getSupportActionBar();
+        CharSequence titulo = abLogin.getTitle().toString();
+        Log.i(TAG, "Título del app: " + titulo);
 
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
