@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -25,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
     int langinicial=0;
 
     int lang=0;
-
+    Button botonacceder; //SOLO SE USA PARA CAMBIAR LA FUENTE
 
 
 
@@ -36,6 +38,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_main);
+
+        String font_path = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TF = Typeface.createFromAsset(getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
 
         Log.v("lang", langloc);
 
@@ -85,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
                 int index = arg0.getSelectedItemPosition();
-                lang=index;
+                lang = index;
 
             }
 
@@ -97,13 +103,18 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
-
+        botonacceder = (Button) findViewById(R.id.button); //SOLO ES USADO PARA LA FUENTE
 
         et1.setText("alumno");
         et2.setText("alumno");
+
+        //ESTO ES PARA LA FUENTE
+        et1.setTypeface(TF);
+        et2.setTypeface(TF);
+        botonacceder.setTypeface(TF);
+
 
         AdminBD admin = new AdminBD(this, "BDESAN3", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
