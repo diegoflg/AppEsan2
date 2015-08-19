@@ -66,6 +66,9 @@ public class Estacionamiento extends Fragment {
     private static final String TAG_ID = "id";
     private static final String TAG_NOMBRE = "username";
 
+    private ImageView sema1e,sema2e,sema3e;
+    private String estado="waa";
+
     // products JSONArray
     JSONArray products = null;
 
@@ -75,6 +78,12 @@ public class Estacionamiento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
+        sema1e=(ImageView)v.findViewById(R.id.sema1e);
+        sema2e=(ImageView)v.findViewById(R.id.sema2e);
+        sema3e=(ImageView)v.findViewById(R.id.sema3e);
+
+
         final Handler h = new Handler();
         final int delay = 10000; //milliseconds
 
@@ -90,6 +99,25 @@ public class Estacionamiento extends Fragment {
         h.postDelayed(new Runnable() {
             public void run() {
                 Log.v("tipo", "timer");
+
+                if(estado.equals("rojo")){
+                    sema1e.setImageResource(R.drawable.rojoprendido);
+                    sema2e.setImageResource(R.drawable.amarilloapagado);
+                    sema3e.setImageResource(R.drawable.verdeapagado);
+
+                }
+                if(estado.equals("amarillo")){
+                    sema1e.setImageResource(R.drawable.rojoapagado);
+                    sema2e.setImageResource(R.drawable.amarilloprendido);
+                    sema3e.setImageResource(R.drawable.verdeapagado);
+
+                }
+                if(estado.equals("verde")){
+                    sema1e.setImageResource(R.drawable.rojoapagado);
+                    sema2e.setImageResource(R.drawable.amarilloapagado);
+                    sema3e.setImageResource(R.drawable.verdeprendido);
+
+                }
                 new LoadAllProducts().execute();
                 h.postDelayed(this, delay);
             }
@@ -115,12 +143,7 @@ public class Estacionamiento extends Fragment {
          * */
         @Override
         protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Cargando comercios. Por favor espere...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
+
         }
 
         /**
@@ -152,6 +175,7 @@ public class Estacionamiento extends Fragment {
                         // Storing each json item in variable
                         String id = c.getString(TAG_ID);
                         String name = c.getString(TAG_NOMBRE);
+                        estado=c.getString(TAG_NOMBRE);
 
                         // creating new HashMap
                         HashMap map = new HashMap();
@@ -173,31 +197,8 @@ public class Estacionamiento extends Fragment {
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
-            // dismiss the dialog after getting all products
-            pDialog.dismiss();
-            // updating UI from Background Thread
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    /**
-                     * Updating parsed JSON data into ListView
-                     * */
-                    ListAdapter adapter = new SimpleAdapter(
-                            getActivity(),
-                            empresaList,
-                            R.layout.single_post,
-                            new String[] {
-                                    TAG_ID,
-                                    TAG_NOMBRE,
-                            },
-                            new int[] {
-                                    R.id.single_post_tv_id,
-                                    R.id.single_post_tv_nombre,
-                            });
-                    // updating listview
-                    //setListAdapter(adapter);
-                    lista.setAdapter(adapter);
-                }
-            });
+
+
         }
     }
 
