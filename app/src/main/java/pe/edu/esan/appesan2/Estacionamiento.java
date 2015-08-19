@@ -52,6 +52,7 @@ public class Estacionamiento extends Fragment {
     private String estado="waa";
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
+    TextView tvlibres;
 
 
     @Override
@@ -59,13 +60,15 @@ public class Estacionamiento extends Fragment {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
+        tvlibres=(TextView)v.findViewById(R.id.textlibres);
+
         sema1e=(ImageView)v.findViewById(R.id.sema1e);
         sema2e=(ImageView)v.findViewById(R.id.sema2e);
         sema3e=(ImageView)v.findViewById(R.id.sema3e);
 
 
         final Handler h = new Handler();
-        final int delay = 9000; //milliseconds
+        final int delay = 5000; //milliseconds
 
 
         new LoadAllProducts().execute();
@@ -77,18 +80,21 @@ public class Estacionamiento extends Fragment {
                     sema1e.setImageResource(R.drawable.rojoprendido);
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeapagado);
+                    tvlibres.setText("De 0 a 4 libres");
 
                 }
                 if(estado.equals("amarillo")){
                     sema1e.setImageResource(R.drawable.rojoapagado);
                     sema2e.setImageResource(R.drawable.amarilloprendido);
                     sema3e.setImageResource(R.drawable.verdeapagado);
+                    tvlibres.setText("De 4 a 20 libres");
 
                 }
                 if(estado.equals("verde")){
                     sema1e.setImageResource(R.drawable.rojoapagado);
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeprendido);
+                    tvlibres.setText("De 20 a 4 mas libres");
 
                 }
                 new LoadAllProducts().execute();

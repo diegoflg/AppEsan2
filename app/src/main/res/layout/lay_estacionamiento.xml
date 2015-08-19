@@ -3,7 +3,21 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#ffffffff">
+    android:background="@drawable/fondoesta">
+
+
+    <TextView
+        android:id="@+id/textViewestareg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Estacionamiento"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"/>
 
 
 
@@ -12,6 +26,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/parte1e"
             android:src="@drawable/parte1"
+            android:layout_below="@+id/textViewestareg"
+            android:layout_marginLeft="30dp"
             />
         <ImageView
             android:layout_width="wrap_content"
@@ -20,7 +36,8 @@
             android:src="@drawable/rojoapagado"
             android:layout_above="@+id/sema2e"
             android:layout_toRightOf="@+id/parte1e"
-            android:layout_toEndOf="@+id/parte1e" />
+            android:layout_toEndOf="@+id/parte1e"
+            android:layout_below="@+id/textViewestareg"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -46,8 +63,18 @@
             android:id="@+id/parte2e"
             android:src="@drawable/parte2"
             android:layout_toRightOf="@+id/sema1e"
-            android:layout_toEndOf="@+id/sema1e" />
+            android:layout_below="@+id/textViewestareg"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textlibres"
+        android:layout_below="@+id/sema1e"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="34dp"
+        android:layout_marginEnd="34dp" />
 
 
 </RelativeLayout>
