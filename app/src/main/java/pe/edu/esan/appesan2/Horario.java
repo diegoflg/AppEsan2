@@ -82,7 +82,7 @@ public class Horario extends Fragment {
             tv.setHeight(50);
             tv.setWidth(70);
             if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
-                tv.setBackgroundColor(Color.parseColor("#FFCF1313"));
+                tv.setBackgroundColor(Color.parseColor("#CCC90039"));
                 tv.setTextColor(Color.WHITE);
             }else{
                 tv.setBackgroundColor(Color.WHITE);
