@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
     ArrayList<ItemData> list;
     LayoutInflater inflater;
 
+    //PARA LA FUENTE DE LA LISTA DEL SPINNER
+    Typeface TF = Typeface.createFromAsset(getContext().getAssets(), "font/HelveticaNeue-Light.ttf");
+
+
     public SpinnerAdapter(Activity context, int groupid, int id, ArrayList<ItemData> list){
         super(context,id,list);
         this.list=list;
@@ -30,12 +35,17 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
         imageView.setImageResource(list.get(position).getImageId());
         TextView textView=(TextView)itemView.findViewById(R.id.txt);
         textView.setText(list.get(position).getText());
+        textView.setTypeface(TF);
         return itemView;
     }
 
     public View getDropDownView(int position, View convertView, ViewGroup parent){
+        TextView view = (TextView) super.getDropDownView(position, convertView, parent);
+        view.setTypeface(TF);
         return getView(position,convertView,parent);
     }
+
+
 }
 
 
