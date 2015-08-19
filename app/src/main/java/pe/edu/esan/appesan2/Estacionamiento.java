@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.content.pm.ActivityInfo;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
@@ -61,27 +62,40 @@ public class Estacionamiento extends Fragment {
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_PRODUCTS = "empresas";
+    private static final String TAG_PRODUCTS = "users";
     private static final String TAG_ID = "id";
-    private static final String TAG_NOMBRE = "nombre";
+    private static final String TAG_NOMBRE = "username";
 
     // products JSONArray
     JSONArray products = null;
 
-    ListView lista;
+    TextView resules;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        final Handler h = new Handler();
+        final int delay = 10000; //milliseconds
 
 
             // Hashmap para el ListView
             empresaList = new ArrayList<HashMap<String, String>>();
 
             // Cargar los productos en el Background Thread
-            new LoadAllProducts().execute();
-            lista = (ListView) v.findViewById(R.id.listAllProducts);
+
+            resules = (TextView) v.findViewById(R.id.listAllProducts);
+
+
+        h.postDelayed(new Runnable() {
+            public void run() {
+                Log.v("tipo", "timer");
+                new LoadAllProducts().execute();
+                h.postDelayed(this, delay);
+            }
+        }, delay);
+
 
 
 
@@ -102,7 +116,7 @@ public class Estacionamiento extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Cargando comercios. Por favor espere...");
+            pDialog.setMessage("Cargando . Por favor espere...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
@@ -134,18 +148,9 @@ public class Estacionamiento extends Fragment {
                     for (int i = 0; i < products.length(); i++) {
                         JSONObject c = products.getJSONObject(i);
 
-                        // Storing each json item in variable
-                        String id = c.getString(TAG_ID);
-                        String name = c.getString(TAG_NOMBRE);
 
-                        // creating new HashMap
-                        HashMap map = new HashMap();
+                        resules.setText(c.getString(TAG_NOMBRE));
 
-                        // adding each child node to HashMap key => value
-                        map.put(TAG_ID, id);
-                        map.put(TAG_NOMBRE, name);
-
-                        empresaList.add(map);
                     }
                 }
             } catch (JSONException e) {
@@ -161,28 +166,7 @@ public class Estacionamiento extends Fragment {
             // dismiss the dialog after getting all products
             pDialog.dismiss();
             // updating UI from Background Thread
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    /**
-                     * Updating parsed JSON data into ListView
-                     * */
-                    ListAdapter adapter = new SimpleAdapter(
-                            getActivity(),
-                            empresaList,
-                            R.layout.single_post,
-                            new String[] {
-                                    TAG_ID,
-                                    TAG_NOMBRE,
-                            },
-                            new int[] {
-                                    R.id.single_post_tv_id,
-                                    R.id.single_post_tv_nombre,
-                            });
-                    // updating listview
-                    //setListAdapter(adapter);
-                    lista.setAdapter(adapter);
-                }
-            });
+
         }
     }
 

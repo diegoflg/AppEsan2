@@ -37,6 +37,7 @@ import java.util.TimerTask;
 public class Registroesta extends Fragment {
 
     private ImageView sem1,sem2,sem3;
+    private String libres;
 
     private EditText user, pass;
     private Button mRegister;
@@ -76,6 +77,8 @@ public class Registroesta extends Fragment {
                 sem1.setImageResource(R.drawable.rojoprendido);
                 sem2.setImageResource(R.drawable.amarilloapagado);
                 sem3.setImageResource(R.drawable.verdeapagado);
+                libres="rojo";
+                new CreateUser().execute();
 
             }
         });
@@ -86,6 +89,8 @@ public class Registroesta extends Fragment {
                 sem1.setImageResource(R.drawable.rojoapagado);
                 sem2.setImageResource(R.drawable.amarilloprendido);
                 sem3.setImageResource(R.drawable.verdeapagado);
+                libres="amarillo";
+                new CreateUser().execute();
 
             }
         });
@@ -96,6 +101,8 @@ public class Registroesta extends Fragment {
                 sem1.setImageResource(R.drawable.rojoapagado);
                 sem2.setImageResource(R.drawable.amarilloapagado);
                 sem3.setImageResource(R.drawable.verdeprendido);
+                libres="verde";
+                new CreateUser().execute();
 
             }
         });
@@ -105,7 +112,7 @@ public class Registroesta extends Fragment {
 
 
 
-        ///user = (EditText)v.findViewById(R.id.username);
+
      //   pass = (EditText)v.findViewById(R.id.password);
 
 
@@ -117,12 +124,6 @@ public class Registroesta extends Fragment {
     }
 
 
-    public void onClick(View v) {
-        // TODO Auto-generated method stub
-
-        new CreateUser().execute();
-
-    }
 
     class CreateUser extends AsyncTask<String, String, String> {
 
@@ -142,13 +143,12 @@ public class Registroesta extends Fragment {
             // TODO Auto-generated method stub
             // Check for success tag
             int success;
-            String username = user.getText().toString();
-            String password = pass.getText().toString();
+            String username = libres;
             try {
                 // Building Parameters
                 List params = new ArrayList();
                 params.add(new BasicNameValuePair("username", username));
-                params.add(new BasicNameValuePair("password", password));
+
 
                 Log.d("request!", "starting");
 
@@ -163,7 +163,6 @@ public class Registroesta extends Fragment {
                 success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     Log.d("User Created!", json.toString());
-                    getActivity().finish();
                     return json.getString(TAG_MESSAGE);
                 }else{
                     Log.d("Registering Failure!", json.getString(TAG_MESSAGE));
