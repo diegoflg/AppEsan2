@@ -27,6 +27,7 @@
             android:id="@+id/parte1e"
             android:src="@drawable/parte1"
             android:layout_below="@+id/textViewestareg"
+            android:layout_marginLeft="20dp"
             />
         <ImageView
             android:layout_width="wrap_content"
@@ -54,7 +55,8 @@
             android:src="@drawable/verdeprendido"
             android:layout_alignBottom="@+id/parte1e"
             android:layout_toRightOf="@+id/parte1e"
-            android:layout_toEndOf="@+id/parte1e" />
+            android:layout_toEndOf="@+id/parte1e"
+            />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -72,8 +74,9 @@
         android:layout_below="@+id/sema1e"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="34dp"
-        android:layout_marginEnd="34dp" />
+        android:layout_toRightOf="@+id/parte2e"
+        android:layout_marginLeft="30dp"
+        android:text="cargando"/>
 
 
 </RelativeLayout>
