@@ -162,24 +162,12 @@ public class Cafeteria extends Fragment {
 
 
         if(isNetworkAvailable()==true){
-
             Log.d("internet", "hay");
-
-
-
             go(v);
-
-
-
-
         }else{
 
             Log.d("internet", "no hay");
-
-
-
             pb.dismiss();
-
 
         }
 

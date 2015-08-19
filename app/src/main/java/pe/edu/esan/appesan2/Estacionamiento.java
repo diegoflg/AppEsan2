@@ -44,35 +44,15 @@ import static com.google.android.gms.internal.zzhl.runOnUiThread;
  */
 public class Estacionamiento extends Fragment {
 
-    private ProgressDialog pDialog;
-
-
-
-
-
-
-    // Creating JSON Parser object
-    JSONParser jParser = new JSONParser();
-
-    ArrayList<HashMap<String, String>> empresaList;
-
-
-    // url to get all products list
     private static String url_all_empresas = "http://basededatosestacionamiento.16mb.com/esconnect/get_all_empresas.php";
-
-    // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "users";
-    private static final String TAG_ID = "id";
     private static final String TAG_NOMBRE = "username";
-
     private ImageView sema1e,sema2e,sema3e;
     private String estado="waa";
-
-    // products JSONArray
     JSONArray products = null;
+    JSONParser jParser = new JSONParser();
 
-    ListView lista;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,17 +65,10 @@ public class Estacionamiento extends Fragment {
 
 
         final Handler h = new Handler();
-        final int delay = 10000; //milliseconds
+        final int delay = 9000; //milliseconds
 
 
-            // Hashmap para el ListView
-            empresaList = new ArrayList<HashMap<String, String>>();
-
-            // Cargar los productos en el Background Thread
-
-            lista = (ListView) v.findViewById(R.id.listAllProducts);
-
-
+        new LoadAllProducts().execute();
         h.postDelayed(new Runnable() {
             public void run() {
                 Log.v("tipo", "timer");
@@ -146,45 +119,16 @@ public class Estacionamiento extends Fragment {
 
         }
 
-        /**
-         * obteniendo todos los productos
-         * */
         protected String doInBackground(String... args) {
-            // Building Parameters
             List params = new ArrayList();
-            // getting JSON string from URL
             JSONObject json = jParser.makeHttpRequest(url_all_empresas, "GET", params);
-
-            // Check your log cat for JSON reponse
-            Log.d("All Products: ", json.toString());
-
             try {
-                // Checking for SUCCESS TAG
                 int success = json.getInt(TAG_SUCCESS);
-
                 if (success == 1) {
-                    // products found
-                    // Getting Array of Products
                     products = json.getJSONArray(TAG_PRODUCTS);
-
-                    // looping through All Products
-                    //Log.i("ramiro", "produtos.length" + products.length());
                     for (int i = 0; i < products.length(); i++) {
                         JSONObject c = products.getJSONObject(i);
-
-                        // Storing each json item in variable
-                        String id = c.getString(TAG_ID);
-                        String name = c.getString(TAG_NOMBRE);
                         estado=c.getString(TAG_NOMBRE);
-
-                        // creating new HashMap
-                        HashMap map = new HashMap();
-
-                        // adding each child node to HashMap key => value
-                        map.put(TAG_ID, id);
-                        map.put(TAG_NOMBRE, name);
-
-                        empresaList.add(map);
                     }
                 }
             } catch (JSONException e) {
@@ -192,12 +136,7 @@ public class Estacionamiento extends Fragment {
             }
             return null;
         }
-
-        /**
-         * After completing background task Dismiss the progress dialog
-         * **/
         protected void onPostExecute(String file_url) {
-
 
         }
     }
