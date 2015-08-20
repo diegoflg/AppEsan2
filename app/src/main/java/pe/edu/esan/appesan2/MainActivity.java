@@ -45,10 +45,6 @@ public class MainActivity extends ActionBarActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_main);
 
-        String font_path = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
-        Typeface TF = Typeface.createFromAsset(getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-
-
         Log.v("lang", langloc);
 
         if(langloc.equals("español")){
@@ -127,7 +123,11 @@ public class MainActivity extends ActionBarActivity {
         et1.setText("alumno");
         et2.setText("alumno");
 
+
         //ESTO ES PARA LA FUENTE
+        String font_path = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TF = Typeface.createFromAsset(getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
         et1.setTypeface(TF);
         et2.setTypeface(TF);
         botonacceder.setTypeface(TF);
