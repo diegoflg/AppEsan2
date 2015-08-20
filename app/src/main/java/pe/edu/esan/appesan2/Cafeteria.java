@@ -170,9 +170,6 @@ public class Cafeteria extends Fragment {
 
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
         {
-
-            mTabHost.getTabWidget().getChildAt(i).setBackgroundResource(R.drawable.selector);
-
             mTabHost.getTabWidget().setStripEnabled(true);
 
             TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);

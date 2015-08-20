@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/AppEsan2.iml" filepath="$PROJECT_DIR$/AppEsan2.iml" />
       <module fileurl="file://$PROJECT_DIR$/aFileChooser/aFileChooser.iml" filepath="$PROJECT_DIR$/aFileChooser/aFileChooser.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sAXRSSReader/sAXRSSReader.iml" filepath="$PROJECT_DIR$/sAXRSSReader/sAXRSSReader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/volley/volley.iml" filepath="$PROJECT_DIR$/volley/volley.iml" />
     </modules>
   </component>
 </project>

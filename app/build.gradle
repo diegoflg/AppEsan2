@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support:design:22.2.0'
     compile files('android-zoom-view.jar')
     compile project(':aFileChooser')
+    compile project(':volley')
 }
