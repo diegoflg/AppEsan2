@@ -148,7 +148,7 @@
         <item name="android:icon">@drawable/educacionejecutiva</item>
         <item name="android:icon">@drawable/fab</item>
         <item name="android:icon">@drawable/dpa</item>
-        <item name="android:icon">@drawable/estadodepago</item>
+        <item name="android:icon">@drawable/estacionamiento</item>
 
     </string-array>
 
@@ -157,7 +157,7 @@
         <item name="android:icon">@drawable/noticias</item>
         <item name="android:icon">@drawable/horario</item>
         <item name="android:icon">@drawable/notas</item>
-        <item name="android:icon">@drawable/estadodepago</item>
+        <item name="android:icon">@drawable/estacionamiento</item>
     </string-array>
 
 <!-- TODO: Remove or change this placeholder text -->

@@ -17,7 +17,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
         android:layout_marginBottom="20dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffffff" />
 
 
 
@@ -76,7 +77,8 @@
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/parte2e"
         android:layout_marginLeft="30dp"
-        android:text="cargando"/>
+        android:text="cargando"
+        android:textColor="#f1010101" />
 
 
 </RelativeLayout>
