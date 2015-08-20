@@ -2,16 +2,13 @@ package pe.edu.esan.appesan2;
 
 import android.content.pm.ActivityInfo;
 
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -53,12 +50,16 @@ public class Estacionamiento extends Fragment {
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
     TextView tvlibres;
+    String estado2;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+
+
 
         tvlibres=(TextView)v.findViewById(R.id.textlibres);
 
@@ -75,12 +76,20 @@ public class Estacionamiento extends Fragment {
         h.postDelayed(new Runnable() {
             public void run() {
                 Log.v("tipo", "timer");
+                Log.v("es", estado);
+                Log.v("es2", estado2);
 
                 if(estado.equals("rojo")){
                     sema1e.setImageResource(R.drawable.rojoprendido);
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("De 0 a 4 libres");
+                    if(estado.equals(estado2)){
+
+
+                    }else{
+                        mp.start();
+                    }
 
                 }
                 if(estado.equals("amarillo")){
@@ -88,6 +97,14 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloprendido);
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("De 4 a 20 libres");
+                    if(estado.equals(estado2)){
+
+
+                    }else{
+                        mp.start();
+                    }
+
+
 
                 }
                 if(estado.equals("verde")){
@@ -95,20 +112,20 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeprendido);
                     tvlibres.setText("De 20 a 4 mas libres");
+                    if(estado.equals(estado2)){
+
+
+                    }else{
+                        mp.start();
+                    }
+
+
 
                 }
                 new LoadAllProducts().execute();
                 h.postDelayed(this, delay);
             }
         }, delay);
-
-
-
-
-
-
-
-
 
 
         return v;
@@ -134,7 +151,9 @@ public class Estacionamiento extends Fragment {
                     products = json.getJSONArray(TAG_PRODUCTS);
                     for (int i = 0; i < products.length(); i++) {
                         JSONObject c = products.getJSONObject(i);
+                        estado2=estado;
                         estado=c.getString(TAG_NOMBRE);
+
                     }
                 }
             } catch (JSONException e) {
