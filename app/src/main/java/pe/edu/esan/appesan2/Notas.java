@@ -68,7 +68,7 @@ public class Notas extends Fragment {
         PG.setTypeface(TF);
 
         //Fuente para texto no TÍTULOS
-        String rutafuente = "font/HelveticaNeue-Lightttf"; //ruta de la fuente
+        String rutafuente = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface tipo = Typeface.createFromAsset(getActivity().getAssets(),rutafuente);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
         curso1.setTypeface(tipo);
