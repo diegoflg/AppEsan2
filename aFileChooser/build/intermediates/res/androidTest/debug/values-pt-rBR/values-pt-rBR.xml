@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/F:/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-pt-rBR/values-pt-rBR.xml -->
+    <!-- From: file:/D:/Proyectos/Proyectos%202.0/APLICATIVO/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-pt-rBR/values-pt-rBR.xml -->
     <eat-comment/>
     <string name="choose_file">Selecione um Arquivo</string>
     <string name="empty_directory">Pasta Vazia</string>

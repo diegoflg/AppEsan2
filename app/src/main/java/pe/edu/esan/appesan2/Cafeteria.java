@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -84,21 +85,55 @@ public class Cafeteria extends Fragment {
 
         lay1=(RelativeLayout)v.findViewById(R.id.LaRuta);
 
+        //FUENTE Y COLOR PARA CUALQUIER OBJETO DENTRO DE CUALQUIER TABHOST:
+        String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TFL = Typeface.createFromAsset(getActivity().getAssets(),font_pathL);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
         bc1=(Button)v.findViewById(R.id.ec);
+        bc1.setTypeface(TFL);
+        bc1.setTextColor(Color.parseColor("#FFFFFF"));
         bc2=(Button)v.findViewById(R.id.ej);
+        bc2.setTypeface(TFL);
+        bc2.setTextColor(Color.parseColor("#FFFFFF"));
         bc3=(Button)v.findViewById(R.id.di);
+        bc3.setTypeface(TFL);
+        bc3.setTextColor(Color.parseColor("#FFFFFF"));
+
         bc4=(Button)v.findViewById(R.id.ec2);
+        bc4.setTypeface(TFL);
+        bc4.setTextColor(Color.parseColor("#FFFFFF"));
         bc5=(Button)v.findViewById(R.id.es);
+        bc5.setTypeface(TFL);
+        bc5.setTextColor(Color.parseColor("#FFFFFF"));
+
         tv1=(TextView)v.findViewById(R.id.tvcaf1);
+        tv1.setTypeface(TFL);
+        tv1.setTextColor(Color.parseColor("#1A171B"));
         tv2=(TextView)v.findViewById(R.id.precio);
+        tv2.setTypeface(TFL);
+        tv2.setTextColor(Color.parseColor("#1A171B"));
         tv3=(TextView)v.findViewById(R.id.precio1);
+        tv3.setTypeface(TFL);
+        tv3.setTextColor(Color.parseColor("#1A171B"));
         tv4=(TextView)v.findViewById(R.id.precio2);
+        tv4.setTypeface(TFL);
+        tv4.setTextColor(Color.parseColor("#1A171B"));
         tv5=(TextView)v.findViewById(R.id.precio3);
+        tv5.setTypeface(TFL);
+        tv5.setTextColor(Color.parseColor("#1A171B"));
 
         tv6=(TextView)v.findViewById(R.id.tvcaf2);
+        tv6.setTypeface(TFL);
+        tv6.setTextColor(Color.parseColor("#1A171B"));
         tv7=(TextView)v.findViewById(R.id.textViewd);
+        tv7.setTypeface(TFL);
+        tv7.setTextColor(Color.parseColor("#1A171B"));
         tv8=(TextView)v.findViewById(R.id.preciod1);
+        tv8.setTypeface(TFL);
+        tv8.setTextColor(Color.parseColor("#1A171B"));
         tv9=(TextView)v.findViewById(R.id.preciod2);
+        tv9.setTypeface(TFL);
+        tv9.setTextColor(Color.parseColor("#1A171B"));
 
 
 
@@ -129,7 +164,9 @@ public class Cafeteria extends Fragment {
 
         mTabHost.setCurrentTab(0);
 
-
+        //FUENTE PARA TÍTULO EN TABHOST:
+        String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TFT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
         for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)
         {
@@ -138,9 +175,10 @@ public class Cafeteria extends Fragment {
 
             TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             tv.setTextColor(Color.parseColor("#FFFFFF"));
+            tv.setTypeface(TFT);
         }
-        mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
-        mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
+        mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#C90039")); //unselected
+        mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#C90039")); // selected
 
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
