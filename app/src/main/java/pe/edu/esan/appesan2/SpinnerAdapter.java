@@ -40,8 +40,8 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
     }
 
     public View getDropDownView(int position, View convertView, ViewGroup parent){
-        TextView view = (TextView) super.getDropDownView(position, convertView, parent);
-        view.setTypeface(TF);
+        //TextView view = (TextView) super.getDropDownView(position, convertView, parent);
+        //view.setTypeface(TF);
         return getView(position,convertView,parent);
     }
 

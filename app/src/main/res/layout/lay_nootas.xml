@@ -26,7 +26,7 @@
                 android:layout_gravity="center_horizontal"
                 android:padding="5px"
                 android:text="@string/tvCursos"
-                android:textColor="#005500"
+                android:textColor="#ff1a171b"
                 android:textSize="26sp" />
 
             <TextView
@@ -36,7 +36,7 @@
                 android:layout_gravity="center_horizontal"
                 android:padding="5px"
                 android:text="@string/tvEP"
-                android:textColor="#005500"
+                android:textColor="#ff1a171b"
                 android:textSize="26sp" />
 
             <TextView
@@ -46,7 +46,7 @@
                 android:layout_gravity="center_horizontal"
                 android:padding="5px"
                 android:text="@string/tvTA"
-                android:textColor="#005500"
+                android:textColor="#ff1a171b"
                 android:textSize="26sp" />
 
             <TextView
@@ -56,7 +56,7 @@
                 android:layout_gravity="center_horizontal"
                 android:padding="5px"
                 android:text="@string/tvEF"
-                android:textColor="#005500"
+                android:textColor="#ff1a171b"
                 android:textSize="26sp" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_gravity="center_horizontal"
                 android:padding="5px"
                 android:text="@string/tvPG"
-                android:textColor="#005500"
+                android:textColor="#ff1a171b"
                 android:textSize="26sp" />
         </TableRow>
 

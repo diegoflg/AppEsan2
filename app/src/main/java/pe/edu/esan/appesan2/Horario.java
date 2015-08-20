@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -21,7 +22,7 @@ import pl.polidea.view.ZoomView;
  * Created by Diegoflg on 7/13/2015.
  */
 public class Horario extends Fragment {
-
+    private TextView tvHorario;
     private GridView gridView;
 
     @Override
@@ -54,6 +55,14 @@ public class Horario extends Fragment {
         gridView=(GridView)rootView.findViewById(R.id.gridView1);
         MyAdapter adapter = new MyAdapter(getActivity().getBaseContext(), R.layout.item, numbers);
         gridView.setAdapter(adapter);
+
+        String font_path = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TF = Typeface.createFromAsset(getActivity().getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
+        tvHorario = (TextView)rootView.findViewById(R.id.textView2);
+        tvHorario.setTextColor(Color.parseColor("#C90039"));
+        tvHorario.setTypeface(TF);
+
         return zoomView;
     }
 
@@ -70,6 +79,10 @@ public class Horario extends Fragment {
         @Override
         public View getView(int position, android.view.View convertView, android.view.ViewGroup parent) {
             TextView tv;
+
+            String font_path = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+            Typeface fuenteGV = Typeface.createFromAsset(getActivity().getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 tv = (TextView)inflater.inflate(R.layout.item,parent,false);
@@ -82,10 +95,13 @@ public class Horario extends Fragment {
             tv.setHeight(50);
             tv.setWidth(70);
             if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
-                tv.setBackgroundColor(Color.parseColor("#FFCF1313"));
+                tv.setBackgroundColor(Color.parseColor("#C90039"));
                 tv.setTextColor(Color.WHITE);
+                tv.setTypeface(fuenteGV);
             }else{
                 tv.setBackgroundColor(Color.WHITE);
+                tv.setTextColor(Color.parseColor("#6B6C6E"));
+                tv.setTypeface(fuenteGV);
             }
 
             if(position>16 && position<24){

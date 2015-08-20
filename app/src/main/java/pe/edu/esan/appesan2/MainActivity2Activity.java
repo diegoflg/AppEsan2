@@ -31,6 +31,7 @@ import java.util.Locale;
 
 public class MainActivity2Activity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+    private static String TAG = "MUNDO ESAN";
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -44,6 +45,12 @@ public class MainActivity2Activity extends ActionBarActivity
     private CharSequence mTitle;
     public int tipo=1;
     public int menu=0;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "GUARDA TODO");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

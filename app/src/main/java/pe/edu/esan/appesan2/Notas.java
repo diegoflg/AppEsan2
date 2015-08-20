@@ -3,6 +3,8 @@ package pe.edu.esan.appesan2;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,6 +20,8 @@ import android.widget.TextView;
 public class Notas extends Fragment {
     private TextView curso1,curso2,curso3,curso4,ep1,ep2,ep3,ep4,ta1,ta2,ta3,ta4,ef1,ef2,ef3,ef4,pg1,pg2,pg3,pg4;
 
+    //SOLO PARA CAMBIAR FUENTE:
+    private TextView Cursos, EP, TA, EF,PG;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,8 +51,72 @@ public class Notas extends Fragment {
         pg3=(TextView)rootView.findViewById(R.id.pg3);
         pg4=(TextView)rootView.findViewById(R.id.pg4);
 
-        consultarnota(rootView);
+        //SOLO PARA LA FUENTE:
+        String font_path = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TF = Typeface.createFromAsset(getActivity().getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
+        Cursos = (TextView)rootView.findViewById(R.id.Cursos);
+        EP = (TextView)rootView.findViewById(R.id.EP);
+        TA = (TextView)rootView.findViewById(R.id.TA);
+        EF = (TextView)rootView.findViewById(R.id.EF);
+        PG = (TextView)rootView.findViewById(R.id.PG);
+
+        Cursos.setTypeface(TF);
+        EP.setTypeface(TF);
+        TA.setTypeface(TF);
+        EF.setTypeface(TF);
+        PG.setTypeface(TF);
+
+        //Fuente para texto no TÍTULOS
+        String rutafuente = "font/HelveticaNeue-Lightttf"; //ruta de la fuente
+        Typeface tipo = Typeface.createFromAsset(getActivity().getAssets(),rutafuente);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
+        curso1.setTypeface(tipo);
+        curso1.setTextColor(Color.parseColor("#6B6C6E"));
+        curso2.setTypeface(tipo);
+        curso2.setTextColor(Color.parseColor("#6B6C6E"));
+        curso3.setTypeface(tipo);
+        curso3.setTextColor(Color.parseColor("#6B6C6E"));
+        curso4.setTypeface(tipo);
+        curso4.setTextColor(Color.parseColor("#6B6C6E"));
+
+        ep1.setTypeface(tipo);
+        ep1.setTextColor(Color.parseColor("#6B6C6E"));
+        ep2.setTypeface(tipo);
+        ep2.setTextColor(Color.parseColor("#6B6C6E"));
+        ep3.setTypeface(tipo);
+        ep3.setTextColor(Color.parseColor("#6B6C6E"));
+        ep4.setTypeface(tipo);
+        ep4.setTextColor(Color.parseColor("#6B6C6E"));
+
+        ta1.setTypeface(tipo);
+        ta1.setTextColor(Color.parseColor("#6B6C6E"));
+        ta2.setTypeface(tipo);
+        ta2.setTextColor(Color.parseColor("#6B6C6E"));
+        ta3.setTypeface(tipo);
+        ta3.setTextColor(Color.parseColor("#6B6C6E"));
+        ta4.setTypeface(tipo);
+        ta4.setTextColor(Color.parseColor("#6B6C6E"));
+
+        ef1.setTypeface(tipo);
+        ef1.setTextColor(Color.parseColor("#6B6C6E"));
+        ef2.setTypeface(tipo);
+        ef2.setTextColor(Color.parseColor("#6B6C6E"));
+        ef3.setTypeface(tipo);
+        ef3.setTextColor(Color.parseColor("#6B6C6E"));
+        ef4.setTypeface(tipo);
+        ef4.setTextColor(Color.parseColor("#6B6C6E"));
+
+        pg1.setTypeface(tipo);
+        pg1.setTextColor(Color.parseColor("#6B6C6E"));
+        pg2.setTypeface(tipo);
+        pg2.setTextColor(Color.parseColor("#6B6C6E"));
+        pg3.setTypeface(tipo);
+        pg3.setTextColor(Color.parseColor("#6B6C6E"));
+        pg4.setTypeface(tipo);
+        pg4.setTextColor(Color.parseColor("#6B6C6E"));
+
+        consultarnota(rootView);
 
         return rootView;
     }
