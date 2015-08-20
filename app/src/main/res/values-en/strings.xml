@@ -88,6 +88,7 @@
         <item>"  Executive\n  education"</item>
         <item>"  FABLAB"</item>
         <item>"  DPA"</item>
+        <item>"  Parking"</item>
 
     </string-array>
 
@@ -114,6 +115,7 @@
         <item>Section T14</item>
         <item>Section T15</item>
         <item>Section T16</item>
+        <item>Section T17</item>
 
     </string-array>
 
@@ -140,6 +142,7 @@
         <item name="android:icon">@drawable/educacionejecutiva</item>
         <item name="android:icon">@drawable/fab</item>
         <item name="android:icon">@drawable/dpa</item>
+        <item name="android:icon">@drawable/estacionamiento</item>
 
     </string-array>
 

@@ -157,7 +157,7 @@
         <item name="android:icon">@drawable/noticias</item>
         <item name="android:icon">@drawable/horario</item>
         <item name="android:icon">@drawable/notas</item>
-        <item name="android:icon">@drawable/estadodepago</item>
+        <item name="android:icon">@drawable/estacionamiento</item>
     </string-array>
 
 <!-- TODO: Remove or change this placeholder text -->
