@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
         android:layout_marginBottom="20dp"
-        android:textColor="#FFB0141A"
+        android:textColor="#FFC90039"
         />
     <TableLayout
         android:layout_below="@+id/ttvv"
@@ -20,7 +20,7 @@
         android:stretchColumns="3">
 
         <TableRow
-            android:background="#FFB0141A"
+            android:background="#FFC90039"
             android:id="@+id/tableRow1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
