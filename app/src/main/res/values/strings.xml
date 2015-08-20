@@ -147,7 +147,7 @@
         <item name="android:icon">@drawable/educacionejecutiva</item>
         <item name="android:icon">@drawable/fab</item>
         <item name="android:icon">@drawable/dpa</item>
-        <item name="android:icon">@drawable/estadodepago</item>
+        <item name="android:icon">@drawable/estacionamiento</item>
 
     </string-array>
 
