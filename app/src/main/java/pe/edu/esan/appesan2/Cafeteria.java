@@ -149,6 +149,7 @@ public class Cafeteria extends Fragment {
 
 
 
+
         mTabHost = (TabHost) v.findViewById(R.id.tabHost2);
         mTabHost.setup();
 
