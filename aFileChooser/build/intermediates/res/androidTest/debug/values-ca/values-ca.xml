@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/diego/Downloads/AppEsan2/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-ca/values-ca.xml -->
+    <!-- From: file:/D:/Proyectos/Proyectos%202.0/APLICATIVO/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-ca/values-ca.xml -->
     <eat-comment/>
     <string name="choose_file">Seleccioneu un fitxer</string>
     <string name="empty_directory">Carpeta buida</string>
