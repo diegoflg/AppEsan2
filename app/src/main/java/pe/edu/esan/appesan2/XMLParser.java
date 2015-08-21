@@ -20,7 +20,7 @@ import android.util.Log;
 public class XMLParser {
 	private URL url;
 	Context contextor;
-	
+
 	public XMLParser(String url,Context contexto) {
 		contextor=contexto;
 		try {
@@ -29,15 +29,15 @@ public class XMLParser {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public ArrayList<Noticias> parse() {
-		
+
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		ArrayList<Noticias> noticias = new ArrayList<Noticias>();
+		ArrayList<Noticias> noticiases = new ArrayList<Noticias>();
 		DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy kk:mm:ss Z", Locale.ENGLISH);
 		Noticias noticia;
-		
-		
+
+
 		try {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document dom = builder.parse(this.url.openConnection().getInputStream());
@@ -55,35 +55,35 @@ public class XMLParser {
 					}else if (name.equalsIgnoreCase("content:encoded")){
 						int delimiter = (property.getFirstChild().getNodeValue()).indexOf(" ] ");
 						noticia.setContenido(property.getFirstChild().getNodeValue().substring(delimiter+1));
-						
+
 						int startdelimiterImage = property.getFirstChild().getNodeValue().indexOf("src=");
 						if(startdelimiterImage!=-1){
 
 							String urlpart = property.getFirstChild().getNodeValue().substring(startdelimiterImage+5);
-							int enddelimiterImage = urlpart.indexOf("\"");						
+							int enddelimiterImage = urlpart.indexOf("\"");
 							noticia.setImage(property.getFirstChild().getNodeValue().substring(startdelimiterImage+5,startdelimiterImage+5+enddelimiterImage));
-							}
-						
+						}
+
 					}else if (name.equalsIgnoreCase("description")){
 						int delimiter = (property.getFirstChild().getNodeValue()).indexOf(" ] ");
 						noticia.setResumen(property.getFirstChild().getNodeValue().substring(delimiter+1));
-						
+
 					}else if (name.equalsIgnoreCase("link")){
-						noticia.setEnlace(property.getFirstChild().getNodeValue());						
+						noticia.setEnlace(property.getFirstChild().getNodeValue());
 					}else if(name.equalsIgnoreCase("pubDate")){
 						noticia.setFecha(formatter.parse(""+property.getFirstChild().getNodeValue()));
 					}
-					
+
 				}
-				noticias.add(noticia);
+				noticiases.add(noticia);
 				Log.i("Parsher", "notcia:"+i);
 			}
-			
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		} 
 
-		return noticias;
+		} catch (Exception e) {
+
+		}
+
+		return noticiases;
 	}
-	
+
 }

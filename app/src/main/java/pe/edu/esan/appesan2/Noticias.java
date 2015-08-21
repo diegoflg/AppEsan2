@@ -3,10 +3,9 @@ package pe.edu.esan.appesan2;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by educacionadistancia on 20/08/2015.
- */
-public class Noticias implements Serializable{
+@SuppressWarnings("serial")
+public class Noticias implements Serializable {
+
     private String titulo;
     private String contenido;
     private String resumen;
@@ -62,5 +61,3 @@ public class Noticias implements Serializable{
         return this.fecha;
     }
 }
-
-

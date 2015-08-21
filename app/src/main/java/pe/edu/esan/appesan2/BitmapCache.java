@@ -6,7 +6,7 @@ import android.support.v4.util.LruCache;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 
 public class BitmapCache extends LruCache implements ImageCache {
-	
+
 	public BitmapCache(int maxSize) {
 		super(maxSize);
 	}

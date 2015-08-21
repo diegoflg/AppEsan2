@@ -23,7 +23,7 @@ public class Noticias_Adapter extends ArrayAdapter<Object> {
 		super(context, R.layout.item_noticias);
 		this.context = context;
 		this.noticias = noticias;
-		
+
 		requestQueue = Volley.newRequestQueue(context);
 		imageLoader = new ImageLoader(requestQueue, new BitmapCache(10));
 	}
@@ -38,7 +38,7 @@ public class Noticias_Adapter extends ArrayAdapter<Object> {
 		TextView title;
 		TextView time;
 		TextView content;
-		
+
 		ImageView picture;
 
 		public static PlaceHolder generate(View convertView) {
@@ -49,7 +49,7 @@ public class Noticias_Adapter extends ArrayAdapter<Object> {
 					.findViewById(R.id.noticia_textview_time);
 			placeHolder.content = (TextView) convertView
 					.findViewById(R.id.noticia_textview_content);
-			
+
 			placeHolder.picture = (ImageView) convertView
 					.findViewById(R.id.noticia_imageView);
 			return placeHolder;
@@ -71,7 +71,7 @@ public class Noticias_Adapter extends ArrayAdapter<Object> {
 				+ noticias.get(position).getFecha().getDate() + "/"
 				+ noticias.get(position).getFecha().getMonth());
 		placeHolder.content.setText(noticias.get(position).getResumen());
-		
+
 		imageLoader.get(noticias.get(position).getImagen(), ImageLoader.getImageListener(placeHolder.picture, R.drawable.ic_launcher, R.drawable.ic_launcher));
 		return (convertView);
 	}
