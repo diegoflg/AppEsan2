@@ -27,40 +27,43 @@ import java.util.ArrayList;
  * Created by Diegoflg on 7/13/2015.
  */
 public class Fablab extends Fragment {
-    public ArrayList<Noticias> Array_Noticias = new ArrayList<Noticias>();
+
+
+    public ArrayList<Noticias> array_Noticias = new ArrayList<Noticias>();
     private Noticias_Adapter adapter;
 
-    private String URL = "http://www.geekytheory.com/feed/";
-
-    private ListView lista;
-
+    //private String URL = "https://geekytheory.com/feed/";
+    //private String URL = "http://feeds.feedburner.com/ElMbaQueTeDiferencia";
+    private String URL = "http://feeds.feedburner.com/mbaEsan";
+    ListView lista;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_noticias, container, false);
+        final View v = inflater.inflate(R.layout.activity_noticias, container, false);
+        lista = (ListView) v.findViewById(R.id.noticiaslistview);
 
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
-        lista = (ListView) getActivity().findViewById(R.id.noticias_listview);
-        adapter = new Noticias_Adapter(getActivity(), Array_Noticias);
+        rellenarNoticias();
+        return v;
+
+    }
+
+    private void inicializarListView() {
+
+        adapter = new Noticias_Adapter(getActivity().getApplicationContext(), array_Noticias);
         lista.setAdapter(adapter);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                    long arg3) {
                 Intent intent = new Intent(getActivity(), Activity_Articulo.class);
-                intent.putExtra("parametro", Array_Noticias.get(arg2));
+                intent.putExtra("parametro", array_Noticias.get(arg2));
                 //intent.putExtra("parametro", "Artículo número "+(arg2+1));
                 startActivity(intent);
             }
         });
-
-        rellenarNoticias();
-
-        return rootView;
     }
-
-
 
     private void rellenarNoticias() {
         if (isOnline()) {
@@ -82,7 +85,7 @@ public class Fablab extends Fragment {
         @Override
         protected Boolean doInBackground(final String... args) {
             XMLParser parser = new XMLParser(feedUrl, getActivity().getBaseContext());
-            Array_Noticias = parser.parse();
+            array_Noticias = parser.parse();
             return true;
         }
 
@@ -90,7 +93,7 @@ public class Fablab extends Fragment {
         protected void onPostExecute(Boolean success) {
             if (success) {
                 try {
-
+                    inicializarListView();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -112,59 +115,5 @@ public class Fablab extends Fragment {
         }
         return false;
     }
+
 }
-
-
-/*
-
-        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
-
-        WebView myWebView = (WebView) rootView.findViewById(R.id.webviewfab);
-        myWebView.loadUrl("http://fablab.esan.edu.pe/");
-
-        myWebView.getSettings().setUseWideViewPort(true);
-        myWebView.getSettings().setLoadWithOverviewMode(true);
-        myWebView.getSettings().setBuiltInZoomControls(true);
-        myWebView.getSettings().setSupportZoom(true);
-
-        myWebView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    WebView webView = (WebView) v;
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_BACK:
-                            if (webView.canGoBack()) {
-                                webView.goBack();
-                                return true;
-                            }
-                            break;
-                    }}
-                return false;
-            }
-        });
-
-        myWebView.setWebViewClient(new WebViewClient() {
-                                       public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
-
-                                       @Override
-                                       public void onPageStarted(WebView view, String url, Bitmap favicon){
-                                           dialog.show();
-                                       }
-
-                                       @Override
-                                       public void onPageFinished(WebView view, String url){
-                                           dialog.dismiss();
-                                       }
-
-                                       @Override
-                                       public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                           return false;
-                                       }}
-        );
- */
-
-
-
-
-
