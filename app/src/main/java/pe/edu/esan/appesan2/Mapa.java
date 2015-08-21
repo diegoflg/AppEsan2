@@ -55,8 +55,8 @@ public class Mapa extends Fragment {
             TextView tv = (TextView) mTabHost3.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             tv.setTextColor(Color.parseColor("#FFFFFF"));
         }
-        mTabHost3.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
-        mTabHost3.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
+        mTabHost3.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#ffc90039")); //unselected
+        mTabHost3.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#ffc90039")); // selected
 
         m = (MapView) v.findViewById(R.id.mapView);
         m.onCreate(savedInstanceState);

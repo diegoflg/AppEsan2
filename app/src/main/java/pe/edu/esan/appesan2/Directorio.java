@@ -107,8 +107,8 @@ public class Directorio extends Fragment {
         TextView tv = (TextView) tbDM.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
         tv.setTextColor(Color.parseColor("#FFFFFF"));
         }
-        tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#CF1313")); //unselected
-        tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#CF1313")); // selected
+        tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#ffc90039")); //unselected
+        tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#ffc90039")); // selected
 
         String[] values = new String[]{getString(R.string.d1),getString(R.string.d2),getString(R.string.d3),getString(R.string.d4),getString(R.string.d5),getString(R.string.d6),getString(R.string.d7)};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
