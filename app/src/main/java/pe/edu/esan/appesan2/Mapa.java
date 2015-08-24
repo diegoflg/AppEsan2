@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -47,6 +48,10 @@ public class Mapa extends Fragment {
 
         mTabHost3.setCurrentTab(0);
 
+        //FUENTE PARA TÍTULO EN TABHOST:
+        String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TFT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
         for(int i=0;i<mTabHost3.getTabWidget().getChildCount();i++)
         { mTabHost3.getTabWidget().setStripEnabled(true);
             mTabHost3.getTabWidget().setRightStripDrawable(R.drawable.greyline);
@@ -54,6 +59,8 @@ public class Mapa extends Fragment {
 
             TextView tv = (TextView) mTabHost3.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             tv.setTextColor(Color.parseColor("#FFFFFF"));
+            tv.setTypeface(TFT);
+
         }
         mTabHost3.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#ffc90039")); //unselected
         mTabHost3.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#ffc90039")); // selected

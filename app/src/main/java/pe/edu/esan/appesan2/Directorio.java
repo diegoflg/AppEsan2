@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -99,6 +100,10 @@ public class Directorio extends Fragment {
 
         tbDM.setCurrentTab(0);
 
+        //FUENTE PARA TÍTULO EN TABHOST:
+        String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TFT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
         for(int i=0;i<tbDM.getTabWidget().getChildCount();i++)
         {tbDM.getTabWidget().setStripEnabled(true);
         tbDM.getTabWidget().setRightStripDrawable(R.drawable.greyline);
@@ -106,9 +111,14 @@ public class Directorio extends Fragment {
 
         TextView tv = (TextView) tbDM.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
         tv.setTextColor(Color.parseColor("#FFFFFF"));
+        tv.setTypeface(TFT);
         }
         tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#ffc90039")); //unselected
         tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#ffc90039")); // selected
+
+        //FUENTE PARA TEXTO EN CUADRO DE BÚSQUEDA:
+        String font_pathB = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TB = Typeface.createFromAsset(getActivity().getAssets(),font_pathB);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
         String[] values = new String[]{getString(R.string.d1),getString(R.string.d2),getString(R.string.d3),getString(R.string.d4),getString(R.string.d5),getString(R.string.d6),getString(R.string.d7)};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
@@ -119,6 +129,7 @@ public class Directorio extends Fragment {
         int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
         final TextView textView = (TextView) searchView.findViewById(id);
         textView.setHint("Buscar...");
+        textView.setTypeface(TB);
 
         listViewSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -169,11 +180,22 @@ public class Directorio extends Fragment {
         // Displaying the popup at the specified location, + offsets.
         popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
+        // FUENTE PARA TEXTO EN POPUP Y BOTONES:
+        String font_pathPP = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TPP = Typeface.createFromAsset(getActivity().getAssets(),font_pathPP);//llamanos a la CLASS TYPEFACE y la definimos
+        // con un CREATE desde ASSETS con la ruta STRING
+
         // Getting a reference to Close button, and close the popup when clicked.
         Button call = (Button) layout.findViewById(R.id.call);
         Button close = (Button) layout.findViewById(R.id.close);
+        call.setTypeface(TPP);
+        close.setTypeface(TPP);
+
+
         TextView tv1 = (TextView) layout.findViewById(R.id.poptv1);
+        tv1.setTypeface(TPP);
         TextView tv2 = (TextView) layout.findViewById(R.id.poptv2);
+        tv2.setTypeface(TPP);
 
         switch(opc){
             case 0:

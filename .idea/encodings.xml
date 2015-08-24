@@ -11,10 +11,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/card_shape_normal.xml" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher.png" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/icono_splash.png" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_articulo.xml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_noticias.xml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout-land/activity_splash.xml" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout-land/item_noticias.xml" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/menu/splash.xml" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/raw/htmlnoticia.html" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />

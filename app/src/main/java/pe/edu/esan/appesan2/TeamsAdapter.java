@@ -27,7 +27,7 @@ import java.util.ArrayList;
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
 
-        //FUENTE Y COLOR PARA CUALQUIER OBJETO DENTRO DE CUALQUIER TABHOST:
+        //FUENTE Y COLOR PARA EL MENÚ:
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFL = Typeface.createFromAsset(getContext().getAssets(), font_pathL);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
