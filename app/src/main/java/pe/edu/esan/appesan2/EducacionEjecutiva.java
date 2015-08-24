@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -22,15 +23,27 @@ public class EducacionEjecutiva extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView   = inflater.inflate(R.layout.lay_educacionejecutiva, container, false);
 
+        //FUENTE Y COLOR PARA TEXTO DE BOTONES:
+        String font_pathEE = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TFEE = Typeface.createFromAsset(getActivity().getAssets(), font_pathEE);
+        //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         Button pade     = (Button)rootView.findViewById(R.id.pade);
+        pade.setTypeface(TFEE);
         Button pae      = (Button)rootView.findViewById(R.id.pae);
+        pae.setTypeface(TFEE);
         Button pee      = (Button)rootView.findViewById(R.id.pee);
+        pee.setTypeface(TFEE);
         Button peed     = (Button)rootView.findViewById(R.id.peed);
+        peed.setTypeface(TFEE);
         Button diplomas = (Button)rootView.findViewById(R.id.diplomas);
+        diplomas.setTypeface(TFEE);
         Button idiomas  = (Button)rootView.findViewById(R.id.idiomas);
+        idiomas.setTypeface(TFEE);
         Button gestion  = (Button)rootView.findViewById(R.id.gestion);
+        gestion.setTypeface(TFEE);
 
         final WebView wbEE = (WebView)rootView.findViewById(R.id.wbEE);
         wbEE.loadUrl("http://www.esan.edu.pe/pade/");

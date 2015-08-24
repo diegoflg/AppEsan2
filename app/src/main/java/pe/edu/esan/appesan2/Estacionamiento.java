@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.content.pm.ActivityInfo;
 
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -52,6 +53,8 @@ public class Estacionamiento extends Fragment {
     TextView tvlibres;
     String estado2;
 
+    //PARA FUENTE:
+    TextView textViewestareg;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,9 +63,18 @@ public class Estacionamiento extends Fragment {
 
         final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
 
+        //FUENTE Y COLOR PARA TEXTVIEWS
+        String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TFE = Typeface.createFromAsset(getActivity().getAssets(), font_pathE);
+        //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
+        textViewestareg = (TextView)v.findViewById(R.id.textViewestareg);
+        textViewestareg.setTypeface(TFE);
 
+        String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TFL = Typeface.createFromAsset(getActivity().getAssets(), font_pathL);
         tvlibres=(TextView)v.findViewById(R.id.textlibres);
+        tvlibres.setTypeface(TFL);
 
         sema1e=(ImageView)v.findViewById(R.id.sema1e);
         sema2e=(ImageView)v.findViewById(R.id.sema2e);
