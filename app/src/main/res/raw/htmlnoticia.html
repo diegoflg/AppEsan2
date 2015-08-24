@@ -4,10 +4,23 @@
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<style type="text/css">
+        @font-face {
+        font-family: Titulo;
+        src: url("file:///android_asset/font/HelveticaNeue-Roman.ttf");
+        }
+        @font-face {
+        font-family: Fecha;
+        src: url("file:///android_asset/font/HelveticaNeue-CondensedBold.ttf");
+        }
+        @font-face {
+        font-family: Texto;
+        src: url("file:///android_asset/font/HelveticaNeue-Light.ttf");
+        }
         body {
             max-width: 100%;
             margin: 0px 0px; padding:0px;
             text-align: left;
+            font-family: Texto;
             margin-bottom: 10px;
         }
         
@@ -18,18 +31,19 @@
         }
         
         #header {
-            border-bottom: 2px solid #1abb9c;
+            border-bottom: 2px solid #C90039;
             line-height: 1;
         }
         
         .title {
-            
-            color: #333;
+            font-family: Titulo;
+            color: #1A171B;
             font-size: 25px;
         }
 
         .pubDate {
-            color: #A1A1A1;
+            color: #6B6C6E;
+            font-family: Fecha;
             text-align: right;
             font-size: 14px;
         }
@@ -51,11 +65,12 @@
             text-align:left;
             <!--word-wrap:break-word;-->
             font-size:16px;
-            color: #333
+            color: #1A171B
         }
 	
         a {
-            color: #468CFF;
+            color: #C90039;
+            font-family: Texto;
             text-decoration: none;
         }
         
