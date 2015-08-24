@@ -36,8 +36,8 @@ public class Activity_Articulo extends Fragment{
 						case KeyEvent.KEYCODE_BACK:
 
 							FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-							Fablab fragment;
-							fragment = new Fablab();
+							Noticia fragment;
+							fragment = new Noticia();
 							fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
 
 							break;
