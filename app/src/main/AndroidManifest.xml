@@ -29,6 +29,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activity_Articulo"
+            android:hardwareAccelerated="true">
+
+        </activity>
+        <activity
             android:name=".MainActivity2Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:hardwareAccelerated="true"
