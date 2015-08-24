@@ -10,6 +10,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,10 +58,27 @@ public class Fablab extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-                Intent intent = new Intent(getActivity(), Activity_Articulo.class);
-                intent.putExtra("parametro", array_Noticias.get(arg2));
-                //intent.putExtra("parametro", "Artículo número "+(arg2+1));
-                startActivity(intent);
+               // Intent intent = new Intent(getActivity(), Activity_Articulo.class);
+                //intent.putExtra("parametro", array_Noticias.get(arg2));
+
+               // startActivity(intent);
+
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                Activity_Articulo fragment;
+                fragment = new Activity_Articulo();
+
+               Bundle bundle = new Bundle();
+                Noticias not1=(Noticias)array_Noticias.get(arg2);
+                bundle.putSerializable("parametro", not1);
+
+                fragment.setArguments(bundle);
+
+
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .commit();
             }
         });
     }
