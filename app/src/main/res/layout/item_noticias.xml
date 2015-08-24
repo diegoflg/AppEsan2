@@ -13,9 +13,9 @@
 
         <ImageView
             android:id="@+id/noticia_imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_launcher" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/esan" />
 
         <TextView
             android:id="@+id/noticia_textview_title"
@@ -44,7 +44,8 @@
             android:layout_height="wrap_content"
             android:text="Contenido"
             android:ellipsize="end"
-            android:singleLine="true"
+            android:singleLine="false"
+            android:maxLines="4"
             android:layout_alignLeft="@+id/noticia_textview_title"
             android:layout_below="@+id/noticia_textview_title"/>
     </RelativeLayout>
