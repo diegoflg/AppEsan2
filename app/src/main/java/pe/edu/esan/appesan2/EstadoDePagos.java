@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -15,7 +16,8 @@ import android.widget.TextView;
  * Created by Diegoflg on 7/24/2015.
  */
 public class EstadoDePagos extends Fragment {
-
+    //Para fuente
+    TextView ttvv, concepto, monto, vencimiento;
     TextView tvpag1,tvpag2,tvpag3,tvpag4,tvpag5,tvpag6,tvpag7,tvpag8,tvpag9,tvpag10,tvpag11,tvpag12;
 
 
@@ -27,18 +29,49 @@ public class EstadoDePagos extends Fragment {
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 
+
+        //FUENTE PARA TEXVIEWS :
+        String font_pathTTV = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TTV = Typeface.createFromAsset(getActivity().getAssets(), font_pathTTV);
+        ttvv= (TextView)rootView.findViewById(R.id.ttvv);
+        ttvv.setTypeface(TTV);
+        concepto= (TextView)rootView.findViewById(R.id.concepto);
+        concepto.setTypeface(TTV);
+        monto= (TextView) rootView.findViewById(R.id.monto);
+        monto.setTypeface(TTV);
+        vencimiento= (TextView) rootView.findViewById(R.id.vencimiento);
+        vencimiento.setTypeface(TTV);
+
+        String font_pathConcepto = "font/HelveticaNeue-Bold.ttf"; //ruta de la fuente
+        Typeface TFC = Typeface.createFromAsset(getActivity().getAssets(), font_pathConcepto);
+
+        String font_pathNumeros = "font/HelveticaNeue-CondensedBold.ttf"; //ruta de la fuente
+        Typeface TFN = Typeface.createFromAsset(getActivity().getAssets(), font_pathNumeros);
+
         tvpag1=(TextView)rootView.findViewById(R.id.concepto1);
+        tvpag1.setTypeface(TFC);
         tvpag2=(TextView)rootView.findViewById(R.id.monto1);
+        tvpag2.setTypeface(TFN);
         tvpag3=(TextView)rootView.findViewById(R.id.vencimiento1);
+        tvpag3.setTypeface(TFN);
         tvpag4=(TextView)rootView.findViewById(R.id.concepto2);
+        tvpag4.setTypeface(TFC);
         tvpag5=(TextView)rootView.findViewById(R.id.monto2);
+        tvpag5.setTypeface(TFN);
         tvpag6=(TextView)rootView.findViewById(R.id.vencimiento2);
+        tvpag6.setTypeface(TFN);
         tvpag7=(TextView)rootView.findViewById(R.id.concepto3);
+        tvpag7.setTypeface(TFC);
         tvpag8=(TextView)rootView.findViewById(R.id.monto3);
+        tvpag8.setTypeface(TFN);
         tvpag9=(TextView)rootView.findViewById(R.id.vencimiento3);
+        tvpag9.setTypeface(TFN);
         tvpag10=(TextView)rootView.findViewById(R.id.concepto4);
+        tvpag10.setTypeface(TFC);
         tvpag11=(TextView)rootView.findViewById(R.id.monto4);
+        tvpag11.setTypeface(TFN);
         tvpag12=(TextView)rootView.findViewById(R.id.vencimiento4);
+        tvpag12.setTypeface(TFN);
 
         consultarpagos(rootView);
         return rootView;

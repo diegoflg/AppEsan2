@@ -1,12 +1,15 @@
 package pe.edu.esan.appesan2;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -15,6 +18,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class CursosMooc extends Fragment {
     CircleImageView cv1,cv2,cv3,cv4;
+    //Solo para la fuente
+    TextView tvmooc;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -25,6 +30,15 @@ public class CursosMooc extends Fragment {
         cv2=(CircleImageView)rootView.findViewById(R.id.cv2);
         cv3=(CircleImageView)rootView.findViewById(R.id.cv3);
         cv4=(CircleImageView)rootView.findViewById(R.id.cv4);
+
+        //FUENTE PARA TEXVIEW :
+        String font_pathTTV = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TTV = Typeface.createFromAsset(getActivity().getAssets(),font_pathTTV);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE
+        // desde ASSETS con la ruta STRING
+        tvmooc = (TextView)rootView.findViewById(R.id.tvmooc);
+        tvmooc.setTextColor(Color.parseColor("#1A171B"));
+        tvmooc.setTypeface(TTV);
+
 
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override
