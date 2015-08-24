@@ -2,15 +2,13 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,120 +16,128 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Diegoflg on 7/13/2015.
  */
 public class Fablab extends Fragment {
+    private static String TAG = "MUNDO CRUEL";
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i(TAG, "CREA ACTIVIDAD");
+    }
 
-    public ArrayList<Noticias> array_Noticias = new ArrayList<Noticias>();
-    private Noticias_Adapter adapter;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i(TAG, "RECREA");
+    }
 
-    //private String URL = "https://geekytheory.com/feed/";
-    //private String URL = "http://feeds.feedburner.com/ElMbaQueTeDiferencia";
-    private String URL = "http://feeds.feedburner.com/mbaEsan";
-    ListView lista;
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        Log.i(TAG, "RESTAURA CREACIÓN");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.activity_noticias, container, false);
-        lista = (ListView) v.findViewById(R.id.noticiaslistview);
+        View rootView = inflater.inflate(R.layout.lay_noticia, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
 
-        rellenarNoticias();
-        return v;
+        WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
+        Log.i(TAG, "CREA");
 
-    }
+        myWebView.getSettings().setUseWideViewPort(true);
+        myWebView.getSettings().setLoadWithOverviewMode(true);
+        myWebView.getSettings().setBuiltInZoomControls(true);
+        myWebView.getSettings().setSupportZoom(true);
+      //myWebView.getSettings().setAppCachePath(getActivity().getApplicationContext().getCacheDir().getAbsolutePath());
+        myWebView.getSettings().setDomStorageEnabled(true);
+        myWebView.getSettings().setAppCachePath("/data/data/pe.edu.esan.appesan2/cache");
+        myWebView.getSettings().setAllowFileAccess(true);
+        myWebView.getSettings().setAppCacheEnabled(true);
+        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setLoadsImagesAutomatically(true);
 
-    private void inicializarListView() {
 
-        adapter = new Noticias_Adapter(getActivity().getApplicationContext(), array_Noticias);
-        lista.setAdapter(adapter);
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        if ( !isNetworkAvailable()) { // loading offline
+            myWebView.loadUrl("http://blog.ue.edu.pe/");
+            myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
+            //myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            Log.i(TAG, "SIN INTERNET");
+        }else{
+            Log.i(TAG, "CON INTERNET");
+            myWebView.loadUrl("http://blog.ue.edu.pe/");
 
+            myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
+
+        }
+
+
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+
+                dialog.dismiss(); // when the task active then close the dialog
+                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+            }
+        }, 10000); // after 2 second (or 2000 miliseconds), the task will be active.
+
+
+
+        myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
-               // Intent intent = new Intent(getActivity(), Activity_Articulo.class);
-                //intent.putExtra("parametro", array_Noticias.get(arg2));
-
-               // startActivity(intent);
-
-
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                Activity_Articulo fragment;
-                fragment = new Activity_Articulo();
-
-               Bundle bundle = new Bundle();
-                Noticias not1=(Noticias)array_Noticias.get(arg2);
-                bundle.putSerializable("parametro", not1);
-
-                fragment.setArguments(bundle);
-
-
-
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, fragment)
-                        .commit();
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    WebView webView = (WebView) v;
+                    switch (keyCode) {
+                        case KeyEvent.KEYCODE_BACK:
+                            if (webView.canGoBack()) {
+                                webView.goBack();
+                                return true;
+                            }
+                            break;
+                    }}
+                return false;
             }
         });
-    }
 
-    private void rellenarNoticias() {
-        if (isOnline()) {
-            new DescargarNoticias(getActivity().getBaseContext(), URL).execute();
-        }
+        myWebView.setWebViewClient(new WebViewClient() {
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
 
-    }
-
-    private class DescargarNoticias extends AsyncTask<String, Void, Boolean> {
-
-        private String feedUrl;
-        private Context ctx;
-
-        public DescargarNoticias(Context c, String url) {
-            this.feedUrl = url;
-            this.ctx = c;
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon){
+            dialog.show();
         }
 
         @Override
-        protected Boolean doInBackground(final String... args) {
-            XMLParser parser = new XMLParser(feedUrl, getActivity().getBaseContext());
-            array_Noticias = parser.parse();
-            return true;
+        public void onPageFinished(WebView view, String url){
+            dialog.dismiss();
         }
 
         @Override
-        protected void onPostExecute(Boolean success) {
-            if (success) {
-                try {
-                    inicializarListView();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                Toast.makeText(ctx, "Error en la lectura", Toast.LENGTH_LONG)
-                        .show();
-            }
-        }
-
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return false;
+        }}
+        );
+        return rootView;
     }
 
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getApplication()
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnected()) {
-            return true;
-        }
-        return false;
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
 }
+
+
+
+
