@@ -225,17 +225,34 @@ public class Mapa extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        Log.i(TAG, "CASO 0");
-                        float values[] = new float[]{1,0,-574, 0,1,-309, 0,0,1};
-                        matrix.setValues(values);
+                        Log.i(TAG, "CASO 1 RECTORADO");
+                        float values0[] = new float[]{2,0,-1607, 0,2,-908, 0,0,1};
+                        matrix.setValues(values0);
                         imagenMapa.setImageMatrix(matrix);
-                        //imagenMapa.setImageMatrix();  Matrix{[1.0, 0.0, -574.70404][0.0, 1.0, -309.35553][0.0, 0.0, 1.0]}
+                        //Matrix{[2.4303386, 0.0, -1607.7274][0.0, 2.4303386, -908.5718][0.0, 0.0, 1.0]}
                     break;
-
+                    case 1:
+                        Log.i(TAG, "CASO 2 VICERRECTORADO DE INVESTIGACIÓN");
+                        float values1[] = new float[]{2,0,-1611, 0,2,-786, 0,0,1};
+                        matrix.setValues(values1);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[2.4303386, 0.0, -1611.715][0.0, 2.4303386, -786.82544][0.0, 0.0, 1.0]}
+                    break;
+                    case 2:
+                        Log.i(TAG, "CASO 3 VICERRECTORADO ACADÉMICO");
+                        float values2[] = new float[]{0,0,-4, 0,0,-660, 0,0,1};
+                        matrix.setValues(values2);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[0.85688907, 0.0, -4.8470917][0.0, 0.85688907, -660.499][0.0, 0.0, 1.0]}
+                    break;
+                    case 3:
+                        Log.i(TAG, "CASO 4 COUNTER ADMISIÓN PREGRADO");
+                        float values3[] = new float[]{2, 0, -1390,  0, 2, -1255,   0, 0, 1};
+                        matrix.setValues(values3);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[2.219458, 0.0, -1390.3268][0.0, 2.219458, -1255.1582][0.0, 0.0, 1.0]}
+                    break;
                 }
-
-
-
             }
         });
 
