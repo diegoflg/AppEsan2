@@ -128,7 +128,7 @@ public class Mapa extends Fragment {
     public void waze(){
         try
         {
-            String url = "waze://?q=ESAN";
+            String url = "waze://?ll=<-12.105019>,<-76.961066>";
             Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(url) );
             startActivity( intent );
         }
