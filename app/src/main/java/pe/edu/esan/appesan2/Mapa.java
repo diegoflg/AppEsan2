@@ -128,7 +128,7 @@ public class Mapa extends Fragment {
     public void waze(){
         try
         {
-            String url = "waze://?ll=<-12.105019>,<-76.961066>";
+            String url = "waze://?ll=-12.105019,-76.961066&z=10";
             Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(url) );
             startActivity( intent );
         }
