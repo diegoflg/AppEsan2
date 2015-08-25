@@ -1,6 +1,8 @@
 package pe.edu.esan.appesan2;
 
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -112,10 +114,17 @@ public class NavigationDrawerFragment extends Fragment {
             ) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
-                    View v = super.getView(position, convertView, parent);
+                    //FUENTE Y COLOR PARA TEXTVIEWS(TÍTULOS EN EL MENÚ)
+                    String font_pathTFM = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+                    Typeface TFM = Typeface.createFromAsset(getActivity().getAssets(), font_pathTFM);
+                    //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
+                    TextView v = (TextView) super.getView(position, convertView, parent);
+                    v.setTypeface(TFM);
+                    v.setTextColor(Color.parseColor("#FFFFFF"));
                     int resourceId = typedArray.getResourceId(position, 0);
                     Drawable drawable = getResources().getDrawable(resourceId);
-                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                    v.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
                     return v;
                 }
             });
@@ -131,10 +140,18 @@ public class NavigationDrawerFragment extends Fragment {
             ) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
-                    View v = super.getView(position, convertView, parent);
+                    //FUENTE Y COLOR PARA TEXTVIEWS(TÍTULOS EN EL MENÚ)
+                    String font_pathTFM = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+                    Typeface TFM = Typeface.createFromAsset(getActivity().getAssets(), font_pathTFM);
+                    //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
+                    TextView v = (TextView) super.getView(position, convertView, parent);
+                    v.setTypeface(TFM);
+                    v.setTextColor(Color.parseColor("#FFFFFF"));
+
                     int resourceId = typedArray.getResourceId(position, 0);
                     Drawable drawable = getResources().getDrawable(resourceId);
-                    ((TextView) v).setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                    v.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
                     return v;
                 }
             });
