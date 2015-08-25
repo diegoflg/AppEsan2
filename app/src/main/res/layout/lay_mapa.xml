@@ -56,15 +56,25 @@
                     android:layout_height="match_parent">
                     <EditText
                         android:id="@+id/buscaLugar"
-                        android:background="#ffc90039"
+                        android:background="#C90039"
                         android:layout_width="match_parent"
                         android:padding="3dp"
                         android:layout_margin="3dp"
                         android:layout_height="30dp" />
+                    <ListView
+                        android:id="@+id/listamapa"
+                        android:layout_width="match_parent"
+                        android:background="#C90039"
+                        android:padding="3dp"
+                        android:layout_margin="3dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@id/buscaLugar">
+                    </ListView>
+
                     <ImageView
                         android:id="@+id/imagenMapa"
                         android:scaleType="matrix"
-                        android:layout_below="@+id/buscaLugar"
+                        android:layout_below="@+id/listamapa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 

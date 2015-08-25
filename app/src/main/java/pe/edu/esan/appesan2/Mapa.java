@@ -6,10 +6,12 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PointF;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.renderscript.Matrix3f;
 import android.support.v4.app.Fragment;
 import android.util.FloatMath;
 import android.util.Log;
@@ -17,8 +19,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,6 +34,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 public class Mapa extends Fragment {
     private GoogleMap googleMap;
@@ -53,6 +60,8 @@ public class Mapa extends Fragment {
     PointF mid = new PointF();
     float oldDist = 1f;
     String savedItemClicked;
+
+    ListView listamapa;
 
 
     @Override
@@ -136,69 +145,99 @@ public class Mapa extends Fragment {
         busca.setTextColor(Color.parseColor("#FFFFFF"));
         //----------------------------------------------------------------------------------
 
+        listamapa = (ListView)v.findViewById(R.id.listamapa);
+        String[] values = new String[]{"1 Rectorado","2 Vicerrectorado de Investigación","3 Vicerrectorado Académico","4 Counter Admision Pregrado"};
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+        listamapa.setAdapter(adapter);
+        listamapa.setTextFilterEnabled(false);
 
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
                 if (mTabHost3.getCurrentTab() == 1) {
                     waze();
-                }else if(mTabHost3.getCurrentTab()==2){
-                    //--------------------------ESAN MAPA-------------------------------
-                    imagenMapa.setImageResource(R.drawable.mapaesan);
+                } else {
+                    if (mTabHost3.getCurrentTab() == 2) {
+                        //--------------------------ESAN MAPA-------------------------------
+                        imagenMapa.setImageResource(R.drawable.mapaesan);
 
-                    imagenMapa.setOnTouchListener(new View.OnTouchListener() {
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            dumpEvent(event);
+                        imagenMapa.setOnTouchListener(new View.OnTouchListener() {
+                            @Override
+                            public boolean onTouch(View v, MotionEvent event) {
+                                dumpEvent(event);
 
-                            // Handle touch events here...
-                            switch (event.getAction() & MotionEvent.ACTION_MASK) {
-                                case MotionEvent.ACTION_DOWN:
-                                    savedMatrix.set(matrix);
-                                    start.set(event.getX(), event.getY());
-                                    Log.d(TAG, "mode=DRAG");
-                                    mode = DRAG;
-                                    break;
-                                case MotionEvent.ACTION_POINTER_DOWN:
-                                    oldDist = spacing(event);
-                                    Log.d(TAG, "oldDist=" + oldDist);
-                                    if (oldDist > 10f) {
+                                // Handle touch events here...
+                                switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                                    case MotionEvent.ACTION_DOWN:
                                         savedMatrix.set(matrix);
-                                        midPoint(mid, event);
-                                        mode = ZOOM;
-                                        Log.d(TAG, "mode=ZOOM");
-                                    }
-                                    break;
-                                case MotionEvent.ACTION_UP:
-                                case MotionEvent.ACTION_POINTER_UP:
-                                    mode = NONE;
-                                    Log.d(TAG, "mode=NONE");
-                                    break;
-                                case MotionEvent.ACTION_MOVE:
-                                    if (mode == DRAG) {
-                                        // ...
-                                        matrix.set(savedMatrix);
-                                        matrix.postTranslate(event.getX() - start.x, event.getY() - start.y);
-                                    } else if (mode == ZOOM) {
-                                        float newDist = spacing(event);
-                                        Log.d(TAG, "newDist=" + newDist);
-                                        if (newDist > 10f) {
-                                            matrix.set(savedMatrix);
-                                            float scale = newDist / oldDist;
-                                            matrix.postScale(scale, scale, mid.x, mid.y);
+                                        start.set(event.getX(), event.getY());
+                                        Log.d(TAG, "mode=DRAG");
+                                        mode = DRAG;
+                                        break;
+                                    case MotionEvent.ACTION_POINTER_DOWN:
+                                        oldDist = spacing(event);
+                                        Log.d(TAG, "oldDist=" + oldDist);
+                                        if (oldDist > 10f) {
+                                            savedMatrix.set(matrix);
+                                            midPoint(mid, event);
+                                            mode = ZOOM;
+                                            Log.d(TAG, "mode=ZOOM");
                                         }
-                                    }
-                                    break;
-                            }
+                                        break;
+                                    case MotionEvent.ACTION_UP:
+                                    case MotionEvent.ACTION_POINTER_UP:
+                                        mode = NONE;
+                                        Log.d(TAG, "mode=NONE");
+                                        break;
+                                    case MotionEvent.ACTION_MOVE:
+                                        if (mode == DRAG) {
+                                            // ...
+                                            matrix.set(savedMatrix);
+                                            matrix.postTranslate(event.getX() - start.x, event.getY() - start.y);
+                                        } else if (mode == ZOOM) {
+                                            float newDist = spacing(event);
+                                            Log.d(TAG, "newDist=" + newDist);
+                                            if (newDist > 10f) {
+                                                matrix.set(savedMatrix);
+                                                float scale = newDist / oldDist;
+                                                matrix.postScale(scale, scale, mid.x, mid.y);
+                                            }
+                                        }
+                                        break;
+                                }
 
-                            imagenMapa.setImageMatrix(matrix);
-                            return true;
-                        }
-                    });
+                                imagenMapa.setImageMatrix(matrix);
+                                busca.setText(matrix.toString());
+
+                                Log.i(TAG, "LOCALIZADO EN: " + matrix);
+
+
+                                return true;
+                            }
+                        });
+                    }
                 }
             }
         });
 
+        listamapa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        Log.i(TAG, "CASO 0");
+                        float values[] = new float[]{1,0,-574, 0,1,-309, 0,0,1};
+                        matrix.setValues(values);
+                        imagenMapa.setImageMatrix(matrix);
+                        //imagenMapa.setImageMatrix();  Matrix{[1.0, 0.0, -574.70404][0.0, 1.0, -309.35553][0.0, 0.0, 1.0]}
+                    break;
+
+                }
+
+
+
+            }
+        });
 
         return v;
     }
