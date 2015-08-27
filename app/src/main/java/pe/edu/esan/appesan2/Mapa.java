@@ -253,14 +253,9 @@ public class Mapa extends Fragment {
                         break;
                     case 1:
                         Log.i(TAG, "CASO 2 VICERRECTORADO DE INVESTIGACIÓN");
-                        //float values2[] = new float[]{1, 0, -570, 0, 1, -207, 0, 0, 1};
-                        //matrix.setValues(values2);
-                        //imagenMapa.setImageMatrix(matrix);
-
-                        Matrix matrizFinal = new Matrix();
-                        float finales[] = new float[]{1, 0, -570, 0, 1, -207, 0, 0, 1};
-                        matrizFinal.setValues(finales);
-
+                        float values2[] = new float[]{1, 0, -570, 0, 1, -207, 0, 0, 1};
+                        matrix.setValues(values2);
+                        imagenMapa.setImageMatrix(matrix);
                         //Matrix{[1.0, 0.0, -569.96265][0.0, 1.0, -207.07693][0.0, 0.0, 1.0]}
 
                         break;
