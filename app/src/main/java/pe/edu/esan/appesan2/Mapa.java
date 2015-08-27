@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.renderscript.Matrix3f;
 import android.support.v4.app.Fragment;
 import android.util.FloatMath;
@@ -26,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -36,6 +39,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Mapa extends Fragment {
     private GoogleMap googleMap;
@@ -44,7 +49,6 @@ public class Mapa extends Fragment {
     ImageView imagenMapa;
 
     private  final String TAG = "APP";
-    EditText busca;
     // These matrices will be used to move and zoom image
     Matrix matrix = new Matrix();
     Matrix savedMatrix = new Matrix();
@@ -63,6 +67,9 @@ public class Mapa extends Fragment {
 
     ListView listamapa;
 
+    int num1=-428;
+    int num2=-148;
+    Handler handler1 = new Handler();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,19 +141,13 @@ public class Mapa extends Fragment {
 
 
         //---------------------------------MAPA DE ESAN-------------------------------------
-
-        //FUENTE Y COLOR PARA BUSCAR EN TEXTVIEW:
-        String font_pathL = "font/HelveticaNeue-Bold.ttf"; //ruta de la fuente
-        Typeface TFL = Typeface.createFromAsset(getActivity().getAssets(),font_pathL);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-
         imagenMapa = (ImageView)v.findViewById(R.id.imagenMapa);
-        busca = (EditText)v.findViewById(R.id.buscaLugar);
-        busca.setTypeface(TFL);
-        busca.setTextColor(Color.parseColor("#FFFFFF"));
         //----------------------------------------------------------------------------------
 
         listamapa = (ListView)v.findViewById(R.id.listamapa);
-        String[] values = new String[]{"1 Rectorado","2 Vicerrectorado de Investigación","3 Vicerrectorado Académico","4 Counter Admision Pregrado"};
+        String[] values = new String[]{"1 Rectorado","2 Vicerrectorado de Investigación","3 Vicerrectorado Académico","4 Counter Admision Pregrado", "5",
+        "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20","21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31",
+        "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         listamapa.setAdapter(adapter);
         listamapa.setTextFilterEnabled(false);
@@ -207,10 +208,7 @@ public class Mapa extends Fragment {
                                 }
 
                                 imagenMapa.setImageMatrix(matrix);
-                                busca.setText(matrix.toString());
-
                                 Log.i(TAG, "LOCALIZADO EN: " + matrix);
-
 
                                 return true;
                             }
@@ -223,35 +221,100 @@ public class Mapa extends Fragment {
         listamapa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
+
+                switch (position) {
                     case 0:
-                        Log.i(TAG, "CASO 1 RECTORADO");
-                        float values0[] = new float[]{2,0,-1607, 0,2,-908, 0,0,1};
-                        matrix.setValues(values0);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.4303386, 0.0, -1607.7274][0.0, 2.4303386, -908.5718][0.0, 0.0, 1.0]}
-                    break;
+                        for (int inicio = 1; inicio < 13; inicio++) {
+                            handler1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i(TAG, "CASO 1 RECTORADO");
+                                    num1 = num1 - 10;
+                                    num2 = num2 - 10;
+
+                                    float values1[] = new float[]{1, 0, num1, 0, 1, num2, 0, 0, 1};
+                                    matrix.setValues(values1);
+                                    imagenMapa.setImageMatrix(matrix);
+                                }
+                            }, 250 * inicio);
+                            if(inicio==12){
+
+                            }
+                        }
+
+
+                        //float values0[] = new float[]{2, 0, -1012, 0, 2, -528, 0, 0, 1}; esto es para el número 38
+                        //Matrix{[0.9366104, 0.0, -528.0304][0.0, 0.9366104, -247.94633][0.0, 0.0, 1.0]}
+                        break;
                     case 1:
                         Log.i(TAG, "CASO 2 VICERRECTORADO DE INVESTIGACIÓN");
-                        float values1[] = new float[]{2,0,-1611, 0,2,-786, 0,0,1};
-                        matrix.setValues(values1);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.4303386, 0.0, -1611.715][0.0, 2.4303386, -786.82544][0.0, 0.0, 1.0]}
-                    break;
-                    case 2:
-                        Log.i(TAG, "CASO 3 VICERRECTORADO ACADÉMICO");
-                        float values2[] = new float[]{0,0,-4, 0,0,-660, 0,0,1};
+                        float values2[] = new float[]{2, 0, -1304, 0, 2, -585, 0, 0, 1};
                         matrix.setValues(values2);
                         imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[0.85688907, 0.0, -4.8470917][0.0, 0.85688907, -660.499][0.0, 0.0, 1.0]}
-                    break;
-                    case 3:
-                        Log.i(TAG, "CASO 4 COUNTER ADMISIÓN PREGRADO");
-                        float values3[] = new float[]{2, 0, -1390,  0, 2, -1255,   0, 0, 1};
+                        //Matrix{[2.0, 0.0, -1303.8411][0.0, 2.0, -584.6902][0.0, 0.0, 1.0]}
+                        break;
+                    case 2:
+                        Log.i(TAG, "CASO 3 VICERRECTORADO ACADÉMICO");
+                        float values3[] = new float[]{2, 0, -1245, 0, 2, -733, 0, 0, 1};
                         matrix.setValues(values3);
                         imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.219458, 0.0, -1390.3268][0.0, 2.219458, -1255.1582][0.0, 0.0, 1.0]}
-                    break;
+                        //Matrix{[2.0, 0.0, -1244.8474][0.0, 2.0, -732.9231][0.0, 0.0, 1.0]}
+                        break;
+                    case 3:
+                        Log.i(TAG, "CASO 4 COUNTER ADMISIÓN PREGRADO");
+                        float values4[] = new float[]{2, 0, -1234, 0, 2, -1090, 0, 0, 1};
+                        matrix.setValues(values4);
+                        imagenMapa.setImageMatrix(matrix);
+                        // Matrix{[2.0, 0.0, -1234.3146][0.0, 2.0, -1089.7734][0.0, 0.0, 1.0]}
+
+                        //float values3[] = new float[]{1, 0, -920,  0, 2, -821,   0, 0, 1};  PARA NÚMERO 15
+                        //Matrix{[1.5498602, 0.0, -919.74603][0.0, 1.5498602, -821.2699][0.0, 0.0, 1.0]} PARA NÚMERO 15
+                        break;
+                    case 4:
+                        Log.i(TAG, "CASO 5 EDIFICIO D");
+                        float values5[] = new float[]{2, 0, -1358, 0, 2, -1022, 0, 0, 1};
+                        matrix.setValues(values5);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[1.8273392, 0.0, -1358.7382][0.0, 1.8273392, -1022.03357][0.0, 0.0, 1.0]}
+
+                        break;
+                    case 5:
+                        Log.i(TAG, "CASO 6 EDIFICIO A");
+                        float values6[] = new float[]{2, 0, -1567, 0, 2, -1021, 0, 0, 1};
+                        matrix.setValues(values6);
+                        imagenMapa.setImageMatrix(matrix);
+                        //MMatrix{[2.0, 0.0, -1567.3457][0.0, 2.0, -1021.3891][0.0, 0.0, 1.0]}
+                        break;
+                    case 6:
+                        Log.i(TAG, "CASO 7 AULA C");
+                        float values7[] = new float[]{2, 0, -1385, 0, 2, -807, 0, 0, 1};
+                        matrix.setValues(values7);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[2.0, 0.0, -1385.1122][0.0, 2.0, -807.6029][0.0, 0.0, 1.0]}
+                        break;
+                    case 7:
+                        Log.i(TAG, "CASO 8 AULA E");
+                        float values8[] = new float[]{2, 0, -1425, 0, 2, -901, 0, 0, 1};
+                        matrix.setValues(values8);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[2.0, 0.0, -1425.3995][0.0, 2.0, -901.4075][0.0, 0.0, 1.0]}
+                        break;
+                    case 8:
+                        Log.i(TAG, "CASO 9 AULA D");
+                        float values9[] = new float[]{2, 0, -1509, 0, 2, -907, 0, 0, 1};
+                        matrix.setValues(values9);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[2.0, 0.0, -1508.6394][0.0, 2.0, -907.395][0.0, 0.0, 1.0]}
+                        break;
+                    case 9:
+                        Log.i(TAG, "CASO 10 EDIFICIO B");
+                        float values10[] = new float[]{2, 0, -1530, 0, 2, -1139, 0, 0, 1};
+                        matrix.setValues(values10);
+                        imagenMapa.setImageMatrix(matrix);
+                        //Matrix{[2.2273455, 0.0, -1529.8878][0.0, 2.2273455, -1139.291][0.0, 0.0, 1.0]}
+                        //Matrix{[2.0762625, 0.0, -1564.3815][0.0, 2.0762625, -938.5481][0.0, 0.0, 1.0]} 2DA
+
+                        break;
                 }
             }
         });
