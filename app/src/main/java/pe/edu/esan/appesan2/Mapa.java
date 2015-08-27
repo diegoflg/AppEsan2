@@ -141,6 +141,7 @@ public class Mapa extends Fragment {
 
         //---------------------------------MAPA DE ESAN-------------------------------------
         imagenMapa = (ImageView)v.findViewById(R.id.imagenMapa);
+
         //----------------------------------------------------------------------------------
 
         listamapa = (ListView)v.findViewById(R.id.listamapa);
@@ -156,6 +157,8 @@ public class Mapa extends Fragment {
         //imagenMapa.setImageMatrix(matrix);
         //Matrix{[1.0, 0.0, -218.49846][0.0, 1.0, -211.48648][0.0, 0.0, 1.0]}
         final float ttt[] = new float[9];
+        final float MIN_ZOOM = 1.0f;
+        final float MAX_ZOOM = 5.0f;
 
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -230,7 +233,6 @@ public class Mapa extends Fragment {
         });
 
 
-
         listamapa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             int inicio;
 
@@ -247,26 +249,44 @@ public class Mapa extends Fragment {
 
                         /*final int[] num1 = {-218};
                         final int[] num2 = {-210};*/
+                        String txS = String.valueOf(tx);
+                        int txI = Integer.parseInt(txS);
+                        String tyS = String.valueOf(ty);
+                        int tyI = Integer.parseInt(tyS);
 
-                        for (inicio=1; inicio < 35; inicio++) {
+                        int txF = txI+528;
+                        int tyF = tyI+247;
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF));
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF));
+
+                        final int txD = txF/50;
+                        final int tyD = tyF/50;
+
+                    /*float[] tx2 = new float[0];
+                        float[] ty2 = new float[0];
+                        tx2[0] = txI -528;
+                        ty2[0] = tyI-247;
+
+                        Log.i(TAG, "numconvertido" +String.valueOf(tx2[0]));
+                        tx2[0]=tx2[0]/29;
+                        ty2[0]=ty2[0]/29;
+                        Log.i(TAG, "numconvertidodividido" +String.valueOf(tx2[0]));*/
+
+
+                        for (inicio = 1; inicio < 30; inicio++) {
                             handler1.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
                                     Log.i(TAG, "CASO 1 RECTORADO");
-                                    tx[0] = tx[0] - 10;
-                                    ty[0] = ty[0] - 1;
-
+                                    tx[0] = tx[0] - txD;
+                                    ty[0] = ty[0] - tyD;
                                     float values1[] = new float[]{1, 0, tx[0], 0, 1, ty[0], 0, 0, 1};
-
                                     matrix.setValues(values1);
+
                                     imagenMapa.setImageMatrix(matrix);
                                 }
                             }, 50 * inicio);
                         }
-
-
-
-                        //float values0[] = new float[]{2, 0, -1012, 0, 2, -528, 0, 0, 1}; esto es para el número 38
                         //Matrix{[0.9366104, 0.0, -528.0304][0.0, 0.9366104, -247.94633][0.0, 0.0, 1.0]}
                         break;
                     case 1:
