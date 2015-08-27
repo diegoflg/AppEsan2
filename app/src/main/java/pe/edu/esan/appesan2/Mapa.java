@@ -157,8 +157,6 @@ public class Mapa extends Fragment {
         //imagenMapa.setImageMatrix(matrix);
         //Matrix{[1.0, 0.0, -218.49846][0.0, 1.0, -211.48648][0.0, 0.0, 1.0]}
         final float ttt[] = new float[9];
-        final float MIN_ZOOM = 1.0f;
-        final float MAX_ZOOM = 5.0f;
 
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
