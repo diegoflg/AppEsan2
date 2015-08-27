@@ -67,8 +67,7 @@ public class Mapa extends Fragment {
 
     ListView listamapa;
 
-    int num1=-428;
-    int num2=-148;
+
     Handler handler1 = new Handler();
 
     @Override
@@ -152,6 +151,11 @@ public class Mapa extends Fragment {
         listamapa.setAdapter(adapter);
         listamapa.setTextFilterEnabled(false);
 
+        float lugarInicio[] = new float[]{1, 0, -218, 0, 1, -210, 0, 0, 1};
+        matrix.setValues(lugarInicio);
+        imagenMapa.setImageMatrix(matrix);
+        //Matrix{[1.0, 0.0, -218.49846][0.0, 1.0, -211.48648][0.0, 0.0, 1.0]}
+
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -219,39 +223,46 @@ public class Mapa extends Fragment {
         });
 
         listamapa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            int inicio;
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 switch (position) {
                     case 0:
-                        for (int inicio = 1; inicio < 13; inicio++) {
+                        final int[] num1 = {-218};
+                        final int[] num2 = {-210};
+                        for (inicio=1; inicio < 35; inicio++) {
                             handler1.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
                                     Log.i(TAG, "CASO 1 RECTORADO");
-                                    num1 = num1 - 10;
-                                    num2 = num2 - 10;
+                                    num1[0] = num1[0] - 10;
+                                    num2[0] = num2[0] - 1;
 
-                                    float values1[] = new float[]{1, 0, num1, 0, 1, num2, 0, 0, 1};
+                                    float values1[] = new float[]{1, 0, num1[0], 0, 1, num2[0], 0, 0, 1};
                                     matrix.setValues(values1);
                                     imagenMapa.setImageMatrix(matrix);
                                 }
-                            }, 250 * inicio);
-                            if(inicio==12){
-
-                            }
+                            }, 50 * inicio);
                         }
-
 
                         //float values0[] = new float[]{2, 0, -1012, 0, 2, -528, 0, 0, 1}; esto es para el número 38
                         //Matrix{[0.9366104, 0.0, -528.0304][0.0, 0.9366104, -247.94633][0.0, 0.0, 1.0]}
                         break;
                     case 1:
                         Log.i(TAG, "CASO 2 VICERRECTORADO DE INVESTIGACIÓN");
-                        float values2[] = new float[]{2, 0, -1304, 0, 2, -585, 0, 0, 1};
-                        matrix.setValues(values2);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.0, 0.0, -1303.8411][0.0, 2.0, -584.6902][0.0, 0.0, 1.0]}
+                        //float values2[] = new float[]{1, 0, -570, 0, 1, -207, 0, 0, 1};
+                        //matrix.setValues(values2);
+                        //imagenMapa.setImageMatrix(matrix);
+
+                        Matrix matrizFinal = new Matrix();
+                        float finales[] = new float[]{1, 0, -570, 0, 1, -207, 0, 0, 1};
+                        matrizFinal.setValues(finales);
+
+                        //Matrix{[1.0, 0.0, -569.96265][0.0, 1.0, -207.07693][0.0, 0.0, 1.0]}
+
                         break;
                     case 2:
                         Log.i(TAG, "CASO 3 VICERRECTORADO ACADÉMICO");
