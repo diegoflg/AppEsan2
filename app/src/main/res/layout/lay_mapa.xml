@@ -40,18 +40,35 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/mapView" />
-
-
-
                 </RelativeLayout>
+
 
                 <RelativeLayout
                     android:id="@+id/waze"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                </RelativeLayout>
 
+                <RelativeLayout
+                    android:id="@+id/mapaesan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ListView
+                        android:id="@+id/listamapa"
+                        android:layout_width="match_parent"
+                        android:background="#C90039"
+                        android:padding="3dp"
+                        android:layout_margin="3dp"
+                        android:layout_height="40dp">
+                    </ListView>
 
+                    <ImageView
+                        android:id="@+id/imagenMapa"
+                        android:scaleType="matrix"
+                        android:layout_below="@+id/listamapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
 
                 </RelativeLayout>
             </FrameLayout>
