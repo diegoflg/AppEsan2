@@ -245,33 +245,19 @@ public class Mapa extends Fragment {
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty[0]));
 
-                        /*final int[] num1 = {-218};
-                        final int[] num2 = {-210};*/
-                        String txS = String.valueOf(tx);
-                        int txI = Integer.parseInt(txS);
-                        String tyS = String.valueOf(ty);
-                        int tyI = Integer.parseInt(tyS);
+                        int txI = (int)tx[0];
+                        int tyI = (int)ty[0];
 
-                        int txF = txI+528;
-                        int tyF = tyI+247;
+                        int txF = txI+790;
+                        int tyF = tyI+303;
+                        //Matrix{[1.0, 0.0, -790.8795][0.0, 1.0, -303.7743][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF));
 
                         final int txD = txF/50;
                         final int tyD = tyF/50;
 
-                    /*float[] tx2 = new float[0];
-                        float[] ty2 = new float[0];
-                        tx2[0] = txI -528;
-                        ty2[0] = tyI-247;
-
-                        Log.i(TAG, "numconvertido" +String.valueOf(tx2[0]));
-                        tx2[0]=tx2[0]/29;
-                        ty2[0]=ty2[0]/29;
-                        Log.i(TAG, "numconvertidodividido" +String.valueOf(tx2[0]));*/
-
-
-                        for (inicio = 1; inicio < 30; inicio++) {
+                        for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
