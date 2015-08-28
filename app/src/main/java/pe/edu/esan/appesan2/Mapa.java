@@ -67,7 +67,6 @@ public class Mapa extends Fragment {
 
     ListView listamapa;
 
-
     Handler handler1 = new Handler();
 
     @Override
@@ -145,18 +144,12 @@ public class Mapa extends Fragment {
         //----------------------------------------------------------------------------------
 
         listamapa = (ListView)v.findViewById(R.id.listamapa);
-        String[] values = new String[]{"1 Rectorado","2 Vicerrectorado de Investigación","3 Vicerrectorado Académico","4 Counter Admision Pregrado", "5",
-        "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20","21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31",
-        "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46"};
+        String[] values = new String[]{"PABELLON A", "PABELLÓN B", "AULAS C", "PABELLÓN D", "COMEDOR PRINCIPAL", "CAFETERÍA 338"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         listamapa.setAdapter(adapter);
         listamapa.setTextFilterEnabled(false);
 
-        //final float lugarInicio[] = new float[]{1, 0, -218, 0, 1, -210, 0, 0, 1};
-        //matrix.setValues(lugarInicio);
-        //imagenMapa.setImageMatrix(matrix);
-        //Matrix{[1.0, 0.0, -218.49846][0.0, 1.0, -211.48648][0.0, 0.0, 1.0]}
-        final float ttt[] = new float[9];
+
 
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -212,15 +205,8 @@ public class Mapa extends Fragment {
                                         }
                                         break;
                                 }
-
                                 imagenMapa.setImageMatrix(matrix);
                                 Log.i(TAG, "LOCALIZADO EN: " + matrix);
-
-
-                                //float tx = ttt[Matrix.MTRANS_X];
-                                //float ty = ttt[Matrix.MTRANS_Y];
-                                //Log.i(TAG, "TRAS X:" + String.valueOf(tx));
-                                //Log.i(TAG, "TRAS Y:" + String.valueOf(ty));
 
                                 return true;
                             }
@@ -233,38 +219,79 @@ public class Mapa extends Fragment {
 
         listamapa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             int inicio;
+            final float ttt[] = new float[9];
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 switch (position) {
                     case 0:
+                        //PABELLON A
                         matrix.getValues(ttt);
-                        final float[] tx = {ttt[Matrix.MTRANS_X]};
-                        final float[] ty = {ttt[Matrix.MTRANS_Y]};
-                        Log.i(TAG, "TRAS X:" + String.valueOf(tx[0]));
-                        Log.i(TAG, "TRAS Y:" + String.valueOf(ty[0]));
+                        final float[] tx0 = {ttt[Matrix.MTRANS_X]};
+                        final float[] ty0 = {ttt[Matrix.MTRANS_Y]};
+                        Log.i(TAG, "TRAS X:" + String.valueOf(tx0[0]));
+                        Log.i(TAG, "TRAS Y:" + String.valueOf(ty0[0]));
 
-                        int txI = (int)tx[0];
-                        int tyI = (int)ty[0];
+                        int txI0 = (int)tx0[0];
+                        int tyI0 = (int)ty0[0];
 
-                        int txF = txI+790;
-                        int tyF = tyI+303;
-                        //Matrix{[1.0, 0.0, -790.8795][0.0, 1.0, -303.7743][0.0, 0.0, 1.0]}
-                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF));
-                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF));
+                        int txF0 = txI0+1048;
+                        int tyF0 = tyI0+605;
+                        //Matrix{[1.0, 0.0, -1047.6956][0.0, 1.0, -605.0054][0.0, 0.0, 1.0]}
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF0));
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF0));
 
-                        final int txD = txF/50;
-                        final int tyD = tyF/50;
+                        final int txD0 = txF0/50;
+                        final int tyD0 = tyF0/50;
 
                         for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Log.i(TAG, "CASO 1 RECTORADO");
-                                    tx[0] = tx[0] - txD;
-                                    ty[0] = ty[0] - tyD;
-                                    float values1[] = new float[]{1, 0, tx[0], 0, 1, ty[0], 0, 0, 1};
+                                    Log.i(TAG, "PABELLON A");
+                                    tx0[0] = tx0[0] - txD0;
+                                    ty0[0] = ty0[0] - tyD0;
+                                    float values1[] = new float[]{1, 0, tx0[0], 0, 1, ty0[0], 0, 0, 1};
+                                    matrix.setValues(values1);
+
+                                    imagenMapa.setImageMatrix(matrix);
+                                }
+                            }, 50 * inicio);
+                        }
+
+                        matrix.getValues(ttt);
+
+                        break;
+
+                    case 1:
+                        //PABELLON B
+                        matrix.getValues(ttt);
+                        final float[] tx1 = {ttt[Matrix.MTRANS_X]};
+                        final float[] ty1 = {ttt[Matrix.MTRANS_Y]};
+                        Log.i(TAG, "TRAS X:" + String.valueOf(tx1[0]));
+                        Log.i(TAG, "TRAS Y:" + String.valueOf(ty1[0]));
+
+                        int txI1 = (int)tx1[0];
+                        int tyI1 = (int)ty1[0];
+
+                        int txF1 = txI1+966;
+                        int tyF1 = tyI1+709;
+                        //Matrix{[1.0, 0.0, -966.3653][0.0, 1.0, -709.0902][0.0, 0.0, 1.0]}
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF1));
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF1));
+
+                        final int txD1 = txF1/50;
+                        final int tyD1 = tyF1/50;
+
+                        for (inicio = 1; inicio < 51; inicio++) {
+                            handler1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i(TAG, "PABELLON B");
+                                    tx1[0] = tx1[0] - txD1;
+                                    ty1[0] = ty1[0] - tyD1;
+                                    float values1[] = new float[]{1, 0, tx1[0], 0, 1, ty1[0], 0, 0, 1};
                                     matrix.setValues(values1);
 
                                     imagenMapa.setImageMatrix(matrix);
@@ -273,19 +300,21 @@ public class Mapa extends Fragment {
                         }
                         matrix.getValues(ttt);
                         break;
-                    case 1:
+
+                    case 2:
+                        //AULAS C
                         matrix.getValues(ttt);
                         final float[] tx2 = {ttt[Matrix.MTRANS_X]};
-                        final float[] ty2 = {ttt[Matrix.MTRANS_Y]};
+                        final float[] ty2= {ttt[Matrix.MTRANS_Y]};
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx2[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty2[0]));
 
                         int txI2 = (int)tx2[0];
                         int tyI2 = (int)ty2[0];
 
-                        int txF2 = txI2+821;
-                        int tyF2 = tyI2+257;
-                        //Matrix{[1.0, 0.0, -821.2681][0.0, 1.0, -257.27686][0.0, 0.0, 1.0]}
+                        int txF2 = txI2+1367;
+                        int tyF2 = tyI2+256;
+                        //Matrix{[1.0, 0.0, -1367.029][0.0, 1.0, -255.94873][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF2));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF2));
 
@@ -308,7 +337,9 @@ public class Mapa extends Fragment {
                         }
                         matrix.getValues(ttt);
                         break;
-                    case 2:
+
+                    case 3:
+                        //PABELLÓN D
                         matrix.getValues(ttt);
                         final float[] tx3 = {ttt[Matrix.MTRANS_X]};
                         final float[] ty3 = {ttt[Matrix.MTRANS_Y]};
@@ -318,9 +349,9 @@ public class Mapa extends Fragment {
                         int txI3 = (int)tx3[0];
                         int tyI3 = (int)ty3[0];
 
-                        int txF3 = txI3+811;
-                        int tyF3 = tyI3+368;
-                        //Matrix{[1.0, 0.0, -811.1596][0.0, 1.0, -368.02783][0.0, 0.0, 1.0]}
+                        int txF3 = txI3+881;
+                        int tyF3 = tyI3+598;
+                        //LOCALIZADO EN: Matrix{[1.0, 0.0, -881.5349][0.0, 1.0, -598.35144][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF3));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF3));
 
@@ -331,7 +362,7 @@ public class Mapa extends Fragment {
                             handler1.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Log.i(TAG, "CASO 2 VICERECTORADO");
+                                    Log.i(TAG, "CASO 3");
                                     tx3[0] = tx3[0] - txD3;
                                     ty3[0] = ty3[0] - tyD3;
                                     float values1[] = new float[]{1, 0, tx3[0], 0, 1, ty3[0], 0, 0, 1};
@@ -343,60 +374,78 @@ public class Mapa extends Fragment {
                         }
                         matrix.getValues(ttt);
                         break;
-                    case 3:
-                        Log.i(TAG, "CASO 4 COUNTER ADMISIÓN PREGRADO");
-                        float values4[] = new float[]{2, 0, -1234, 0, 2, -1090, 0, 0, 1};
-                        matrix.setValues(values4);
-                        imagenMapa.setImageMatrix(matrix);
-                        // Matrix{[2.0, 0.0, -1234.3146][0.0, 2.0, -1089.7734][0.0, 0.0, 1.0]}
-
-                        //float values3[] = new float[]{1, 0, -920,  0, 2, -821,   0, 0, 1};  PARA NÚMERO 15
-                        //Matrix{[1.5498602, 0.0, -919.74603][0.0, 1.5498602, -821.2699][0.0, 0.0, 1.0]} PARA NÚMERO 15
-                        break;
                     case 4:
-                        Log.i(TAG, "CASO 5 EDIFICIO D");
-                        float values5[] = new float[]{2, 0, -1358, 0, 2, -1022, 0, 0, 1};
-                        matrix.setValues(values5);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[1.8273392, 0.0, -1358.7382][0.0, 1.8273392, -1022.03357][0.0, 0.0, 1.0]}
+                        //COMEDOR PRINCIPAL
+                        matrix.getValues(ttt);
+                        final float[] tx4 = {ttt[Matrix.MTRANS_X]};
+                        final float[] ty4 = {ttt[Matrix.MTRANS_Y]};
+                        Log.i(TAG, "TRAS X:" + String.valueOf(tx4[0]));
+                        Log.i(TAG, "TRAS Y:" + String.valueOf(ty4[0]));
+
+                        int txI4 = (int)tx4[0];
+                        int tyI4 = (int)ty4[0];
+
+                        int txF4 = txI4+1167;
+                        int tyF4 = tyI4+528;
+                        //LMatrix{[1.0, 0.0, -1167.2393][0.0, 1.0, -528.104][0.0, 0.0, 1.0]}
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF4));
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF4));
+
+                        final int txD4 = txF4/50;
+                        final int tyD4 = tyF4/50;
+
+                        for (inicio = 1; inicio < 51; inicio++) {
+                            handler1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i(TAG, "CASO 3");
+                                    tx4[0] = tx4[0] - txD4;
+                                    ty4[0] = ty4[0] - tyD4;
+                                    float values1[] = new float[]{1, 0, tx4[0], 0, 1, ty4[0], 0, 0, 1};
+                                    matrix.setValues(values1);
+
+                                    imagenMapa.setImageMatrix(matrix);
+                                }
+                            }, 50 * inicio);
+                        }
+                        matrix.getValues(ttt);
 
                         break;
                     case 5:
-                        Log.i(TAG, "CASO 6 EDIFICIO A");
-                        float values6[] = new float[]{2, 0, -1567, 0, 2, -1021, 0, 0, 1};
-                        matrix.setValues(values6);
-                        imagenMapa.setImageMatrix(matrix);
-                        //MMatrix{[2.0, 0.0, -1567.3457][0.0, 2.0, -1021.3891][0.0, 0.0, 1.0]}
-                        break;
-                    case 6:
-                        Log.i(TAG, "CASO 7 AULA C");
-                        float values7[] = new float[]{2, 0, -1385, 0, 2, -807, 0, 0, 1};
-                        matrix.setValues(values7);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.0, 0.0, -1385.1122][0.0, 2.0, -807.6029][0.0, 0.0, 1.0]}
-                        break;
-                    case 7:
-                        Log.i(TAG, "CASO 8 AULA E");
-                        float values8[] = new float[]{2, 0, -1425, 0, 2, -901, 0, 0, 1};
-                        matrix.setValues(values8);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.0, 0.0, -1425.3995][0.0, 2.0, -901.4075][0.0, 0.0, 1.0]}
-                        break;
-                    case 8:
-                        Log.i(TAG, "CASO 9 AULA D");
-                        float values9[] = new float[]{2, 0, -1509, 0, 2, -907, 0, 0, 1};
-                        matrix.setValues(values9);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.0, 0.0, -1508.6394][0.0, 2.0, -907.395][0.0, 0.0, 1.0]}
-                        break;
-                    case 9:
-                        Log.i(TAG, "CASO 10 EDIFICIO B");
-                        float values10[] = new float[]{2, 0, -1530, 0, 2, -1139, 0, 0, 1};
-                        matrix.setValues(values10);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.2273455, 0.0, -1529.8878][0.0, 2.2273455, -1139.291][0.0, 0.0, 1.0]}
-                        //Matrix{[2.0762625, 0.0, -1564.3815][0.0, 2.0762625, -938.5481][0.0, 0.0, 1.0]} 2DA
+                        //CAFETERÍA 338
+                        matrix.getValues(ttt);
+                        final float[] tx5 = {ttt[Matrix.MTRANS_X]};
+                        final float[] ty5 = {ttt[Matrix.MTRANS_Y]};
+                        Log.i(TAG, "TRAS X:" + String.valueOf(tx5[0]));
+                        Log.i(TAG, "TRAS Y:" + String.valueOf(ty5[0]));
 
+                        int txI5 = (int)tx5[0];
+                        int tyI5 = (int)ty5[0];
+
+                        int txF5 = txI5+1277;
+                        int tyF5 = tyI5+609;
+                        //Matrix{[1.0, 0.0, -1277.1411][0.0, 1.0, -608.55585][0.0, 0.0, 1.0]}
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF5));
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF5));
+
+                        final int txD5 = txF5/50;
+                        final int tyD5 = tyF5/50;
+
+                        for (inicio = 1; inicio < 51; inicio++) {
+                            handler1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i(TAG, "CASO 3");
+                                    tx5[0] = tx5[0] - txD5;
+                                    ty5[0] = ty5[0] - tyD5;
+                                    float values1[] = new float[]{1, 0, tx5[0], 0, 1, ty5[0], 0, 0, 1};
+                                    matrix.setValues(values1);
+
+                                    imagenMapa.setImageMatrix(matrix);
+                                }
+                            }, 50 * inicio);
+                        }
+                        matrix.getValues(ttt);
                         break;
                 }
             }
