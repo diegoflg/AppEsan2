@@ -34,12 +34,10 @@ public class Activity_Articulo extends Fragment{
 
 					switch (keyCode) {
 						case KeyEvent.KEYCODE_BACK:
-
 							FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 							Noticia fragment;
 							fragment = new Noticia();
 							fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
-
 							break;
 					}
 				}

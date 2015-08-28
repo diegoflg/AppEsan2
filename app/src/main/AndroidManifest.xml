@@ -28,11 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activity_Articulo"
-            android:hardwareAccelerated="true">
 
-        </activity>
         <activity
             android:name=".MainActivity2Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -67,10 +63,7 @@
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Fablab"
-            android:label="@string/title_activity_fablab" >
-        </activity>
+
     </application>
 
 </manifest>

@@ -21,11 +21,11 @@ public class Noticias_Adapter extends ArrayAdapter<Object> {
 	RequestQueue requestQueue;
 	ImageLoader imageLoader;
 
-	//FUENTE Y COLOR PARA LOS TÍTULOS :
+	//FUENTE Y COLOR PARA LOS TiTULOS :
 	String font_pathT = "font/HelveticaNeue-Bold.ttf"; //ruta de la fuente
 	Typeface TFT = Typeface.createFromAsset(getContext().getAssets(), font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
-	//FUENTE Y COLOR PARA LA DESCRIPCIÓN :
+	//FUENTE Y COLOR PARA LA DESCRIPCIoN :
 	String font_pathD = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
 	Typeface TFD = Typeface.createFromAsset(getContext().getAssets(), font_pathD);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 

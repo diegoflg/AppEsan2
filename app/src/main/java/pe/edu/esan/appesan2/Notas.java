@@ -1,22 +1,327 @@
 package pe.edu.esan.appesan2;
 
-import android.content.pm.ActivityInfo;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import android.os.AsyncTask;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.Map;
+
+
+public class Notas extends Fragment {
+
+
+    private TextView Cursos, EP, TA, EF, PG;
+    String user,pass;
+    ListView listacursos;
+    String[] values;
+    String[] clinks;
+    int contador=0;
+    int poss=0;
+
+    String curss;
+    String notss;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.lay_nootas, container, false);
+        listacursos=(ListView)v.findViewById(R.id.listacursos);
+
+        listacursos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                poss=position;
+                curss=listacursos.getItemAtPosition(position).toString();
+                new open2().execute();
+
+
+
+
+
+
+            }
+        });
+
+
+
+
+        user=Datah.getInstance().getUser();
+        pass=Datah.getInstance().getPass();
+
+
+        new open().execute();
+
+
+        return v;
+    }
+
+
+
+
+
+    private class open extends AsyncTask<String, Void, String> {
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            Log.v("v1", "paso2");
+
+            try {
+
+                Connection.Response res1 = Jsoup.connect("http://esanvirtual.edu.pe/login/index.php").method(Connection.Method.GET).timeout(10000).execute();
+                Document doc = res1.parse();
+                Map welcomCookies = res1.cookies();
+
+
+
+                Connection.Response res2 = Jsoup.connect("http://esanvirtual.edu.pe/login/index.php")
+                        .data("username", user)
+                        .data("password", pass)
+                        .cookies(welcomCookies)
+                        .timeout(10000)
+                        .method(Connection.Method.POST)
+                        .execute();
+
+                String MoodleSessionesanvirtual = res2.cookie("MoodleSessionesanvirtual");
+
+                Document doc2 = res2.parse();
+                Log.v("titulo", doc2.title());
+
+
+
+
+
+                Document doc5 = Jsoup.connect("http://esanvirtual.edu.pe/")
+                        .cookie("MoodleSessionesanvirtual", MoodleSessionesanvirtual)
+                        .timeout(10000)
+                        .get();
+                Log.v("titulo5", doc5.title());
+
+                Element head=doc5.select("div[class=row subcategorias]").get(4);
+                Elements links = head.select("a[href]");
+
+                for (Element element2 : links){
+                   contador=contador+1;
+                }
+
+                values = new String[contador];
+                clinks = new String[contador];
+                contador=0;
+
+
+                for (Element element : links){
+
+
+
+                    Log.v("links", element.ownText()+"    link: "+element.attr("abs:href").substring(element.attr("abs:href").indexOf("="))+"   "+contador);
+
+                    values[contador]=element.ownText();
+                    clinks[contador]=element.attr("abs:href").substring(element.attr("abs:href").indexOf("="));
+
+
+                    contador=contador+1;
+
+                }
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            dialog.dismiss();
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+            listacursos.setAdapter(adapter);
+            contador=0;
+        }
+
+
+
+
+    }
+
+    private class open2 extends AsyncTask<String, Void, String> {
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+
+            try {
+
+                Connection.Response res1 = Jsoup.connect("http://esanvirtual.edu.pe/login/index.php").method(Connection.Method.GET).timeout(10000).execute();
+                Document doc = res1.parse();
+                Map welcomCookies = res1.cookies();
+
+
+
+                Connection.Response res2 = Jsoup.connect("http://esanvirtual.edu.pe/login/index.php")
+                        .data("username", user)
+                        .data("password", pass)
+                        .cookies(welcomCookies)
+                        .timeout(10000)
+                        .method(Connection.Method.POST)
+                        .execute();
+
+                String MoodleSessionesanvirtual = res2.cookie("MoodleSessionesanvirtual");
+
+                Document doc2 = res2.parse();
+                Log.v("titulo", doc2.title());
+
+
+
+
+
+                Document doc5 = Jsoup.connect("http://esanvirtual.edu.pe/grade/report/user/index.php?id"+clinks[poss])
+                        .cookie("MoodleSessionesanvirtual", MoodleSessionesanvirtual)
+                        .timeout(10000)
+                        .get();
+                Log.v("tableeee", doc5.select("tr").last().text());
+
+                notss=doc5.select("tr").last().text();
+
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            dialog.dismiss();
+            showPopup(getActivity(), curss,notss);
+
+
+
+
+        }
+    }
+
+    private void showPopup(final Activity context,String curso,String nota) {
+
+
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        double width = displaymetrics.widthPixels;
+
+        Log.v("tamano",String.valueOf(height));
+        Log.v("tamano",String.valueOf(width));
+
+        double popupHeight = height*0.52;
+        double popupWidth = width*0.625;
+
+
+
+
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup2);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = layoutInflater.inflate(R.layout.popup2, viewGroup);
+
+        // Creating the PopupWindow
+        final PopupWindow popup = new PopupWindow(context);
+        popup.setContentView(layout);
+        popup.setWidth((int)Math.round(popupHeight));
+        popup.setHeight((int)Math.round(popupWidth));
+        popup.setFocusable(true);
+
+        // Displaying the popup at the specified location, + offsets.
+        popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+        // FUENTE PARA TEXTO EN POPUP Y BOTONES:
+        String font_pathPP = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TPP = Typeface.createFromAsset(getActivity().getAssets(),font_pathPP);//llamanos a la CLASS TYPEFACE y la definimos
+        // con un CREATE desde ASSETS con la ruta STRING
+
+        // Getting a reference to Close button, and close the popup when clicked.
+
+        Button close = (Button) layout.findViewById(R.id.close);
+
+        close.setTypeface(TPP);
+
+
+        TextView tv1 = (TextView) layout.findViewById(R.id.poptv1);
+        tv1.setTypeface(TPP);
+        TextView tv2 = (TextView) layout.findViewById(R.id.poptv2);
+        tv2.setTypeface(TPP);
+
+
+                tv1.setText(curso);
+                tv2.setText(nota);
+
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+
+
+    }
+
+
+
+}
+
+
 
 /**
  * Created by Diegoflg on 7/13/2015.
  *
- *
- */
+
 public class Notas extends Fragment {
     private TextView curso1,curso2,curso3,curso4,ep1,ep2,ep3,ep4,ta1,ta2,ta3,ta4,ef1,ef2,ef3,ef4,pg1,pg2,pg3,pg4;
 
@@ -175,3 +480,5 @@ public class Notas extends Fragment {
         bdn.close();
     }
 }
+ *
+ */

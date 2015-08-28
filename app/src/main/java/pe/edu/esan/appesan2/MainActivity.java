@@ -1,6 +1,7 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -8,6 +9,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -17,23 +19,35 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Map;
 
 public class MainActivity extends ActionBarActivity {
     private final String TAG= "APP";
     EditText et1,et2;
     String langloc=Locale.getDefault().getDisplayLanguage();
     int langinicial=0;
-
     int lang=0;
     Button botonacceder; //SOLO SE USA PARA CAMBIAR LA FUENTE
+    String loggresult="";
+    String mensaje="Usuario o password invalida";
+    int tipo=1;
 
 
 
@@ -120,8 +134,8 @@ public class MainActivity extends ActionBarActivity {
         et2 = (EditText) findViewById(R.id.et2);
         botonacceder = (Button) findViewById(R.id.button); //SOLO ES USADO PARA LA FUENTE
 
-        et1.setText("alumno");
-        et2.setText("alumno");
+        et1.setText("1005831");
+        et2.setText("esan1520");
 
 
         //ESTO ES PARA LA FUENTE
@@ -133,22 +147,24 @@ public class MainActivity extends ActionBarActivity {
         botonacceder.setTypeface(TF);
 
 
-        AdminBD admin = new AdminBD(this, "BDESAN3", null, 1);
-        SQLiteDatabase bd = admin.getWritableDatabase();
+       AdminBD admin = new AdminBD(this, "BDESAN3", null, 1);
+       SQLiteDatabase bd = admin.getWritableDatabase();
 
-        Log.v("prueba", "1");
+      Log.v("prueba", "1");
 
-        Cursor fila1 = bd.rawQuery("select usuario from Persona", null);
-        if (fila1.moveToFirst()) {
-            //Toast t=Toast.makeText(this,"haydatos", Toast.LENGTH_SHORT);
-            // t.show();
+      Cursor fila1 = bd.rawQuery("select usuario from Persona", null);
+      if (fila1.moveToFirst()) {
+           Toast t=Toast.makeText(this,"haydatos", Toast.LENGTH_SHORT);
+            t.show();
 
-        } else {
+      } else {
 
-            Log.v("prueba", "2");
+          Log.v("prueba", "2");
 
-            String usuario = "alumno";
-            String password = "alumno";
+          String usuario = "alumno";
+          String password = "alumno";
+
+
 
             ContentValues registro = new ContentValues();
             registro.put("usuario", usuario);
@@ -179,85 +195,8 @@ public class MainActivity extends ActionBarActivity {
         bd.close();
 
 
-        NotasBD notas = new NotasBD(this, "BDNOTAS2", null, 1);
-        SQLiteDatabase bdn = notas.getWritableDatabase();
-
-        Cursor filanotas = bdn.rawQuery("select usuario from Notas", null);
-        if (filanotas.moveToFirst()) {
 
 
-        } else {
-
-
-            String usuarionota = "alumno";
-            String cursonota = "Matematicas";
-            String cursonota2 = "Lengua";
-            String cursonota3 = "Programacion";
-            String cursonota4 = "Filosofia";
-            int ep1 = 10;
-            int ep2 = 07;
-            int ep3 = 13;
-            int ep4 = 12;
-            int ta1 = 18;
-            int ta2 = 03;
-            int ta3 = 13;
-            int ta4 = 10;
-            int ef1 = 11;
-            int ef2 = 17;
-            int ef3 = 12;
-            int ef4 = 17;
-            int pg1 = 15;
-            int pg2 = 14;
-            int pg3 = 12;
-            int pg4 = 9;
-
-
-            ContentValues registronota1 = new ContentValues();
-            registronota1.put("usuario", usuarionota);
-            registronota1.put("curso", cursonota);
-            registronota1.put("ep", ep1);
-            registronota1.put("ta", ta1);
-            registronota1.put("ef", ef1);
-            registronota1.put("pg", pg1);
-
-            bdn.insert("Notas", null, registronota1);
-
-            ContentValues registronota2 = new ContentValues();
-            registronota2.put("usuario", usuarionota);
-            registronota2.put("curso", cursonota2);
-            registronota2.put("ep", ep2);
-            registronota2.put("ta", ta2);
-            registronota2.put("ef", ef2);
-            registronota2.put("pg", pg2);
-
-            bdn.insert("Notas", null, registronota2);
-
-            ContentValues registronota3 = new ContentValues();
-            registronota3.put("usuario", usuarionota);
-            registronota3.put("curso", cursonota3);
-            registronota3.put("ep", ep3);
-            registronota3.put("ta", ta3);
-            registronota3.put("ef", ef3);
-            registronota3.put("pg", pg3);
-
-            bdn.insert("Notas", null, registronota3);
-
-            ContentValues registronota4 = new ContentValues();
-            registronota4.put("usuario", usuarionota);
-            registronota4.put("curso", cursonota4);
-            registronota4.put("ep", ep4);
-            registronota4.put("ta", ta4);
-            registronota4.put("ef", ef4);
-            registronota4.put("pg", pg4);
-
-            bdn.insert("Notas", null, registronota4);
-
-
-
-        }
-
-        //Cerramos la base de datos
-        bd.close();
 
         HorarioBD adminH = new HorarioBD(this, "BDHORARIO1", null, 1);
         SQLiteDatabase bdH = adminH.getWritableDatabase();
@@ -396,142 +335,156 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    public void acceder(View v){
+    public void acceder(){
 
-        String usuario, password,todo,us,pass;
-        us=et1.getText().toString();
-        pass=et2.getText().toString();
-
-
-        AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
-        SQLiteDatabase bd=admin.getWritableDatabase();
-
-        String mensaje="Usuario o password invalida";
-        String mensaje2="Incorrect user or password";
-        String mensaje3="Mot de passe ou utilisateur incorrect";
-        int tipo=1;
-        Bundle b=new Bundle();
+            String usuario, password,todo,us,pass;
+            us=et1.getText().toString();
+            pass=et2.getText().toString();
 
 
-        Cursor c=bd.rawQuery("SELECT usuario,password FROM Persona",null);
-        todo="";
+            AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
+            SQLiteDatabase bd=admin.getWritableDatabase();
 
-        if(c.moveToFirst())
-        {
-            do {
-                usuario=c.getString(0);
-                Log.v("usuario", usuario);
-                password=c.getString(1);
-                Log.v("password", password);
 
-                if(us.equals(usuario) && pass.equals(password)){
+            String mensaje2="Incorrect user or password";
+            String mensaje3="Mot de passe ou utilisateur incorrect";
 
-                    mensaje="correcto";
+            Bundle b=new Bundle();
 
-                    if(us.equals("alumno")){
-                        tipo=1;
+
+            Cursor c=bd.rawQuery("SELECT usuario,password FROM Persona",null);
+            todo="";
+
+            if(c.moveToFirst())
+            {
+                do {
+                    usuario=c.getString(0);
+                    Log.v("usuario", usuario);
+                    password=c.getString(1);
+                    Log.v("password", password);
+
+                    if(us.equals(usuario) && pass.equals(password)) {
+
+                        mensaje = "correcto";
+
+                        if (us.equals("alumno")) {
+                            tipo = 1;
+                        }
+                        if (us.equals("servicios")) {
+                            tipo = 2;
+                        }
+
+                        b.putInt("tipo", tipo);
+
+                        Log.v("tipo", String.valueOf(tipo));
+
+                        Intent i = new Intent(this, MainActivity2Activity.class);
+                        i.putExtras(b);
+
+
+
+
+
+                        Datah.getInstance().setLang(lang);
+
+
+
+
+                        switch(lang){
+                            case 0:
+
+                                Locale locale = new Locale("es");
+                                Locale.setDefault(locale);
+                                Configuration mConfig = new Configuration();
+                                mConfig.locale = locale;
+                                getBaseContext().getResources().updateConfiguration(mConfig,
+                                        getBaseContext().getResources().getDisplayMetrics());
+
+                                break;
+
+                            case 1:
+
+                                Locale locale2 = new Locale("en");
+                                Locale.setDefault(locale2);
+                                Configuration mConfig2 = new Configuration();
+                                mConfig2.locale = locale2;
+                                getBaseContext().getResources().updateConfiguration(mConfig2,
+                                        getBaseContext().getResources().getDisplayMetrics());
+
+                                break;
+
+                            case 2:
+
+                                Locale locale3 = new Locale("fr");
+                                Locale.setDefault(locale3);
+                                Configuration mConfig3 = new Configuration();
+                                mConfig3.locale = locale3;
+                                getBaseContext().getResources().updateConfiguration(mConfig3,
+                                        getBaseContext().getResources().getDisplayMetrics());
+
+                                break;
+
+                        }
+
+
+
+
+
+                        startActivity(i);
+                        finish();
+
+
                     }
-                    if(us.equals("servicios")){
-                        tipo=2;
-                    }
 
-                    b.putInt("tipo", tipo);
 
-                    Log.v("tipo", String.valueOf(tipo));
+                    todo=todo+usuario+" " +password+" " + "\n";
+                }while(c.moveToNext());
 
-                    Intent i = new Intent(this,MainActivity2Activity.class);
-                    i.putExtras(b);
 
-                    Datah.getInstance().setLang(lang);
+                if(mensaje.equals("correcto")){
+
+                }else{
 
 
 
+                        switch(lang){
+                            case 0:
+                                Toast t=Toast.makeText(this,mensaje, Toast.LENGTH_SHORT);
+                                t.show();
 
-                    switch(lang){
-                        case 0:
 
-                            Locale locale = new Locale("es");
-                            Locale.setDefault(locale);
-                            Configuration mConfig = new Configuration();
-                            mConfig.locale = locale;
-                            getBaseContext().getResources().updateConfiguration(mConfig,
-                                    getBaseContext().getResources().getDisplayMetrics());
 
-                            break;
+                                break;
 
-                        case 1:
+                            case 1:
+                                Toast y=Toast.makeText(this,mensaje2, Toast.LENGTH_SHORT);
+                                y.show();
 
-                            Locale locale2 = new Locale("en");
-                            Locale.setDefault(locale2);
-                            Configuration mConfig2 = new Configuration();
-                            mConfig2.locale = locale2;
-                            getBaseContext().getResources().updateConfiguration(mConfig2,
-                                    getBaseContext().getResources().getDisplayMetrics());
 
-                            break;
 
-                        case 2:
+                                break;
 
-                            Locale locale3 = new Locale("fr");
-                            Locale.setDefault(locale3);
-                            Configuration mConfig3 = new Configuration();
-                            mConfig3.locale = locale3;
-                            getBaseContext().getResources().updateConfiguration(mConfig3,
-                                    getBaseContext().getResources().getDisplayMetrics());
+                            case 2:
+                                Toast u=Toast.makeText(this,mensaje3, Toast.LENGTH_SHORT);
+                                u.show();
 
-                            break;
+
+
+                                break;
+
+
+
+
+
+
 
                     }
 
 
 
-
-
-                    startActivity(i);
-                    finish();
 
 
                 }
-
-
-                todo=todo+usuario+" " +password+" " + "\n";
-            }while(c.moveToNext());
-
-
-            if(mensaje.equals("correcto")){
-
-            }else{
-
-                switch(lang){
-                    case 0:
-                        Toast t=Toast.makeText(this,mensaje, Toast.LENGTH_SHORT);
-                        t.show();
-
-
-
-                        break;
-
-                    case 1:
-                        Toast y=Toast.makeText(this,mensaje2, Toast.LENGTH_SHORT);
-                        y.show();
-
-
-
-                        break;
-
-                    case 2:
-                        Toast u=Toast.makeText(this,mensaje3, Toast.LENGTH_SHORT);
-                        u.show();
-
-
-
-                        break;
-
-                }
-
-
-
-
 
 
 
@@ -539,12 +492,171 @@ public class MainActivity extends ActionBarActivity {
             }
 
 
+            //Intent i = new Intent(this,MainActivity2Activity.class);
+            //AstartActivity(i);
+
+    }
+
+
+    public void logstart(View v){
+
+        Datah.getInstance().setUser(et1.getText().toString());
+        Datah.getInstance().setPass(et2.getText().toString());
+
+        new logg().execute();
+
+
+
+    }
+
+    private class logg extends AsyncTask<String, Void, String> {
+        final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "", "Please wait, Loading Page...", true);
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            Log.v("v1", "paso2");
+
+            try {
+
+                Connection.Response res1 = Jsoup.connect("http://esanvirtual.edu.pe/login/index.php").method(Connection.Method.GET).timeout(0).execute();
+                Document doc = res1.parse();
+                Map welcomCookies = res1.cookies();
+
+
+
+                Connection.Response res2 = Jsoup.connect("http://esanvirtual.edu.pe/login/index.php")
+                        .data("username", et1.getText().toString())
+                        .data("password", et2.getText().toString())
+                        .cookies(welcomCookies)
+                        .timeout(10000)
+                        .method(Connection.Method.POST)
+                        .execute();
+
+                Document docl = res2.parse();
+                Log.v("titulo", docl.title());
+
+                if(docl.title().equals("ESANVIRTUAL")){
+                    loggresult="si";
+                    mensaje="correcto";
+
+                }
+
+                if(docl.title().equals("ESANVIRTUAL: Entrar al sitio")){
+                    loggresult="no";
+
+                }
+
+
+
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            dialog.dismiss();
+
+
+
+            if(loggresult.equals("si")){
+
+
+
+                dialog.dismiss();
+
+                Bundle b=new Bundle();
+
+
+                mensaje = "correcto";
+
+
+                b.putInt("tipo", tipo);
+
+                Log.v("tipo", String.valueOf(tipo));
+
+                Intent i = new Intent(getApplicationContext(), MainActivity2Activity.class);
+                i.putExtras(b);
+
+
+
+
+
+                Datah.getInstance().setLang(lang);
+
+
+
+
+                switch(lang){
+                    case 0:
+
+                        Locale locale = new Locale("es");
+                        Locale.setDefault(locale);
+                        Configuration mConfig = new Configuration();
+                        mConfig.locale = locale;
+                        getBaseContext().getResources().updateConfiguration(mConfig,
+                                getBaseContext().getResources().getDisplayMetrics());
+
+                        break;
+
+                    case 1:
+
+                        Locale locale2 = new Locale("en");
+                        Locale.setDefault(locale2);
+                        Configuration mConfig2 = new Configuration();
+                        mConfig2.locale = locale2;
+                        getBaseContext().getResources().updateConfiguration(mConfig2,
+                                getBaseContext().getResources().getDisplayMetrics());
+
+                        break;
+
+                    case 2:
+
+                        Locale locale3 = new Locale("fr");
+                        Locale.setDefault(locale3);
+                        Configuration mConfig3 = new Configuration();
+                        mConfig3.locale = locale3;
+                        getBaseContext().getResources().updateConfiguration(mConfig3,
+                                getBaseContext().getResources().getDisplayMetrics());
+
+                        break;
+
+                }
+
+
+
+
+
+                startActivity(i);
+                finish();
+
+
+
+            }else{
+                acceder();
+            }
+
+
+
 
 
         }
 
 
-        //Intent i = new Intent(this,MainActivity2Activity.class);
-        //AstartActivity(i);
+
+
     }
 }

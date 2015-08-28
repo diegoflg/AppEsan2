@@ -53,11 +53,12 @@
         android:width="250dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/edittext"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/button"
-        android:onClick="acceder"
+        android:onClick="logstart"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:text="@string/btAcceder"
