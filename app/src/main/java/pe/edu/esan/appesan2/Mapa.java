@@ -1,6 +1,8 @@
 package pe.edu.esan.appesan2;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -24,11 +26,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.drive.RealtimeDocumentSyncRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -220,6 +225,7 @@ public class Mapa extends Fragment {
         listamapa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             int inicio;
             final float ttt[] = new float[9];
+            Handler H2 = new Handler();
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -233,17 +239,17 @@ public class Mapa extends Fragment {
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx0[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty0[0]));
 
-                        int txI0 = (int)tx0[0];
-                        int tyI0 = (int)ty0[0];
+                        int txI0 = (int) tx0[0];
+                        int tyI0 = (int) ty0[0];
 
-                        int txF0 = txI0+1048;
-                        int tyF0 = tyI0+605;
+                        int txF0 = txI0 + 1048;
+                        int tyF0 = tyI0 + 605;
                         //Matrix{[1.0, 0.0, -1047.6956][0.0, 1.0, -605.0054][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF0));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF0));
 
-                        final int txD0 = txF0/50;
-                        final int tyD0 = tyF0/50;
+                        final int txD0 = txF0 / 50;
+                        final int tyD0 = tyF0 / 50;
 
                         for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
@@ -254,11 +260,18 @@ public class Mapa extends Fragment {
                                     ty0[0] = ty0[0] - tyD0;
                                     float values1[] = new float[]{1, 0, tx0[0], 0, 1, ty0[0], 0, 0, 1};
                                     matrix.setValues(values1);
-
                                     imagenMapa.setImageMatrix(matrix);
                                 }
                             }, 50 * inicio);
                         }
+                        H2.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
+                                toastshow(getActivity());
+                            }
+                        },2500
+                        );
 
                         matrix.getValues(ttt);
 
@@ -272,17 +285,17 @@ public class Mapa extends Fragment {
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx1[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty1[0]));
 
-                        int txI1 = (int)tx1[0];
-                        int tyI1 = (int)ty1[0];
+                        int txI1 = (int) tx1[0];
+                        int tyI1 = (int) ty1[0];
 
-                        int txF1 = txI1+966;
-                        int tyF1 = tyI1+709;
+                        int txF1 = txI1 + 966;
+                        int tyF1 = tyI1 + 709;
                         //Matrix{[1.0, 0.0, -966.3653][0.0, 1.0, -709.0902][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF1));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF1));
 
-                        final int txD1 = txF1/50;
-                        final int tyD1 = tyF1/50;
+                        final int txD1 = txF1 / 50;
+                        final int tyD1 = tyF1 / 50;
 
                         for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
@@ -298,6 +311,7 @@ public class Mapa extends Fragment {
                                 }
                             }, 50 * inicio);
                         }
+
                         matrix.getValues(ttt);
                         break;
 
@@ -305,21 +319,21 @@ public class Mapa extends Fragment {
                         //AULAS C
                         matrix.getValues(ttt);
                         final float[] tx2 = {ttt[Matrix.MTRANS_X]};
-                        final float[] ty2= {ttt[Matrix.MTRANS_Y]};
+                        final float[] ty2 = {ttt[Matrix.MTRANS_Y]};
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx2[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty2[0]));
 
-                        int txI2 = (int)tx2[0];
-                        int tyI2 = (int)ty2[0];
+                        int txI2 = (int) tx2[0];
+                        int tyI2 = (int) ty2[0];
 
-                        int txF2 = txI2+1367;
-                        int tyF2 = tyI2+256;
+                        int txF2 = txI2 + 1367;
+                        int tyF2 = tyI2 + 256;
                         //Matrix{[1.0, 0.0, -1367.029][0.0, 1.0, -255.94873][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF2));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF2));
 
-                        final int txD2 = txF2/50;
-                        final int tyD2 = tyF2/50;
+                        final int txD2 = txF2 / 50;
+                        final int tyD2 = tyF2 / 50;
 
                         for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
@@ -346,17 +360,17 @@ public class Mapa extends Fragment {
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx3[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty3[0]));
 
-                        int txI3 = (int)tx3[0];
-                        int tyI3 = (int)ty3[0];
+                        int txI3 = (int) tx3[0];
+                        int tyI3 = (int) ty3[0];
 
-                        int txF3 = txI3+881;
-                        int tyF3 = tyI3+598;
+                        int txF3 = txI3 + 881;
+                        int tyF3 = tyI3 + 598;
                         //LOCALIZADO EN: Matrix{[1.0, 0.0, -881.5349][0.0, 1.0, -598.35144][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF3));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF3));
 
-                        final int txD3 = txF3/50;
-                        final int tyD3 = tyF3/50;
+                        final int txD3 = txF3 / 50;
+                        final int tyD3 = tyF3 / 50;
 
                         for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
@@ -382,17 +396,17 @@ public class Mapa extends Fragment {
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx4[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty4[0]));
 
-                        int txI4 = (int)tx4[0];
-                        int tyI4 = (int)ty4[0];
+                        int txI4 = (int) tx4[0];
+                        int tyI4 = (int) ty4[0];
 
-                        int txF4 = txI4+1167;
-                        int tyF4 = tyI4+528;
+                        int txF4 = txI4 + 1167;
+                        int tyF4 = tyI4 + 528;
                         //LMatrix{[1.0, 0.0, -1167.2393][0.0, 1.0, -528.104][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF4));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF4));
 
-                        final int txD4 = txF4/50;
-                        final int tyD4 = tyF4/50;
+                        final int txD4 = txF4 / 50;
+                        final int tyD4 = tyF4 / 50;
 
                         for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
@@ -419,17 +433,17 @@ public class Mapa extends Fragment {
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx5[0]));
                         Log.i(TAG, "TRAS Y:" + String.valueOf(ty5[0]));
 
-                        int txI5 = (int)tx5[0];
-                        int tyI5 = (int)ty5[0];
+                        int txI5 = (int) tx5[0];
+                        int tyI5 = (int) ty5[0];
 
-                        int txF5 = txI5+1277;
-                        int tyF5 = tyI5+609;
+                        int txF5 = txI5 + 1277;
+                        int tyF5 = tyI5 + 609;
                         //Matrix{[1.0, 0.0, -1277.1411][0.0, 1.0, -608.55585][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF5));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF5));
 
-                        final int txD5 = txF5/50;
-                        final int tyD5 = tyF5/50;
+                        final int txD5 = txF5 / 50;
+                        final int tyD5 = tyF5 / 50;
 
                         for (inicio = 1; inicio < 51; inicio++) {
                             handler1.postDelayed(new Runnable() {
@@ -534,6 +548,17 @@ public class Mapa extends Fragment {
         }
     }
 
+    public void toastshow(final Activity context){
+        RelativeLayout toastR = (RelativeLayout) context.findViewById(R.id.toast);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.toastmapa,toastR);
+
+        Toast toast = new Toast(getActivity());
+        toast.setView(view);
+        toast.show();
+
+
+    }
 
 }
 
