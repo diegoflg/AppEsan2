@@ -271,22 +271,77 @@ public class Mapa extends Fragment {
                                 }
                             }, 50 * inicio);
                         }
-                        //Matrix{[0.9366104, 0.0, -528.0304][0.0, 0.9366104, -247.94633][0.0, 0.0, 1.0]}
+                        matrix.getValues(ttt);
                         break;
                     case 1:
-                        Log.i(TAG, "CASO 2 VICERRECTORADO DE INVESTIGACIÓN");
-                        float values2[] = new float[]{1, 0, -570, 0, 1, -207, 0, 0, 1};
-                        matrix.setValues(values2);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[1.0, 0.0, -569.96265][0.0, 1.0, -207.07693][0.0, 0.0, 1.0]}
+                        matrix.getValues(ttt);
+                        final float[] tx2 = {ttt[Matrix.MTRANS_X]};
+                        final float[] ty2 = {ttt[Matrix.MTRANS_Y]};
+                        Log.i(TAG, "TRAS X:" + String.valueOf(tx2[0]));
+                        Log.i(TAG, "TRAS Y:" + String.valueOf(ty2[0]));
 
+                        int txI2 = (int)tx2[0];
+                        int tyI2 = (int)ty2[0];
+
+                        int txF2 = txI2+821;
+                        int tyF2 = tyI2+257;
+                        //Matrix{[1.0, 0.0, -821.2681][0.0, 1.0, -257.27686][0.0, 0.0, 1.0]}
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF2));
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF2));
+
+                        final int txD2 = txF2/50;
+                        final int tyD2 = tyF2/50;
+
+                        for (inicio = 1; inicio < 51; inicio++) {
+                            handler1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i(TAG, "CASO 2 VICERECTORADO");
+                                    tx2[0] = tx2[0] - txD2;
+                                    ty2[0] = ty2[0] - tyD2;
+                                    float values1[] = new float[]{1, 0, tx2[0], 0, 1, ty2[0], 0, 0, 1};
+                                    matrix.setValues(values1);
+
+                                    imagenMapa.setImageMatrix(matrix);
+                                }
+                            }, 50 * inicio);
+                        }
+                        matrix.getValues(ttt);
                         break;
                     case 2:
-                        Log.i(TAG, "CASO 3 VICERRECTORADO ACADÉMICO");
-                        float values3[] = new float[]{2, 0, -1245, 0, 2, -733, 0, 0, 1};
-                        matrix.setValues(values3);
-                        imagenMapa.setImageMatrix(matrix);
-                        //Matrix{[2.0, 0.0, -1244.8474][0.0, 2.0, -732.9231][0.0, 0.0, 1.0]}
+                        matrix.getValues(ttt);
+                        final float[] tx3 = {ttt[Matrix.MTRANS_X]};
+                        final float[] ty3 = {ttt[Matrix.MTRANS_Y]};
+                        Log.i(TAG, "TRAS X:" + String.valueOf(tx3[0]));
+                        Log.i(TAG, "TRAS Y:" + String.valueOf(ty3[0]));
+
+                        int txI3 = (int)tx3[0];
+                        int tyI3 = (int)ty3[0];
+
+                        int txF3 = txI3+811;
+                        int tyF3 = tyI3+368;
+                        //Matrix{[1.0, 0.0, -811.1596][0.0, 1.0, -368.02783][0.0, 0.0, 1.0]}
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF3));
+                        Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF3));
+
+                        final int txD3 = txF3/50;
+                        final int tyD3 = tyF3/50;
+
+                        for (inicio = 1; inicio < 51; inicio++) {
+                            handler1.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.i(TAG, "CASO 2 VICERECTORADO");
+                                    tx3[0] = tx3[0] - txD3;
+                                    ty3[0] = ty3[0] - tyD3;
+                                    float values1[] = new float[]{1, 0, tx3[0], 0, 1, ty3[0], 0, 0, 1};
+                                    matrix.setValues(values1);
+
+                                    imagenMapa.setImageMatrix(matrix);
+                                }
+                            }, 50 * inicio);
+                        }
+                        matrix.getValues(ttt);
                         break;
                     case 3:
                         Log.i(TAG, "CASO 4 COUNTER ADMISIÓN PREGRADO");
