@@ -338,8 +338,8 @@ public class Mapa extends Fragment {
                         int txI2 = (int) tx2[0];
                         int tyI2 = (int) ty2[0];
 
-                        int txF2 = txI2 + (int)(938*(double)dpi);
-                        int tyF2 = tyI2 + (int)(240*(double)dpi);
+                        int txF2 = txI2 + (int)(919*(double)dpi);
+                        int tyF2 = tyI2 + (int)(210*(double)dpi);
                         //Matrix{[1.0, 0.0, -1367.029][0.0, 1.0, -255.94873][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF2));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF2));
