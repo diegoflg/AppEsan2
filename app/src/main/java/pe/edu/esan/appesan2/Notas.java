@@ -37,6 +37,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.IOError;
 import java.io.IOException;
 import java.util.Map;
 
@@ -51,6 +52,7 @@ public class Notas extends Fragment {
     String[] clinks;
     int contador=0;
     int poss=0;
+    TextView tvfg;
 
     String curss;
     String notss;
@@ -60,6 +62,9 @@ public class Notas extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_nootas, container, false);
         listacursos=(ListView)v.findViewById(R.id.listacursos);
+
+        tvfg=(TextView)v.findViewById(R.id.fgh);
+        tvfg.setVisibility(View.INVISIBLE);
 
         listacursos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -133,31 +138,54 @@ public class Notas extends Fragment {
                         .get();
                 Log.v("titulo5", doc5.title());
 
-                Element head=doc5.select("div[class=row subcategorias]").get(4);
-                Elements links = head.select("a[href]");
+                String ytr=doc5.select("div[class=row subcategorias]").text();
 
-                for (Element element2 : links){
-                   contador=contador+1;
+                Log.v("APP","ytr: "+ytr);
+                Log.v("APP","lenght: "+String.valueOf(ytr.length()));
+
+
+
+                if(ytr.length()>141){
+
+                    Element head=doc5.select("div[class=row subcategorias]").get(4);
+                    Elements links = head.select("a[href]");
+
+                    for (Element element2 : links){
+                        contador=contador+1;
+                    }
+
+                    values = new String[contador];
+                    clinks = new String[contador];
+                    contador=0;
+
+
+                    for (Element element : links){
+
+
+
+                        Log.v("links", element.ownText()+"    link: "+element.attr("abs:href").substring(element.attr("abs:href").indexOf("="))+"   "+contador);
+
+                        values[contador]=element.ownText();
+                        clinks[contador]=element.attr("abs:href").substring(element.attr("abs:href").indexOf("="));
+
+
+                        contador=contador+1;
+
+                    }
+
+
+
+
+
                 }
 
-                values = new String[contador];
-                clinks = new String[contador];
-                contador=0;
-
-
-                for (Element element : links){
 
 
 
-                    Log.v("links", element.ownText()+"    link: "+element.attr("abs:href").substring(element.attr("abs:href").indexOf("="))+"   "+contador);
-
-                    values[contador]=element.ownText();
-                    clinks[contador]=element.attr("abs:href").substring(element.attr("abs:href").indexOf("="));
 
 
-                    contador=contador+1;
 
-                }
+
 
 
 
@@ -173,8 +201,18 @@ public class Notas extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
-            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
-            listacursos.setAdapter(adapter);
+
+            if(values==null){
+
+                tvfg.setVisibility(View.VISIBLE);
+                listacursos.setVisibility(View.INVISIBLE);
+
+            }else{
+                final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+                listacursos.setAdapter(adapter);
+
+            }
+
             contador=0;
         }
 
