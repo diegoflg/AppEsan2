@@ -4,34 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/toast"
-    android:background="@android:color/white">
+    android:padding="3dp"
+    android:background="@android:color/transparent">
 
     <TextView
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView1" android:layout_height="wrap_content"
+        android:id="@+id/tvdelmapa"
+        android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:text="Está aquí"
+        android:text="NOMBRE LUGAR"
+        android:layout_margin="1dp"
         android:gravity="center"
+        android:background="@android:color/white"
         android:textColor="@android:color/black">
     </TextView>
 
     <ImageView
-        android:layout_height="200dp"
-        android:layout_width="fill_parent"
-        android:layout_below="@+id/textView1"
-        android:layout_margin="3dip"
+        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvdelmapa"
+        android:layout_margin="3dp"
         android:src="@drawable/esan"
         android:id="@+id/imageView1">
     </ImageView>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:text="En este lugar"
-        android:gravity="center"
-        android:layout_below="@+id/imageView1"
-        android:textColor="@android:color/black">
-    </TextView>
 
 </RelativeLayout>

@@ -21,3 +21,4 @@ public class BitmapCache extends LruCache implements ImageCache {
 		put(url, bitmap);
 	}
 }
+

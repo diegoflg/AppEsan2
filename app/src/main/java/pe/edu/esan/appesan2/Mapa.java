@@ -8,14 +8,10 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PointF;
-import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.renderscript.Matrix3f;
 import android.support.v4.app.Fragment;
 import android.util.FloatMath;
 import android.util.Log;
@@ -25,16 +21,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.drive.RealtimeDocumentSyncRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -44,9 +37,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Mapa extends Fragment {
     private GoogleMap googleMap;
@@ -275,7 +265,7 @@ public class Mapa extends Fragment {
                                 //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
                                 toastshow(getActivity(), 0);
                             }
-                        },2500
+                        },2400
                         );
 
                         matrix.getValues(ttt);
@@ -322,7 +312,7 @@ public class Mapa extends Fragment {
                          //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
                          toastshow(getActivity(), 1);
                         }
-                        },2500
+                        },2400
                         );
                         matrix.getValues(ttt);
                         break;
@@ -367,7 +357,7 @@ public class Mapa extends Fragment {
                                                //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
                                                toastshow(getActivity(), 2);
                                            }
-                                       },2500
+                                       },2400
                         );
                         matrix.getValues(ttt);
                         break;
@@ -412,7 +402,7 @@ public class Mapa extends Fragment {
                                                //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
                                                toastshow(getActivity(), 3);
                                            }
-                                       },2500
+                                       },2400
                         );
                         matrix.getValues(ttt);
                         break;
@@ -456,7 +446,7 @@ public class Mapa extends Fragment {
                                                //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
                                                toastshow(getActivity(), 4);
                                            }
-                                       },2500
+                                       },2400
                         );
                         matrix.getValues(ttt);
 
@@ -501,7 +491,7 @@ public class Mapa extends Fragment {
                                                //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
                                                toastshow(getActivity(), 5);
                                            }
-                                       },2500
+                                       },2400
                         );
                         matrix.getValues(ttt);
                         break;
@@ -598,38 +588,44 @@ public class Mapa extends Fragment {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.toastmapa,toastR);
         ImageView  imview1= (ImageView) view.findViewById(R.id.imageView1);
+        TextView tv1 = (TextView) view.findViewById(R.id.tvdelmapa);
+        //FUENTE PARA TEXTOS:
+        String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
+        Typeface TT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+        tv1.setTypeface(TT);
+        tv1.setTextColor(Color.parseColor("#000000"));
+
 
         switch (caso){
             case 0:
                 imview1.setImageResource(R.drawable.edificioa);
+                tv1.setText("PABELLÓN A");
                 break;
             case 1:
                 imview1.setImageResource(R.drawable.edificiob);
+                tv1.setText("PABELLÓN B");
                 break;
             case 2:
                 imview1.setImageResource(R.drawable.pabelloncc);
+                tv1.setText("SALONES C");
                 break;
             case 3:
                 imview1.setImageResource(R.drawable.edificiodd);
+                tv1.setText("PABELLÓN D");
                 break;
             case 4:
                 imview1.setImageResource(R.drawable.comedor);
+                tv1.setText("COMEDOR");
                 break;
             case 5:
                 imview1.setImageResource(R.drawable.cafe);
+                tv1.setText("CAFETERÍA 338");
                 break;
         }
 
         Toast toast = new Toast(context);
         toast.setView(view);
         toast.show();
-
-
-        //Toast toast = new Toast(getActivity());
-        //toast.setView(view);
-        //toast.show();
-
-
     }
 
 }
