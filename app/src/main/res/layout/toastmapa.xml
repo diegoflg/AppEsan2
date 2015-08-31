@@ -10,7 +10,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textView1" android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:text="PM is here"
+        android:text="Está aquí"
         android:gravity="center"
         android:textColor="@android:color/black">
     </TextView>
@@ -19,7 +19,7 @@
         android:layout_height="200dp"
         android:layout_width="fill_parent"
         android:layout_below="@+id/textView1"
-        android:layout_margin="8dip"
+        android:layout_margin="3dip"
         android:src="@drawable/esan"
         android:id="@+id/imageView1">
     </ImageView>
@@ -28,7 +28,7 @@
         android:id="@+id/textView2"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:text="IMAGEN DEL LUGAR"
+        android:text="En este lugar"
         android:gravity="center"
         android:layout_below="@+id/imageView1"
         android:textColor="@android:color/black">
