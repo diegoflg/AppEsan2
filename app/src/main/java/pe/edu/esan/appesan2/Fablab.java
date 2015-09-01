@@ -69,13 +69,13 @@ public class Fablab extends Fragment {
 
 
         if ( !isNetworkAvailable()) { // loading offline
-            myWebView.loadUrl("http://blog.ue.edu.pe/");
+            myWebView.loadUrl("http://fablab.esan.edu.pe/");
             myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
             //myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
             Log.i(TAG, "SIN INTERNET");
         }else{
             Log.i(TAG, "CON INTERNET");
-            myWebView.loadUrl("http://blog.ue.edu.pe/");
+            myWebView.loadUrl("http://fablab.esan.edu.pe/");
 
             myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
 

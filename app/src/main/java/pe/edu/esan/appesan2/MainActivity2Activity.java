@@ -110,6 +110,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Notas") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Notas")).commit();
                     }
