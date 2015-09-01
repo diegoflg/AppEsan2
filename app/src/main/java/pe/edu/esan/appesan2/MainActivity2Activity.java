@@ -170,6 +170,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Notas") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Notas")).commit();
                     }
@@ -228,6 +231,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //SE ESCONDEN:
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
@@ -288,6 +294,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
@@ -346,6 +355,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //SE ESCONDEN:
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
@@ -406,6 +418,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
@@ -462,6 +477,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
@@ -522,6 +540,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
@@ -580,6 +601,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
@@ -640,6 +664,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
@@ -698,6 +725,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //SE ESCONDEN:
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
@@ -758,6 +788,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
@@ -816,6 +849,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
@@ -876,6 +912,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
@@ -934,6 +973,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
@@ -994,6 +1036,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                    }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
                     }
@@ -1050,6 +1095,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                    }
+                    if(fragmentManager.findFragmentByTag("ActArt") != null){
+                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
                     }
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
