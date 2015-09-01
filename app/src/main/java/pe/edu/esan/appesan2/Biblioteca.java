@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -27,10 +26,8 @@ public class Biblioteca extends Fragment {
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-
-
         myWebView = (WebView) rootView.findViewById(R.id.webviewB);
-        myWebView.loadUrl("http://catalogo.esan.edu.pe/F?RN=73646055");
+        myWebView.loadUrl("http://esancendoc.esan.edu.pe/");
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
@@ -72,7 +69,7 @@ public class Biblioteca extends Fragment {
         public void onPageStarted(WebView view, String url, Bitmap favicon){
             if(myWebView.getUrl() != myWebView.getOriginalUrl()){
                 myWebView.getSettings().setSupportZoom(true);
-                myWebView.setInitialScale(70);
+                myWebView.setInitialScale(50);
             }
             dialog.show();
         }
@@ -83,8 +80,6 @@ public class Biblioteca extends Fragment {
         }
         public void onPageFinished(WebView view, String url) {
             dialog.dismiss();
-            view.loadUrl("javascript:document.getElementsByName('bor_id')[0].value = '14100015'");
-            view.loadUrl("javascript:document.getElementsByName('bor_verification')[0].value = 'N7N2U2F7'");
         }}
         );
         return rootView;

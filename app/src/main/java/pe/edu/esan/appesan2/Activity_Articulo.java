@@ -3,9 +3,6 @@ package pe.edu.esan.appesan2;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,7 +18,7 @@ public class Activity_Articulo extends Fragment{
 	WebView webview;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceSt0ate){
 		View v = inflater.inflate(R.layout.activity_articulo, container, false);
 		webview = (WebView) v.findViewById(R.id.articulo_Webview);
 		recogerparametro();
@@ -34,10 +31,12 @@ public class Activity_Articulo extends Fragment{
 
 					switch (keyCode) {
 						case KeyEvent.KEYCODE_BACK:
-							FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+							FragmentManager fragmentManager = getActivity().
+									getSupportFragmentManager();
 							Noticia fragment;
 							fragment = new Noticia();
-							fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+							fragmentManager.beginTransaction().
+									replace(R.id.container, fragment).commit();
 							break;
 					}
 				}
@@ -87,7 +86,9 @@ public class Activity_Articulo extends Fragment{
 		}
 		return stream.toString();
 	}
-
-
-
 }
+
+
+
+
+
