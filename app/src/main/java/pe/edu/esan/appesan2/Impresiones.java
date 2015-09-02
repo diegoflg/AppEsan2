@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class Impresiones extends Fragment {
     private static final int REQUEST_CHOOSER = 1234;
     private ValueCallback<Uri> mUploadMessage;
     WebView myWebView;
+    String usuario, clave;
 
     //Librería importada como proyecto en módulo
     //https://github.com/iPaulPro/aFileChooser
@@ -69,6 +71,9 @@ public class Impresiones extends Fragment {
         myWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         myWebView.getSettings().setAllowFileAccess(true);
         myWebView.setInitialScale(50);
+
+        usuario = Datah.getInstance().getUser();
+        clave = Datah.getInstance().getPass();
 
         myWebView.setWebChromeClient(new WebChromeClient() {
             // openFileChooser for Android 3.0+
@@ -141,8 +146,8 @@ public class Impresiones extends Fragment {
             //http://stackoverflow.com/questions/16055800/how-to-enter-password-automatically-in-webview
             public void onPageFinished(WebView view, String url) {
                 dialog.dismiss();
-                view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '14100015'");
-                view.loadUrl("javascript:document.getElementsByName('Password')[0].value = 'N7N2U2F7'");
+                view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+ usuario +"'");
+                view.loadUrl("javascript:document.getElementsByName('Password')[0].value = '"+ clave +"'");
                 view.loadUrl("javascript:document.forms['loginform'].submit()");
             }});
         return rootView;
