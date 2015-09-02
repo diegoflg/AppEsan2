@@ -3,12 +3,15 @@ package pe.edu.esan.appesan2;
 import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -500,10 +503,18 @@ public class MainActivity extends ActionBarActivity {
 
     public void logstart(View v){
 
-        Datah.getInstance().setUser(et1.getText().toString());
-        Datah.getInstance().setPass(et2.getText().toString());
+        if(isNetworkAvailable()==true){
+            Datah.getInstance().setUser(et1.getText().toString());
+            Datah.getInstance().setPass(et2.getText().toString());
+            new logg().execute();
 
-        new logg().execute();
+        }else{
+            Toast t=Toast.makeText(this,"No hay coneccion a internet", Toast.LENGTH_SHORT);
+            t.show();
+
+        }
+
+
 
 
 
@@ -658,5 +669,13 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+
+
+
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

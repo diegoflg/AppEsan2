@@ -200,11 +200,12 @@ public class Cafeteria extends Fragment {
 
 
         if(isNetworkAvailable()==true){
-            Log.d("internet", "hay");
-            go(v);
+                        go(v);
         }else{
+            Toast t=Toast.makeText(getActivity(),"No hay coneccion a internet", Toast.LENGTH_SHORT);
+            t.show();
 
-            Log.d("internet", "no hay");
+
             pb.dismiss();
 
         }

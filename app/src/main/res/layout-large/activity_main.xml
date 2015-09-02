@@ -41,7 +41,8 @@
         android:layout_centerHorizontal="true"
         android:width="250dp"
         android:background="@drawable/edittext"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:inputType="textNoSuggestions"/>
 
     <EditText
         android:id="@+id/et2"

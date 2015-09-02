@@ -1,9 +1,12 @@
 package pe.edu.esan.appesan2;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -135,6 +138,13 @@ public class Estacionamiento extends Fragment {
 
 
                 }
+
+                if(isNetworkAvailable()==false){
+                    sema1e.setImageResource(R.drawable.rojoapagado);
+                    sema2e.setImageResource(R.drawable.amarilloapagado);
+                    sema3e.setImageResource(R.drawable.verdeapagado);
+                    tvlibres.setText("No hay coneccion a internet");
+                }
                 new LoadAllProducts().execute();
                 h.postDelayed(this, delay);
             }
@@ -177,6 +187,12 @@ public class Estacionamiento extends Fragment {
         protected void onPostExecute(String file_url) {
 
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }
