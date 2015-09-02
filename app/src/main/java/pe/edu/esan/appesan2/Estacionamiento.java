@@ -90,7 +90,7 @@ public class Estacionamiento extends Fragment {
             public void run() {
                 Log.v("tipo", "timer");
                 Log.v("es", estado);
-                Log.v("es2", estado2);
+                //Log.v("es2", estado2);
 
                 if(estado.equals("rojo")){
                     sema1e.setImageResource(R.drawable.rojoprendido);
