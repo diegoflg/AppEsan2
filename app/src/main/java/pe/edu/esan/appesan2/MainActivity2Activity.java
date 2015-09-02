@@ -100,6 +100,9 @@ public class MainActivity2Activity extends ActionBarActivity
             switch (position){
                 case 0:
                     //fragment= new Noticia();
+                    fragment= new Noticia();
+                    fragmentManager.beginTransaction().replace(R.id.container, fragment, "Noticia").commit();
+                    /*
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Noticia")).commit();
                     }else{
@@ -158,6 +161,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     if(fragmentManager.findFragmentByTag("Estacionamiento") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
                     }
+                     */
                     break;
 
 
@@ -1092,9 +1096,6 @@ public class MainActivity2Activity extends ActionBarActivity
                     //fragment = new estacionamiento
                     fragment= new Estacionamiento();
                     fragmentManager.beginTransaction().replace(R.id.container, fragment, "Estacionamiento").commit();
-                    if(fragmentManager.findFragmentByTag("ActArt") != null){
-                        fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("ActArt")).commit();
-                    }
                     break;
                 //case 14:
                //    fragment = new Gamificacion();
