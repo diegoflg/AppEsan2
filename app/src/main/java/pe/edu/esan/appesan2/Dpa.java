@@ -29,7 +29,7 @@ public class Dpa extends Fragment {
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewdpa);
-        myWebView.loadUrl("http://dpa.ue.edu.pe/carreras/administracion-con-mencion-en-direccion-de-empresas");
+        myWebView.loadUrl("http://dpa.ue.edu.pe/carreras/noticias");
 
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
