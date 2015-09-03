@@ -80,10 +80,19 @@ public class Directorio extends Fragment {
                                  }
 
                                  public void onPageFinished(WebView view, String url) {
+
+
+                                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                                         view.evaluateJavascript("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
+                                                 "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';",null);
+                                         view.evaluateJavascript("javascript:document.forms[0].login();",null);
+                                     } else {
+                                         view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
+                                                 "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
+                                         view.loadUrl("javascript:document.forms[0].login();");
+                                     }
                                      //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
-                                     view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
-                                             "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
-                                     view.loadUrl("javascript:document.forms[0].login();");
+
                                  }
                              }
         );
