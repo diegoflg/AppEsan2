@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@drawable/ffond"
+    android:background="@drawable/ffond2"
     android:clickable="true">
 
 
@@ -19,7 +19,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffffff"
+        android:textColor="#f1010101"
         android:textSize="30sp"/>
 
 
@@ -80,7 +80,8 @@
         android:layout_toRightOf="@+id/parte2e"
         android:layout_marginLeft="30dp"
         android:text="cargando"
-        android:textColor="#ffffffff" />
+        android:textStyle="bold"
+        android:textColor="#f1010101" />
 
 
 </RelativeLayout>
