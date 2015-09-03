@@ -99,7 +99,7 @@ public class Estacionamiento extends Fragment {
                     sema1e.setImageResource(R.drawable.rojoprendido);
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeapagado);
-                    tvlibres.setText("De 0 a 4 libres");
+                    tvlibres.setText("Playa llena");
                     if(estado.equals(estado2)){
 
 
@@ -112,7 +112,7 @@ public class Estacionamiento extends Fragment {
                     sema1e.setImageResource(R.drawable.rojoapagado);
                     sema2e.setImageResource(R.drawable.amarilloprendido);
                     sema3e.setImageResource(R.drawable.verdeapagado);
-                    tvlibres.setText("De 4 a 20 libres");
+                    tvlibres.setText("De 4 a 20 estacionamientos disponibles");
                     if(estado.equals(estado2)){
 
 
@@ -127,7 +127,7 @@ public class Estacionamiento extends Fragment {
                     sema1e.setImageResource(R.drawable.rojoapagado);
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeprendido);
-                    tvlibres.setText("De 20 a 4 mas libres");
+                    tvlibres.setText("Playa libre");
                     if(estado.equals(estado2)){
 
 
