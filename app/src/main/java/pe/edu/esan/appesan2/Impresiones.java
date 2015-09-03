@@ -58,6 +58,10 @@ public class Impresiones extends Fragment {
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
+
+
+
+
         myWebView = (WebView) rootView.findViewById(R.id.webviewI);
         myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm");
         myWebView.getSettings().setJavaScriptEnabled(true);
@@ -146,9 +150,18 @@ public class Impresiones extends Fragment {
             //http://stackoverflow.com/questions/16055800/how-to-enter-password-automatically-in-webview
             public void onPageFinished(WebView view, String url) {
                 dialog.dismiss();
-                view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '"+ usuario +"'");
-                view.loadUrl("javascript:document.getElementsByName('Password')[0].value = '"+ clave +"'");
-                view.loadUrl("javascript:document.forms['loginform'].submit()");
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                    view.evaluateJavascript("javascript:document.getElementsByName('Username')[0].value = '" + usuario + "'", null);
+                    view.evaluateJavascript("javascript:document.getElementsByName('Password')[0].value = '" + clave + "'", null);
+                    view.evaluateJavascript("javascript:document.forms['loginform'].submit()", null);
+                } else {
+                    view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '" + usuario + "'");
+                    view.loadUrl("javascript:document.getElementsByName('Password')[0].value = '" + clave + "'");
+                    view.loadUrl("javascript:document.forms['loginform'].submit()");
+                }
+
+
             }});
         return rootView;
     }
