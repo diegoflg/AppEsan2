@@ -159,7 +159,7 @@ public class Mapa extends Fragment {
                 } else {
                     if (mTabHost3.getCurrentTab() == 2) {
                         //--------------------------ESAN MAPA-------------------------------
-                        imagenMapa.setImageResource(R.drawable.mapaesan);
+                        imagenMapa.setImageResource(R.drawable.esanmap);
 
                         imagenMapa.setOnTouchListener(new View.OnTouchListener() {
                             @Override
@@ -237,9 +237,9 @@ public class Mapa extends Fragment {
                         int txI0 = (int) tx0[0];
                         int tyI0 = (int) ty0[0];
 
-                        int txF0 = txI0 + (int)(750*(double)dpi);
-                        int tyF0 = tyI0 + (int)(500*(double)dpi);
-                        //Matrix{[1.0, 0.0, -1047.6956][0.0, 1.0, -605.0054][0.0, 0.0, 1.0]}
+                        int txF0 = txI0 + (int)(419*(double)dpi);
+                        int tyF0 = tyI0 + (int)(501*(double)dpi);
+                        //Matrix{[1.0, 0.0, -419.24722][0.0, 1.0, -501.22787][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF0));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF0));
 
@@ -283,9 +283,9 @@ public class Mapa extends Fragment {
                         int txI1 = (int) tx1[0];
                         int tyI1 = (int) ty1[0];
 
-                        int txF1 = txI1 + (int)(685*(double)dpi);
-                        int tyF1 = tyI1 + (int)(550*(double)dpi);
-                        //Matrix{[1.0, 0.0, -966.3653][0.0, 1.0, -709.0902][0.0, 0.0, 1.0]}
+                        int txF1 = txI1 + (int)(407*(double)dpi);
+                        int tyF1 = tyI1 + (int)(551*(double)dpi);
+                        //Matrix{[1.0, 0.0, -406.66956][0.0, 1.0, -551.1239][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF1));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF1));
 
@@ -328,9 +328,9 @@ public class Mapa extends Fragment {
                         int txI2 = (int) tx2[0];
                         int tyI2 = (int) ty2[0];
 
-                        int txF2 = txI2 + (int)(919*(double)dpi);
-                        int tyF2 = tyI2 + (int)(210*(double)dpi);
-                        //Matrix{[1.0, 0.0, -1367.029][0.0, 1.0, -255.94873][0.0, 0.0, 1.0]}
+                        int txF2 = txI2 + (int)(250*(double)dpi);
+                        int tyF2 = tyI2 + (int)(224*(double)dpi);
+                        //Matrix{[1.0, 0.0, -250.15863][0.0, 1.0, -224.30475][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF2));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF2));
 
@@ -373,9 +373,9 @@ public class Mapa extends Fragment {
                         int txI3 = (int) tx3[0];
                         int tyI3 = (int) ty3[0];
 
-                        int txF3 = txI3 + (int)(600*(double)dpi);
-                        int tyF3 = tyI3 + (int)(480*(double)dpi);
-                        //LOCALIZADO EN: Matrix{[1.0, 0.0, -881.5349][0.0, 1.0, -598.35144][0.0, 0.0, 1.0]}
+                        int txF3 = txI3 + (int)(286*(double)dpi);
+                        int tyF3 = tyI3 + (int)(517*(double)dpi);
+                        //Matrix{[1.0, 0.0, -286.18173][0.0, 1.0, -517.15027][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF3));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF3));
 
@@ -417,9 +417,9 @@ public class Mapa extends Fragment {
                         int txI4 = (int) tx4[0];
                         int tyI4 = (int) ty4[0];
 
-                        int txF4 = txI4 + (int)(750*(double)dpi);
-                        int tyF4 = tyI4 + (int)(400*(double)dpi);
-                        //LMatrix{[1.0, 0.0, -1167.2393][0.0, 1.0, -528.104][0.0, 0.0, 1.0]}
+                        int txF4 = txI4 + (int)(295*(double)dpi);
+                        int tyF4 = tyI4 + (int)(395*(double)dpi);
+                        //Matrix{[1.0, 0.0, -295.18204][0.0, 1.0, -394.76968][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF4));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF4));
 
@@ -462,9 +462,9 @@ public class Mapa extends Fragment {
                         int txI5 = (int) tx5[0];
                         int tyI5 = (int) ty5[0];
 
-                        int txF5 = txI5 + (int)(870*(double)dpi);
-                        int tyF5 = tyI5 + (int)(440*(double)dpi);
-                        //Matrix{[1.0, 0.0, -1277.1411][0.0, 1.0, -608.55585][0.0, 0.0, 1.0]}
+                        int txF5 = txI5 + (int)(337*(double)dpi);
+                        int tyF5 = tyI5 + (int)(356*(double)dpi);
+                        //Matrix{[1.0, 0.0, -337.12903][0.0, 1.0, -355.8181][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF5));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF5));
 
