@@ -33,7 +33,7 @@ public class Biblioteca extends Fragment {
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
-
+        myWebView.getSettings().setDisplayZoomControls(false);
         final Timer t = new Timer();
         t.schedule(new TimerTask() {
             public void run() {

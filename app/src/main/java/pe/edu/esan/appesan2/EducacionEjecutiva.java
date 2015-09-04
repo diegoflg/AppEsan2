@@ -51,6 +51,7 @@ public class EducacionEjecutiva extends Fragment {
         wbEE.getSettings().setLoadWithOverviewMode(true);
         wbEE.getSettings().setBuiltInZoomControls(true);
         wbEE.getSettings().setSupportZoom(true);
+        wbEE.getSettings().setDisplayZoomControls(false);
 
         final Timer t = new Timer();
         t.schedule(new TimerTask() {

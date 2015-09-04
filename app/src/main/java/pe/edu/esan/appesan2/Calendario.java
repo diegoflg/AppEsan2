@@ -44,7 +44,7 @@ public class Calendario extends Fragment{
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
         myWebView.getSettings().setJavaScriptEnabled(true);
-
+        myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.getSettings().setDomStorageEnabled(true);
         myWebView.getSettings().setAppCachePath("/data/data/pe.edu.esan.appesan2/cache");
         myWebView.getSettings().setAllowFileAccess(true);

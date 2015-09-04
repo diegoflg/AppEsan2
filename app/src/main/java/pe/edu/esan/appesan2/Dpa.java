@@ -30,7 +30,7 @@ public class Dpa extends Fragment {
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewdpa);
         myWebView.loadUrl("http://dpa.ue.edu.pe/carreras/noticias");
-
+        myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);

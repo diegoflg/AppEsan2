@@ -52,6 +52,7 @@ public class Directorio extends Fragment {
         wbD.getSettings().setLoadWithOverviewMode(true);
         wbD.getSettings().setBuiltInZoomControls(true);
         wbD.getSettings().setSupportZoom(true);
+        wbD.getSettings().setDisplayZoomControls(false);
         wbD.setInitialScale(50);
 
         wbD.setOnKeyListener(new View.OnKeyListener() {

@@ -30,6 +30,7 @@ public class ConexionEsan extends Fragment {
         ceWB.getSettings().setLoadWithOverviewMode(true);
         ceWB.getSettings().setBuiltInZoomControls(true);
         ceWB.getSettings().setSupportZoom(true);
+        ceWB.getSettings().setDisplayZoomControls(false);
 
         final Timer t = new Timer();
         t.schedule(new TimerTask() {
