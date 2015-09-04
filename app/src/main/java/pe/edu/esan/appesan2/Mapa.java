@@ -130,6 +130,8 @@ public class Mapa extends Fragment {
         googleMap.addMarker(marker);
         googleMap.setMyLocationEnabled(true);
 
+        googleMap.getUiSettings().setZoomControlsEnabled(false);
+
         CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(-12.105019, -76.961066)).zoom(18).build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 

@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -101,7 +102,11 @@ public class Notas extends Fragment {
     private class open extends AsyncTask<String, Void, String> {
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        }
 
         @Override
         protected String doInBackground(String... params) {
@@ -214,6 +219,8 @@ public class Notas extends Fragment {
             }
 
             contador=0;
+
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         }
 
 

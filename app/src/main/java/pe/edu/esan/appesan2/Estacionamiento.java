@@ -63,6 +63,7 @@ public class Estacionamiento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 
         final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
 
