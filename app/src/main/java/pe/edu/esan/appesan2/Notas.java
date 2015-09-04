@@ -147,7 +147,7 @@ public class Notas extends Fragment {
 
                 if(ytr.length()>141){
 
-                    Element head=doc5.select("div[class=row subcategorias]").get(4);
+                    Element head=doc5.select("div[class=row subcategorias]").get(3);
                     Elements links = head.select("a[href]");
 
                     for (Element element2 : links){
