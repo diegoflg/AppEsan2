@@ -66,7 +66,7 @@ public class Fablab extends Fragment {
         myWebView.getSettings().setAppCacheEnabled(true);
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setLoadsImagesAutomatically(true);
-
+        myWebView.getSettings().setDisplayZoomControls(false);
 
         if ( !isNetworkAvailable()) { // loading offline
             myWebView.loadUrl("http://fablab.esan.edu.pe/");

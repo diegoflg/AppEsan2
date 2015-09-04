@@ -75,6 +75,7 @@ public class Impresiones extends Fragment {
         myWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         myWebView.getSettings().setAllowFileAccess(true);
         myWebView.setInitialScale(50);
+        myWebView.getSettings().setDisplayZoomControls(false);
 
         usuario = Datah.getInstance().getUser();
         clave = Datah.getInstance().getPass();

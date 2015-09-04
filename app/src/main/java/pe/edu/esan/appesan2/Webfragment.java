@@ -35,7 +35,7 @@ public class Webfragment extends Fragment {
         wb.getSettings().setLoadWithOverviewMode(true);
         wb.getSettings().setBuiltInZoomControls(true);
         wb.getSettings().setSupportZoom(true);
-
+        wb.getSettings().setDisplayZoomControls(false);
         rootView.setFocusableInTouchMode(true);
         rootView.requestFocus();
 

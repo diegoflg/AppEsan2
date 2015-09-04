@@ -27,6 +27,7 @@ public class Talleres extends Fragment {
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
+        myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.setInitialScale(70);
 
 
