@@ -5,10 +5,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.inputmethodservice.KeyboardView;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,19 +40,32 @@ public class Impresiones extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==REQUEST_CHOOSER)
-        {
-            if (null == mUploadMessage) return;
-            Uri uri = data == null || resultCode != Activity.RESULT_OK ? null : data.getData();
-            // Get the File path from the Uri
-            String path = FileUtils.getPath(getActivity(), uri);
-            // Alternatively, use FileUtils.getFile(Context, Uri)
-            if (path != null && FileUtils.isLocal(path)) {
-                File file = new File(path);
-            }
-            mUploadMessage.onReceiveValue(uri);
-            mUploadMessage = null;
-        }
+        if (resultCode == Activity.RESULT_OK) {
+            if(requestCode==REQUEST_CHOOSER)
+                if(data != null){
+                    {
+                        if (null == mUploadMessage) return;
+                        Uri uri = data.getData();
+                        // Get the File path from the Uri
+                        String path = FileUtils.getPath(getActivity(), uri);
+                        // Alternatively, use FileUtils.getFile(Context, Uri)
+                        if (path != null && FileUtils.isLocal(path)) {
+                            File file = new File(path);
+                        }
+                        mUploadMessage.onReceiveValue(uri);
+                        mUploadMessage = null;
+                    }
+                }
+
+        }else {
+
+            Log.i("ENTRA", "RETORNA");
+            Log.i("ENTRA", "RETORNA 2");
+            Log.i("ENTRA", "RETORNA 3");
+            getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content, new Impresiones()).commit();
+
+        };
     }
 
     @Override
