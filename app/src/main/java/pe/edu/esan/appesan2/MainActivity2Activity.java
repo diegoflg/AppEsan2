@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -38,6 +39,28 @@ public class MainActivity2Activity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
+    private Noticia mTaskFragment1;
+    private Horario mTaskFragment2;
+    private Notas mTaskFragment3;
+    private Calendario mTaskFragment4;
+    private Cafeteria mTaskFragment5;
+    private Mapa mTaskFragment6;
+    private Directorio mTaskFragment7;
+    private Talleres mTaskFragment8;
+    private Biblioteca mTaskFragment9;
+    private Impresiones mTaskFragment10;
+    private CursosMooc mTaskFragment11;
+    private ConexionEsan mTaskFragment12;
+    private EducacionEjecutiva mTaskFragment13;
+    private Fablab mTaskFragment14;
+    private Estacionamiento mTaskFragment15;
+
+
+
+
+
+
+
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -47,15 +70,25 @@ public class MainActivity2Activity extends ActionBarActivity
     public int menu=0;
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.i(TAG, "GUARDA TODO");
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+
+        savedInstanceState.putInt("menukey", menu);
+
+
+        super.onSaveInstanceState(savedInstanceState);
+
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
+
+        if (savedInstanceState != null) {
+            // Restore value of members from saved state
+            menu = savedInstanceState.getInt("menukey");
+        }
 
         Intent i=getIntent();
         Bundle b=i.getExtras();
@@ -73,6 +106,7 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
 
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -84,7 +118,10 @@ public class MainActivity2Activity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        onNavigationDrawerItemSelected(Datah.getInstance().getData());
+
+        Log.i("iniciarf", String.valueOf(Datah.getInstance().getData()));
+
+        onNavigationDrawerItemSelected(menu);
 
     }
 
@@ -94,6 +131,9 @@ public class MainActivity2Activity extends ActionBarActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment=null;
         menu=position;
+
+        Log.i("iniciart1", String.valueOf(menu));
+
 
         if(tipo==1){
 
@@ -167,11 +207,14 @@ public class MainActivity2Activity extends ActionBarActivity
                 case 1:
                     //fragment= new Horario();
                     //fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+
                     if(fragmentManager.findFragmentByTag("Horario") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Horario")).commit();
                     }else{
                         fragmentManager.beginTransaction().add(R.id.container, new Horario(), "Horario").commit();
                     }
+
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
@@ -475,11 +518,16 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
                 case 6:
                     //fragment= new Directorio();
-                    if(fragmentManager.findFragmentByTag("Directorio") != null){
+                    mTaskFragment7 = (Directorio) fragmentManager.findFragmentByTag("Directorio");
+
+
+                    if(mTaskFragment7 != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Directorio")).commit();
                     }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Directorio(), "Directorio").commit();
+                        mTaskFragment7 = new Directorio();
+                        fragmentManager.beginTransaction().add(R.id.container, mTaskFragment7, "Directorio").commit();
                     }
+
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
@@ -599,10 +647,14 @@ public class MainActivity2Activity extends ActionBarActivity
 
                 case 8:
                     //fragment = new Biblioteca();
-                    if(fragmentManager.findFragmentByTag("Biblioteca") != null){
+                    mTaskFragment9 = (Biblioteca) fragmentManager.findFragmentByTag("Biblioteca");
+
+
+                    if(mTaskFragment9 != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Biblioteca")).commit();
                     }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Biblioteca(), "Notas").commit();
+                        mTaskFragment9 = new Biblioteca();
+                        fragmentManager.beginTransaction().add(R.id.container, mTaskFragment9, "Biblioteca").commit();
                     }
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
@@ -1157,65 +1209,6 @@ public class MainActivity2Activity extends ActionBarActivity
         //fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        if(fragmentManager.findFragmentByTag("Noticia") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Noticia")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Horario") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Horario")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Notas") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Notas")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Calendario") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Calendario")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Cafeteria") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Cafeteria")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Mapas") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Mapas")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Directorio") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Directorio")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Talleres") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Talleres")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Biblioteca") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Biblioteca")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Impresiones") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Impresiones")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("CursosMooc") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("CursosMooc")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Estadodepagos") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Estadodepagos")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("ConexionEsan") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("ConexionEsan")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("EducacionEjecutiva") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("FabLab") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("FabLab")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("DPA") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("DPA")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Estacionamiento") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
-        }
-        if(fragmentManager.findFragmentByTag("Registroesta") != null){
-            fragmentManager.beginTransaction().remove(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
-        }
-    }
 
     public void onSectionAttached(int number) {
 
@@ -1277,6 +1270,8 @@ public class MainActivity2Activity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+
     @Override
     public void onBackPressed() {
         if (menu==4){
@@ -1285,114 +1280,16 @@ public class MainActivity2Activity extends ActionBarActivity
     }else{
 
     }
+
+
+
 }
 
 
 
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-            int lang=Datah.getInstance().getLang();
-            Datah.getInstance().setData(menu);
 
 
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-
-
-            switch(lang){
-                case 0:
-
-                    Locale locale = new Locale("es");
-                    Locale.setDefault(locale);
-                    Configuration mConfig = new Configuration();
-                    mConfig.locale = locale;
-                    getBaseContext().getResources().updateConfiguration(mConfig,
-                            getBaseContext().getResources().getDisplayMetrics());
-
-                    break;
-
-                case 1:
-
-                    Locale locale2 = new Locale("en");
-                    Locale.setDefault(locale2);
-                    Configuration mConfig2 = new Configuration();
-                    mConfig2.locale = locale2;
-                    getBaseContext().getResources().updateConfiguration(mConfig2,
-                            getBaseContext().getResources().getDisplayMetrics());
-
-                    break;
-
-                case 2:
-
-                    Locale locale3 = new Locale("fr");
-                    Locale.setDefault(locale3);
-                    Configuration mConfig3 = new Configuration();
-                    mConfig3.locale = locale3;
-                    getBaseContext().getResources().updateConfiguration(mConfig3,
-                            getBaseContext().getResources().getDisplayMetrics());
-
-                    break;
-
-            }
-
-
-
-
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-
-            Datah.getInstance().setData(menu);
-            int lang=Datah.getInstance().getLang();
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
-
-
-            switch(lang){
-                case 0:
-
-                    Locale locale = new Locale("es");
-                    Locale.setDefault(locale);
-                    Configuration mConfig = new Configuration();
-                    mConfig.locale = locale;
-                    getBaseContext().getResources().updateConfiguration(mConfig,
-                            getBaseContext().getResources().getDisplayMetrics());
-
-                    break;
-
-                case 1:
-
-                    Locale locale2 = new Locale("en");
-                    Locale.setDefault(locale2);
-                    Configuration mConfig2 = new Configuration();
-                    mConfig2.locale = locale2;
-                    getBaseContext().getResources().updateConfiguration(mConfig2,
-                            getBaseContext().getResources().getDisplayMetrics());
-
-                    break;
-
-                case 2:
-
-                    Locale locale3 = new Locale("fr");
-                    Locale.setDefault(locale3);
-                    Configuration mConfig3 = new Configuration();
-                    mConfig3.locale = locale3;
-                    getBaseContext().getResources().updateConfiguration(mConfig3,
-                            getBaseContext().getResources().getDisplayMetrics());
-
-                    break;
-
-            }
-
-
-        }
-    }
 
 
 

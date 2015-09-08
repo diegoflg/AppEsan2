@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -26,6 +27,8 @@ import java.util.TimerTask;
 public class Fablab extends Fragment {
     private static String TAG = "MUNDO CRUEL";
 
+
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -48,13 +51,10 @@ public class Fablab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_noticia, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-
+        setRetainInstance(true);
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-
         WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
-        Log.i(TAG, "CREA");
-
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
@@ -82,14 +82,6 @@ public class Fablab extends Fragment {
         }
 
 
-        final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            public void run() {
-
-                dialog.dismiss(); // when the task active then close the dialog
-                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
-            }
-        }, 10000); // after 2 second (or 2000 miliseconds), the task will be active.
 
 
 
@@ -116,11 +108,19 @@ public class Fablab extends Fragment {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
             dialog.show();
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            }
+            else {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
         }
 
         @Override
         public void onPageFinished(WebView view, String url){
             dialog.dismiss();
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         }
 
         @Override

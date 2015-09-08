@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -63,6 +64,7 @@ public class Notas extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_nootas, container, false);
         listacursos=(ListView)v.findViewById(R.id.listacursos);
+        setRetainInstance(true);
 
         tvfg=(TextView)v.findViewById(R.id.fgh);
         tvfg.setVisibility(View.INVISIBLE);
@@ -105,7 +107,15 @@ public class Notas extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+            dialog.show();
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            }
+            else {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
+
         }
 
         @Override
@@ -206,6 +216,7 @@ public class Notas extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
             if(values==null){
 
@@ -220,7 +231,7 @@ public class Notas extends Fragment {
 
             contador=0;
 
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
         }
 
 
@@ -231,7 +242,18 @@ public class Notas extends Fragment {
     private class open2 extends AsyncTask<String, Void, String> {
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            }
+            else {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
+        }
 
         @Override
         protected String doInBackground(String... params) {
@@ -285,6 +307,7 @@ public class Notas extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
+
             showPopup(getActivity(), curss,notss);
 
 

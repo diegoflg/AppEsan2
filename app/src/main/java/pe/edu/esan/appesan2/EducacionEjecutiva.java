@@ -1,6 +1,8 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -20,15 +22,18 @@ import java.util.TimerTask;
  * Created by educacionadistancia on 24/07/2015.
  */
 public class EducacionEjecutiva extends Fragment {
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView   = inflater.inflate(R.layout.lay_educacionejecutiva, container, false);
+        setRetainInstance(true);
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         //FUENTE Y COLOR PARA TEXTO DE BOTONES:
         String font_pathEE = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFEE = Typeface.createFromAsset(getActivity().getAssets(), font_pathEE);
         //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
-        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
 
         Button pade     = (Button)rootView.findViewById(R.id.pade);
         pade.setTypeface(TFEE);
@@ -53,14 +58,7 @@ public class EducacionEjecutiva extends Fragment {
         wbEE.getSettings().setSupportZoom(true);
         wbEE.getSettings().setDisplayZoomControls(false);
 
-        final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            public void run() {
 
-                dialog.dismiss(); // when the task active then close the dialog
-                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
-            }
-        }, 6000); // after 2 second (or 2000 miliseconds), the task will be active.
 
         wbEE.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -137,11 +135,19 @@ public class EducacionEjecutiva extends Fragment {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon){
                 dialog.show();
+                int currentOrientation = getResources().getConfiguration().orientation;
+                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                }
+                else {
+                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+                }
             }
 
             @Override
             public void onPageFinished(WebView view, String url){
                 dialog.dismiss();
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
             }
 
             @Override
@@ -151,4 +157,6 @@ public class EducacionEjecutiva extends Fragment {
         });
         return rootView;
     }
+
+
 }

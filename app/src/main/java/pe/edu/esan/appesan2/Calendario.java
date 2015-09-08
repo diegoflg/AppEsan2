@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -65,14 +66,7 @@ public class Calendario extends Fragment{
 
         }
 
-        final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            public void run() {
 
-                dialog.dismiss(); // when the task active then close the dialog
-                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
-            }
-        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
 
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
@@ -105,12 +99,20 @@ public class Calendario extends Fragment{
                     myWebView.setInitialScale(100);
                 }
                 dialog.show();
+                int currentOrientation = getResources().getConfiguration().orientation;
+                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                }
+                else {
+                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+                }
 
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 dialog.dismiss();
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
             }
 
             @Override

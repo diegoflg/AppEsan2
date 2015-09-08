@@ -24,6 +24,7 @@ public class CursosMooc extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_mooc, container, false);
+        setRetainInstance(true);
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         cv1=(CircleImageView)rootView.findViewById(R.id.cv1);

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.inputmethodservice.KeyboardView;
 import android.net.Uri;
@@ -37,6 +38,9 @@ public class Impresiones extends Fragment {
 
     //Librería importada como proyecto en módulo
     //https://github.com/iPaulPro/aFileChooser
+
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -72,8 +76,10 @@ public class Impresiones extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         View rootView = inflater.inflate(R.layout.lay_impresiones, container, false);
-
+        setRetainInstance(true);
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+
 
 
 
@@ -158,6 +164,13 @@ public class Impresiones extends Fragment {
                     myWebView.setInitialScale(70);
                 }
                 dialog.show();
+                int currentOrientation = getResources().getConfiguration().orientation;
+                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                }
+                else {
+                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+                }
             }
 
             @Override
@@ -168,6 +181,7 @@ public class Impresiones extends Fragment {
             //http://stackoverflow.com/questions/16055800/how-to-enter-password-automatically-in-webview
             public void onPageFinished(WebView view, String url) {
                 dialog.dismiss();
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                     view.evaluateJavascript("javascript:document.getElementsByName('Username')[0].value = '" + usuario + "'", null);

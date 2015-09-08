@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -51,6 +52,9 @@ public class MainActivity extends ActionBarActivity {
     String loggresult="";
     String mensaje="Usuario o password invalida";
     int tipo=1;
+
+
+
 
 
 
@@ -526,6 +530,14 @@ public class MainActivity extends ActionBarActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            }
+            else {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
+
         }
 
         @Override
@@ -660,6 +672,8 @@ public class MainActivity extends ActionBarActivity {
                 acceder();
             }
 
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
 
 
 
@@ -678,4 +692,6 @@ public class MainActivity extends ActionBarActivity {
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
+
 }

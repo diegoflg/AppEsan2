@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
@@ -82,6 +83,7 @@ public class Cafeteria extends Fragment {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        setRetainInstance(true);
 
         lay1=(RelativeLayout)v.findViewById(R.id.LaRuta);
 
@@ -195,6 +197,14 @@ public class Cafeteria extends Fragment {
                        pb.setCancelable(false);
                        pb.show();
 
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+        }
+        else {
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+        }
+
 
 
 
@@ -207,6 +217,7 @@ public class Cafeteria extends Fragment {
 
 
             pb.dismiss();
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
         }
 
@@ -485,6 +496,7 @@ public class Cafeteria extends Fragment {
             adapter4 = new TeamsAdapter(getActivity(), R.layout.team, teams4);
 
             pb.dismiss();
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
 
         } catch (JSONException e) {

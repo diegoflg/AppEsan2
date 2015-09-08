@@ -28,6 +28,7 @@ public class EstadoDePagos extends Fragment {
         View rootView = inflater.inflate(R.layout.lay_estado, container, false);
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        setRetainInstance(true);
 
 
         //FUENTE PARA TEXVIEWS :
