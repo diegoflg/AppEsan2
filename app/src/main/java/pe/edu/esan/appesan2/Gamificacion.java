@@ -18,6 +18,7 @@ public class Gamificacion extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_gamificacion, container, false);
+        setRetainInstance(true);
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
 

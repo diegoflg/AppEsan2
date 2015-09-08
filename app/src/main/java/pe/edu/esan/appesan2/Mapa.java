@@ -70,7 +70,7 @@ public class Mapa extends Fragment {
         // inflat and return the layout
         View v = inflater.inflate(R.layout.lay_mapa, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-
+        setRetainInstance(true);
         mTabHost3 = (TabHost) v.findViewById(R.id.tabHost3);
         mTabHost3.setup();
 

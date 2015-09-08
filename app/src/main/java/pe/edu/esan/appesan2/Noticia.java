@@ -28,6 +28,7 @@ public class Noticia extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.activity_noticias, container, false);
         lista = (ListView) v.findViewById(R.id.noticiaslistview);
+        setRetainInstance(true);
         rellenarNoticias();
         return v;
     }

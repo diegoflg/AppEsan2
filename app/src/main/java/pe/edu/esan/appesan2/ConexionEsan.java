@@ -1,6 +1,8 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +24,7 @@ public class ConexionEsan extends Fragment {
         View CE = inflater.inflate(R.layout.lay_conexionesan, container, false);
 
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+        setRetainInstance(true);
 
 
         WebView ceWB = (WebView) CE.findViewById(R.id.webviewCE);
@@ -32,14 +35,7 @@ public class ConexionEsan extends Fragment {
         ceWB.getSettings().setSupportZoom(true);
         ceWB.getSettings().setDisplayZoomControls(false);
 
-        final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            public void run() {
 
-                dialog.dismiss(); // when the task active then close the dialog
-                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
-            }
-        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
 
         ceWB.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -64,11 +60,19 @@ public class ConexionEsan extends Fragment {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
             dialog.show();
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            }
+            else {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
         }
 
         @Override
         public void onPageFinished(WebView view, String url){
             dialog.dismiss();
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         }
 
          @Override

@@ -31,7 +31,7 @@
 
         <activity
             android:name=".MainActivity2Activity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
+
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_main_activity2" >
         </activity>
@@ -45,7 +45,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
+
             android:label="@string/title_activity_maps" >
         </activity>
         <activity

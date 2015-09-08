@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -21,12 +22,16 @@ import java.util.TimerTask;
  */
 public class Dpa extends Fragment {
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_dpa, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-
+        setRetainInstance(true);
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewdpa);
         myWebView.loadUrl("http://dpa.ue.edu.pe/carreras/noticias");
@@ -37,14 +42,7 @@ public class Dpa extends Fragment {
         myWebView.getSettings().setSupportZoom(true);
 
 
-        final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            public void run() {
 
-                dialog.dismiss(); // when the task active then close the dialog
-                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
-            }
-        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
 
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
@@ -70,20 +68,32 @@ public class Dpa extends Fragment {
                                        @Override
                                        public void onPageStarted(WebView view, String url, Bitmap favicon){
                                            dialog.show();
+                                           int currentOrientation = getResources().getConfiguration().orientation;
+                                           if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                                               getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                                           }
+                                           else {
+                                               getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+                                           }
                                        }
 
                                        @Override
                                        public void onPageFinished(WebView view, String url){
                                            dialog.dismiss();
+                                           getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
                                        }
 
                                        @Override
                                        public boolean shouldOverrideUrlLoading(WebView view, String url) {
                                            return false;
                                        }}
+
+
+
         );
         return rootView;
     }
+
 }
 
 

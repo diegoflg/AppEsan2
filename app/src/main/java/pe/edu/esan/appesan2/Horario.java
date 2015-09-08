@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
@@ -24,10 +25,13 @@ import pl.polidea.view.ZoomView;
 public class Horario extends Fragment {
     private TextView tvHorario;
     private GridView gridView;
+    String TAG="estado";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
+
+        setRetainInstance(true);
 
 
         ZoomView zoomView;
@@ -64,6 +68,77 @@ public class Horario extends Fragment {
         tvHorario.setTypeface(TF);
 
         return zoomView;
+    }
+
+    @Override
+    public void onAttach(final Activity activity)
+    {
+        super.onAttach(activity);
+        Log.d(TAG, this + ": onAttach(" + activity + ")");
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState)
+    {
+        super.onActivityCreated(savedInstanceState);
+        Log.d(TAG, this + ": onActivityCreated()");
+    }
+
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+        Log.d(TAG, this + ": onViewCreated()");
+    }
+
+    @Override
+    public void onDestroyView()
+    {
+        super.onDestroyView();
+        Log.d(TAG, this + ": onDestroyView()");
+    }
+
+    @Override
+    public void onDetach()
+    {
+        super.onDetach();
+        Log.d(TAG, this + ": onDetach()");
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        Log.d(TAG, this + ": onStart()");
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        Log.d(TAG, this + ": onResume()");
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Log.d(TAG, this + ": onPause()");
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        Log.d(TAG, this + ": onStop()");
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        Log.d(TAG, this + ": onDestroy()");
     }
 
     public class MyAdapter extends ArrayAdapter<String> {

@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -60,7 +61,7 @@ public class Registroesta extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_registroesta, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-
+        setRetainInstance(true);
         sem1=(ImageView)v.findViewById(R.id.sema1);
         sem2=(ImageView)v.findViewById(R.id.sema2);
         sem3=(ImageView)v.findViewById(R.id.sema3);
@@ -142,12 +143,22 @@ public class Registroesta extends Fragment {
 
         @Override
         protected void onPreExecute() {
+
+
+
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage("Creating User...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            }
+            else {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
         }
 
         @Override
@@ -195,6 +206,8 @@ public class Registroesta extends Fragment {
             if (file_url != null){
                 Toast.makeText(getActivity(), file_url, Toast.LENGTH_LONG).show();
             }
+
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         }
     }
 

@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
@@ -56,6 +57,7 @@ public class Estacionamiento extends Fragment {
     TextView tvlibres;
     String estado2;
 
+
     //PARA FUENTE:
     TextView textViewestareg;
 
@@ -64,6 +66,7 @@ public class Estacionamiento extends Fragment {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+        setRetainInstance(true);
 
         final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
 
@@ -163,6 +166,13 @@ public class Estacionamiento extends Fragment {
          * */
         @Override
         protected void onPreExecute() {
+            int currentOrientation = getResources().getConfiguration().orientation;
+            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            }
+            else {
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+            }
 
         }
 
@@ -186,6 +196,7 @@ public class Estacionamiento extends Fragment {
             return null;
         }
         protected void onPostExecute(String file_url) {
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
         }
     }

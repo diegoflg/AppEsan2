@@ -34,10 +34,13 @@ public class Directorio extends Fragment {
     ListView listViewSearch;
     SearchView searchView;
 
+    private String data;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.lay_directorio, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+        setRetainInstance(true);
 
         tbDM = (TabHost) rootView.findViewById(R.id.tbDM);
         tbDM.setup();
@@ -275,6 +278,14 @@ public class Directorio extends Fragment {
                 }
             }
         });
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getData() {
+        return data;
     }
 }
 
