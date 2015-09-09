@@ -111,6 +111,8 @@ public class Impresiones extends Fragment {
         myWebView.setWebChromeClient(new WebChromeClient() {
             // openFileChooser for Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType){
+                Log.i("TAG", " MAYOR A 3.0");
+                Log.i("TAG", " MAYOR A 3.0");
                 mUploadMessage = uploadMsg;
                 Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                 i.addCategory(Intent.CATEGORY_OPENABLE);
@@ -124,15 +126,26 @@ public class Impresiones extends Fragment {
                 Log.i("TAG", " MENOR A 3.0");
                 Log.i("TAG", " MENOR A 3.0");
                 Log.i("TAG", " MENOR A 3.0");
-                openFileChooser(uploadMsg, "");
+                mUploadMessage = uploadMsg;
+                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("*/*");
+                startActivityForResult(Intent.createChooser(i, "File Browser"), REQUEST_CHOOSER);
+                //openFileChooser(uploadMsg, "");
             }
 
             //openFileChooser for other Android versions
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-                Log.i("TAG", " MAYOR A 3.0");
-                Log.i("TAG", " MAYOR A 3.0");
-                Log.i("TAG", " MAYOR A 3.0");
-                openFileChooser(uploadMsg, acceptType);
+                Log.i("TAG", "OTROS");
+                Log.i("TAG", "OTROS");
+                Log.i("TAG", "OTROS");
+                mUploadMessage = uploadMsg;
+                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("*/*");
+                startActivityForResult( Intent.createChooser( i, "File Chooser" ), REQUEST_CHOOSER);
+
+                //openFileChooser(uploadMsg, acceptType);
             }
 
 

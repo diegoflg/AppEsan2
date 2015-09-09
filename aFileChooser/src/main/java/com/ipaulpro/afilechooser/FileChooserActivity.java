@@ -16,6 +16,7 @@
 
 package com.ipaulpro.afilechooser;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -100,6 +101,7 @@ public class FileChooserActivity extends FragmentActivity implements
         outState.putString(PATH, mPath);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onBackStackChanged() {
 
@@ -116,6 +118,7 @@ public class FileChooserActivity extends FragmentActivity implements
             invalidateOptionsMenu();
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (HAS_ACTIONBAR) {
