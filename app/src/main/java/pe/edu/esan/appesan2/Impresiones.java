@@ -66,8 +66,13 @@ public class Impresiones extends Fragment {
             Log.i("ENTRA", "RETORNA");
             Log.i("ENTRA", "RETORNA 2");
             Log.i("ENTRA", "RETORNA 3");
-            getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(android.R.id.content, new Impresiones()).commit();
+            //getActivity().getSupportFragmentManager().beginTransaction().hide(this).commit();
+            if(getActivity().getFragmentManager().findFragmentByTag("Impresiones") != null){
+               getActivity().getSupportFragmentManager().beginTransaction().show(getActivity().getSupportFragmentManager().findFragmentByTag("Impresiones")).commit();
+            }else{
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.container, new Impresiones(), "Impresiones").commit();
+            }
+            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new Impresiones()).commit();
 
         };
     }
@@ -113,14 +118,24 @@ public class Impresiones extends Fragment {
                 startActivityForResult(Intent.createChooser(i, "File Browser"), REQUEST_CHOOSER);
             }
 
+
             // openFileChooser for Android < 3.0
-            public void openFileChooser(ValueCallback<Uri> uploadMsg){openFileChooser(uploadMsg, "");
+            public void openFileChooser(ValueCallback<Uri> uploadMsg){
+                Log.i("TAG", " MENOR A 3.0");
+                Log.i("TAG", " MENOR A 3.0");
+                Log.i("TAG", " MENOR A 3.0");
+                openFileChooser(uploadMsg, "");
             }
 
             //openFileChooser for other Android versions
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
+                Log.i("TAG", " MAYOR A 3.0");
+                Log.i("TAG", " MAYOR A 3.0");
+                Log.i("TAG", " MAYOR A 3.0");
                 openFileChooser(uploadMsg, acceptType);
             }
+
+
             // The webPage has 2 filechoosers and will send a
             // console message informing what action to perform,
             // taking a photo or updating the file
