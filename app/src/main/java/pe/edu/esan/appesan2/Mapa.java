@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -91,6 +92,7 @@ public class Mapa extends Fragment {
 
         mTabHost3.setCurrentTab(0);
 
+
         //FUENTE PARA TÍTULO EN TABHOST:
         String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
         Typeface TFT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
@@ -151,8 +153,6 @@ public class Mapa extends Fragment {
         listamapa.setAdapter(adapter);
         listamapa.setTextFilterEnabled(false);
 
-
-
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -160,6 +160,8 @@ public class Mapa extends Fragment {
                     waze();
                 } else {
                     if (mTabHost3.getCurrentTab() == 2) {
+
+
                         //--------------------------ESAN MAPA-------------------------------
                         imagenMapa.setImageResource(R.drawable.esanmap);
 

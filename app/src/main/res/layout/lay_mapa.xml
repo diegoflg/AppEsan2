@@ -57,7 +57,7 @@
                     <ListView
                         android:id="@+id/listamapa"
                         android:layout_width="match_parent"
-                        android:background="#C90039"
+                        android:background="#FFFFFF"
                         android:padding="1dp"
                         android:layout_margin="1dp"
                         android:layout_height="50dp">

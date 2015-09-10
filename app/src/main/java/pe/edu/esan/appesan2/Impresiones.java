@@ -6,13 +6,9 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.inputmethodservice.KeyboardView;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -84,12 +80,6 @@ public class Impresiones extends Fragment {
         setRetainInstance(true);
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-
-
-
-
-
-
         myWebView = (WebView) rootView.findViewById(R.id.webviewI);
         myWebView.loadUrl("http://impresiones.esan.edu.pe:7290/login.cfm");
         myWebView.getSettings().setJavaScriptEnabled(true);
@@ -143,7 +133,7 @@ public class Impresiones extends Fragment {
                 Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                 i.addCategory(Intent.CATEGORY_OPENABLE);
                 i.setType("*/*");
-                startActivityForResult( Intent.createChooser( i, "File Chooser" ), REQUEST_CHOOSER);
+                startActivityForResult(Intent.createChooser(i, "File Chooser"), REQUEST_CHOOSER);
 
                 //openFileChooser(uploadMsg, acceptType);
             }
@@ -190,6 +180,7 @@ public class Impresiones extends Fragment {
                 if(myWebView.getUrl() != myWebView.getOriginalUrl()){
                     myWebView.getSettings().setSupportZoom(true);
                     myWebView.setInitialScale(70);
+                    dialog.hide();
                 }
                 dialog.show();
                 int currentOrientation = getResources().getConfiguration().orientation;
@@ -203,8 +194,22 @@ public class Impresiones extends Fragment {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return false;
-            };
+                Boolean T;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                    Log.i("TAG", "SHOULDOVERRIDEURLLOADING");
+                    Log.i("TAG", "SHOULDOVERRIDEURLLOADING");
+                    Log.i("TAG", "SHOULDOVERRIDEURLLOADING");
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(i);
+                    T = false;
+                } else {
+                    Log.i("TAG","TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    Log.i("TAG","TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    Log.i("TAG","TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+                    T = false;
+                }
+                return T;
+            }
 
             //http://stackoverflow.com/questions/16055800/how-to-enter-password-automatically-in-webview
             public void onPageFinished(WebView view, String url) {
@@ -216,6 +221,8 @@ public class Impresiones extends Fragment {
                     view.evaluateJavascript("javascript:document.getElementsByName('Password')[0].value = '" + clave + "'", null);
                     view.evaluateJavascript("javascript:document.forms['loginform'].submit()", null);
                 } else {
+                    Log.i("TAG","ENTRA A MENOR DE KITKAT");
+                    Log.i("TAG","ENTRA A MENOR DE KITKAT");
                     view.loadUrl("javascript:document.getElementsByName('Username')[0].value = '" + usuario + "'");
                     view.loadUrl("javascript:document.getElementsByName('Password')[0].value = '" + clave + "'");
                     view.loadUrl("javascript:document.forms['loginform'].submit()");
