@@ -86,6 +86,8 @@ public class Activity_Articulo extends Fragment{
 		}
 		return stream.toString();
 	}
+
+
 }
 
 

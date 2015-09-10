@@ -266,13 +266,16 @@ public class Cafeteria extends Fragment {
                 tv4.setVisibility(View.GONE);
                 tv5.setVisibility(View.GONE);
 
+                listar(2);
 
 
 
 
 
 
-                listar(1);
+
+
+
 
                 Log.d("Test", "onClickListener ist gestartet");
             }
@@ -294,8 +297,9 @@ public class Cafeteria extends Fragment {
 
 
                 Log.d("Test", "onClickListener ist gestartet");
+                listar(3);
 
-                listar(2);
+
             }
         });
 
@@ -316,10 +320,12 @@ public class Cafeteria extends Fragment {
                 tv5.setVisibility(View.GONE);
 
 
-
                 Log.d("Test", "onClickListener ist gestartet");
 
-                listar(3);
+                listar(4);
+
+
+
             }
         });
 
@@ -336,11 +342,10 @@ public class Cafeteria extends Fragment {
                 tv9.setVisibility(View.GONE);
 
 
-
-
                 Log.d("Test", "onClickListener ist gestartet");
+                listar(1);
 
-                listar(4);
+
             }
         });
 

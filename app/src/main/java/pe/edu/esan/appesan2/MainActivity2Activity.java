@@ -1286,6 +1286,13 @@ public class MainActivity2Activity extends ActionBarActivity
     }else{
 
     }
+        if (menu==0){
+            //user defined onBackPressed method. Not of Fragment.
+
+            Log.v("attt","asdf");
+        }else{
+
+        }
 
 
 
