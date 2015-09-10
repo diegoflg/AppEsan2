@@ -1,5 +1,6 @@
 package pe.edu.esan.appesan2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 
@@ -11,34 +12,32 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import org.apache.http.NameValuePair;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-
-import static com.google.android.gms.internal.zzhl.runOnUiThread;
 
 
 /**
@@ -57,7 +56,8 @@ public class Estacionamiento extends Fragment {
     TextView tvlibres;
     String estado2;
 
-
+    private GoogleMap estaMap;
+    MapView mE;
     //PARA FUENTE:
     TextView textViewestareg;
 
@@ -83,6 +83,14 @@ public class Estacionamiento extends Fragment {
         tvlibres=(TextView)v.findViewById(R.id.textlibres);
         tvlibres.setTypeface(TFL);
 
+        tvlibres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("TAG", " HACE CLIC ;3");
+                mostrarMapa(getActivity());
+            }
+        });
+
         sema1e=(ImageView)v.findViewById(R.id.sema1e);
         sema2e=(ImageView)v.findViewById(R.id.sema2e);
         sema3e=(ImageView)v.findViewById(R.id.sema3e);
@@ -103,7 +111,7 @@ public class Estacionamiento extends Fragment {
                     sema1e.setImageResource(R.drawable.rojoprendido);
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeapagado);
-                    tvlibres.setText("Playa llena");
+                    tvlibres.setText("Playa llena \n \n Ver otras \n" + "  playas");
                     if(estado.equals(estado2)){
 
 
@@ -207,6 +215,76 @@ public class Estacionamiento extends Fragment {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    public void mostrarMapa(Activity context){
+        int popupWidth = 500;
+        int popupHeight = 500;
+
+
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.google);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layestam = layoutInflater.inflate(R.layout.mestac, viewGroup);
+
+        // Creating the PopupWindow
+        PopupWindow popup = new PopupWindow(context);
+        popup.setContentView(layestam);
+        popup.setWidth(popupWidth);
+        popup.setHeight(popupHeight);
+        popup.setFocusable(true);
+
+        // Displaying the popup at the specified location, + offsets.
+        popup.showAtLocation(layestam, Gravity.CENTER, 0, 0);
+
+
+        mE = (MapView) layestam.findViewById(R.id.mgoogle);
+        //mE.onCreate(savedInstanceState);
+        //mE.onResume();
+
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        estaMap = mE.getMap();
+
+        double latitude = -12.105019;
+        double longitude = -76.961066;
+
+        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("UNIVERSIDAD ESAN");
+
+        marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+
+        estaMap.addMarker(marker);
+        estaMap.setMyLocationEnabled(true);
+
+        estaMap.getUiSettings().setZoomControlsEnabled(false);
+
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(-12.105019, -76.961066)).zoom(18).build();
+        estaMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //mE.onResume();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        mE.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mE.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mE.onLowMemory();
+    }
 }
 
 

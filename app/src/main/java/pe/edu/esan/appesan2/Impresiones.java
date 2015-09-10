@@ -6,10 +6,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.inputmethodservice.KeyboardView;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,19 +44,37 @@ public class Impresiones extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==REQUEST_CHOOSER)
-        {
-            if (null == mUploadMessage) return;
-            Uri uri = data == null || resultCode != Activity.RESULT_OK ? null : data.getData();
-            // Get the File path from the Uri
-            String path = FileUtils.getPath(getActivity(), uri);
-            // Alternatively, use FileUtils.getFile(Context, Uri)
-            if (path != null && FileUtils.isLocal(path)) {
-                File file = new File(path);
+        if (resultCode == Activity.RESULT_OK) {
+            if(requestCode==REQUEST_CHOOSER)
+                if(data != null){
+                    {
+                        if (null == mUploadMessage) return;
+                        Uri uri = data.getData();
+                        // Get the File path from the Uri
+                        String path = FileUtils.getPath(getActivity(), uri);
+                        // Alternatively, use FileUtils.getFile(Context, Uri)
+                        if (path != null && FileUtils.isLocal(path)) {
+                            File file = new File(path);
+                        }
+                        mUploadMessage.onReceiveValue(uri);
+                        mUploadMessage = null;
+                    }
+                }
+
+        }else {
+
+            Log.i("ENTRA", "RETORNA");
+            Log.i("ENTRA", "RETORNA 2");
+            Log.i("ENTRA", "RETORNA 3");
+            //getActivity().getSupportFragmentManager().beginTransaction().hide(this).commit();
+            if(getActivity().getFragmentManager().findFragmentByTag("Impresiones") != null){
+               getActivity().getSupportFragmentManager().beginTransaction().show(getActivity().getSupportFragmentManager().findFragmentByTag("Impresiones")).commit();
+            }else{
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.container, new Impresiones(), "Impresiones").commit();
             }
-            mUploadMessage.onReceiveValue(uri);
-            mUploadMessage = null;
-        }
+            //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new Impresiones()).commit();
+
+        };
     }
 
     @Override
@@ -89,6 +111,8 @@ public class Impresiones extends Fragment {
         myWebView.setWebChromeClient(new WebChromeClient() {
             // openFileChooser for Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType){
+                Log.i("TAG", " MAYOR A 3.0");
+                Log.i("TAG", " MAYOR A 3.0");
                 mUploadMessage = uploadMsg;
                 Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                 i.addCategory(Intent.CATEGORY_OPENABLE);
@@ -96,14 +120,35 @@ public class Impresiones extends Fragment {
                 startActivityForResult(Intent.createChooser(i, "File Browser"), REQUEST_CHOOSER);
             }
 
+
             // openFileChooser for Android < 3.0
-            public void openFileChooser(ValueCallback<Uri> uploadMsg){openFileChooser(uploadMsg, "");
+            public void openFileChooser(ValueCallback<Uri> uploadMsg){
+                Log.i("TAG", " MENOR A 3.0");
+                Log.i("TAG", " MENOR A 3.0");
+                Log.i("TAG", " MENOR A 3.0");
+                mUploadMessage = uploadMsg;
+                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("*/*");
+                startActivityForResult(Intent.createChooser(i, "File Browser"), REQUEST_CHOOSER);
+                //openFileChooser(uploadMsg, "");
             }
 
             //openFileChooser for other Android versions
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
-                openFileChooser(uploadMsg, acceptType);
+                Log.i("TAG", "OTROS");
+                Log.i("TAG", "OTROS");
+                Log.i("TAG", "OTROS");
+                mUploadMessage = uploadMsg;
+                Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+                i.addCategory(Intent.CATEGORY_OPENABLE);
+                i.setType("*/*");
+                startActivityForResult( Intent.createChooser( i, "File Chooser" ), REQUEST_CHOOSER);
+
+                //openFileChooser(uploadMsg, acceptType);
             }
+
+
             // The webPage has 2 filechoosers and will send a
             // console message informing what action to perform,
             // taking a photo or updating the file
