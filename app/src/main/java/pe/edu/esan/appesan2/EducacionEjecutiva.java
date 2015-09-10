@@ -26,7 +26,9 @@ public class EducacionEjecutiva extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView   = inflater.inflate(R.layout.lay_educacionejecutiva, container, false);
         setRetainInstance(true);
+        int cargo=0;
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
 
         //FUENTE Y COLOR PARA TEXTO DE BOTONES:
         String font_pathEE = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
@@ -82,13 +84,18 @@ public class EducacionEjecutiva extends Fragment {
         pade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss(); // when the task active then close the dialog
+
                 wbEE.loadUrl("http://www.esan.edu.pe/pade/");
+
             }
         });
 
         pae.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss(); // when the task active then close the dialog
+
                 wbEE.loadUrl("http://www.esan.edu.pe/pae/");
             }
         });
@@ -97,6 +104,8 @@ public class EducacionEjecutiva extends Fragment {
         pee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss(); // when the task active then close the dialog
+
                 wbEE.loadUrl("http://www.esan.edu.pe/pee/");
             }
         });
@@ -104,6 +113,8 @@ public class EducacionEjecutiva extends Fragment {
         peed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss(); // when the task active then close the dialog
+
                 wbEE.loadUrl("http://www.esan.edu.pe/pee/derecho-corporativo/");
             }
         });
@@ -111,6 +122,8 @@ public class EducacionEjecutiva extends Fragment {
         diplomas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss(); // when the task active then close the dialog
+
                 wbEE.loadUrl("http://www.esan.edu.pe/diplomas/");
             }
         });
@@ -118,6 +131,8 @@ public class EducacionEjecutiva extends Fragment {
         idiomas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss(); // when the task active then close the dialog
+
                 wbEE.loadUrl("http://www.esan.edu.pe/programas-academicos/#idiomas");
             }
         });
@@ -125,6 +140,8 @@ public class EducacionEjecutiva extends Fragment {
         gestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss(); // when the task active then close the dialog
+
                 wbEE.loadUrl("http://www.esan.edu.pe/gestion-publica/");
             }
         });
@@ -142,11 +159,21 @@ public class EducacionEjecutiva extends Fragment {
                 else {
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
                 }
+                final Timer t = new Timer();
+
+                t.schedule(new TimerTask() {
+                    public void run() {
+
+                        dialog.dismiss(); // when the task active then close the dialog
+                        t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+                    }
+                }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
             }
 
             @Override
             public void onPageFinished(WebView view, String url){
                 dialog.dismiss();
+
                 getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
             }
 

@@ -38,16 +38,10 @@ public class Talleres extends Fragment {
         myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.setInitialScale(70);
 
-
         final Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            public void run() {
 
-                dialog.dismiss(); // when the task active then close the dialog
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
-            }
-        }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
+
+
 
         myWebView.setWebViewClient(new WebViewClient(){
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
@@ -62,11 +56,20 @@ public class Talleres extends Fragment {
                 else {
                     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
                 }
+
+                t.schedule(new TimerTask() {
+                    public void run() {
+
+                        dialog.dismiss(); // when the task active then close the dialog
+                        t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+                    }
+                }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
             }
 
             @Override
             public void onPageFinished(WebView view, String url){
                 dialog.dismiss();
+                t.cancel();
                 getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
             }
 

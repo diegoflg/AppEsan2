@@ -75,6 +75,9 @@ public class Biblioteca extends Fragment {
             }
 
 
+
+
+
             dialog.show();
             int currentOrientation = getResources().getConfiguration().orientation;
             if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {

@@ -38,6 +38,7 @@ public class MainActivity2Activity extends ActionBarActivity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    int prueba=0;
 
     private Noticia mTaskFragment1;
     private Horario mTaskFragment2;
@@ -56,11 +57,12 @@ public class MainActivity2Activity extends ActionBarActivity
     private Estacionamiento mTaskFragment15;
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Cafeteria fragment = (Cafeteria) getSupportFragmentManager().findFragmentByTag("Cafeteria");
 
-
-
-
-
+    }
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -68,6 +70,10 @@ public class MainActivity2Activity extends ActionBarActivity
     private CharSequence mTitle;
     public int tipo=1;
     public int menu=0;
+
+    public void comenzo(){
+        this.prueba=3;
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
