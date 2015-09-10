@@ -34,6 +34,7 @@ public class ConexionEsan extends Fragment {
         ceWB.getSettings().setBuiltInZoomControls(true);
         ceWB.getSettings().setSupportZoom(true);
         ceWB.getSettings().setDisplayZoomControls(false);
+        final Timer t = new Timer();
 
 
 
@@ -59,6 +60,7 @@ public class ConexionEsan extends Fragment {
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
+
             dialog.show();
             int currentOrientation = getResources().getConfiguration().orientation;
             if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -67,11 +69,21 @@ public class ConexionEsan extends Fragment {
             else {
                 getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
             }
+
+            t.schedule(new TimerTask() {
+                public void run() {
+
+                    dialog.dismiss(); // when the task active then close the dialog
+                    t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+                }
+            }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
         }
 
         @Override
         public void onPageFinished(WebView view, String url){
             dialog.dismiss();
+            t.cancel();
+
             getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         }
 
