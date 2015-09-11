@@ -16,6 +16,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Talleres extends Fragment {
+    WebView myWebView;
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myWebView.saveState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        myWebView.restoreState(savedInstanceState);
+    }
+
 
 
 
@@ -29,7 +44,7 @@ public class Talleres extends Fragment {
 
 
 
-        WebView myWebView = (WebView) v.findViewById(R.id.webview);
+        myWebView = (WebView) v.findViewById(R.id.webview);
         myWebView.loadUrl("https://docs.google.com/document/d/1N0PMPNwLdR6DxpwRbhNrIznCPV_CGInBsM4s4Vg5L18/pub");
         //myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
@@ -49,13 +64,6 @@ public class Talleres extends Fragment {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon){
                 dialog.show();
-                int currentOrientation = getResources().getConfiguration().orientation;
-                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-                }
-                else {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-                }
 
                 t.schedule(new TimerTask() {
                     public void run() {
@@ -70,7 +78,7 @@ public class Talleres extends Fragment {
             public void onPageFinished(WebView view, String url){
                 dialog.dismiss();
                 t.cancel();
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
             }
 
             @Override

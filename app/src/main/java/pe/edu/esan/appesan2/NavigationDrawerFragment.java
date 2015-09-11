@@ -61,6 +61,7 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
+
     public NavigationDrawerFragment() {}
 
     @Override
@@ -71,12 +72,14 @@ public class NavigationDrawerFragment extends Fragment {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
 
+
+
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
         // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
+        selectItem(mCurrentSelectedPosition,mFromSavedInstanceState);
     }
 
     @Override
@@ -92,7 +95,7 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
+                selectItem(position,mFromSavedInstanceState);
             }
         });
 
@@ -233,7 +236,7 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
-    private void selectItem(int position) {
+    private void selectItem(int position,boolean fromSavedInstanceState) {
         mCurrentSelectedPosition = position;
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);

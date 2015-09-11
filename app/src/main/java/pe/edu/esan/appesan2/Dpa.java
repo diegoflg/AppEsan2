@@ -21,6 +21,19 @@ import java.util.TimerTask;
  * Created by Diegoflg on 7/13/2015.
  */
 public class Dpa extends Fragment {
+    WebView myWebView;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myWebView.saveState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        myWebView.restoreState(savedInstanceState);
+    }
 
 
 
@@ -33,7 +46,7 @@ public class Dpa extends Fragment {
 
 
 
-        WebView myWebView = (WebView) rootView.findViewById(R.id.webviewdpa);
+        myWebView = (WebView) rootView.findViewById(R.id.webviewdpa);
         myWebView.loadUrl("http://dpa.ue.edu.pe/carreras/noticias");
         myWebView.getSettings().setDisplayZoomControls(false);
         myWebView.getSettings().setUseWideViewPort(true);
@@ -68,19 +81,13 @@ public class Dpa extends Fragment {
                                        @Override
                                        public void onPageStarted(WebView view, String url, Bitmap favicon){
                                            dialog.show();
-                                           int currentOrientation = getResources().getConfiguration().orientation;
-                                           if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                                               getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-                                           }
-                                           else {
-                                               getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-                                           }
+
                                        }
 
                                        @Override
                                        public void onPageFinished(WebView view, String url){
                                            dialog.dismiss();
-                                           getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
                                        }
 
                                        @Override

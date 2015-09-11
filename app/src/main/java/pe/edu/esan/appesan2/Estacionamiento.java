@@ -164,14 +164,6 @@ public class Estacionamiento extends Fragment {
          * */
         @Override
         protected void onPreExecute() {
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            }
-            else {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
-
         }
 
         protected String doInBackground(String... args) {
@@ -194,7 +186,7 @@ public class Estacionamiento extends Fragment {
             return null;
         }
         protected void onPostExecute(String file_url) {
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
 
         }
     }

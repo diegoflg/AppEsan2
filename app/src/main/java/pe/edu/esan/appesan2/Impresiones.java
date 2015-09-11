@@ -35,6 +35,19 @@ public class Impresiones extends Fragment {
     //Librería importada como proyecto en módulo
     //https://github.com/iPaulPro/aFileChooser
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myWebView.saveState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        myWebView.restoreState(savedInstanceState);
+    }
+
+
 
 
 
@@ -183,13 +196,7 @@ public class Impresiones extends Fragment {
                     dialog.hide();
                 }
                 dialog.show();
-                int currentOrientation = getResources().getConfiguration().orientation;
-                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-                }
-                else {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-                }
+
             }
 
             @Override
@@ -214,7 +221,7 @@ public class Impresiones extends Fragment {
             //http://stackoverflow.com/questions/16055800/how-to-enter-password-automatically-in-webview
             public void onPageFinished(WebView view, String url) {
                 dialog.dismiss();
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                     view.evaluateJavascript("javascript:document.getElementsByName('Username')[0].value = '" + usuario + "'", null);

@@ -27,14 +27,40 @@ import java.util.TimerTask;
 public class Calendario extends Fragment{
     private static String TAG = "MUNDO CRUEL";
     public WebView myWebView;
+    ProgressDialog pb;
+
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myWebView.saveState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        myWebView.restoreState(savedInstanceState);
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (pb.isShowing()) {
+            pb.dismiss();
+        }
+        Log.v("destru","saddd");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View c = inflater.inflate(R.layout.lay_talleres, container, false);
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+            final View c = inflater.inflate(R.layout.lay_talleres, container, false);
+        setRetainInstance(true);
 
 
-        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+
 
 
 
@@ -98,21 +124,21 @@ public class Calendario extends Fragment{
                     myWebView.getSettings().setSupportZoom(true);
                     myWebView.setInitialScale(100);
                 }
-                dialog.show();
-                int currentOrientation = getResources().getConfiguration().orientation;
-                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-                }
-                else {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-                }
+                pb = new ProgressDialog(c.getContext());
+                pb.setTitle("Cargando");
+                pb.setMessage("Please Wait....");
+                pb.setCancelable(false);
+                pb.show();
+
 
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                dialog.dismiss();
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                if (pb.isShowing()) {
+                    pb.dismiss();
+                }
+
             }
 
             @Override

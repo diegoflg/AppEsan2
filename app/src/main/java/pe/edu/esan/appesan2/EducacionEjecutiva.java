@@ -22,6 +22,21 @@ import java.util.TimerTask;
  * Created by educacionadistancia on 24/07/2015.
  */
 public class EducacionEjecutiva extends Fragment {
+    WebView wbEE;
+
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        wbEE.saveState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        wbEE.restoreState(savedInstanceState);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView   = inflater.inflate(R.layout.lay_educacionejecutiva, container, false);
@@ -52,7 +67,7 @@ public class EducacionEjecutiva extends Fragment {
         Button gestion  = (Button)rootView.findViewById(R.id.gestion);
         gestion.setTypeface(TFEE);
 
-        final WebView wbEE = (WebView)rootView.findViewById(R.id.wbEE);
+        wbEE = (WebView)rootView.findViewById(R.id.wbEE);
         wbEE.loadUrl("http://www.esan.edu.pe/pade/");
         wbEE.getSettings().setUseWideViewPort(true);
         wbEE.getSettings().setLoadWithOverviewMode(true);
@@ -174,7 +189,6 @@ public class EducacionEjecutiva extends Fragment {
             public void onPageFinished(WebView view, String url){
                 dialog.dismiss();
 
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
             }
 
             @Override

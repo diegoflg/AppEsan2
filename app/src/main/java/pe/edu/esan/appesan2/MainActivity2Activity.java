@@ -43,12 +43,12 @@ public class MainActivity2Activity extends ActionBarActivity
     private Noticia mTaskFragment1;
     private Horario mTaskFragment2;
     private Notas mTaskFragment3;
-    private Calendario mTaskFragment4;
+    private Fragment mTaskFragment4;
     private Cafeteria mTaskFragment5;
     private Mapa mTaskFragment6;
     private Directorio mTaskFragment7;
     private Talleres mTaskFragment8;
-    private Biblioteca mTaskFragment9;
+    private Fragment mTaskFragment9;
     private Impresiones mTaskFragment10;
     private CursosMooc mTaskFragment11;
     private ConexionEsan mTaskFragment12;
@@ -56,11 +56,14 @@ public class MainActivity2Activity extends ActionBarActivity
     private Fablab mTaskFragment14;
     private Estacionamiento mTaskFragment15;
 
+    FragmentManager fragmentManager = getSupportFragmentManager();
+
+
+
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Cafeteria fragment = (Cafeteria) getSupportFragmentManager().findFragmentByTag("Cafeteria");
 
     }
 
@@ -78,11 +81,15 @@ public class MainActivity2Activity extends ActionBarActivity
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
 
-        savedInstanceState.putInt("menukey", menu);
 
+
+
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.putFragment(savedInstanceState, "Calendaro",mTaskFragment4);
 
         super.onSaveInstanceState(savedInstanceState);
-
 
     }
 
@@ -91,9 +98,16 @@ public class MainActivity2Activity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
 
+
+
+
+
+
         if (savedInstanceState != null) {
             // Restore value of members from saved state
-            menu = savedInstanceState.getInt("menukey");
+
+
+            mTaskFragment4 = fragmentManager.getFragment(savedInstanceState, "Calendario");
         }
 
         Intent i=getIntent();
@@ -127,14 +141,14 @@ public class MainActivity2Activity extends ActionBarActivity
 
         Log.i("iniciarf", String.valueOf(Datah.getInstance().getData()));
 
-        onNavigationDrawerItemSelected(menu);
+
 
     }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
+
         Fragment fragment=null;
         menu=position;
 
@@ -339,11 +353,17 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
                 case 3:
+
+                    mTaskFragment4 = fragmentManager.findFragmentByTag("Calendario");
+
                     //fragment= new Calendario();
-                    if(fragmentManager.findFragmentByTag("Calendario") != null){
+                    if(mTaskFragment4 != null){
+                        Log.v("no nulo","no nulo");
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Calendario")).commit();
                     }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Calendario(), "Calendario").commit();
+                        Log.v("nulo","nulo");
+                        mTaskFragment4= new Calendario();
+                        fragmentManager.beginTransaction().add(R.id.container, mTaskFragment4, "Calendario").commit();
                     }
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){
@@ -653,7 +673,7 @@ public class MainActivity2Activity extends ActionBarActivity
 
                 case 8:
                     //fragment = new Biblioteca();
-                    mTaskFragment9 = (Biblioteca) fragmentManager.findFragmentByTag("Biblioteca");
+                    mTaskFragment9 = fragmentManager.findFragmentByTag("Biblioteca");
 
 
                     if(mTaskFragment9 != null){
@@ -1297,6 +1317,8 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
 }
+
+
 
 
 

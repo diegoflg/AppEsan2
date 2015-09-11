@@ -76,6 +76,15 @@ public class Cafeteria extends Fragment {
     Team team1,team2,team3,team4;
 
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        pb.dismiss();
+        Log.v("destru", "saddd");
+
+    }
+
+
 
 
     @Override
@@ -197,13 +206,6 @@ public class Cafeteria extends Fragment {
                        pb.setCancelable(false);
                        pb.show();
 
-        int currentOrientation = getResources().getConfiguration().orientation;
-        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-        }
-        else {
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-        }
 
 
 
@@ -217,7 +219,7 @@ public class Cafeteria extends Fragment {
 
 
             pb.dismiss();
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
 
         }
 
@@ -501,7 +503,6 @@ public class Cafeteria extends Fragment {
             adapter4 = new TeamsAdapter(getActivity(), R.layout.team, teams4);
 
             pb.dismiss();
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
 
         } catch (JSONException e) {

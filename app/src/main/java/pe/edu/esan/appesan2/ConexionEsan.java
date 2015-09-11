@@ -20,6 +20,24 @@ import java.util.TimerTask;
  * Created by educacionadistancia on 24/07/2015.
  */
 public class ConexionEsan extends Fragment {
+    WebView ceWB;
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        ceWB.saveState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ceWB.restoreState(savedInstanceState);
+    }
+
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View CE = inflater.inflate(R.layout.lay_conexionesan, container, false);
 
@@ -27,7 +45,7 @@ public class ConexionEsan extends Fragment {
         setRetainInstance(true);
 
 
-        WebView ceWB = (WebView) CE.findViewById(R.id.webviewCE);
+        ceWB = (WebView) CE.findViewById(R.id.webviewCE);
         ceWB.loadUrl("http://www.esan.edu.pe/conexion/");
         ceWB.getSettings().setUseWideViewPort(true);
         ceWB.getSettings().setLoadWithOverviewMode(true);
@@ -62,13 +80,7 @@ public class ConexionEsan extends Fragment {
         public void onPageStarted(WebView view, String url, Bitmap favicon){
 
             dialog.show();
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            }
-            else {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
+
 
             t.schedule(new TimerTask() {
                 public void run() {
@@ -84,7 +96,7 @@ public class ConexionEsan extends Fragment {
             dialog.dismiss();
             t.cancel();
 
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
         }
 
          @Override

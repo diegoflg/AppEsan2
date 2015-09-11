@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,15 +22,38 @@ import java.util.TimerTask;
 public class Biblioteca extends Fragment {
 
     WebView myWebView;
+    ProgressDialog pb;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myWebView.saveState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        myWebView.restoreState(savedInstanceState);
+    }
 
 
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (pb.isShowing()) {
+            pb.dismiss();
+        }
+        Log.v("destru", "saddd");
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.lay_biblioteca, container, false);
+        final View rootView = inflater.inflate(R.layout.lay_biblioteca, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         setRetainInstance(true);
-        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
 
 
 
@@ -74,18 +98,11 @@ public class Biblioteca extends Fragment {
                 myWebView.setInitialScale(50);
             }
 
-
-
-
-
-            dialog.show();
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            }
-            else {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
+            pb = new ProgressDialog(rootView.getContext());
+            pb.setTitle("Cargando");
+            pb.setMessage("Please Wait....");
+            pb.setCancelable(false);
+            pb.show();
         }
 
         @Override
@@ -93,8 +110,10 @@ public class Biblioteca extends Fragment {
             return false;
         }
         public void onPageFinished(WebView view, String url) {
-            dialog.dismiss();
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            if (pb.isShowing()) {
+                pb.dismiss();
+            }
+
 
         }
                                    }
@@ -108,12 +127,7 @@ public class Biblioteca extends Fragment {
 
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
 
-
-    }
 
     @Override
     public void onPause() {

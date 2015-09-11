@@ -27,13 +27,23 @@ import java.util.TimerTask;
 public class Fablab extends Fragment {
     private static String TAG = "MUNDO CRUEL";
 
+    WebView myWebView;
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myWebView.saveState(outState);
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.i(TAG, "CREA ACTIVIDAD");
+        myWebView.restoreState(savedInstanceState);
     }
+
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +64,7 @@ public class Fablab extends Fragment {
         setRetainInstance(true);
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
-        WebView myWebView = (WebView) rootView.findViewById(R.id.webview);
+        myWebView = (WebView) rootView.findViewById(R.id.webview);
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
@@ -109,13 +119,6 @@ public class Fablab extends Fragment {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
             dialog.show();
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            }
-            else {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
 
             t.schedule(new TimerTask() {
                 public void run() {
@@ -130,7 +133,7 @@ public class Fablab extends Fragment {
         public void onPageFinished(WebView view, String url){
             dialog.dismiss();
             t.cancel();
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
         }
 
         @Override
