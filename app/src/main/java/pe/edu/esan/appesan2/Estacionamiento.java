@@ -2,6 +2,7 @@ package pe.edu.esan.appesan2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 
 import android.content.res.Configuration;
@@ -23,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.cocosw.bottomsheet.BottomSheet;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -102,6 +104,14 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("Playa llena");
+
+                    new BottomSheet.Builder(getActivity()).title("title").sheet(R.menu.menu_bottom_sheet).listener(new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
+
                     if(estado.equals(estado2)){
 
 
