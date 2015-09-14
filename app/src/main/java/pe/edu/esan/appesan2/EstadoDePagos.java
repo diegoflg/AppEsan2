@@ -44,7 +44,7 @@ public class EstadoDePagos extends Fragment {
         int aa=height/3;
 
         sliding=(com.sothree.slidinguppanel.SlidingUpPanelLayout)rootView.findViewById(R.id.sliding_layout);
-        sliding.setAnchorPoint(aa);
+        sliding.setAnchorPoint(0.3f);
 
 
         //FUENTE PARA TEXVIEWS :

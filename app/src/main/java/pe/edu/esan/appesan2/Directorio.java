@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -28,6 +29,8 @@ import android.widget.SearchView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.cocosw.bottomsheet.BottomSheet;
+
 public class Directorio extends Fragment {
     TabHost tbDM;
 
@@ -41,6 +44,13 @@ public class Directorio extends Fragment {
         final View rootView = inflater.inflate(R.layout.lay_directorio, container, false);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         setRetainInstance(true);
+
+        new BottomSheet.Builder(getActivity()).title("title").sheet(R.menu.menu_bottom_sheet).listener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        }).show();
 
         tbDM = (TabHost) rootView.findViewById(R.id.tbDM);
         tbDM.setup();

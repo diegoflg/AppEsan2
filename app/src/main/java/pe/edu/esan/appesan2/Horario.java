@@ -17,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import com.flipboard.bottomsheet.BottomSheetLayout;
+
 import pl.polidea.view.ZoomView;
 
 /**
@@ -32,6 +35,9 @@ public class Horario extends Fragment {
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
 
         setRetainInstance(true);
+
+        BottomSheetLayout bottomSheet = (BottomSheetLayout) rootView.findViewById(R.id.bottomsheet);
+        bottomSheet.showWithSheetView(LayoutInflater.from(getContext()).inflate(R.layout.my_sheet_layout, bottomSheet, false));
 
 
         ZoomView zoomView;
