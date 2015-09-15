@@ -1307,9 +1307,17 @@ public class MainActivity2Activity extends ActionBarActivity
 
     }
         if (menu==0){
-            //user defined onBackPressed method. Not of Fragment.
+            if(fragmentManager.findFragmentByTag("Noticia") != null){
+                fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Noticia")).commit();
+            }else{
+                fragmentManager.beginTransaction().add(R.id.container, new Noticia(), "Noticia").commit();
+            }
 
-            Log.v("attt","asdf");
+            //Los otros se esconden
+            if(fragmentManager.findFragmentByTag("ActArt") != null){
+                fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+            }
+
         }else{
 
         }
