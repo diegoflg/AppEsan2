@@ -14,6 +14,7 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -59,7 +60,7 @@ public class Estacionamiento extends Fragment {
     private String estado="waa";
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
-    TextView tvlibres;
+    TextView tvlibres, titulo, tit1, tit2;
     String estado2;
 
     //PARA FUENTE:
@@ -67,8 +68,6 @@ public class Estacionamiento extends Fragment {
     com.sothree.slidinguppanel.SlidingUpPanelLayout sliding;
 
     //ELEMENTOS PERTENECIENTES AL SLIDING UP PANEL
-    private ImageView marker1, marker2;
-    private TextView titulo, tit1, tit2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -87,26 +86,11 @@ public class Estacionamiento extends Fragment {
         sliding.setAnchorPoint(aa);
         //sliding.setPanelHeight(aa);
 
-        marker1= (ImageView)v.findViewById(R.id.marker1);
-        marker2= (ImageView)v.findViewById(R.id.marker2);
-
-        marker1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "EL POLO", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        marker2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "ALONSO DE MOLINA", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         titulo=(TextView)v.findViewById(R.id.titulo);
         tit1=(TextView)v.findViewById(R.id.tit1);
         tit2=(TextView)v.findViewById(R.id.tit2);
+
 
         final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
 
@@ -148,12 +132,7 @@ public class Estacionamiento extends Fragment {
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("Playa llena");
 
-                    new BottomSheet.Builder(getActivity()).title("title").sheet(R.menu.menu_bottom_sheet).listener(new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
 
-                        }
-                    }).show();
 
                     if(estado.equals(estado2)){
 
@@ -205,6 +184,25 @@ public class Estacionamiento extends Fragment {
             }
         }, delay);
 
+        ImageView marker1= (ImageView)v.findViewById(R.id.marker1);
+        ImageView marker2= (ImageView)v.findViewById(R.id.marker2);
+
+        marker1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "EL POLO", Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                Horario fragment = new Horario();
+                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+            }
+        });
+
+        marker2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "ALONSO DE MOLINA", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return v;
     }

@@ -85,9 +85,9 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        //FragmentManager fragmentManager = getSupportFragmentManager();
 
-        fragmentManager.putFragment(savedInstanceState, "Calendaro",mTaskFragment4);
+        //fragmentManager.putFragment(savedInstanceState, "Calendaro",mTaskFragment4);
 
         super.onSaveInstanceState(savedInstanceState);
 
