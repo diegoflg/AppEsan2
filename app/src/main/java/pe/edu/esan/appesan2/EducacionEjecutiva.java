@@ -167,13 +167,7 @@ public class EducacionEjecutiva extends Fragment {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon){
                 dialog.show();
-                int currentOrientation = getResources().getConfiguration().orientation;
-                if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-                }
-                else {
-                    getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-                }
+
                 final Timer t = new Timer();
 
                 t.schedule(new TimerTask() {
