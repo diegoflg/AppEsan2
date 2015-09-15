@@ -43,11 +43,11 @@ public class Registroesta extends Fragment {
     private ProgressDialog pDialog;
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
-    private static final String REGISTER_URL = "http://basededatosestacionamiento.16mb.com/cas/register.php";
+    private static final String REGISTER_URL = "http://www.estacionamientoesan.site88.net/esconnect/register.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
-    private static String url_all_empresas = "http://basededatosestacionamiento.16mb.com/esconnect/get_all_empresas.php";
+    private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php";
     private static final String TAG_PRODUCTS = "users";
     private static final String TAG_NOMBRE = "username";
     private String estado="waa";

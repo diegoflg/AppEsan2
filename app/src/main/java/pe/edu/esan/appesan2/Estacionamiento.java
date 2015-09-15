@@ -52,7 +52,7 @@ import java.util.List;
  */
 public class Estacionamiento extends Fragment {
 
-    private static String url_all_empresas = "http://basededatosestacionamiento.16mb.com/esconnect/get_all_empresas.php";
+    private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "users";
     private static final String TAG_NOMBRE = "username";
