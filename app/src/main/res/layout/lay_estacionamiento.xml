@@ -102,33 +102,58 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="130dp">
         <!-- Your main sliding panel inside here -->
         <TextView
             android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
-            android:layout_margin="3dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:text="Subir panel para más estacionamientos"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/tit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titulo"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Av. El Polo cdra. 9 s/n"
+            android:textSize="13sp"/>
 
         <ImageView
             android:id="@+id/marker1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titulo"
-            android:layout_margin="3dp"
+            android:layout_below="@+id/tit1"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
             android:src="@drawable/markerc"/>
+
+        <TextView
+            android:id="@+id/tit2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titulo"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_toRightOf="@+id/tit1"
+            android:layout_toEndOf="@+id/tit1"
+            android:text="Av. Alonso de Molina 1520"
+            android:textSize="13sp"/>
 
         <ImageView
             android:id="@+id/marker2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titulo"
-            android:layout_margin="3dp"
+            android:layout_below="@id/tit2"
+            android:layout_marginLeft="95dp"
+            android:layout_marginStart="95dp"
             android:layout_toRightOf="@+id/marker1"
+            android:layout_toEndOf="@+id/marker1"
             android:src="@drawable/markerv"/>
 
     </RelativeLayout>

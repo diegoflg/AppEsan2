@@ -26,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -65,6 +66,10 @@ public class Estacionamiento extends Fragment {
     TextView textViewestareg;
     com.sothree.slidinguppanel.SlidingUpPanelLayout sliding;
 
+    //ELEMENTOS PERTENECIENTES AL SLIDING UP PANEL
+    private ImageView marker1, marker2;
+    private TextView titulo, tit1, tit2;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
@@ -76,10 +81,32 @@ public class Estacionamiento extends Fragment {
         Point size = new Point();
         display.getSize(size);
         int height = size.y;
-        int aa=height/3;
+        int aa=height/4;
 
         sliding=(com.sothree.slidinguppanel.SlidingUpPanelLayout)v.findViewById(R.id.sliding_layout);
-        sliding.setAnchorPoint(0.3f);
+        sliding.setAnchorPoint(aa);
+        //sliding.setPanelHeight(aa);
+
+        marker1= (ImageView)v.findViewById(R.id.marker1);
+        marker2= (ImageView)v.findViewById(R.id.marker2);
+
+        marker1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "EL POLO", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        marker2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "ALONSO DE MOLINA", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        titulo=(TextView)v.findViewById(R.id.titulo);
+        tit1=(TextView)v.findViewById(R.id.tit1);
+        tit2=(TextView)v.findViewById(R.id.tit2);
 
         final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
 
@@ -87,12 +114,15 @@ public class Estacionamiento extends Fragment {
         String font_pathE = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
         Typeface TFE = Typeface.createFromAsset(getActivity().getAssets(), font_pathE);
         //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-
         textViewestareg = (TextView)v.findViewById(R.id.textViewestareg);
         textViewestareg.setTypeface(TFE);
 
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFL = Typeface.createFromAsset(getActivity().getAssets(), font_pathL);
+        titulo.setTypeface(TFL);
+        tit1.setTypeface(TFL);
+        tit2.setTypeface(TFL);
+
         tvlibres=(TextView)v.findViewById(R.id.textlibres);
         tvlibres.setTypeface(TFL);
 
