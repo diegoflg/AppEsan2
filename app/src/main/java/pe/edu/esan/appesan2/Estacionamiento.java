@@ -190,9 +190,12 @@ public class Estacionamiento extends Fragment {
         marker1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "EL POLO", Toast.LENGTH_SHORT).show();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                Horario fragment = new Horario();
+                EstaMapas fragment = new EstaMapas();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("lugar","polo");
+                fragment.setArguments(bundle);
                 fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
             }
         });
@@ -200,7 +203,13 @@ public class Estacionamiento extends Fragment {
         marker2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "ALONSO DE MOLINA", Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                EstaMapas fragment = new EstaMapas();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("lugar","alonso");
+                fragment.setArguments(bundle);
+                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
             }
         });
 

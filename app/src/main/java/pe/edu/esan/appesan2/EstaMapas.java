@@ -2,9 +2,13 @@ package pe.edu.esan.appesan2;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,11 +25,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class EstaMapas extends Fragment {
     private GoogleMap googleMap2;
     MapView mE;
-
+    double latitude;
+    double longitude;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_estamapas, container, false);
-
+        Bundle bundle = this.getArguments();
+        String lugar = bundle.getString("lugar");
         mE = (MapView) v.findViewById(R.id.mapEsta);
         mE.onCreate(savedInstanceState);
         mE.onResume();
@@ -36,9 +42,16 @@ public class EstaMapas extends Fragment {
             e.printStackTrace();
         }
         googleMap2 = mE.getMap();
+        if(lugar.equals("polo")){
+            latitude = -12.105019;
+            longitude = -76.961066;
+            Log.i("LUGAR", "EL POLO");
+        }else if(lugar.equals("alonso")){
+            latitude = -12.105019;
+            longitude = -76.961066;
+            Log.i("LUGAR", "ALONSO DE MOLINA");
+        }
 
-        double latitude = -12.105019;
-        double longitude = -76.961066;
 
         MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("EL POLO");
 
@@ -49,13 +62,13 @@ public class EstaMapas extends Fragment {
 
         googleMap2.getUiSettings().setZoomControlsEnabled(false);
 
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(-12.105019, -76.961066)).zoom(18).build();
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(18).build();
         googleMap2.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
 
         return v;
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
