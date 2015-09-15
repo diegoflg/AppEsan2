@@ -88,7 +88,7 @@ public class Impresiones extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
         View rootView = inflater.inflate(R.layout.lay_impresiones, container, false);
         setRetainInstance(true);
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);

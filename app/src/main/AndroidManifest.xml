@@ -21,6 +21,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:hardwareAccelerated="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +32,7 @@
 
         <activity
             android:name=".MainActivity2Activity"
-
+            android:screenOrientation="portrait"
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_main_activity2" >
         </activity>

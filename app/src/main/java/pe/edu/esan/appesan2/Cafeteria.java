@@ -91,7 +91,7 @@ public class Cafeteria extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
         setRetainInstance(true);
 
         lay1=(RelativeLayout)v.findViewById(R.id.LaRuta);

@@ -20,7 +20,7 @@ public class Gamificacion extends Fragment {
         View rootView = inflater.inflate(R.layout.lay_gamificacion, container, false);
         setRetainInstance(true);
 
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.webviewGames);
         myWebView.loadUrl("https://forio.com/simulate/mit/fishbanks-spanish/simulation/");

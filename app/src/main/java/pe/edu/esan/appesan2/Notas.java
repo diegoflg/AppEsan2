@@ -108,13 +108,7 @@ public class Notas extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             dialog.show();
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            }
-            else {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
+
 
         }
 
@@ -216,7 +210,7 @@ public class Notas extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+
 
             if(values==null){
 
@@ -246,13 +240,7 @@ public class Notas extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             dialog.show();
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            }
-            else {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
+
         }
 
         @Override
