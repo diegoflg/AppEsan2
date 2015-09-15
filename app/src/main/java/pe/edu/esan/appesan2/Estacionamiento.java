@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 
 import android.content.res.Configuration;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
@@ -13,12 +14,14 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -60,6 +63,7 @@ public class Estacionamiento extends Fragment {
 
     //PARA FUENTE:
     TextView textViewestareg;
+    com.sothree.slidinguppanel.SlidingUpPanelLayout sliding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +71,16 @@ public class Estacionamiento extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
         setRetainInstance(true);
+
+        WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int height = size.y;
+        int aa=height/3;
+
+        sliding=(com.sothree.slidinguppanel.SlidingUpPanelLayout)v.findViewById(R.id.sliding_layout);
+        sliding.setAnchorPoint(0.3f);
 
         final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
 

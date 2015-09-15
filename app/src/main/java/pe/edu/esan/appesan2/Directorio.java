@@ -45,12 +45,6 @@ public class Directorio extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         setRetainInstance(true);
 
-        new BottomSheet.Builder(getActivity()).title("title").sheet(R.menu.menu_bottom_sheet).listener(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        }).show();
 
         tbDM = (TabHost) rootView.findViewById(R.id.tbDM);
         tbDM.setup();

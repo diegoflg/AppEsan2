@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.sothree.slidinguppanel.SlidingUpPanelLayout
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sliding_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    sothree:umanoPanelHeight="68dp"
-    sothree:umanoShadowHeight="4dp">
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="#ffffffff"
@@ -188,25 +177,3 @@
 
 </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!-- Your main sliding panel inside here -->
-        <TextView
-            android:id="@+id/tvP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|top"
-            android:text="The Awesome Sliding Up Panel"
-            android:textSize="16sp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Segundo texto"
-            android:layout_below="@+id/tvP"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-
-
-</com.sothree.slidinguppanel.SlidingUpPanelLayout>

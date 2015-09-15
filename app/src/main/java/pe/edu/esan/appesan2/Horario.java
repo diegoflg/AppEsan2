@@ -36,9 +36,6 @@ public class Horario extends Fragment {
 
         setRetainInstance(true);
 
-        BottomSheetLayout bottomSheet = (BottomSheetLayout) rootView.findViewById(R.id.bottomsheet);
-        bottomSheet.showWithSheetView(LayoutInflater.from(getContext()).inflate(R.layout.my_sheet_layout, bottomSheet, false));
-
 
         ZoomView zoomView;
         zoomView = new ZoomView(getActivity());

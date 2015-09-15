@@ -24,8 +24,6 @@ public class EstadoDePagos extends Fragment {
     TextView ttvv, concepto, monto, vencimiento;
     TextView tvpag1,tvpag2,tvpag3,tvpag4,tvpag5,tvpag6,tvpag7,tvpag8,tvpag9,tvpag10,tvpag11,tvpag12;
 
-    com.sothree.slidinguppanel.SlidingUpPanelLayout sliding;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,17 +33,6 @@ public class EstadoDePagos extends Fragment {
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         setRetainInstance(true);
-
-        WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int height = size.y;
-        int aa=height/3;
-
-        sliding=(com.sothree.slidinguppanel.SlidingUpPanelLayout)rootView.findViewById(R.id.sliding_layout);
-        sliding.setAnchorPoint(0.3f);
-
 
         //FUENTE PARA TEXVIEWS :
         String font_pathTTV = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente

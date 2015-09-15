@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@drawable/ffond2"
-    android:clickable="true">
+
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sliding_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="50dp"
+    sothree:umanoShadowHeight="5dp">
 
 
-    <TextView
-        android:id="@+id/textViewestareg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Estacionamiento"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="#f1010101"
-        android:textSize="30sp"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/ffond2"
+        android:clickable="true">
+
+
+        <TextView
+            android:id="@+id/textViewestareg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Estacionamiento"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#f1010101"
+            android:textSize="30sp"/>
 
 
 
@@ -69,21 +81,59 @@
             android:layout_toRightOf="@+id/sema1e"
             android:layout_below="@+id/textViewestareg"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textlibres"
-        android:layout_below="@+id/sema1e"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/parte2e"
-        android:layout_marginLeft="30dp"
-        android:text="cargando"
-        android:textStyle="bold"
-        android:textColor="#f1010101" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textlibres"
+            android:layout_below="@+id/sema1e"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/parte2e"
+            android:layout_marginLeft="30dp"
+            android:text="cargando"
+            android:textStyle="bold"
+            android:textColor="#f1010101" />
 
 
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <!-- Your main sliding panel inside here -->
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:layout_margin="3dp"
+            android:text="Subir panel para más estacionamientos"
+            android:textSize="18sp" />
+
+
+        <ImageView
+            android:id="@+id/marker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titulo"
+            android:layout_margin="3dp"
+            android:src="@drawable/markerc"/>
+
+        <ImageView
+            android:id="@+id/marker2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titulo"
+            android:layout_margin="3dp"
+            android:layout_toRightOf="@+id/marker1"
+            android:src="@drawable/markerv"/>
+
+    </RelativeLayout>
+
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
