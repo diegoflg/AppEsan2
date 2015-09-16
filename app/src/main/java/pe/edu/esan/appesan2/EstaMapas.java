@@ -43,12 +43,14 @@ public class EstaMapas extends Fragment {
         }
         googleMap2 = mE.getMap();
         if(lugar.equals("polo")){
-            latitude = -12.105019;
-            longitude = -76.961066;
+            latitude = -12.098581;
+            longitude = -76.970599;
+            //-12.098581, -76.970599
             Log.i("LUGAR", "EL POLO");
         }else if(lugar.equals("alonso")){
-            latitude = -12.105019;
-            longitude = -76.961066;
+            latitude = -12.105392;
+            longitude = -76.963559;
+            //-12.105392, -76.963559
             Log.i("LUGAR", "ALONSO DE MOLINA");
         }
 

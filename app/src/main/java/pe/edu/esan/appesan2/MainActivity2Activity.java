@@ -1322,7 +1322,19 @@ public class MainActivity2Activity extends ActionBarActivity
 
         }
 
+        if (menu==16){
+            //fragmentManager.beginTransaction().replace(R.id.container, new Estacionamiento()).commit();
+            if(fragmentManager.findFragmentByTag("Map1") != null){
+                fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Map1")).commit();
+            }
 
+            if(fragmentManager.findFragmentByTag("Map2") != null){
+                fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Map2")).commit();
+            }
+
+        }else{
+
+        }
 
 }
 

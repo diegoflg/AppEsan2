@@ -196,7 +196,7 @@ public class Estacionamiento extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("lugar","polo");
                 fragment.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+                fragmentManager.beginTransaction().add(R.id.container, fragment, "Map1").commit();
             }
         });
 
@@ -209,7 +209,7 @@ public class Estacionamiento extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("lugar","alonso");
                 fragment.setArguments(bundle);
-                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+                fragmentManager.beginTransaction().add(R.id.container, fragment, "Map2").commit();
             }
         });
 
