@@ -38,6 +38,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,8 +85,6 @@ public class Estacionamiento extends Fragment {
 
         sliding=(com.sothree.slidinguppanel.SlidingUpPanelLayout)v.findViewById(R.id.sliding_layout);
         sliding.setAnchorPoint(aa);
-        //sliding.setPanelHeight(aa);
-
 
         titulo=(TextView)v.findViewById(R.id.titulo);
         tit1=(TextView)v.findViewById(R.id.tit1);
@@ -131,8 +130,7 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("Playa llena");
-
-
+                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
 
                     if(estado.equals(estado2)){
 
@@ -147,6 +145,7 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloprendido);
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("De 4 a 20 estacionamientos disponibles");
+                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     if(estado.equals(estado2)){
 
 
@@ -162,6 +161,7 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeprendido);
                     tvlibres.setText("Playa libre");
+                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     if(estado.equals(estado2)){
 
 
