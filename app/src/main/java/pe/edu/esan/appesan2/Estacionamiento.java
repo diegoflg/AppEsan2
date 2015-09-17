@@ -3,6 +3,7 @@ package pe.edu.esan.appesan2;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import android.content.res.Configuration;
@@ -11,6 +12,7 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -85,6 +87,8 @@ public class Estacionamiento extends Fragment {
 
         sliding=(com.sothree.slidinguppanel.SlidingUpPanelLayout)v.findViewById(R.id.sliding_layout);
         sliding.setAnchorPoint(aa);
+
+
 
         titulo=(TextView)v.findViewById(R.id.titulo);
         tit1=(TextView)v.findViewById(R.id.tit1);
@@ -206,13 +210,16 @@ public class Estacionamiento extends Fragment {
         marker2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                EstaMapas fragment = new EstaMapas();
+                //FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+               // EstaMapas fragment = new EstaMapas();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("lugar","alonso");
-                fragment.setArguments(bundle);
-                fragmentManager.beginTransaction().add(R.id.container, fragment, "Map2").commit();
+              //  Bundle bundle = new Bundle();
+              //  bundle.putString("lugar","alonso");
+               // fragment.setArguments(bundle);
+               // fragmentManager.beginTransaction().add(R.id.container, fragment, "Map2").commit();
+
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?saddr="+ String.valueOf(-12.098581) +","+ String.valueOf(-76.970599) +"&daddr="+ String.valueOf(-12.105392) +","+ String.valueOf(-76.963559)));
+                startActivity(intent);
             }
         });
 

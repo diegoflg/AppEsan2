@@ -43,7 +43,7 @@ public class Registroesta extends Fragment {
     private ProgressDialog pDialog;
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
-    private static final String REGISTER_URL = "http://www.estacionamientoesan.site88.net/esconnect/register.php";
+    private static final String REGISTER_URL = "http://www.estacionamientoesan.site88.net/cas/register.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
