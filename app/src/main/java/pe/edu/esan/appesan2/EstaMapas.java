@@ -42,24 +42,29 @@ public class EstaMapas extends Fragment {
             e.printStackTrace();
         }
         googleMap2 = mE.getMap();
+
+
         if(lugar.equals("polo")){
             latitude = -12.098581;
             longitude = -76.970599;
             //-12.098581, -76.970599
+
+            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("EL POLO");
+            marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.markerc));
+            googleMap2.addMarker(marker);
             Log.i("LUGAR", "EL POLO");
+
         }else if(lugar.equals("alonso")){
             latitude = -12.105392;
             longitude = -76.963559;
             //-12.105392, -76.963559
+
+            MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("ALONSO DE MOLINA");
+            marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.markerv));
+            googleMap2.addMarker(marker);
             Log.i("LUGAR", "ALONSO DE MOLINA");
         }
 
-
-        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("EL POLO");
-
-        marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-        googleMap2.addMarker(marker);
         googleMap2.setMyLocationEnabled(true);
 
         googleMap2.getUiSettings().setZoomControlsEnabled(false);
