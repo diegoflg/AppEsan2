@@ -130,13 +130,14 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("Playa llena");
-                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+
 
                     if(estado.equals(estado2)){
 
 
                     }else{
                         mp.start();
+                        sliding.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                     }
 
                 }
@@ -145,12 +146,13 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloprendido);
                     sema3e.setImageResource(R.drawable.verdeapagado);
                     tvlibres.setText("De 4 a 20 estacionamientos disponibles");
-                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+
                     if(estado.equals(estado2)){
 
 
                     }else{
                         mp.start();
+                        sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     }
 
 
@@ -161,12 +163,13 @@ public class Estacionamiento extends Fragment {
                     sema2e.setImageResource(R.drawable.amarilloapagado);
                     sema3e.setImageResource(R.drawable.verdeprendido);
                     tvlibres.setText("Playa libre");
-                    sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+
                     if(estado.equals(estado2)){
 
 
                     }else{
                         mp.start();
+                        sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     }
 
 
