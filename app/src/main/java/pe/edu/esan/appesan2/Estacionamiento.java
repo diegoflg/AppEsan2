@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.location.Location;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -32,6 +33,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cocosw.bottomsheet.BottomSheet;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -53,7 +57,8 @@ import java.util.List;
 /**
  * Created by Diegoflg on 7/13/2015.
  */
-public class Estacionamiento extends Fragment {
+public class Estacionamiento extends Fragment implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php";
     private static final String TAG_SUCCESS = "success";
@@ -65,12 +70,50 @@ public class Estacionamiento extends Fragment {
     JSONParser jParser = new JSONParser();
     TextView tvlibres, titulo, tit1, tit2;
     String estado2;
+    private String tt;
+    GoogleApiClient mGoogleApiClient;
+    Location mLastLocation;
 
     //PARA FUENTE:
     TextView textViewestareg;
     com.sothree.slidinguppanel.SlidingUpPanelLayout sliding;
 
     //ELEMENTOS PERTENECIENTES AL SLIDING UP PANEL
+
+    protected synchronized void buildGoogleApiClient() {
+        mGoogleApiClient = new GoogleApiClient.Builder(getContext())
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                mGoogleApiClient);
+
+        if (mLastLocation != null) {
+            tt="Latitude: "+ String.valueOf(mLastLocation.getLatitude())+"Longitude: "+
+                    String.valueOf(mLastLocation.getLongitude());
+            Log.v("location",tt);
+        }
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Toast.makeText(getActivity(), "Connection suspended...", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Toast.makeText(getActivity(), "Failed to connect...", Toast.LENGTH_SHORT).show();
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -87,6 +130,9 @@ public class Estacionamiento extends Fragment {
 
         sliding=(com.sothree.slidinguppanel.SlidingUpPanelLayout)v.findViewById(R.id.sliding_layout);
         sliding.setAnchorPoint(aa);
+
+
+
 
 
 
@@ -218,13 +264,26 @@ public class Estacionamiento extends Fragment {
                // fragment.setArguments(bundle);
                // fragmentManager.beginTransaction().add(R.id.container, fragment, "Map2").commit();
 
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?saddr="+ String.valueOf(-12.098581) +","+ String.valueOf(-76.970599) +"&daddr="+ String.valueOf(-12.105392) +","+ String.valueOf(-76.963559)));
-                startActivity(intent);
+
+                buildGoogleApiClient();
+
+                if(mGoogleApiClient!= null){
+                    mGoogleApiClient.connect();
+                }
+                else
+                    Toast.makeText(getActivity(), "Not connected...", Toast.LENGTH_SHORT).show();
+
+
+
+               // Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?saddr="+ String.valueOf(mLastLocation.getLatitude()) +","+ String.valueOf(mLastLocation.getLongitude()) +"&daddr="+ String.valueOf(-12.105392) +","+ String.valueOf(-76.963559)));
+              //  startActivity(intent);
             }
         });
 
         return v;
     }
+
+
 
 
     class LoadAllProducts extends AsyncTask<String, String, String> {
