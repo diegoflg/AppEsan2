@@ -268,20 +268,20 @@ public class Estacionamiento extends Fragment implements
                // fragmentManager.beginTransaction().add(R.id.container, fragment, "Map1").commit();
                 Log.v("detect","sepudo");
 
-               // latitude = -12.098581;
-               // longitude = -76.970599;
+               latitude = -12.098581;
+                longitude = -76.970599;
 
-               // buildGoogleApiClient();
+                buildGoogleApiClient();
 
-               // if(mGoogleApiClient!= null){
-               //     mGoogleApiClient.connect();
-               // }
-              //  else {
-              //      Toast.makeText(getActivity(), "Not connected...", Toast.LENGTH_SHORT).show();
-              //  }
+                if(mGoogleApiClient!= null){
+                   mGoogleApiClient.connect();
+                }
+                else {
+                    Toast.makeText(getActivity(), "Not connected...", Toast.LENGTH_SHORT).show();
+               }
 
 
-                LatLng();
+
             }
         });
 
@@ -361,13 +361,6 @@ public class Estacionamiento extends Fragment implements
     }
 
 
-    public void LatLng()
-    {
-
-
-
-        Log.v("current",String.valueOf(latitude));
-    }
 
 
 }
