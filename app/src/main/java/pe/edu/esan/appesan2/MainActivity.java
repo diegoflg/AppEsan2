@@ -71,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        Log.v("lang", langloc);
+
 
         if(langloc.equals("español")){
             langinicial=0;
@@ -140,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
 
         android.support.v7.app.ActionBar abLogin = getSupportActionBar();
         CharSequence titulo = abLogin.getTitle().toString();
-        Log.i(TAG, "Título del app: " + titulo);
+
 
         et1 = (EditText) findViewById(R.id.et1);
         et2 = (EditText) findViewById(R.id.et2);
@@ -162,16 +162,16 @@ public class MainActivity extends ActionBarActivity {
        AdminBD admin = new AdminBD(this, "BDESAN3", null, 1);
        SQLiteDatabase bd = admin.getWritableDatabase();
 
-      Log.v("prueba", "1");
+
 
       Cursor fila1 = bd.rawQuery("select usuario from Persona", null);
       if (fila1.moveToFirst()) {
-           Toast t=Toast.makeText(this,"haydatos", Toast.LENGTH_SHORT);
-            t.show();
+
+
 
       } else {
 
-          Log.v("prueba", "2");
+
 
           String usuario = "alumno";
           String password = "alumno";

@@ -9,7 +9,11 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.location.Criteria;
+import android.location.GpsStatus;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -20,12 +24,14 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -59,6 +65,8 @@ import java.util.List;
  */
 public class Estacionamiento extends Fragment implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    // The minimum distance to change Updates in meters
+
 
     private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php";
     private static final String TAG_SUCCESS = "success";
@@ -73,6 +81,8 @@ public class Estacionamiento extends Fragment implements
     private String tt;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
+    double longitude;
+    double latitude;
 
     //PARA FUENTE:
     TextView textViewestareg;
@@ -98,6 +108,9 @@ public class Estacionamiento extends Fragment implements
             tt="Latitude: "+ String.valueOf(mLastLocation.getLatitude())+"Longitude: "+
                     String.valueOf(mLastLocation.getLongitude());
             Log.v("location",tt);
+
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?saddr="+ String.valueOf(mLastLocation.getLatitude()) +","+ String.valueOf(mLastLocation.getLongitude()) +"&daddr="+ String.valueOf(latitude) +","+ String.valueOf(longitude)));
+            startActivity(intent);
         }
 
     }
@@ -119,7 +132,9 @@ public class Estacionamiento extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_estacionamiento, container, false);
 
+
         setRetainInstance(true);
+
 
         WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
@@ -136,7 +151,8 @@ public class Estacionamiento extends Fragment implements
 
 
 
-        titulo=(TextView)v.findViewById(R.id.titulo);
+
+                titulo=(TextView)v.findViewById(R.id.titulo);
         tit1=(TextView)v.findViewById(R.id.tit1);
         tit2=(TextView)v.findViewById(R.id.tit2);
 
@@ -243,13 +259,29 @@ public class Estacionamiento extends Fragment implements
         marker1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                EstaMapas fragment = new EstaMapas();
+               // FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+               // EstaMapas fragment = new EstaMapas();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("lugar","polo");
-                fragment.setArguments(bundle);
-                fragmentManager.beginTransaction().add(R.id.container, fragment, "Map1").commit();
+              //  Bundle bundle = new Bundle();
+              //  bundle.putString("lugar","polo");
+              //  fragment.setArguments(bundle);
+               // fragmentManager.beginTransaction().add(R.id.container, fragment, "Map1").commit();
+                Log.v("detect","sepudo");
+
+               // latitude = -12.098581;
+               // longitude = -76.970599;
+
+               // buildGoogleApiClient();
+
+               // if(mGoogleApiClient!= null){
+               //     mGoogleApiClient.connect();
+               // }
+              //  else {
+              //      Toast.makeText(getActivity(), "Not connected...", Toast.LENGTH_SHORT).show();
+              //  }
+
+
+                LatLng();
             }
         });
 
@@ -263,6 +295,8 @@ public class Estacionamiento extends Fragment implements
               //  bundle.putString("lugar","alonso");
                // fragment.setArguments(bundle);
                // fragmentManager.beginTransaction().add(R.id.container, fragment, "Map2").commit();
+                latitude = -12.105392;
+                longitude = -76.963559;
 
 
                 buildGoogleApiClient();
@@ -270,13 +304,13 @@ public class Estacionamiento extends Fragment implements
                 if(mGoogleApiClient!= null){
                     mGoogleApiClient.connect();
                 }
-                else
+                else {
                     Toast.makeText(getActivity(), "Not connected...", Toast.LENGTH_SHORT).show();
+                }
 
 
 
-               // Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?saddr="+ String.valueOf(mLastLocation.getLatitude()) +","+ String.valueOf(mLastLocation.getLongitude()) +"&daddr="+ String.valueOf(-12.105392) +","+ String.valueOf(-76.963559)));
-              //  startActivity(intent);
+
             }
         });
 
@@ -325,6 +359,17 @@ public class Estacionamiento extends Fragment implements
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
+
+    public void LatLng()
+    {
+
+
+
+        Log.v("current",String.valueOf(latitude));
+    }
+
+
 }
 
 

@@ -8,7 +8,8 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     sothree:umanoPanelHeight="50dp"
-    sothree:umanoShadowHeight="5dp">
+    sothree:umanoShadowHeight="5dp"
+    >
 
 
     <RelativeLayout
