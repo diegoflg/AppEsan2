@@ -1,7 +1,11 @@
 package pe.edu.esan.appesan2;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -83,6 +87,8 @@ public class MainActivity2Activity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
+
+        notify("Recordatorio","No se olvide de rellenar la encuenta de cada curso.Mas informacion en su correo");
 
 
 
@@ -1357,5 +1363,16 @@ public class MainActivity2Activity extends ActionBarActivity
      * A placeholder fragment containing a simple view.
      */
 
+    private void notify(String notificationTitle, String notificationMessage){
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        @SuppressWarnings("deprecation")
+
+        Notification notification = new Notification(R.drawable.esan,"New Message", System.currentTimeMillis());
+        Intent notificationIntent = new Intent(this,NotificationView.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+
+        notification.setLatestEventInfo(MainActivity2Activity.this, notificationTitle,notificationMessage, pendingIntent);
+        notificationManager.notify(9999, notification);
+    }
 
 }
