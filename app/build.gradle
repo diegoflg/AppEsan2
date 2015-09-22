@@ -36,6 +36,6 @@ dependencies {
     compile 'com.cocosw:bottomsheet:1.+@aar'
     compile 'com.github.jd-alexander:library:1.0.6'
     compile 'com.google.android.gms:play-services:7.3.0'
-
+    compile 'io.nlopez.smartlocation:library:3.0.11'
 
 }

@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -179,8 +180,17 @@ public class Directorio extends Fragment {
     private void doSearch (String s){}
 
     private void showPopup(final Activity context,int opc) {
-        int popupWidth = 250;
-        int popupHeight = 200;
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        double width = displaymetrics.widthPixels;
+
+        Log.v("tamano",String.valueOf(height));
+        Log.v("tamano",String.valueOf(width));
+
+        double popupHeight = height*0.52;
+        double popupWidth = width*0.625;
+
 
         LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup);
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -189,8 +199,8 @@ public class Directorio extends Fragment {
         // Creating the PopupWindow
         final PopupWindow popup = new PopupWindow(context);
         popup.setContentView(layout);
-        popup.setWidth(popupWidth);
-        popup.setHeight(popupHeight);
+        popup.setWidth((int)Math.round(popupHeight));
+        popup.setHeight((int)Math.round(popupWidth));
         popup.setFocusable(true);
 
         // Displaying the popup at the specified location, + offsets.

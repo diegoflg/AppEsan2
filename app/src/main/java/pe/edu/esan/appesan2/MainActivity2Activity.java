@@ -1,33 +1,23 @@
 package pe.edu.esan.appesan2;
 
-import android.app.FragmentTransaction;
-import android.content.ActivityNotFoundException;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
-import java.util.Locale;
 
 
 public class MainActivity2Activity extends ActionBarActivity
@@ -98,6 +88,8 @@ public class MainActivity2Activity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
 
+        notify("Recordatorio","No se olvide de rellenar la encuenta de cada curso.Mas informacion en su correo");
+
 
 
 
@@ -140,6 +132,7 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
         Log.i("iniciarf", String.valueOf(Datah.getInstance().getData()));
+
 
 
 
@@ -1309,5 +1302,16 @@ public class MainActivity2Activity extends ActionBarActivity
      * A placeholder fragment containing a simple view.
      */
 
+    private void notify(String notificationTitle, String notificationMessage){
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        @SuppressWarnings("deprecation")
+
+        Notification notification = new Notification(R.drawable.esan,"New Message", System.currentTimeMillis());
+        Intent notificationIntent = new Intent(this,NotificationView.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
+
+        notification.setLatestEventInfo(MainActivity2Activity.this, notificationTitle,notificationMessage, pendingIntent);
+        notificationManager.notify(9999, notification);
+    }
 
 }
