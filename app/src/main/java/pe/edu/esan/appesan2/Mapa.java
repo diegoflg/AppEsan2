@@ -40,8 +40,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class Mapa extends Fragment {
-    private GoogleMap googleMap;
-    MapView m;
     TabHost mTabHost3;
     ImageView imagenMapa;
 
@@ -76,16 +74,11 @@ public class Mapa extends Fragment {
         mTabHost3.setup();
 
         TabHost.TabSpec spec = mTabHost3.newTabSpec("Tab 1");
-        spec.setContent(R.id.google);
-        spec.setIndicator("GoogleMaps");
-        mTabHost3.addTab(spec);
-
-        spec=mTabHost3.newTabSpec("Tab 2");
         spec.setContent(R.id.waze);
         spec.setIndicator("Waze");
         mTabHost3.addTab(spec);
 
-        spec=mTabHost3.newTabSpec("Tab 3");
+        spec=mTabHost3.newTabSpec("Tab 2");
         spec.setContent(R.id.mapaesan);
         spec.setIndicator("MapaEsan");
         mTabHost3.addTab(spec);
@@ -109,33 +102,7 @@ public class Mapa extends Fragment {
         }
         mTabHost3.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#ffc90039")); //unselected
         mTabHost3.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#ffc90039")); // selected
-        mTabHost3.getTabWidget().getChildAt(2).setBackgroundColor(Color.parseColor("#ffc90039")); // selected
 
-        m = (MapView) v.findViewById(R.id.mapView);
-        m.onCreate(savedInstanceState);
-        m.onResume();
-
-        try {
-            MapsInitializer.initialize(getActivity().getApplicationContext());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        googleMap = m.getMap();
-
-        double latitude = -12.105019;
-        double longitude = -76.961066;
-
-        MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude)).title("UNIVERSIDAD ESAN");
-
-        marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-
-        googleMap.addMarker(marker);
-        googleMap.setMyLocationEnabled(true);
-
-        googleMap.getUiSettings().setZoomControlsEnabled(false);
-
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(-12.105019, -76.961066)).zoom(18).build();
-        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
         //---------------------------------MAPA DE ESAN-------------------------------------
@@ -156,11 +123,10 @@ public class Mapa extends Fragment {
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                if (mTabHost3.getCurrentTab() == 1) {
+                if (mTabHost3.getCurrentTab() == 0) {
                     waze();
                 } else {
-                    if (mTabHost3.getCurrentTab() == 2) {
-
+                    if (mTabHost3.getCurrentTab() == 1) {
 
                         //--------------------------ESAN MAPA-------------------------------
                         imagenMapa.setImageResource(R.drawable.esanmap);
@@ -546,29 +512,6 @@ public class Mapa extends Fragment {
         point.set(x / 2, y / 2);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        m.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        m.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        m.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        m.onLowMemory();
-    }
 
 
     public void waze(){

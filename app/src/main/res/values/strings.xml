@@ -1,15 +1,11 @@
 <resources>
     <string name="app_name">ESAN</string>
 
-
-
-
-
-
     <!-- ACTIVITY_MAIN.XML -->
-    <string name="hintUsuario">. Usuario</string>
-    <string name="hintPassword">. Contraseña</string>
+    <string name="hintUsuario">"  Usuario"</string>
+    <string name="hintPassword">" Contraseña"</string>
     <string name="btAcceder">Acceder</string>
+
 
     <!-- DIRECTORIO.XML -->
     <string name="d1">Central telefonica</string>
@@ -22,20 +18,10 @@
     <string name="d8">Directorio</string>
     <string name="d9">Mensajeria</string>
 
-
     <!-- LAY_CAFETERÍA.XML -->
     <string name="rbEconomico">Económico</string>
     <string name="rbEjecutivo">Ejecutivo</string>
     <string name="rbDieta">Dieta</string>
-
-    <!-- LAY_EDUCACIONEJECUTIVA.XML -->
-    <string name="btPade">PADE</string>
-    <string name="btPae">PAE</string>
-    <string name="btPee">PEE</string>
-    <string name="btPeed">PEE DERECHO</string>
-    <string name="btDiplomas">DIPLOMAS</string>
-    <string name="btIdiomas">IDIOMAS</string>
-    <string name="btGestion">GESTIÓN PÚBLICA</string>
 
     <!-- LAY_HORARIO.XML -->
     <string name="tvHorario">HORARIO</string>
@@ -56,8 +42,8 @@
     <string name="btLlamar">Llamar</string>
 
 
-    <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
 
+    <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Cerrar sesión</string>
     <string name="title_activity_prueba_tabbed">PruebaTabbed</string>
