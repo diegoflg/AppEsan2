@@ -74,7 +74,7 @@ public class EducacionEjecutiva extends Fragment {
 
 
         wbEE = (WebView)rootView.findViewById(R.id.wbEE);
-        wbEE.loadUrl("http://www.esan.edu.pe/");
+        wbEE.loadUrl("http://www.esan.edu.pe/mba/tiempo-completo/");
         wbEE.getSettings().setUseWideViewPort(true);
         wbEE.getSettings().setLoadWithOverviewMode(true);
         wbEE.getSettings().setBuiltInZoomControls(true);
