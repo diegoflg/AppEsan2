@@ -3,7 +3,7 @@
 <com.sothree.slidinguppanel.SlidingUpPanelLayout
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sliding_layout3"
+    android:id="@+id/sliding_layout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
@@ -18,7 +18,7 @@
         android:clickable="true">
 
         <WebView
-            android:id="@+id/wbEE"
+            android:id="@+id/wbM"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </WebView>
@@ -27,33 +27,36 @@
 
 
     <RelativeLayout
+        android:id="@+id/rlpanel"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         android:background="#FFFFFF">
         <!-- Your main sliding panel inside here -->
         <TextView
-            android:id="@+id/titee"
+            android:id="@+id/titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|top"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            android:background="#FF6B6C6E"
+            android:background="#FFFFFF"
             android:text="Suba el panel para ver las opciones"
-            android:textColor="#FFFFFF"
-            android:textSize="23sp" />
+            android:textColor="#FF6B6C6E"
+            android:textSize="20sp" />
 
-            <ListView
-                android:id="@+id/lvEE"
-                android:layout_below="@+id/titee"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </ListView>
+        <ExpandableListView
+            android:id="@+id/lvExp"
+            android:layout_below="@id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ExpandableListView>
+
 
     </RelativeLayout>
 
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
 
 

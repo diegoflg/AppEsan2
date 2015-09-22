@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -979,7 +978,7 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
                 case 13:
-                    //fragment = new EducacionEjecutiva();
+                    //fragment = new Educacion Ejecutiva();
                     if(fragmentManager.findFragmentByTag("EducacionEjecutiva") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
                     }else{
@@ -1109,6 +1108,10 @@ public class MainActivity2Activity extends ActionBarActivity
                 //case 14:
                //    fragment = new Gamificacion();
                  //   break;
+                case 16:
+                    fragment= new Maestrias();
+                    fragmentManager.beginTransaction().replace(R.id.container, fragment, "Maestrias").commit();
+                    break;
 
             }
 

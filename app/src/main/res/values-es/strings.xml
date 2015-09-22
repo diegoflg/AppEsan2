@@ -91,6 +91,7 @@
         <item>"  Educación\n  Ejecutiva"</item>
         <item>"  Career"</item>
         <item>"  Estacionamiento"</item>
+        <item>"  Maestrias"</item>
 
     </string-array>
 
@@ -116,9 +117,11 @@
         <item>Section T10</item>
         <item>Section T11</item>
         <item>Section T12</item>
+        <item>Section T13</item>
         <item>Section T14</item>
         <item>Section T15</item>
         <item>Section T16</item>
+        <item>Section T17</item>
 
 
     </string-array>
@@ -147,7 +150,7 @@
         <item name="android:icon">@drawable/educacionejecutiva</item>
         <item name="android:icon">@drawable/career</item>
         <item name="android:icon">@drawable/estacionamiento</item>
-
+        <item name="android:icon">@drawable/educacionejecutiva</item>
     </string-array>
 
 
