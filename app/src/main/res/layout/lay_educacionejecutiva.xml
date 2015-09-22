@@ -1,93 +1,62 @@
-<RelativeLayout
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sliding_layout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:background="#FFFFFF"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:clickable="true">
+    android:gravity="bottom"
+    sothree:umanoShadowHeight="5dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:clickable="true">
+
+        <WebView
+            android:id="@+id/wbEE"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </WebView>
+
+    </RelativeLayout>
 
 
-    <Button
-        android:id="@+id/pade"
-        android:text="@string/btPade"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/border2"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_alignParentLeft="true"/>
-
-    <Button
-        android:id="@+id/pae"
-        android:text="@string/btPae"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/border2"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_below="@+id/pade"
-        android:layout_alignParentLeft="true"/>
-
-    <Button
-        android:id="@+id/pee"
-        android:text="@string/btPee"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/border2"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/peed"
-        android:text="@string/btPeed"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/border2"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/pee"/>
-
-    <Button
-        android:id="@+id/diplomas"
-        android:text="@string/btDiplomas"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/border2"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_alignParentRight="true"/>
-
-    <Button
-        android:id="@+id/idiomas"
-        android:text="@string/btIdiomas"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/border2"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/diplomas"
-        android:layout_alignParentRight="true"/>
-
-    <Button
-        android:id="@+id/gestion"
-        android:textColor="#FFFFFF"
-        android:text="@string/btGestion"
-        android:background="@drawable/border2"
-        android:layout_width="120dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/peed"/>
-
-    <WebView
-        android:id="@+id/wbEE"
+    <RelativeLayout
+        android:id="@+id/rlpanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/gestion">
-    </WebView>
-</RelativeLayout>
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+        <!-- Your main sliding panel inside here -->
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FFFFFF"
+            android:text="Suba el panel para ver las opciones"
+            android:textColor="#FF6B6C6E"
+            android:textSize="20sp" />
+
+        <ExpandableListView
+            android:id="@+id/lvExp"
+            android:layout_below="@id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ExpandableListView>
+
+
+    </RelativeLayout>
+
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+
+
