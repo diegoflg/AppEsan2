@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -16,10 +17,12 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.FloatMath;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -29,9 +32,12 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
 public class Mapa extends Fragment {
     TabHost mTabHost3;
     ImageView imagenMapa;
+    com.sothree.slidinguppanel.SlidingUpPanelLayout sliding4;
 
     private  final String TAG = "APP";
     // These matrices will be used to move and zoom image
@@ -65,12 +71,12 @@ public class Mapa extends Fragment {
 
         TabHost.TabSpec spec = mTabHost3.newTabSpec("Tab 1");
         spec.setContent(R.id.waze);
-        spec.setIndicator("Waze");
+        spec.setIndicator("Esan en Waze");
         mTabHost3.addTab(spec);
 
         spec=mTabHost3.newTabSpec("Tab 2");
         spec.setContent(R.id.mapaesan);
-        spec.setIndicator("MapaEsan");
+        spec.setIndicator("Mapa interno");
         mTabHost3.addTab(spec);
 
         mTabHost3.setCurrentTab(0);
@@ -97,9 +103,18 @@ public class Mapa extends Fragment {
 
         //---------------------------------MAPA DE ESAN-------------------------------------
         imagenMapa = (ImageView)v.findViewById(R.id.imagenMapa);
-
+        imagenMapa.setImageResource(R.drawable.esanmap);
         final float dpi = getResources().getDisplayMetrics().density;
 
+        WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int height = size.y;
+        int aa=height/6;
+
+        sliding4=(com.sothree.slidinguppanel.SlidingUpPanelLayout)v.findViewById(R.id.sliding_layout4);
+        sliding4.setAnchorPoint(aa);
 
 
         //----------------------------------------------------------------------------------
@@ -115,11 +130,11 @@ public class Mapa extends Fragment {
             public void onTabChanged(String tabId) {
                 if (mTabHost3.getCurrentTab() == 0) {
                     waze();
+                    sliding4.setVisibility(View.INVISIBLE);
                 } else {
                     if (mTabHost3.getCurrentTab() == 1) {
-
+                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         //--------------------------ESAN MAPA-------------------------------
-                        imagenMapa.setImageResource(R.drawable.esanmap);
 
                         imagenMapa.setOnTouchListener(new View.OnTouchListener() {
                             @Override
@@ -229,7 +244,7 @@ public class Mapa extends Fragment {
                         );
 
                         matrix.getValues(ttt);
-
+                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         break;
 
                     case 1:
@@ -275,6 +290,7 @@ public class Mapa extends Fragment {
                         },2400
                         );
                         matrix.getValues(ttt);
+                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         break;
 
                     case 2:
@@ -320,6 +336,7 @@ public class Mapa extends Fragment {
                                        },2400
                         );
                         matrix.getValues(ttt);
+                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         break;
 
                     case 3:
@@ -365,6 +382,7 @@ public class Mapa extends Fragment {
                                        },2400
                         );
                         matrix.getValues(ttt);
+                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         break;
                     case 4:
                         //COMEDOR PRINCIPAL
@@ -409,8 +427,9 @@ public class Mapa extends Fragment {
                                        },2400
                         );
                         matrix.getValues(ttt);
-
+                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         break;
+
                     case 5:
                         //CAFETERÍA 338
                         matrix.getValues(ttt);
@@ -454,6 +473,7 @@ public class Mapa extends Fragment {
                                        },2400
                         );
                         matrix.getValues(ttt);
+                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         break;
                 }
             }

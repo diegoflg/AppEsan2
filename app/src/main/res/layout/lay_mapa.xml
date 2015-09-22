@@ -1,67 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sliding_layout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:gravity="bottom"
+    sothree:umanoShadowHeight="5dp">
 
-    <TabHost
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tabHost3"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
-        <LinearLayout
+        <TabHost
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:id="@+id/tabHost3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </TabWidget>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RelativeLayout
-                    android:id="@+id/waze"
+                <TabWidget
+                    android:id="@android:id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                </RelativeLayout>
+                    android:layout_height="wrap_content">
+                </TabWidget>
 
-                <RelativeLayout
-                    android:id="@+id/mapaesan"
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <ListView
-                        android:id="@+id/listamapa"
-                        android:layout_width="match_parent"
-                        android:background="#FFFFFF"
-                        android:padding="1dp"
-                        android:layout_margin="1dp"
-                        android:layout_height="50dp">
-                    </ListView>
 
-                    <ImageView
-                        android:id="@+id/imagenMapa"
-                        android:scaleType="matrix"
-                        android:layout_below="@+id/listamapa"
-                        android:src="@drawable/esan"
+                    <RelativeLayout
+                        android:id="@+id/waze"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                    </RelativeLayout>
 
-                </RelativeLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+                    <RelativeLayout
+                        android:id="@+id/mapaesan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imagenMapa"
+                            android:scaleType="matrix"
+                            android:src="@drawable/esan"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                    </RelativeLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+    <!-- Your main sliding panel inside here -->
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:layout_margin="7dp"
+            android:padding="2dp"
+            android:background="#FF6B6C6E"
+            android:text="Suba el panel para ver las opciones"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/listamapa"
+            android:layout_width="match_parent"
+            android:background="#FFFFFF"
+            android:padding="1dp"
+            android:layout_below="@id/titulo"
+            android:layout_margin="1dp"
+            android:layout_height="250dp">
+        </ListView>
 
 </RelativeLayout>
 
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
