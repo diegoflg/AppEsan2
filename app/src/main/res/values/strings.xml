@@ -53,6 +53,7 @@
     <string name="tvPoptv2">Esto es un simple Popup</string>
     <string name="btCerrar">Cerrar</string>
     <string name="btLlamar">Llamar</string>
+    <string name="btPCerrar">Cerrar</string>
 
 
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
@@ -131,7 +132,6 @@
     <string-array name="sections_icons">
         <item name="android:icon">@drawable/noticias</item>
         <item name="android:icon">@drawable/notas</item>
-        <item name="android:icon">@drawable/calendario</item>
         <item name="android:icon">@drawable/cafeteria</item>
         <item name="android:icon">@drawable/mapa</item>
         <item name="android:icon">@drawable/directorio</item>

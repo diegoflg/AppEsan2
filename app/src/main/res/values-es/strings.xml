@@ -148,8 +148,8 @@
 
     <string-array name="sections_icons2">
         <item name="android:icon">@drawable/noticias</item>
-        <item name="android:icon">@drawable/horario</item>
-        <item name="android:icon">@drawable/notas</item>
+        <item name="android:icon">@drawable/calendario</item>
+        <item name="android:icon">@drawable/cafeteria</item>
         <item name="android:icon">@drawable/estacionamiento</item>
     </string-array>
 
