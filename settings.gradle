@@ -1,1 +1,1 @@
-include ':', ':volley', ':aFileChooser', ':app'
+include ':', ':aFileChooser', ':app', ':volley'

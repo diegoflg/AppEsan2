@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/diego/Desktop/docum/App/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-it/values-it.xml -->
+    <!-- From: file:/D:/Proyectos/Proyectos%202.0/APLICATIVO/AppEsan2/aFileChooser/build/intermediates/bundles/debug/res/values-it/values-it.xml -->
     <eat-comment/>
     <string name="choose_file">Selezionare un file</string>
     <string name="empty_directory">Directory vuota</string>

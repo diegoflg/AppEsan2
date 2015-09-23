@@ -5,58 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
-
-    <TabHost
-        android:id="@+id/tbDM"
+    <SearchView
+        android:id="@+id/searchViewD"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </TabWidget>
+        android:layout_height="wrap_content">
+    </SearchView>
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <RelativeLayout
-                    android:id="@+id/Directorio"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <SearchView
-                        android:id="@+id/searchViewD"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    </SearchView>
-
-                    <ListView
-                        android:id="@+id/listViewD"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/searchViewD">
-                    </ListView>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/Mensajería"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <WebView
-                        android:id="@+id/wbD"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    </WebView>
-
-                </RelativeLayout>
-
-            </FrameLayout>
-
-        </LinearLayout>
-        
-    </TabHost>
+    <ListView
+        android:id="@+id/listViewD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchViewD">
+    </ListView>
 </RelativeLayout>
