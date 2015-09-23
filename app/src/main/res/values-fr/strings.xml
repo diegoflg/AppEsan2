@@ -75,22 +75,20 @@
 
     <string-array name="sections">
         <item>"  Nouvelles"</item>
-        <item>"  Calendrier"</item>
         <item>"  Remarques"</item>
         <item>"  Calendrier"</item>
         <item>"  Café restaurant"</item>
         <item>"  Plans"</item>
-        <item>"  Annuaire /\n  Messagerie"</item>
-        <item>"  Ateliers"</item>
+        <item>"  Annuaire "</item>
         <item>"  Bibliothèque"</item>
         <item>"  Affiches"</item>
         <item>"  cours FLOT"</item>
-        <item>"  Le paiement de lEtat"</item>
         <item>"  Conexion Esan"</item>
         <item>"  Executive\n  Education"</item>
-        <item>"  FABLAB"</item>
-        <item>"  DPA"</item>
+        <item>"  Career"</item>
         <item>"  Parking"</item>
+        <item>"  Maîtres"</item>
+
 
     </string-array>
 
