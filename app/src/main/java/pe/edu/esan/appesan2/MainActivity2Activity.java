@@ -42,7 +42,7 @@ public class MainActivity2Activity extends ActionBarActivity
     private CursosMooc mTaskFragment11;
     private ConexionEsan mTaskFragment12;
     private EducacionEjecutiva mTaskFragment13;
-    private Fablab mTaskFragment14;
+    private Career mTaskFragment14;
     private Estacionamiento mTaskFragment15;
 
     FragmentManager fragmentManager = getSupportFragmentManager();
@@ -1040,11 +1040,11 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
                 case 14:
-                    //fragment = new Fablab();
+                    //fragment = new Career();
                     if(fragmentManager.findFragmentByTag("FabLab") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("FabLab")).commit();
                     }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Fablab(), "FabLab").commit();
+                        fragmentManager.beginTransaction().add(R.id.container, new Career(), "FabLab").commit();
                     }
                     //Los otros se esconden
                     if(fragmentManager.findFragmentByTag("Noticia") != null){

@@ -24,7 +24,7 @@ import java.util.TimerTask;
 /**
  * Created by Diegoflg on 7/13/2015.
  */
-public class Fablab extends Fragment {
+public class Career extends Fragment {
     private static String TAG = "MUNDO CRUEL";
 
     WebView myWebView;
