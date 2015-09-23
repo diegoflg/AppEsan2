@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -216,73 +217,8 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
+
                 case 1:
-                    //fragment= new Horario();
-                    //fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
-
-
-                    if(fragmentManager.findFragmentByTag("Horario") != null){
-                        fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Horario")).commit();
-                    }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Horario(), "Horario").commit();
-                    }
-
-                    //Los otros se esconden
-                    if(fragmentManager.findFragmentByTag("Noticia") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ActArt") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Notas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Notas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Calendario") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Calendario")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Cafeteria") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Cafeteria")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Mapas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Mapas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Directorio") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Directorio")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Talleres") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Talleres")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Biblioteca") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Biblioteca")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Impresiones") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Impresiones")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("CursosMooc") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("CursosMooc")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Estadodepagos") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estadodepagos")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ConexionEsan") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ConexionEsan")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("EducacionEjecutiva") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("FabLab") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("FabLab")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("DPA") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("DPA")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Estacionamiento") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
-                    }
-                    break;
-
-
-                case 2:
                     //fragment= new Notas();
                     if(fragmentManager.findFragmentByTag("Notas") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Notas")).commit();
@@ -344,7 +280,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 3:
+                case 2:
 
                     mTaskFragment4 = fragmentManager.findFragmentByTag("Calendario");
 
@@ -412,7 +348,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 4:
+                case 3:
                     //fragment= new Cafeteria();
                     if(fragmentManager.findFragmentByTag("Cafeteria") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Cafeteria")).commit();
@@ -474,7 +410,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 5:
+                case 4:
                     //fragment= new Mapa();
                     if(fragmentManager.findFragmentByTag("Mapas") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Mapas")).commit();
@@ -534,7 +470,7 @@ public class MainActivity2Activity extends ActionBarActivity
                         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
                     }
                     break;
-                case 6:
+                case 5:
                     //fragment= new Directorio();
                     mTaskFragment7 = (Directorio) fragmentManager.findFragmentByTag("Directorio");
 
@@ -601,69 +537,9 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 7:
-                    //fragment= new Talleres();
-                    if(fragmentManager.findFragmentByTag("Talleres") != null){
-                        fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Talleres")).commit();
-                    }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Talleres(), "Talleres").commit();
-                    }
-                    //Los otros se esconden
-                    if(fragmentManager.findFragmentByTag("Noticia") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ActArt") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Horario") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Notas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Notas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Calendario") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Calendario")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Cafeteria") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Cafeteria")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Mapas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Mapas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Directorio") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Directorio")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Biblioteca") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Biblioteca")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Impresiones") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Impresiones")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("CursosMooc") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("CursosMooc")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Estadodepagos") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estadodepagos")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ConexionEsan") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ConexionEsan")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("EducacionEjecutiva") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("FabLab") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("FabLab")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("DPA") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("DPA")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Estacionamiento") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
-                    }
-                    break;
 
 
-                case 8:
+                case 6:
                     //fragment = new Biblioteca();
                     mTaskFragment9 = fragmentManager.findFragmentByTag("Biblioteca");
 
@@ -729,69 +605,76 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 9:
+                case 7:
                     //fragment = new Impresiones();
-                    if(fragmentManager.findFragmentByTag("Impresiones") != null){
-                        fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Impresiones")).commit();
-                    }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Impresiones(), "Impresiones").commit();
-                    }
-                    //Los otros se esconden
-                    if(fragmentManager.findFragmentByTag("Noticia") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ActArt") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Horario") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Notas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Notas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Calendario") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Calendario")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Cafeteria") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Cafeteria")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Mapas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Mapas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Directorio") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Directorio")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Talleres") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Talleres")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Biblioteca") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Biblioteca")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("CursosMooc") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("CursosMooc")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Estadodepagos") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estadodepagos")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ConexionEsan") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ConexionEsan")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("EducacionEjecutiva") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("FabLab") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("FabLab")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("DPA") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("DPA")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Estacionamiento") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
+
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+
+                        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://impresiones.esan.edu.pe:7290/login.cfm"));
+                        startActivity(i);
+                    }else {
+                        if (fragmentManager.findFragmentByTag("Impresiones") != null) {
+                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Impresiones")).commit();
+                        } else {
+                            fragmentManager.beginTransaction().add(R.id.container, new Impresiones(), "Impresiones").commit();
+                        }
+                        //Los otros se esconden
+                        if (fragmentManager.findFragmentByTag("Noticia") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("ActArt") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Horario") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Notas") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Notas")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Calendario") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Calendario")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Cafeteria") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Cafeteria")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Mapas") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Mapas")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Directorio") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Directorio")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Talleres") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Talleres")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Biblioteca") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Biblioteca")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("CursosMooc") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("CursosMooc")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Estadodepagos") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estadodepagos")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("ConexionEsan") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ConexionEsan")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("EducacionEjecutiva") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("FabLab") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("FabLab")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("DPA") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("DPA")).commit();
+                        }
+                        if (fragmentManager.findFragmentByTag("Estacionamiento") != null) {
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
+                        }
                     }
                     break;
 
 
-                case 10:
+                case 8:
                     //fragment = new CursosMooc();
                     if(fragmentManager.findFragmentByTag("CursosMooc") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("CursosMooc")).commit();
@@ -853,69 +736,10 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 11:
-                   //fragment = new EstadoDePagos();
-                    if(fragmentManager.findFragmentByTag("Estadodepagos") != null){
-                        fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Estadodepagos")).commit();
-                    }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new EstadoDePagos(), "Estadodepagos").commit();
-                    }
-                   //SE ESCONDEN:
-                    if(fragmentManager.findFragmentByTag("Noticia") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Noticia")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ActArt") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Horario") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Horario")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Notas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Notas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Calendario") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Calendario")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Cafeteria") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Cafeteria")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Mapas") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Mapas")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Directorio") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Directorio")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Talleres") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Talleres")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Biblioteca") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Biblioteca")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Impresiones") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Impresiones")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("CursosMooc") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("CursosMooc")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("ConexionEsan") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ConexionEsan")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("EducacionEjecutiva") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("FabLab") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("FabLab")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("DPA") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("DPA")).commit();
-                    }
-                    if(fragmentManager.findFragmentByTag("Estacionamiento") != null){
-                        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Estacionamiento")).commit();
-                    }
-                    break;
 
 
-                case 12:
+
+                case 9:
                     //fragment = new ConexionEsan();
                     if(fragmentManager.findFragmentByTag("ConexionEsan") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("ConexionEsan")).commit();
@@ -977,7 +801,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 13:
+                case 10:
                     //fragment = new Educacion Ejecutiva();
                     if(fragmentManager.findFragmentByTag("EducacionEjecutiva") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("EducacionEjecutiva")).commit();
@@ -1039,7 +863,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
 
-                case 14:
+                case 11:
                     //fragment = new Career();
                     if(fragmentManager.findFragmentByTag("FabLab") != null){
                         fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("FabLab")).commit();
@@ -1100,7 +924,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     }
                     break;
 
-                case 15:
+                case 12:
                     //fragment = new estacionamiento
                     fragment= new Estacionamiento();
                     fragmentManager.beginTransaction().replace(R.id.container, fragment, "Estacionamiento").commit();
@@ -1108,7 +932,7 @@ public class MainActivity2Activity extends ActionBarActivity
                 //case 14:
                //    fragment = new Gamificacion();
                  //   break;
-                case 16:
+                case 13:
                     fragment= new Maestrias();
                     fragmentManager.beginTransaction().replace(R.id.container, fragment, "Maestrias").commit();
                     break;

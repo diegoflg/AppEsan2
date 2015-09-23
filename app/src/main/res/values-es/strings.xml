@@ -76,17 +76,14 @@
 
     <string-array name="sections">
         <item>"  Noticias"</item>
-        <item>"  Horario"</item>
         <item>"  Notas"</item>
         <item>"  Calendario"</item>
         <item>"  Cafeteria"</item>
         <item>"  Mapas"</item>
-        <item>"  Directorio /\n  Mensajería"</item>
-        <item>"  Talleres"</item>
+        <item>"  Directorio"</item>
         <item>"  Biblioteca"</item>
         <item>"  Impresiones"</item>
         <item>"  Cursos Mooc"</item>
-        <item>"  Estado de Pagos"</item>
         <item>"  Conexión Esan"</item>
         <item>"  Educación\n  Ejecutiva"</item>
         <item>"  Career"</item>
@@ -119,9 +116,7 @@
         <item>Section T12</item>
         <item>Section T13</item>
         <item>Section T14</item>
-        <item>Section T15</item>
-        <item>Section T16</item>
-        <item>Section T17</item>
+
 
 
     </string-array>
@@ -135,17 +130,14 @@
 
     <string-array name="sections_icons">
         <item name="android:icon">@drawable/noticias</item>
-        <item name="android:icon">@drawable/horario</item>
         <item name="android:icon">@drawable/notas</item>
         <item name="android:icon">@drawable/calendario</item>
         <item name="android:icon">@drawable/cafeteria</item>
         <item name="android:icon">@drawable/mapa</item>
         <item name="android:icon">@drawable/directorio</item>
-        <item name="android:icon">@drawable/talleres</item>
         <item name="android:icon">@drawable/biblioteca</item>
         <item name="android:icon">@drawable/impresiones</item>
         <item name="android:icon">@drawable/cursosmoc</item>
-        <item name="android:icon">@drawable/estadodepago</item>
         <item name="android:icon">@drawable/conexionesan</item>
         <item name="android:icon">@drawable/educacionejecutiva</item>
         <item name="android:icon">@drawable/career</item>
