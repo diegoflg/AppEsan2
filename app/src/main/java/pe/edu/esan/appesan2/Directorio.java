@@ -33,11 +33,8 @@ import android.widget.TextView;
 import com.cocosw.bottomsheet.BottomSheet;
 
 public class Directorio extends Fragment {
-    TabHost tbDM;
-
     ListView listViewSearch;
     SearchView searchView;
-
     private String data;
 
     @Override
@@ -46,92 +43,13 @@ public class Directorio extends Fragment {
         setRetainInstance(true);
 
 
-        tbDM = (TabHost) rootView.findViewById(R.id.tbDM);
-        tbDM.setup();
-
         listViewSearch = (ListView) rootView.findViewById(R.id.listViewD);
         searchView = (SearchView) rootView.findViewById(R.id.searchViewD);
 
-        WebView wbD = (WebView)rootView.findViewById(R.id.wbD);
-        wbD.loadUrl("http://uemoodle.ue.edu.pe/message/index.php");
-        wbD.getSettings().setUseWideViewPort(true);
-        wbD.getSettings().setJavaScriptEnabled(true);
-        wbD.getSettings().setLoadWithOverviewMode(true);
-        wbD.getSettings().setBuiltInZoomControls(true);
-        wbD.getSettings().setSupportZoom(true);
-        wbD.getSettings().setDisplayZoomControls(false);
-        wbD.setInitialScale(50);
-
-        wbD.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    WebView wbDi = (WebView) v;
-
-                    switch (keyCode) {
-                        case KeyEvent.KEYCODE_BACK:
-                            if (wbDi.canGoBack()) {
-                                wbDi.goBack();
-                                return true;
-                            }
-                            break;
-                    }
-                }
-                return false;
-            }
-        });
-
-        wbD.setWebViewClient(new WebViewClient() {
-                                 @Override
-                                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                                     return false;
-                                 }
-
-                                 public void onPageFinished(WebView view, String url) {
-
-
-                                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                                         view.evaluateJavascript("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
-                                                 "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';",null);
-                                         view.evaluateJavascript("javascript:document.forms[0].login();",null);
-                                     } else {
-                                         view.loadUrl("javascript:document.getElementsByName('username')[0].value = '" + "14100015" + "';" +
-                                                 "document.getElementsByName('password')[0].value='" + "N7N2U2F7" + "';");
-                                         view.loadUrl("javascript:document.forms[0].login();");
-                                     }
-                                     //http://stackoverflow.com/questions/30790341/android-webview-fill-in-form-and-submit-without-javascript-ids
-
-                                 }
-                             }
-        );
-
-        TabHost.TabSpec spec = tbDM.newTabSpec("Tab 1");
-        spec.setContent(R.id.Directorio);
-        spec.setIndicator(getString(R.string.d8));
-        tbDM.addTab(spec);
-
-        spec = tbDM.newTabSpec("Tab 2");
-        spec.setContent(R.id.Mensajería);
-        spec.setIndicator(getString(R.string.d9));
-        tbDM.addTab(spec);
-
-        tbDM.setCurrentTab(0);
 
         //FUENTE PARA TÍTULO EN TABHOST:
         String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
         Typeface TFT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-
-        for(int i=0;i<tbDM.getTabWidget().getChildCount();i++)
-        {tbDM.getTabWidget().setStripEnabled(true);
-        tbDM.getTabWidget().setRightStripDrawable(R.drawable.greyline);
-        tbDM.getTabWidget().setLeftStripDrawable(R.drawable.greyline);
-
-        TextView tv = (TextView) tbDM.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-        tv.setTextColor(Color.parseColor("#FFFFFF"));
-        tv.setTypeface(TFT);
-        }
-        tbDM.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#ffc90039")); //unselected
-        tbDM.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#ffc90039")); // selected
 
         //FUENTE PARA TEXTO EN CUADRO DE BÚSQUEDA:
         String font_pathB = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
