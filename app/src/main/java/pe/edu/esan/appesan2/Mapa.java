@@ -126,7 +126,11 @@ public class Mapa extends Fragment {
         listamapa.setTextFilterEnabled(false);
 
         sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        float inicio[] = new float[]{1, 0, -209, 0, 1, -372, 0, 0, 1};
+        matrix.setValues(inicio);
+        imagenMapa.setImageMatrix(matrix);
         //--------------------------ESAN MAPA-------------------------------
+        //{[1.0, 0.0, -209.54346][0.0, 1.0, -371.75314][0.0, 0.0, 1.0]}
 
         imagenMapa.setOnTouchListener(new View.OnTouchListener() {
             @Override
