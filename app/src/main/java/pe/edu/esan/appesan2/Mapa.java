@@ -70,13 +70,13 @@ public class Mapa extends Fragment {
         mTabHost3.setup();
 
         TabHost.TabSpec spec = mTabHost3.newTabSpec("Tab 1");
-        spec.setContent(R.id.waze);
-        spec.setIndicator("Esan en Waze");
+        spec.setContent(R.id.mapaesan);
+        spec.setIndicator("Mapa interno");
         mTabHost3.addTab(spec);
 
         spec=mTabHost3.newTabSpec("Tab 2");
-        spec.setContent(R.id.mapaesan);
-        spec.setIndicator("Mapa interno");
+        spec.setContent(R.id.waze);
+        spec.setIndicator("Esan en Waze");
         mTabHost3.addTab(spec);
 
         mTabHost3.setCurrentTab(0);
@@ -125,68 +125,68 @@ public class Mapa extends Fragment {
         listamapa.setAdapter(adapter);
         listamapa.setTextFilterEnabled(false);
 
+        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        //--------------------------ESAN MAPA-------------------------------
+
+        imagenMapa.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                dumpEvent(event);
+
+                // Handle touch events here...
+                switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_DOWN:
+                        savedMatrix.set(matrix);
+                        start.set(event.getX(), event.getY());
+                        Log.d(TAG, "mode=DRAG");
+                        mode = DRAG;
+                        break;
+                    case MotionEvent.ACTION_POINTER_DOWN:
+                        oldDist = spacing(event);
+                        Log.d(TAG, "oldDist=" + oldDist);
+                        if (oldDist > 10f) {
+                            savedMatrix.set(matrix);
+                            midPoint(mid, event);
+                            mode = ZOOM;
+                            Log.d(TAG, "mode=ZOOM");
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_POINTER_UP:
+                        mode = NONE;
+                        Log.d(TAG, "mode=NONE");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if (mode == DRAG) {
+                            // ...
+                            matrix.set(savedMatrix);
+                            matrix.postTranslate(event.getX() - start.x, event.getY() - start.y);
+                        } else if (mode == ZOOM) {
+                            float newDist = spacing(event);
+                            Log.d(TAG, "newDist=" + newDist);
+                            if (newDist > 10f) {
+                                matrix.set(savedMatrix);
+                                float scale = newDist / oldDist;
+                                matrix.postScale(scale, scale, mid.x, mid.y);
+                            }
+                        }
+                        break;
+                }
+                imagenMapa.setImageMatrix(matrix);
+                Log.i(TAG, "LOCALIZADO EN: " + matrix);
+
+                return true;
+            }
+        });
+
+
+
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                if (mTabHost3.getCurrentTab() == 0) {
+                if (mTabHost3.getCurrentTab() == 1) {
                     waze();
                     sliding4.setVisibility(View.INVISIBLE);
-                } else {
-                    if (mTabHost3.getCurrentTab() == 1) {
-                        sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-                        //--------------------------ESAN MAPA-------------------------------
-
-                        imagenMapa.setOnTouchListener(new View.OnTouchListener() {
-                            @Override
-                            public boolean onTouch(View v, MotionEvent event) {
-                                dumpEvent(event);
-
-                                // Handle touch events here...
-                                switch (event.getAction() & MotionEvent.ACTION_MASK) {
-                                    case MotionEvent.ACTION_DOWN:
-                                        savedMatrix.set(matrix);
-                                        start.set(event.getX(), event.getY());
-                                        Log.d(TAG, "mode=DRAG");
-                                        mode = DRAG;
-                                        break;
-                                    case MotionEvent.ACTION_POINTER_DOWN:
-                                        oldDist = spacing(event);
-                                        Log.d(TAG, "oldDist=" + oldDist);
-                                        if (oldDist > 10f) {
-                                            savedMatrix.set(matrix);
-                                            midPoint(mid, event);
-                                            mode = ZOOM;
-                                            Log.d(TAG, "mode=ZOOM");
-                                        }
-                                        break;
-                                    case MotionEvent.ACTION_UP:
-                                    case MotionEvent.ACTION_POINTER_UP:
-                                        mode = NONE;
-                                        Log.d(TAG, "mode=NONE");
-                                        break;
-                                    case MotionEvent.ACTION_MOVE:
-                                        if (mode == DRAG) {
-                                            // ...
-                                            matrix.set(savedMatrix);
-                                            matrix.postTranslate(event.getX() - start.x, event.getY() - start.y);
-                                        } else if (mode == ZOOM) {
-                                            float newDist = spacing(event);
-                                            Log.d(TAG, "newDist=" + newDist);
-                                            if (newDist > 10f) {
-                                                matrix.set(savedMatrix);
-                                                float scale = newDist / oldDist;
-                                                matrix.postScale(scale, scale, mid.x, mid.y);
-                                            }
-                                        }
-                                        break;
-                                }
-                                imagenMapa.setImageMatrix(matrix);
-                                Log.i(TAG, "LOCALIZADO EN: " + matrix);
-
-                                return true;
-                            }
-                        });
-                    }
                 }
             }
         });
@@ -521,8 +521,6 @@ public class Mapa extends Fragment {
         float y = event.getY(0) + event.getY(1);
         point.set(x / 2, y / 2);
     }
-
-
 
     public void waze(){
         try
