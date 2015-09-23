@@ -6,6 +6,29 @@
     <string name="hintPassword">" Contraseña"</string>
     <string name="btAcceder">Acceder</string>
 
+    <!-- NOTICIAS.XML -->
+    <!-- No hay strings creados para visualización -->
+
+    <!-- HORARIO.XML -->
+    <string name="tvHorario">HORARIO</string>
+
+    <!-- NOTAS.XML -->
+    <string name="tvCursos">Cursos</string>
+    <string name="tvEP">EP</string>
+    <string name="tvTA">TA</string>
+    <string name="tvEF">EF</string>
+    <string name="tvPG">PG</string>
+
+    <string name="btPCerrar">Cerrar</string>
+
+    <!-- CALENDARIO.XML -->
+    <!-- No hay strings creados para visualización -->
+
+    <!-- LAY_CAFETERÍA.XML -->
+    <string name="rbEconomico">Económico</string>
+    <string name="rbEjecutivo">Ejecutivo</string>
+    <string name="rbDieta">Dieta</string>
+
 
     <!-- DIRECTORIO.XML -->
     <string name="d1">Central telefonica</string>
@@ -18,23 +41,12 @@
     <string name="d8">Directorio</string>
     <string name="d9">Mensajeria</string>
 
-    <!-- LAY_CAFETERÍA.XML -->
-    <string name="rbEconomico">Económico</string>
-    <string name="rbEjecutivo">Ejecutivo</string>
-    <string name="rbDieta">Dieta</string>
 
-    <!-- LAY_HORARIO.XML -->
-    <string name="tvHorario">HORARIO</string>
+
 
     <!-- LAY_MOOC.XML -->
     <string name="tvCursosMooc">Cursos MOOC</string>
 
-    <!-- LAY_NOOTAS.XML -->
-    <string name="tvCursos">Cursos</string>
-    <string name="tvEP">EP</string>
-    <string name="tvTA">TA</string>
-    <string name="tvEF">EF</string>
-    <string name="tvPG">PG</string>
 
     <!-- LAY_POPUP.XML -->
     <string name="tvPoptv2">Esto es un simple Popup</string>

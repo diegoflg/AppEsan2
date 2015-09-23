@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-import com.cocosw.bottomsheet.BottomSheet;
+
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -163,7 +163,7 @@ public class MainActivity extends ActionBarActivity {
         botonacceder.setTypeface(TF);
 
 
-       AdminBD admin = new AdminBD(this, "BDESAN3", null, 1);
+       AdminBD admin = new AdminBD(this, "BDESAN4", null, 1);
        SQLiteDatabase bd = admin.getWritableDatabase();
 
 
@@ -196,8 +196,8 @@ public class MainActivity extends ActionBarActivity {
             registro2.put("password", password2);
             bd.insert("Persona", null, registro2);
 
-            String usuario3 = "servicios";
-            String password3 = "servicios";
+            String usuario3 = "parking";
+            String password3 = "esanmmxv";
 
             ContentValues registro3 = new ContentValues();
             registro3.put("usuario", usuario3);
@@ -358,7 +358,7 @@ public class MainActivity extends ActionBarActivity {
             pass=et2.getText().toString();
 
 
-            AdminBD admin= new AdminBD(this, "BDESAN3",null, 1);
+            AdminBD admin= new AdminBD(this, "BDESAN4",null, 1);
             SQLiteDatabase bd=admin.getWritableDatabase();
 
 
@@ -386,7 +386,7 @@ public class MainActivity extends ActionBarActivity {
                         if (us.equals("alumno")) {
                             tipo = 1;
                         }
-                        if (us.equals("servicios")) {
+                        if (us.equals("parking")) {
                             tipo = 2;
                         }
 
