@@ -69,8 +69,9 @@ public class Directorio extends Fragment {
         listViewSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("pos", String.valueOf(position));
-                showPopup(getActivity(), position);
+                String data=(String)parent.getItemAtPosition(position);
+                Log.v("pos", String.valueOf(data));
+                showPopup(getActivity(), data);
             }
         });
 
@@ -97,7 +98,7 @@ public class Directorio extends Fragment {
 
     private void doSearch (String s){}
 
-    private void showPopup(final Activity context,int opc) {
+    private void showPopup(final Activity context,String opc) {
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
@@ -142,25 +143,25 @@ public class Directorio extends Fragment {
         tv2.setTypeface(TPP);
 
         switch(opc){
-            case 0:
+            case "Central telefonica":
                 tv1.setText(getString(R.string.d1));
                 tv2.setText(getString(R.string.d1)+": 712 7200 \n" +
                         "Fax: 345 1328");
                 break;
 
-            case 1:
+            case "Admisión y Registro de Pregrado":
                 tv1.setText(getString(R.string.d2));
                 tv2.setText("Linea directa: 712 7205 \n" +
                         "Anexo central: 4500");
                 break;
 
-            case 2:
+            case "Finanzas":
                 tv1.setText(getString(R.string.d3));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                         "Anexos.: 4331/4329");
                 break;
 
-            case 3:
+            case "Dimensión Internacional":
                 tv1.setText(getString(R.string.d4));
                 tv2.setText(getString(R.string.d1)+":712-7200\n" +
                         "Mylene Sandoval\n" +
@@ -169,85 +170,92 @@ public class Directorio extends Fragment {
                         "Anx.: 4159\n" );
                 break;
 
-            case 4:
+            case "Coordinación Académica de PAC":
                 tv1.setText(getString(R.string.d5));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                         "William Rojas\n" +
                         "Anx.: 4188");
                 break;
 
-            case 5:
+            case "Servicios y Registros Académicos de Pregrado":
                 tv1.setText(getString(R.string.d6));
                 tv2.setText("Anexo central.: 4545");
                 break;
 
-            case 6:
+            case "Bienestar Estudiantil":
                 tv1.setText(getString(R.string.d7));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                         "Paola Pacheco\n" +
                         "Anx.: 2425");
                 break;
 
-            case 7:
+            case "Seguridad":
                 tv1.setText(getString(R.string.d10));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                         "Anx.: 4580");
                 break;
 
 
-            case 8:
+            case "Cobranzas":
                 tv1.setText(getString(R.string.d11));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
                          "Directo.: 3177222");
                 break;
 
-            case 9:
+            case "Cafeteria - Central":
                 tv1.setText(getString(R.string.d12));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
 
                         "Anx.: 4515");
                 break;
 
-            case 10:
+            case "Cafeteria - Comedor D":
                 tv1.setText(getString(R.string.d13));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
 
                         "Anx.: 4686");
                 break;
 
-            case 11:
+            case "Cafeteria - Monaditas":
                 tv1.setText(getString(R.string.d14));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
 
                         "Anx.: 4857");
                 break;
 
-            case 12:
+            case "Cafeteria - Hijos de Fruta":
                 tv1.setText(getString(R.string.d15));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
 
                         "Anx.: 4858");
                 break;
 
-            case 13:
+            case "Cafeteria - Deliska":
                 tv1.setText(getString(R.string.d16));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
 
                         "Anx.: 4859");
                 break;
 
-            case 14:
+            case "Cafeteria - 338":
                 tv1.setText(getString(R.string.d17));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
 
                         "Anx.: 4623");
                 break;
 
-            case 15:
+            case "Helpdesk":
                 tv1.setText(getString(R.string.d18));
                 tv2.setText(getString(R.string.d1)+": 712-7200\n" +
 
-                    "Anx.: 4000");
+                        "Anx.: 4000");
+                break;
+
+            case "DPA":
+                tv1.setText(getString(R.string.d18));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                        "Anx.: 4800");
                 break;
 
 
