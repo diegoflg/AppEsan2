@@ -29,6 +29,8 @@ public class Webfragment extends Fragment {
         String link = bundle.getString("url");
 
         final WebView wb = (WebView) rootView.findViewById(R.id.webfragment);
+
+
         wb.loadUrl(link);
         wb.getSettings().setUseWideViewPort(true);
         wb.getSettings().setLoadWithOverviewMode(true);

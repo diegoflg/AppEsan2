@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -71,6 +72,8 @@ public class Cafeteria extends Fragment {
     static TextView tv8;
     static TextView tv9;
 
+    static ImageView cafeteria11;
+
     TeamsAdapter adapter1,adapter2,adapter3,adapter4;
 
     Team team1,team2,team3,team4;
@@ -91,6 +94,7 @@ public class Cafeteria extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);
         listview = (ListView) v.findViewById(R.id.listview);
+
 
         setRetainInstance(true);
 
@@ -145,6 +149,7 @@ public class Cafeteria extends Fragment {
         tv9=(TextView)v.findViewById(R.id.preciod2);
         tv9.setTypeface(TFL);
         tv9.setTextColor(Color.parseColor("#1A171B"));
+        cafeteria11=(ImageView)v.findViewById(R.id.imca);
 
 
 
@@ -247,6 +252,7 @@ public class Cafeteria extends Fragment {
                 tv7.setVisibility(View.VISIBLE);
                 tv8.setVisibility(View.VISIBLE);
                 tv9.setVisibility(View.VISIBLE);
+                cafeteria11.setVisibility(View.VISIBLE);
 
 
 
@@ -267,6 +273,7 @@ public class Cafeteria extends Fragment {
                 tv3.setVisibility(View.GONE);
                 tv4.setVisibility(View.GONE);
                 tv5.setVisibility(View.GONE);
+                cafeteria11.setVisibility(View.GONE);
 
                 listar(2);
 
@@ -296,6 +303,7 @@ public class Cafeteria extends Fragment {
                 tv3.setVisibility(View.GONE);
                 tv4.setVisibility(View.GONE);
                 tv5.setVisibility(View.GONE);
+                cafeteria11.setVisibility(View.GONE);
 
 
                 Log.d("Test", "onClickListener ist gestartet");
@@ -320,6 +328,7 @@ public class Cafeteria extends Fragment {
                 tv3.setVisibility(View.GONE);
                 tv4.setVisibility(View.GONE);
                 tv5.setVisibility(View.GONE);
+                cafeteria11.setVisibility(View.GONE);
 
 
                 Log.d("Test", "onClickListener ist gestartet");
@@ -342,6 +351,7 @@ public class Cafeteria extends Fragment {
                 tv7.setVisibility(View.GONE);
                 tv8.setVisibility(View.GONE);
                 tv9.setVisibility(View.GONE);
+                cafeteria11.setVisibility(View.GONE);
 
 
                 Log.d("Test", "onClickListener ist gestartet");
@@ -384,6 +394,7 @@ public class Cafeteria extends Fragment {
         tv7.setVisibility(View.VISIBLE);
         tv8.setVisibility(View.VISIBLE);
         tv9.setVisibility(View.VISIBLE);
+        cafeteria11.setVisibility(View.VISIBLE);
 
 
 

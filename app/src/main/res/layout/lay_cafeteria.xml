@@ -204,11 +204,13 @@
 
 
     <ImageView
+        android:id="@+id/imca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/cafet" />
+        android:src="@drawable/cafet"
+        />
 
 
 </RelativeLayout>
