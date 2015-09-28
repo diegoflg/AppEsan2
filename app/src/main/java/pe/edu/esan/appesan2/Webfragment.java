@@ -35,6 +35,8 @@ public class Webfragment extends Fragment {
         wb.getSettings().setBuiltInZoomControls(true);
         wb.getSettings().setSupportZoom(true);
         wb.getSettings().setDisplayZoomControls(false);
+        wb.getSettings().setJavaScriptEnabled(true);
+        wb.getSettings().setLoadsImagesAutomatically(true);
         rootView.setFocusableInTouchMode(true);
         rootView.requestFocus();
 
@@ -86,7 +88,7 @@ public class Webfragment extends Fragment {
                         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     }
 
-                    if (webUrl.equals("https://www.miriadax.net/")) {
+                    if (webUrl.equals("https://miriadax.net/web/publicidad-en-linea.-campanas-en-facebook-y-adwords")) {
                         Log.v("tipo", "es");
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;

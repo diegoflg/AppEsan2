@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:clickable="true">
     <SearchView
         android:id="@+id/searchViewD"
         android:layout_width="match_parent"
