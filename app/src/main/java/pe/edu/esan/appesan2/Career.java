@@ -48,13 +48,12 @@ public class Career extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "RECREA");
     }
 
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        Log.i(TAG, "RESTAURA CREACIÓN");
+
     }
 
     @Override

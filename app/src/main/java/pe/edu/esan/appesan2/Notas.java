@@ -55,6 +55,7 @@ public class Notas extends Fragment {
     int contador=0;
     int poss=0;
     TextView tvfg;
+    Button btfg;
 
     String curss;
     String notss;
@@ -67,18 +68,16 @@ public class Notas extends Fragment {
         setRetainInstance(true);
 
         tvfg=(TextView)v.findViewById(R.id.fgh);
+        btfg=(Button)v.findViewById(R.id.bfgh);
         tvfg.setVisibility(View.INVISIBLE);
+        btfg.setVisibility(View.INVISIBLE);
 
         listacursos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                poss=position;
-                curss=listacursos.getItemAtPosition(position).toString();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                poss = position;
+                curss = listacursos.getItemAtPosition(position).toString();
                 new open2().execute();
-
-
-
-
 
 
             }
@@ -93,9 +92,25 @@ public class Notas extends Fragment {
 
         new open().execute();
 
+        btfg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                tvfg.setVisibility(View.INVISIBLE);
+                btfg.setVisibility(View.INVISIBLE);
+                new open().execute();
+
+
+            }
+        });
+
+
+
 
         return v;
     }
+
+
 
 
 
@@ -215,9 +230,11 @@ public class Notas extends Fragment {
             if(values==null){
 
                 tvfg.setVisibility(View.VISIBLE);
+                btfg.setVisibility(View.VISIBLE);
                 listacursos.setVisibility(View.INVISIBLE);
 
             }else{
+                listacursos.setVisibility(View.VISIBLE);
                 final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
                 listacursos.setAdapter(adapter);
 

@@ -24,7 +24,6 @@ public class Webfragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.webfragment, container, false);
 
-        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         Bundle bundle = this.getArguments();
         String link = bundle.getString("url");
@@ -57,9 +56,11 @@ public class Webfragment extends Fragment {
                                 fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                             }
                             break;
-                    }}
+                    }
+                }
                 return false;
-            }});
+            }
+        });
 
         rootView.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -69,7 +70,7 @@ public class Webfragment extends Fragment {
                     String webUrl = wb.getUrl();
                     Log.v("link", "webUrl");
 
-                    if (webUrl.equals("https://www.edx.org/" )) {
+                    if (webUrl.equals("https://www.edx.org/")) {
                         Log.v("tipo", "es");
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;
@@ -85,7 +86,7 @@ public class Webfragment extends Fragment {
                         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                     }
 
-                    if (webUrl.equals("https://www.miriadax.net/" )) {
+                    if (webUrl.equals("https://www.miriadax.net/")) {
                         Log.v("tipo", "es");
                         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                         CursosMooc fragment;
@@ -102,34 +103,30 @@ public class Webfragment extends Fragment {
                     }
 
 
-                    final Timer t = new Timer();
-                    t.schedule(new TimerTask() {
-                        public void run() {
-
-                            dialog.dismiss(); // when the task active then close the dialog
-                            t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
-                        }
-                    }, 5000); // after 2 second (or 2000 miliseconds), the task will be active.
                     return true;
                 }
                 return false;
-            }});
+            }
+        });
 
         wb.setWebViewClient(new WebViewClient() {
-            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {}
-
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon){
-                dialog.show();
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             }
 
             @Override
-            public void onPageFinished(WebView view, String url){
-                dialog.dismiss();
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+
             }
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            return false;
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+
+
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
         }});
         return rootView;
     }

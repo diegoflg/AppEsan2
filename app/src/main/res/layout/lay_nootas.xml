@@ -7,8 +7,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sus cursos han sido sincronizados, consulte con su coordinador"
+        android:text="No se encontraron cursos, revise su conexion a internet o consulte con su coordinador"
         android:id="@+id/fgh"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/fgh"
+        android:text="Reintentar"
+        android:id="@+id/bfgh"
+      />
 
 
     <ListView

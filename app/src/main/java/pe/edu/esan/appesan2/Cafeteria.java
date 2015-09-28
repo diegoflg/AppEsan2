@@ -358,7 +358,6 @@ public class Cafeteria extends Fragment {
 
 
 
-                Log.d("Test", "onClickListener ist gestartet");
 
 
             }
@@ -370,8 +369,6 @@ public class Cafeteria extends Fragment {
 
 
     public static void onBackPressed() {
-        Log.d("back", "funconooo");
-
         bc1.setVisibility(View.VISIBLE);
         bc2.setVisibility(View.VISIBLE);
         bc3.setVisibility(View.VISIBLE);

@@ -21,6 +21,17 @@
     <string name="d7">Bienestar Estudiantil</string>
     <string name="d8">Directorio</string>
     <string name="d9">Mensajeria</string>
+    <string name="d10">Seguridad</string>
+    <string name="d11">Cobranzas</string>
+    <string name="d12">Cafeteria - Central</string>
+    <string name="d13">Cafeteria - Comedor D</string>
+    <string name="d14">Cafeteria - Monaditas</string>
+    <string name="d15">Cafeteria - Hijos de Fruta</string>
+    <string name="d16">Cafeteria - Deliska</string>
+    <string name="d17">Cafeteria - 338</string>
+    <string name="d18">Helpdesk</string>
+    <string name="d19">DPA</string>
+
 
     <!-- LAY_CAFETERÍA.XML -->
     <string name="rbEconomico">Económico</string>

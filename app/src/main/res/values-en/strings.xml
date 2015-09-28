@@ -18,6 +18,16 @@
     <string name="d7">Student Welfare</string>
     <string name="d8">Directory</string>
     <string name="d9">Messaging</string>
+    <string name="d10">Security</string>
+    <string name="d11">Cobranzas</string>
+    <string name="d12">Cafeteria - Central</string>
+    <string name="d13">Cafeteria - Comedor D</string>
+    <string name="d14">Cafeteria - Monaditas</string>
+    <string name="d15">Cafeteria - Hijos de Fruta</string>
+    <string name="d16">Cafeteria - Deliska</string>
+    <string name="d17">Cafeteria - 338</string>
+    <string name="d18">Helpdesk</string>
+    <string name="d19">DPA</string>
 
 
     <!-- LAY_CAFETERÍA.XML -->
@@ -51,6 +61,7 @@
     <string name="tvPoptv2">This is a simple Popup</string>
     <string name="btCerrar">Close</string>
     <string name="btLlamar">Call</string>
+    <string name="btPCerrar">Close</string>
 
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
 

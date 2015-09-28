@@ -21,6 +21,16 @@
     <string name="d7">Bien être étudiant</string>
     <string name="d8">Annuaire</string>
     <string name="d9">Messagerie</string>
+    <string name="d10">Sécurité</string>
+    <string name="d11">Collection</string>
+    <string name="d12">Cafeteria - Central</string>
+    <string name="d13">Cafeteria - Comedor D</string>
+    <string name="d14">Cafeteria - Monaditas</string>
+    <string name="d15">Cafeteria - Hijos de Fruta</string>
+    <string name="d16">Cafeteria - Deliska</string>
+    <string name="d17">Cafeteria - 338</string>
+    <string name="d18">Helpdesk</string>
+    <string name="d19">DPA</string>
 
     <!-- LAY_CAFETERÍA.XML -->
     <string name="rbEconomico">économique</string>
@@ -53,6 +63,7 @@
     <string name="tvPoptv2">Ceci est un simple menu surgissant</string>
     <string name="btCerrar">Fermer</string>
     <string name="btLlamar">Appel</string>
+    <string name="btPCerrar">Fermer</string>
 
     <!-- TERMINARON LOS STRINGS DENTRO DE PANTALLAS XML -->
 
@@ -88,6 +99,7 @@
         <item>"  Career"</item>
         <item>"  Parking"</item>
         <item>"  Maîtres"</item>
+
 
 
     </string-array>

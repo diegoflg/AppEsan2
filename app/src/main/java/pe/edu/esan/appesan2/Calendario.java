@@ -27,7 +27,6 @@ import java.util.TimerTask;
 public class Calendario extends Fragment{
     private static String TAG = "MUNDO CRUEL";
     public WebView myWebView;
-    ProgressDialog pb;
 
 
 
@@ -47,16 +46,18 @@ public class Calendario extends Fragment{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (pb.isShowing()) {
-            pb.dismiss();
-        }
-        Log.v("destru","saddd");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             final View c = inflater.inflate(R.layout.lay_talleres, container, false);
         setRetainInstance(true);
+
+
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+        final Timer t = new Timer();
 
 
 
@@ -95,6 +96,9 @@ public class Calendario extends Fragment{
 
 
 
+
+
+
         myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -120,24 +124,26 @@ public class Calendario extends Fragment{
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+
+                dialog.show();
+
                 if(myWebView.getUrl() != myWebView.getOriginalUrl()){
                     myWebView.getSettings().setSupportZoom(true);
                     myWebView.setInitialScale(100);
+
+
+
                 }
-                pb = new ProgressDialog(c.getContext());
-                pb.setTitle("Cargando");
-                pb.setMessage("Please Wait....");
-                pb.setCancelable(false);
-                pb.show();
+
 
 
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                if (pb.isShowing()) {
-                    pb.dismiss();
-                }
+
+                dialog.dismiss();
+
 
             }
 

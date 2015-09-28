@@ -96,7 +96,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="S/. 8.5"
+                        android:text="S/. 10"
                         android:textSize="20sp"
                         android:id="@+id/precio2"
                         android:layout_alignBaseline="@+id/ej"
@@ -105,7 +105,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="S/. 8.5"
+                        android:text="S/. 9"
                         android:textSize="20sp"
                         android:id="@+id/precio3"
                         android:layout_alignBaseline="@+id/di"
@@ -176,7 +176,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="S/. 8.5"
+                        android:text="Consultar en caja"
                         android:textSize="20sp"
                         android:id="@+id/preciod2"
                         android:layout_alignBaseline="@+id/es"

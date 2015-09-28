@@ -6,12 +6,16 @@ package pe.edu.esan.appesan2;
 public class Datah {
     private int data=0;
     private int lang=0;
+    private int menu=0;
     private String user="";
     private String pass="";
 
 
     public int getData() {
         return data;
+    }
+    public int getMenu() {
+        return menu;
     }
 
     public int getLang() {
@@ -28,6 +32,9 @@ public class Datah {
 
     public void setData(int data) {
         this.data = data;
+    }
+    public void setMenu(int  menu) {
+        this.menu = menu;
     }
 
     public void setLang(int lang) {

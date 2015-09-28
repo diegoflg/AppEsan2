@@ -55,7 +55,7 @@ public class Directorio extends Fragment {
         String font_pathB = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TB = Typeface.createFromAsset(getActivity().getAssets(),font_pathB);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
-        String[] values = new String[]{getString(R.string.d1),getString(R.string.d2),getString(R.string.d3),getString(R.string.d4),getString(R.string.d5),getString(R.string.d6),getString(R.string.d7)};
+        String[] values = new String[]{getString(R.string.d1),getString(R.string.d2),getString(R.string.d3),getString(R.string.d4),getString(R.string.d5),getString(R.string.d6),getString(R.string.d7),getString(R.string.d10),getString(R.string.d11),getString(R.string.d12),getString(R.string.d13),getString(R.string.d14),getString(R.string.d15),getString(R.string.d16),getString(R.string.d17),getString(R.string.d18)};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         listViewSearch.setAdapter(adapter);
         listViewSearch.setTextFilterEnabled(false);
@@ -187,6 +187,70 @@ public class Directorio extends Fragment {
                         "Paola Pacheco\n" +
                         "Anx.: 2425");
                 break;
+
+            case 7:
+                tv1.setText(getString(R.string.d10));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+                        "Anx.: 4580");
+                break;
+
+
+            case 8:
+                tv1.setText(getString(R.string.d11));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+                         "Directo.: 3177222");
+                break;
+
+            case 9:
+                tv1.setText(getString(R.string.d12));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                        "Anx.: 4515");
+                break;
+
+            case 10:
+                tv1.setText(getString(R.string.d13));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                        "Anx.: 4686");
+                break;
+
+            case 11:
+                tv1.setText(getString(R.string.d14));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                        "Anx.: 4857");
+                break;
+
+            case 12:
+                tv1.setText(getString(R.string.d15));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                        "Anx.: 4858");
+                break;
+
+            case 13:
+                tv1.setText(getString(R.string.d16));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                        "Anx.: 4859");
+                break;
+
+            case 14:
+                tv1.setText(getString(R.string.d17));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                        "Anx.: 4623");
+                break;
+
+            case 15:
+                tv1.setText(getString(R.string.d18));
+                tv2.setText(getString(R.string.d1)+": 712-7200\n" +
+
+                    "Anx.: 4000");
+                break;
+
+
         }
 
         close.setOnClickListener(new View.OnClickListener() {

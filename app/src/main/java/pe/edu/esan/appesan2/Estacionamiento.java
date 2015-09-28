@@ -202,7 +202,12 @@ public class Estacionamiento extends Fragment implements
 
 
                     }else{
-                        mp.start();
+
+                        if(Datah.getInstance().getMenu()==1){
+                            mp.start();
+
+                        }
+
                         sliding.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                     }
 
@@ -217,7 +222,11 @@ public class Estacionamiento extends Fragment implements
 
 
                     }else{
-                        mp.start();
+
+                        if(Datah.getInstance().getMenu()==1){
+                            mp.start();
+
+                        }
                         sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     }
 
@@ -234,7 +243,11 @@ public class Estacionamiento extends Fragment implements
 
 
                     }else{
-                        mp.start();
+
+                        if(Datah.getInstance().getMenu()==1){
+                            mp.start();
+
+                        }
                         sliding.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     }
 
