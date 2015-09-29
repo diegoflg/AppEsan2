@@ -1,5 +1,4 @@
 package pe.edu.esan.appesan2;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -22,8 +21,18 @@ import java.util.List;
 
 
 /**
- * Created by Diegoflg on 8/17/2015.
- */
+ * Modulo de registro del estacionamiento, aqui al apretar alguno de los botones del semaforo se enviara ese dato a una base de datos remota
+ *
+ * primero se hace la consulta de en que estado esta el estacionamiento con http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php
+ *
+ * para guardar un dato del estado del estacionamiento se usa http://www.estacionamientoesan.site88.net/cas/register.php
+ *
+ *
+ * los estados del estacionamiento son:
+ *
+ * rojo, amarillo y verde
+ *
+ * */
 public class Registroesta extends Fragment {
 
     private ImageView sem1,sem2,sem3;
@@ -53,20 +62,20 @@ public class Registroesta extends Fragment {
         sem2=(ImageView)v.findViewById(R.id.sema2);
         sem3=(ImageView)v.findViewById(R.id.sema3);
 
-        new LoadAllProducts().execute();
+        new LoadAllProducts().execute();// Este metodo busca el estado actual del estacionamiento en la base de datos
 
 
 
-        sem1.setOnClickListener(new View.OnClickListener() {
+        sem1.setOnClickListener(new View.OnClickListener() {//se detecta si se hizo click a este boton(bombilla roja del semaforo)
             @Override
             public void onClick(View v) {
 
-                if(isNetworkAvailable()==true){
-                    sem1.setImageResource(R.drawable.rojoprendido);
-                    sem2.setImageResource(R.drawable.amarilloapagado);
-                    sem3.setImageResource(R.drawable.verdeapagado);
+                if(isNetworkAvailable()==true){//Se verifica la conexion a internet
+                    sem1.setImageResource(R.drawable.rojoprendido);//Se aciva la imagen del rojo predido
+                    sem2.setImageResource(R.drawable.amarilloapagado);//Se apaga la luz amarilla
+                    sem3.setImageResource(R.drawable.verdeapagado);//Se apaga la luz verde
                     libres="rojo";
-                    new CreateUser().execute();
+                    new CreateUser().execute();// se ejecuta este metodo, que guarda el estado "rojo" en la base de datos
 
                 }else{
                     Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
@@ -125,7 +134,7 @@ public class Registroesta extends Fragment {
 
 
 
-    class CreateUser extends AsyncTask<String, String, String> {
+    class CreateUser extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
 
 
         @Override

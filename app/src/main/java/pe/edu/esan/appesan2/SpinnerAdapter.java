@@ -11,6 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
+
+/**
+ * Este es el adaptador de la lista que va en el login para seleccionar el idioma
+ */
+
 public class SpinnerAdapter extends ArrayAdapter<ItemData> {
 
     int groupid;

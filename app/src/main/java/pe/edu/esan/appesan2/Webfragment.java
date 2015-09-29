@@ -16,16 +16,14 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by Diegoflg on 7/22/2015.
+ * Fragmento en el que se muestran los enlaces de los cursos MOOC con un WebView
  */
 public class Webfragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.webfragment, container, false);
-
-
-        Bundle bundle = this.getArguments();
-        String link = bundle.getString("url");
+        Bundle bundle = this.getArguments();//Recive un paquete del fragmento CursosMOOC
+        String link = bundle.getString("url");//De ese paquete obtiene el link que se abrira en el webView
 
         final WebView wb = (WebView) rootView.findViewById(R.id.webfragment);
 
@@ -33,13 +31,13 @@ public class Webfragment extends Fragment {
         final Timer t = new Timer();
 
 
-        wb.loadUrl(link);
+        wb.loadUrl(link);//Se carga el link
         wb.getSettings().setUseWideViewPort(true);
         wb.getSettings().setLoadWithOverviewMode(true);
         wb.getSettings().setBuiltInZoomControls(true);
         wb.getSettings().setSupportZoom(true);
         wb.getSettings().setDisplayZoomControls(false);
-        wb.getSettings().setJavaScriptEnabled(true);
+        wb.getSettings().setJavaScriptEnabled(true);//Se permite el uso de java script
         wb.getSettings().setLoadsImagesAutomatically(true);
         rootView.setFocusableInTouchMode(true);
         rootView.requestFocus();
@@ -55,11 +53,13 @@ public class Webfragment extends Fragment {
                             if (webView.canGoBack()) {
                                 webView.goBack();
                                 return true;
+                                //Si el webView puede retroceder al presionar atras retrocedera
                             } else {
                                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                 CursosMooc fragment;
                                 fragment = new CursosMooc();
                                 fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+                                //Si el webView no puede retroceder se volvera al fragmento de CursosMooc
                             }
                             break;
                     }
@@ -82,6 +82,8 @@ public class Webfragment extends Fragment {
                         CursosMooc fragment;
                         fragment = new CursosMooc();
                         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+                        //Si presionas atras estando en la direccion https://www.edx.org/, volveras a el fragmento Cursos Mooc
                     }
 
                     if (webUrl.equals("https://es.coursera.org/")) {
@@ -90,6 +92,8 @@ public class Webfragment extends Fragment {
                         CursosMooc fragment;
                         fragment = new CursosMooc();
                         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+                        //Si presionas atras estando en la direccion https://es.coursera.org/, volveras a el fragmento Cursos Mooc
                     }
 
                     if (webUrl.equals("https://miriadax.net/web/publicidad-en-linea.-campanas-en-facebook-y-adwords")) {
@@ -98,6 +102,8 @@ public class Webfragment extends Fragment {
                         CursosMooc fragment;
                         fragment = new CursosMooc();
                         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+                        //Si presionas atras estando en la direccion https://miriadax.net/web/publicidad-en-linea.-campanas-en-facebook-y-adwords, volveras a el fragmento Cursos Mooc
                     }
 
                     if (webUrl.equals("http://harvardx.harvard.edu/")) {
@@ -106,6 +112,8 @@ public class Webfragment extends Fragment {
                         CursosMooc fragment;
                         fragment = new CursosMooc();
                         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+                        //Si presionas atras estando en la direccion http://harvardx.harvard.edu/, volveras a el fragmento Cursos Mooc
                     }
 
 

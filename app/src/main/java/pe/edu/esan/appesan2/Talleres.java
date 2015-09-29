@@ -13,6 +13,11 @@ import android.webkit.WebViewClient;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Este modulo no esta en uso, inicialmente fue desarrollado para pregrado, muestra un pdf mediante un webView
+ *  con los respectivos talleres que tiene pregrado.
+ */
+
 public class Talleres extends Fragment {
     WebView myWebView;
 

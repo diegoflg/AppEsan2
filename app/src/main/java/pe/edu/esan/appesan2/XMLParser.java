@@ -13,7 +13,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import android.content.Context;
-import android.util.Log;
+
+
+/**
+ * Clase que es usada por la libreria de lector de RSS para leer el XML del RSS.
+ *
+ */
 
 public class XMLParser {
 	private URL url;

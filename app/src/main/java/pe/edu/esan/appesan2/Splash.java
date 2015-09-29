@@ -6,6 +6,10 @@ import android.content.Intent;
 
 public class Splash extends Activity {
 
+	/**
+	 * Esta clase no se usa, se usaba para mostrar un logo antes de iniciar la aplicacion
+	 */
+
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
