@@ -355,7 +355,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     Datah.getInstance().setMenu(0);
                     //fragment= new Cafeteria();
                     if(fragmentManager.findFragmentByTag("Cafeteria") != null){
-                        fragmentManager.beginTransaction().add(R.id.container, new Cafeteria(), "Cafeteria").commit();
+                        fragmentManager.beginTransaction().replace(R.id.container, new Cafeteria(), "Cafeteria").commit();
                     }else{
                         fragmentManager.beginTransaction().add(R.id.container, new Cafeteria(), "Cafeteria").commit();
                     }
