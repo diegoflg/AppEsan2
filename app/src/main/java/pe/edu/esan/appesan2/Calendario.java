@@ -72,13 +72,13 @@ public class Calendario extends Fragment{
 
         if ( !isNetworkAvailable()) { // loading offline
             myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");
+            //Solo cargará el cache si es que no hay internet disponible
             myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ONLY);
-            //myWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
             Log.i(TAG, "SIN INTERNET");
         }else{
             Log.i(TAG, "CON INTERNET");
             myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");
-
+            //Cargará con internet por defecto
             myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
 
         }
@@ -136,7 +136,7 @@ public class Calendario extends Fragment{
             @Override
             public void onPageFinished(WebView view, String url) {
                 /**
-                 * Se quita el progresDialog al terminar de caragar la web
+                 * Se quita el progresDialog al terminar de cargar la web
                  *
                  */
 

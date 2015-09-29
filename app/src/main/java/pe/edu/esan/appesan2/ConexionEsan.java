@@ -14,8 +14,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by educacionadistancia on 24/07/2015.
+ * Módulo que muestra la página de la revista Conexion Esan
  */
+
 public class ConexionEsan extends Fragment {
     WebView ceWB;
 

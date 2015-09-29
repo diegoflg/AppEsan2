@@ -22,6 +22,9 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SearchView;
 import android.widget.TextView;
+/*
+ *Módulo que muestra una lista de las principales centrales telefónicas de Esan.
+ */
 
 public class Directorio extends Fragment {
     ListView listViewSearch;

@@ -51,7 +51,7 @@ public class Biblioteca extends Fragment {
 
         setRetainInstance(true);
         /**
-         * setRetainInstance(true) sirve para preserar el fragmente ante cambios de configuracion
+         * setRetainInstance(true) sirve para preservar el fragmento ante cambios de configuracion
          */
 
 
@@ -64,7 +64,7 @@ public class Biblioteca extends Fragment {
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);//se activan las opciones de zoom en el webview
         myWebView.getSettings().setSupportZoom(true);
-        myWebView.getSettings().setDisplayZoomControls(false);//desaparecen los botones grandes para hacer zoom
+        myWebView.getSettings().setDisplayZoomControls(false);//desaparecen los botones  para hacer zoom sin afectar el uso de este
 
 
 

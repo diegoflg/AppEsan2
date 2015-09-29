@@ -62,10 +62,19 @@ public class Activity_Articulo extends Fragment{
 	}
 
 	private String populateHTML(int resourceID) {
+		/*
+		En esta parte obtiene los datos Título, fecha de publicación y contenido con los
+		mismos nombres que se encuentran en el xml del rss.
+		 */
 		String html;
 		html = readTextFromResource(resourceID);
+		//Obtiene el título:
 		html = html.replace("_TITLE_", articulo.getTitulo());
+
+		//Obtiene la fecha de publicación:
 		html = html.replace("_PUBDATE_", "" + articulo.getFecha());
+
+		//Obtiene el contenido:
 		html = html.replace("_CONTENT_", articulo.getContenido());
 		return html;
 	}
