@@ -74,7 +74,6 @@ public class XMLParser {
 
 				}
 				noticiases.add(noticia);
-				Log.i("Parsher", "notcia:"+i);
 			}
 
 		} catch (Exception e) {

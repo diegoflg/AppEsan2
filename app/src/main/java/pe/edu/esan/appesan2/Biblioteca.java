@@ -11,7 +11,11 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 /**
- * Created by educacionadistancia on 20/07/2015.
+ * En esta clase esta el modulo de bilbioteca, modulo que utiliza un webview declarado como myWebView para motrar la pagina web de cendoc, que es :
+ * http://esancendoc.esan.edu.pe/
+ * Tenemos tambien un ProgressDialog declarado como pb, que sirve para indicar al usuario que el usuario esta cagando
+ *
+ * El ProgressDialog inicia on el metodo show(), y se cancela con el metodo dismiss()
  */
 public class Biblioteca extends Fragment {
 
@@ -46,21 +50,27 @@ public class Biblioteca extends Fragment {
         final View rootView = inflater.inflate(R.layout.lay_biblioteca, container, false);
 
         setRetainInstance(true);
+        /**
+         * setRetainInstance(true) sirve para preserar el fragmente ante cambios de configuracion
+         */
 
 
 
 
         myWebView = (WebView) rootView.findViewById(R.id.webviewB);
         myWebView.loadUrl("http://esancendoc.esan.edu.pe/");
-        myWebView.getSettings().setJavaScriptEnabled(true);
+        myWebView.getSettings().setJavaScriptEnabled(true);//se permite el uso de java script en el webview
         myWebView.getSettings().setUseWideViewPort(true);
         myWebView.getSettings().setLoadWithOverviewMode(true);
-        myWebView.getSettings().setBuiltInZoomControls(true);
+        myWebView.getSettings().setBuiltInZoomControls(true);//se activan las opciones de zoom en el webview
         myWebView.getSettings().setSupportZoom(true);
-        myWebView.getSettings().setDisplayZoomControls(false);
+        myWebView.getSettings().setDisplayZoomControls(false);//desaparecen los botones grandes para hacer zoom
+
+
 
 
         myWebView.setOnKeyListener(new View.OnKeyListener() {
+
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -76,6 +86,10 @@ public class Biblioteca extends Fragment {
                     }
                 }
                 return false;
+
+                /**
+                 * Si usando el webView cambiaste de url, puedes regresar al anterior presionando atras
+                 */
             }
         });
 
@@ -91,10 +105,10 @@ public class Biblioteca extends Fragment {
                 myWebView.setInitialScale(50);
             }
 
-            pb = new ProgressDialog(rootView.getContext());
+            pb = new ProgressDialog(rootView.getContext()); //creacion del ProgressDialog
             pb.setTitle("Cargando");
             pb.setMessage("Please Wait....");
-            pb.setCancelable(false);
+            pb.setCancelable(false);//el progresDialog no se cancela pulsando atras o dando click en la pantalla del dispositivo
             pb.show();
         }
 
@@ -104,7 +118,7 @@ public class Biblioteca extends Fragment {
         }
         public void onPageFinished(WebView view, String url) {
             if (pb.isShowing()) {
-                pb.dismiss();
+                pb.dismiss();//desaparece el ProgressDialog
             }
 
 

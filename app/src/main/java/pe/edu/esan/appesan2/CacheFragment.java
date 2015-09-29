@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by educacionadistancia on 17/08/2015.
+ * Cache para cargar las paginas web mas rapido
  */
 public class CacheFragment  extends Fragment {
     private Cache cache = new Cache();

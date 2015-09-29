@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Diegoflg on 7/16/2015.
+ * En esta clase es un adaptador para mostrar el menu en un ListView
  */public class TeamsAdapter extends ArrayAdapter<Team> {
     Context context;
     private ArrayList<Team> teams;
@@ -50,6 +50,14 @@ import java.util.ArrayList;
              */
 
             lunes.setText(String.valueOf(o.getEntrada())+": "+String.valueOf(o.getdDia()));
+
+            /**
+             * lunes es un TextView y en ese TextView se pone en forma de lista el menu del dia
+             *
+             */
+
+
+
             /**
             martes.setText(String.valueOf(o.getEntrada()));
             miercoles.setText(String.valueOf(o.getPlato()));

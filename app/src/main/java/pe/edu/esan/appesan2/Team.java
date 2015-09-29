@@ -1,14 +1,16 @@
 package pe.edu.esan.appesan2;
 
 /**
- * Created by Diegoflg on 7/16/2015.
+ * La clase Team es en donde se almacenan los menus de la cafeteria, en dia se almacenan todos los platos del dia lunes,
+ * en entrada todos los platos del dia martes y asi sucesivamente
+ * Esta clase ayuda a obtener el menu por dia de la semana
  */
 public class Team {
-    private String dia;
-    private String entrada;
-    private String plato;
-    private String postre;
-    private String refresco;
+    private String dia;//lunes
+    private String entrada;//martes
+    private String plato;//miercoles
+    private String postre;//jueves
+    private String refresco;//viernes
     private String sabado;
 
     public Team(String dia,String entrada, String plato, String postre, String refresco,String sabado)

@@ -19,7 +19,8 @@ import java.util.Timer;
 
 
 /**
- * Created by educacionadistancia on 13/07/2015.
+ * Modulo que muestra un google calendar que se encuentra en el siguiente link:
+ * https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com
  */
 public class Calendario extends Fragment{
     private static String TAG = "MUNDO CRUEL";
@@ -113,6 +114,10 @@ public class Calendario extends Fragment{
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                /**
+                 * Se muestra el ProgressDialog al iniciar la carga de la web
+                 *
+                 */
 
                 dialog.show();
 
@@ -130,6 +135,10 @@ public class Calendario extends Fragment{
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                /**
+                 * Se quita el progresDialog al terminar de caragar la web
+                 *
+                 */
 
                 dialog.dismiss();
 
@@ -146,6 +155,11 @@ public class Calendario extends Fragment{
 
         }
     private boolean isNetworkAvailable() {
+
+        /**
+         * Se revisa si hay conexion a internet
+         *
+         */
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();

@@ -10,11 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Diegoflg on 7/22/2015.
+ * Modulo que muestra 4 portales de cursos MOOC en una webView,
+ * los portales que muestra son:
+ * https://www.edx.org/
+ * https://es.coursera.org/
+ * http://harvardx.harvard.edu/
+ * https://miriadax.net/web/publicidad-en-linea.-campanas-en-facebook-y-adwords
+ *Se utiliza la libreria circleimageview para los botones circulares
+ *
  */
 public class CursosMooc extends Fragment {
     CircleImageView cv1,cv2,cv3,cv4;
@@ -25,7 +31,6 @@ public class CursosMooc extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.lay_mooc, container, false);
         setRetainInstance(true);
-
 
         cv1=(CircleImageView)rootView.findViewById(R.id.cv1);
         cv2=(CircleImageView)rootView.findViewById(R.id.cv2);
@@ -81,7 +86,7 @@ public class CursosMooc extends Fragment {
                 fragment = new Webfragment();
 
                 Bundle bundle = new Bundle();
-                bundle.putString("url", "https://www.miriadax.net/");
+                bundle.putString("url", "https://miriadax.net/web/publicidad-en-linea.-campanas-en-facebook-y-adwords");
                 fragment.setArguments(bundle);
 
                 fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();

@@ -20,10 +20,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by Diegoflg on 7/13/2015.
+ * Modulo que muestra la pagina web de ESAN Career mediante un webView, la url es:
+ * http://careercenter.esan.edu.pe/
  */
 public class Career extends Fragment {
-    private static String TAG = "MUNDO CRUEL";
+    private static String TAG = "TAG";
 
     WebView myWebView;
 
@@ -96,6 +97,11 @@ public class Career extends Fragment {
         myWebView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+
+/**
+ * Si usando el webView cambiaste de url, puedes regresar al anterior presionando atras
+ */
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     WebView webView = (WebView) v;
                     switch (keyCode) {

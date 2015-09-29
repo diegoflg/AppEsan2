@@ -26,7 +26,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * Created by Diegoflg on 7/14/2015.
+ * Modulo de Cafeteria , que lee la informacion almacenada en el sigiente google drive:
+ * https://docs.google.com/a/ue.edu.pe/spreadsheets/d/1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms
+ *
  */
 public class Cafeteria extends Fragment {
 
@@ -224,6 +226,11 @@ public class Cafeteria extends Fragment {
             @Override
             public void onTabChanged(String tabId) {
 
+                /**
+                 * Al cambiar de tab el menu se esconde y vuelve a aparecer las opciones de eleccion de menu
+                 *
+                 */
+
                 bc1.setVisibility(View.VISIBLE);
                 bc2.setVisibility(View.VISIBLE);
                 bc3.setVisibility(View.VISIBLE);
@@ -317,6 +324,7 @@ public class Cafeteria extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 bc4.setVisibility(View.GONE);
                 bc5.setVisibility(View.GONE);
                 listview.setVisibility(View.VISIBLE);
@@ -350,6 +358,14 @@ public class Cafeteria extends Fragment {
 
 
     public static void onBackPressed() {
+
+        /**
+         * Al dar click a el boton atras, el menu se esconde y vuelve a aparecer las opciones de eleccion de menu
+         *
+         */
+
+
+
         bc1.setVisibility(View.VISIBLE);
         bc2.setVisibility(View.VISIBLE);
         bc3.setVisibility(View.VISIBLE);
@@ -607,9 +623,16 @@ public class Cafeteria extends Fragment {
  */
 
 private boolean isNetworkAvailable() {
+
+
+
     ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
     NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    /**
+     * Se revisa si hay conexion a internet
+     *
+     */
 }
 
 
