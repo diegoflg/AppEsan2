@@ -38,6 +38,7 @@ public class Mapa extends Fragment {
     TabHost mTabHost3;
     ImageView imagenMapa;
     com.sothree.slidinguppanel.SlidingUpPanelLayout sliding4;
+    private static final int LONG_DELAY = 3500;
 
     private  final String TAG = "APP";
     // These matrices will be used to move and zoom image
@@ -584,6 +585,7 @@ public class Mapa extends Fragment {
 
         Toast toast = new Toast(context);
         toast.setView(view);
+        toast.setDuration(Toast.LENGTH_LONG);
         toast.show();
     }
 
