@@ -2,8 +2,6 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,9 +15,8 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import java.util.Timer;
-import java.util.TimerTask;
+
 
 /**
  * Created by educacionadistancia on 13/07/2015.
@@ -53,17 +50,9 @@ public class Calendario extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             final View c = inflater.inflate(R.layout.lay_talleres, container, false);
         setRetainInstance(true);
-
-
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         final Timer t = new Timer();
-
-
-
-
-
-
 
         myWebView = (WebView) c.findViewById(R.id.webview);
         myWebView.loadUrl("https://www.google.com/calendar/htmlembed?src=ndo8qlb1snenh41blag9slaav8%40group.calendar.google.com");

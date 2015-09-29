@@ -1,8 +1,6 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -2,41 +2,28 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 /**
  * Created by Diegoflg on 7/14/2015.
@@ -83,7 +70,7 @@ public class Cafeteria extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         pb.dismiss();
-        Log.v("destru", "saddd");
+
 
     }
 
@@ -202,7 +189,7 @@ public class Cafeteria extends Fragment {
 
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         String dia=String.valueOf(day);
-        Log.d("el dia esss", dia);
+
         diadelasemana=day;
 
         pb = new ProgressDialog(v.getContext());
@@ -279,14 +266,6 @@ public class Cafeteria extends Fragment {
 
 
 
-
-
-
-
-
-
-
-                Log.d("Test", "onClickListener ist gestartet");
             }
         });
 //ejeecutio
@@ -304,9 +283,6 @@ public class Cafeteria extends Fragment {
                 tv4.setVisibility(View.GONE);
                 tv5.setVisibility(View.GONE);
                 cafeteria11.setVisibility(View.GONE);
-
-
-                Log.d("Test", "onClickListener ist gestartet");
                 listar(3);
 
 
@@ -330,9 +306,6 @@ public class Cafeteria extends Fragment {
                 tv5.setVisibility(View.GONE);
                 cafeteria11.setVisibility(View.GONE);
 
-
-                Log.d("Test", "onClickListener ist gestartet");
-
                 listar(4);
 
 
@@ -353,8 +326,6 @@ public class Cafeteria extends Fragment {
                 tv9.setVisibility(View.GONE);
                 cafeteria11.setVisibility(View.GONE);
 
-
-                Log.d("Test", "onClickListener ist gestartet");
                 listar(1);
 
 
@@ -449,8 +420,6 @@ public class Cafeteria extends Fragment {
             JSONArray columns = object.getJSONArray("rows");
 
 
-                Log.d("Test", "taaaaaaaaab");
-
                 for (int r = 1; r < 8; ++r) {
                     JSONObject column = columns.getJSONObject(r);
                     JSONArray rows = column.getJSONArray("c");
@@ -534,7 +503,7 @@ public class Cafeteria extends Fragment {
             JSONArray columns = object.getJSONArray("rows");
 
             if (mTabHost.getCurrentTab()==1){
-                Log.d("Test", "taaaaaaaaab");
+
 
 
 

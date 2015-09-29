@@ -2,8 +2,6 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -53,7 +51,7 @@ public class Career extends Fragment {
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        Log.i(TAG, "RESTAURA CREACIÓN");
+
     }
 
     @Override

@@ -1,21 +1,15 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import java.util.Timer;
-import java.util.TimerTask;
-
 /**
  * Created by educacionadistancia on 20/07/2015.
  */
@@ -44,7 +38,6 @@ public class Biblioteca extends Fragment {
         if (pb.isShowing()) {
             pb.dismiss();
         }
-        Log.v("destru", "saddd");
     }
 
 

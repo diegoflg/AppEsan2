@@ -1,6 +1,6 @@
 package pe.edu.esan.appesan2;
 
-import android.content.pm.ActivityInfo;
+
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;

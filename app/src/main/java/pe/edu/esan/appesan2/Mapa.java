@@ -1,11 +1,10 @@
 package pe.edu.esan.appesan2;
 
-import android.app.ActionBar;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Point;

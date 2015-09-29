@@ -2,7 +2,6 @@ package pe.edu.esan.appesan2;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -17,9 +16,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
-
-import com.flipboard.bottomsheet.BottomSheetLayout;
-
 import pl.polidea.view.ZoomView;
 
 /**

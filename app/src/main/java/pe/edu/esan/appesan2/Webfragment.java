@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
 import java.util.Timer;
 import java.util.TimerTask;
 

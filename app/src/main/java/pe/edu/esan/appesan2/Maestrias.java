@@ -18,9 +18,7 @@ import android.webkit.WebViewClient;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

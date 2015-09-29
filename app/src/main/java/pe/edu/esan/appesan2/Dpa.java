@@ -1,8 +1,6 @@
 package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,12 +8,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by Diegoflg on 7/13/2015.
