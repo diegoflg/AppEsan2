@@ -30,6 +30,9 @@ public class Webfragment extends Fragment {
 
         final WebView wb = (WebView) rootView.findViewById(R.id.webfragment);
 
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+        final Timer t = new Timer();
+
 
         wb.loadUrl(link);
         wb.getSettings().setUseWideViewPort(true);
@@ -119,6 +122,16 @@ public class Webfragment extends Fragment {
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+
+                dialog.show();
+
+                t.schedule(new TimerTask() {
+                    public void run() {
+
+                        dialog.dismiss(); // when the task active then close the dialog
+                        t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+                    }
+                }, 4000); // after 2 second (or 2000 miliseconds), the task will be active.
 
             }
 
