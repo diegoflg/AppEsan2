@@ -12,8 +12,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:clickable="true">
+        android:background="#FFFFFF">
 
         <TabHost
             android:layout_width="match_parent"
@@ -35,6 +34,7 @@
                 </TabWidget>
 
                 <FrameLayout
+
                     android:id="@android:id/tabcontent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">

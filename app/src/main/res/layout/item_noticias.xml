@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:clickable="true">
+    android:padding="8dp" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/card_shape_normal"
         android:padding="8dp" >
+
 
         <ImageView
             android:id="@+id/noticia_imageView"
