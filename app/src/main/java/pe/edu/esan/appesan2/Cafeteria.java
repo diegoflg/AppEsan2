@@ -399,19 +399,19 @@ public class Cafeteria extends Fragment {
         switch (numero){
 
             case 1:
-                listview.setAdapter(adapter1);
+                listview.setAdapter(adapter1);//Si  el valor recibido es 1 se mostrara en el listview el adaptador adapter1
 
                 break;
             case 2:
-                listview.setAdapter(adapter2);
+                listview.setAdapter(adapter2);//Si  el valor recibido es 2 se mostrara en el listview el adaptador adapter2
 
                 break;
             case 3:
-                listview.setAdapter(adapter3);
+                listview.setAdapter(adapter3);//Si  el valor recibido es 3 se mostrara en el listview el adaptador adapter3
 
                 break;
             case 4:
-                listview.setAdapter(adapter4);
+                listview.setAdapter(adapter4);//Si  el valor recibido es 4 se mostrara en el listview el adaptador adapter4
 
                 break;
 
@@ -440,14 +440,14 @@ public class Cafeteria extends Fragment {
         //En este metodo de leen los datos
 
         try {
-            JSONArray columns = object.getJSONArray("rows");
+            JSONArray columns = object.getJSONArray("rows");//Se crea un JSONArray llamado columns en donde se ingresaran las filas de el google drive
 
 
                 for (int r = 1; r < 8; ++r) {
-                    JSONObject column = columns.getJSONObject(r);
+                    JSONObject column = columns.getJSONObject(r);//Se ingresan en colum las columnas del google drive de la columna 1 a la 7 que es en donde se encuentra el menu economico de delisabores
                     JSONArray rows = column.getJSONArray("c");
-                    String dia = rows.getJSONObject(diadelasemana).getString("v");
-                    String tipo = rows.getJSONObject(1).getString("v");
+                    String dia = rows.getJSONObject(diadelasemana).getString("v");//Se obtienen en la variable dia las filas
+                    String tipo = rows.getJSONObject(1).getString("v");//se obtiene en tipo la fila 1 del google drive
 
                     team1 = new Team(dia, tipo);//Se crea las variables team por cada tipo de menu
                     teams1.add(team1);//y se agregan al array teams
@@ -497,7 +497,7 @@ public class Cafeteria extends Fragment {
 
 
 
-            adapter1 = new TeamsAdapter(getActivity(), R.layout.team, teams1);//Se crean los adaptadores
+            adapter1 = new TeamsAdapter(getActivity(), R.layout.team, teams1);//Se crean los adaptadores que contienen la informacion del menu
             adapter2 = new TeamsAdapter(getActivity(), R.layout.team, teams2);
             adapter3 = new TeamsAdapter(getActivity(), R.layout.team, teams3);
             adapter4 = new TeamsAdapter(getActivity(), R.layout.team, teams4);
