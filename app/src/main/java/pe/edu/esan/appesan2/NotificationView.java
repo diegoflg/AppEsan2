@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by educacionadistancia on 21/09/2015.
+ * Clase que se creo para mostrar avisos fuera de la aplicacion, actualmente no se usa
  */
 public class NotificationView extends Activity {
     @Override

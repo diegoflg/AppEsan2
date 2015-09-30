@@ -5,7 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Diegoflg on 7/24/2015.
+ * Modulo que mostraba el estado de pagos de una base de datos interna
+ * Este modulo ya no se usa
  */
 public class PagosBD extends SQLiteOpenHelper{
     String sqlCreate="CREATE TABLE Pagos (usuario TEXT, concepto TEXT, monto TEXT, vencimiento TEXT)";

@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Noticias_Adapter extends ArrayAdapter<Object> {
+public class   Noticias_Adapter extends ArrayAdapter<Object> {
 	Context context;
 	private ArrayList<Noticias> noticias;
 	RequestQueue requestQueue;

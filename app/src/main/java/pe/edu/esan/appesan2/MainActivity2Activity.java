@@ -85,7 +85,8 @@ public class MainActivity2Activity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_activity2);
 
-        notify("Recordatorio","No se olvide de rellenar la encuenta de cada curso.Mas informacion en su correo");
+       // notify("Recordatorio","No se olvide de rellenar la encuenta de cada curso.Mas informacion en su correo");
+       // se uso para mandar notificaciones
 
 
 
