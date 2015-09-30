@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Diegoflg on 7/21/2015.
+ *Base de datos para el modulo de notas, esta clase ya no se usa
  */
 public class NotasBD extends SQLiteOpenHelper {
 

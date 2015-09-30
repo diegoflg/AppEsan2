@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class Mapa extends Fragment {
+    //Declaración de variables
     TabHost mTabHost3;
     ImageView imagenMapa;
     com.sothree.slidinguppanel.SlidingUpPanelLayout sliding4;
@@ -65,20 +66,31 @@ public class Mapa extends Fragment {
         // inflat and return the layout
         View v = inflater.inflate(R.layout.lay_mapa, container, false);
 
+        //Retiene el estado del fragmento
         setRetainInstance(true);
+
+        //Da valor a la variable anteriormente declarada con un elemento del layout dado
         mTabHost3 = (TabHost) v.findViewById(R.id.tabHost3);
         mTabHost3.setup();
 
+        //Permite la existencia de dos opciones para el tabhost
         TabHost.TabSpec spec = mTabHost3.newTabSpec("Tab 1");
+        //Añade el contenido al tab
         spec.setContent(R.id.mapaesan);
+        //Añade el nombre del tab
         spec.setIndicator("Mapa interno");
+        //Añade el tab al TabHost
         mTabHost3.addTab(spec);
 
         spec=mTabHost3.newTabSpec("Tab 2");
+        //Añade el contenido al tab
         spec.setContent(R.id.waze);
+        //Añade el nombre del tab
         spec.setIndicator("Esan en Waze");
+        //Añade el tab al TabHost
         mTabHost3.addTab(spec);
 
+        //El tabHost muestra el primer tab como vista principal, se cuenta desde 0
         mTabHost3.setCurrentTab(0);
 
 
@@ -102,8 +114,13 @@ public class Mapa extends Fragment {
 
 
         //---------------------------------MAPA DE ESAN-------------------------------------
+        //Se da valor al elemento declarado buscandolo en el layout
         imagenMapa = (ImageView)v.findViewById(R.id.imagenMapa);
+
+        //Se da una imagen al elemento ImageView
         imagenMapa.setImageResource(R.drawable.esanmap);
+
+        //Sirve para obtener datos de altura y ancho de la pantalla del celular
         final float dpi = getResources().getDisplayMetrics().density;
 
         WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
@@ -113,31 +130,51 @@ public class Mapa extends Fragment {
         int height = size.y;
         int aa=height/6;
 
+        //Se da valor al elemento declarado buscandolo en el layout
         sliding4=(com.sothree.slidinguppanel.SlidingUpPanelLayout)v.findViewById(R.id.sliding_layout4);
         sliding4.setAnchorPoint(aa);
 
 
         //----------------------------------------------------------------------------------
-
+        //Se da valor al elemento buscandolo en el layout
         listamapa = (ListView)v.findViewById(R.id.listamapa);
+
+        //Se crea una cadena de valores para la lista
         String[] values = new String[]{"PABELLON A", "PABELLÓN B", "AULAS C", "PABELLÓN D", "COMEDOR PRINCIPAL", "CAFETERÍA 338"};
+
+        //Se crea un adaptador simple para la lista
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+
+        //Se asigna el adaptador a la lista
         listamapa.setAdapter(adapter);
+
         listamapa.setTextFilterEnabled(false);
 
+        //Se inicia el estado del slidingUpPanel en collapsed para que este cerrado
         sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+
+        //Se crea una matriz de inicio para la ubicacion de la imagen
         float inicio[] = new float[]{1, 0, -209, 0, 1, -372, 0, 0, 1};
+
+        //Se da los valores a la matriz
         matrix.setValues(inicio);
+
+        //Se da la matriz con los valores a la imagen
         imagenMapa.setImageMatrix(matrix);
+
         //--------------------------ESAN MAPA-------------------------------
         //{[1.0, 0.0, -209.54346][0.0, 1.0, -371.75314][0.0, 0.0, 1.0]}
 
         imagenMapa.setOnTouchListener(new View.OnTouchListener() {
+            //Si la imagen es tocada entra a este metodo
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                //Llama al metodo del mismo nombres
                 dumpEvent(event);
 
                 // Handle touch events here...
+                //Permite manejar los tipos de toques que se le puede hacer a la imagen como mover y hacer zoom
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
                         savedMatrix.set(matrix);
@@ -176,7 +213,9 @@ public class Mapa extends Fragment {
                         }
                         break;
                 }
+                //Le da el valor de la matriz a la imagen
                 imagenMapa.setImageMatrix(matrix);
+
                 Log.i(TAG, "LOCALIZADO EN: " + matrix);
 
                 return true;
@@ -188,8 +227,14 @@ public class Mapa extends Fragment {
         mTabHost3.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
+                //Cundo el tab es cambiado de mapa interno a waze
+
+                //Cuando el tab actual escogido es Esan en waze entra
                 if (mTabHost3.getCurrentTab() == 1) {
+                    //Realiza el metodo con el mismo nombre
                     waze();
+
+                    //Oculta el slidingUpPanel
                     sliding4.setVisibility(View.INVISIBLE);
                 }
             }
@@ -197,17 +242,28 @@ public class Mapa extends Fragment {
 
 
         listamapa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //Cuando se da clic a un item en la lista del slidingUpPanel
+
+            //Declaracion de variables
             int inicio;
+
+            //Cadena de 9 numeros flotantes para una matriz
             final float ttt[] = new float[9];
+
+            //Manejador de tiempo
             Handler H2 = new Handler();
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-
+                //Segun la posicion del dato escogido de la lista entrara el caso con su respectiva posicion
                 switch (position) {
                     case 0:
                         //PABELLON A
+
+                        //Obtiene los valores de la matriz actual
                         matrix.getValues(ttt);
+
+                        //Declara dos cadenas flotantes y obtiene los datos de la matriz
                         final float[] tx0 = {ttt[Matrix.MTRANS_X]};
                         final float[] ty0 = {ttt[Matrix.MTRANS_Y]};
                         Log.i(TAG, "TRAS X:" + String.valueOf(tx0[0]));
@@ -216,12 +272,15 @@ public class Mapa extends Fragment {
                         int txI0 = (int) tx0[0];
                         int tyI0 = (int) ty0[0];
 
+                        // Se hace una operacin para definir cuanto le falta a la matriz actual para llegar a ser la matriz escogida
                         int txF0 = txI0 + (int)(419*(double)dpi);
                         int tyF0 = tyI0 + (int)(501*(double)dpi);
                         //Matrix{[1.0, 0.0, -419.24722][0.0, 1.0, -501.22787][0.0, 0.0, 1.0]}
                         Log.i(TAG, "NÚMERO ENTERO RESTADO X: " + String.valueOf(txF0));
                         Log.i(TAG, "NÚMERO ENTERO RESTADO Y: " + String.valueOf(tyF0));
 
+                        //Se divide entre 50 para que el handler funcione de manera que la imagen se desplace y muestre ese movimiento
+                        //desde donde esta hacia donde debe llegar segun la opcion escogida de la lista
                         final int txD0 = txF0 / 50;
                         final int tyD0 = tyF0 / 50;
 
@@ -241,13 +300,16 @@ public class Mapa extends Fragment {
                         H2.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                //Toast.makeText(getActivity(), "SALE IMAGEN", Toast.LENGTH_SHORT).show();
+                                //Muestra el toast con la imagen del lugar escogido despues de 2.4 segundos
                                 toastshow(getActivity(), 0);
                             }
                         },2400
                         );
 
+                        //Obtiene los valores dela matriz actual
                         matrix.getValues(ttt);
+
+                        //Se colapsa el slidingUpPanel para una mejor visualizacion del mapa
                         sliding4.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                         break;
 
@@ -486,6 +548,8 @@ public class Mapa extends Fragment {
         return v;
     }
 
+
+    //Los siguientes metodos son sacados de: http://stackoverflow.com/questions/28190319/moving-image-with-its-touch-event-in-android
     private void dumpEvent(MotionEvent event) {
         String names[] = { "DOWN", "UP", "MOVE", "CANCEL", "OUTSIDE",
                 "POINTER_DOWN", "POINTER_UP", "7?", "8?", "9?" };
@@ -526,9 +590,11 @@ public class Mapa extends Fragment {
         point.set(x / 2, y / 2);
     }
 
+    //Metodo que abre el mapa de Esan en Waze
     public void waze(){
         try
         {
+            //Abre Waze con el mapa de ESAN si es que esta instalada la aplicacion de Waze
             //String url = "waze://?ll=<-12.105019>,<-76.961066>&z=10";
             String url = "waze://?ll=-12.105,-76.961&z=10";
             Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(url) );
@@ -536,55 +602,98 @@ public class Mapa extends Fragment {
         }
         catch ( ActivityNotFoundException ex  )
         {
+            //Abre Waze en el Play Store en caso de no tener instalada la app Waze
             Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=com.waze" ) );
             startActivity(intent);
         }
     }
 
     public void toastshow(final Activity context, int caso){
+        //Muestra un Toast o mensaje en pantalla el cual contendra la imagen del lugar y su nombre respectivo segun se
+        //escoga en la lista de datos
 
+        //Se da un elemento del layout
         RelativeLayout toastR = (RelativeLayout) context.findViewById(R.id.toast);
+
+        //Se obtiene el System Service
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        //Se da valor a la vista con el layout
         View view = layoutInflater.inflate(R.layout.toastmapa,toastR);
+
+        //Se declara y se da valor a una vista de imagen con el elemento del mismo tipo en el layout
         ImageView  imview1= (ImageView) view.findViewById(R.id.imageView1);
+
+        //Se declara y se da valor a un cuadro de texto con el elemento del mismo tipo en el layout
         TextView tv1 = (TextView) view.findViewById(R.id.tvdelmapa);
+
         //FUENTE PARA TEXTOS:
         String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
-        Typeface TT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+        Typeface TT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);
+        //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
+
+        //Se asigna un tipo de fuente al cuadro de texto
         tv1.setTypeface(TT);
+
+        //Se le da color a la fuente del cuadro de texto
         tv1.setTextColor(Color.parseColor("#000000"));
 
-
+        //Segun el dato escogido de la lista se mostraran una imagen y texto
         switch (caso){
             case 0:
+                //Se da una imagen del edificio A al elemento
                 imview1.setImageResource(R.drawable.edificioa);
+
+                //Se da un texto para el cuadro de texto
                 tv1.setText("PABELLÓN A");
+
                 break;
             case 1:
+                //Se da una imagen del edificio B al elemento
                 imview1.setImageResource(R.drawable.edificiob);
+
+                //Se da un texto para el cuadro de texto
                 tv1.setText("PABELLÓN B");
                 break;
             case 2:
+                //Se da una imagen de los salones C al elemento
                 imview1.setImageResource(R.drawable.pabelloncc);
+
+                //Se da un texto para el cuadro de texto
                 tv1.setText("SALONES C");
                 break;
             case 3:
+                //Se da una imagen del edificio D al elemento
                 imview1.setImageResource(R.drawable.edificiodd);
+
+                //Se da un texto para el cuadro de texto
                 tv1.setText("PABELLÓN D");
                 break;
             case 4:
+                //Se da una imagen del comedor al elemento
                 imview1.setImageResource(R.drawable.comedor);
+
+                //Se da un texto para el cuadro de texto
                 tv1.setText("COMEDOR");
                 break;
             case 5:
+                //Se da una imagen de la cafeteria al elemento
                 imview1.setImageResource(R.drawable.cafe);
+
+                //Se da un texto para el cuadro de texto
                 tv1.setText("CAFETERÍA 338");
                 break;
         }
 
+        //Se declara y crea un toast en el fragmento actual
         Toast toast = new Toast(context);
+        //Se le da una vista al toast
         toast.setView(view);
+
+        //Se le asigna una duracion al toast
         toast.setDuration(Toast.LENGTH_LONG);
+
+        //Aparece el toast
         toast.show();
     }
 
