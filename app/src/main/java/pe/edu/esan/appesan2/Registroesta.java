@@ -34,10 +34,17 @@ import java.util.List;
  *
  * */
 public class Registroesta extends Fragment {
+    //Declaracion de variables
 
+    //Para el semaforo
     private ImageView sem1,sem2,sem3;
+
+    //Dato del color activo del semaforo
     private String libres;
+
+    //Dialogo de progreso de carga
     private ProgressDialog pDialog;
+
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
     private static final String REGISTER_URL = "http://www.estacionamientoesan.site88.net/cas/register.php";
@@ -58,8 +65,15 @@ public class Registroesta extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.lay_registroesta, container, false);
         setRetainInstance(true);
+
+        //Se da valor a los elemntos declarados llamando a los elementos correspondientes en el layout
+        //Semaforo rojo
         sem1=(ImageView)v.findViewById(R.id.sema1);
+
+        //Semaforo amarillo
         sem2=(ImageView)v.findViewById(R.id.sema2);
+
+        //Semaforo verde
         sem3=(ImageView)v.findViewById(R.id.sema3);
 
         new LoadAllProducts().execute();// Este metodo busca el estado actual del estacionamiento en la base de datos
@@ -69,16 +83,17 @@ public class Registroesta extends Fragment {
         sem1.setOnClickListener(new View.OnClickListener() {//se detecta si se hizo click a este boton(bombilla roja del semaforo)
             @Override
             public void onClick(View v) {
-
-                if(isNetworkAvailable()==true){//Se verifica la conexion a internet
+        //Cuando el semaforo rojo es clickeado
+                //Si es que existe conexion a internet
+                if(isNetworkAvailable()==true){
                     sem1.setImageResource(R.drawable.rojoprendido);//Se aciva la imagen del rojo predido
                     sem2.setImageResource(R.drawable.amarilloapagado);//Se apaga la luz amarilla
                     sem3.setImageResource(R.drawable.verdeapagado);//Se apaga la luz verde
                     libres="rojo";
                     new CreateUser().execute();// se ejecuta este metodo, que guarda el estado "rojo" en la base de datos
-
+                //Si no existe conexion a internet
                 }else{
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "No hay conexion a internet", Toast.LENGTH_LONG).show();
                     Log.d("internet", "no hay");
                 }
 
@@ -90,14 +105,16 @@ public class Registroesta extends Fragment {
         sem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+        //Cuando el semaforo amarillo es clickeado
+                //Si es que existe conexion a internet
                 if(isNetworkAvailable()==true){
                     sem1.setImageResource(R.drawable.rojoapagado);
                     sem2.setImageResource(R.drawable.amarilloprendido);
                     sem3.setImageResource(R.drawable.verdeapagado);
                     libres="amarillo";
                     new CreateUser().execute();
+
+                //Si no existe conexion a internet
                 }else{
                     Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
                     Log.d("internet", "no hay");
@@ -110,13 +127,16 @@ public class Registroesta extends Fragment {
         sem3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+        //Cuando el semaforo verde es clickeado
+                //Si es que existe conexion a internet
                 if(isNetworkAvailable()==true){
                     sem1.setImageResource(R.drawable.rojoapagado);
                     sem2.setImageResource(R.drawable.amarilloapagado);
                     sem3.setImageResource(R.drawable.verdeprendido);
                     libres="verde";
                     new CreateUser().execute();
+
+                //Si no existe conexion a internet
                 }else{
                     Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
                     Log.d("internet", "no hay");
@@ -139,7 +159,7 @@ public class Registroesta extends Fragment {
 
         @Override
         protected void onPreExecute() {
-
+        //Metodo antes de ser ejecutada la accion
 
 
             super.onPreExecute();
@@ -153,6 +173,8 @@ public class Registroesta extends Fragment {
 
         @Override
         protected String doInBackground(String... args) {
+            //Metodo que se hace en segundo plano
+
             // TODO Auto-generated method stub
             // Check for success tag
             int success;
@@ -191,6 +213,8 @@ public class Registroesta extends Fragment {
         }
 
         protected void onPostExecute(String file_url) {
+            //Metodo que se hace terminada la ejecucion de la accion
+
             // dismiss the dialog once product deleted
             pDialog.dismiss();
             if (file_url != null){
@@ -238,19 +262,25 @@ public class Registroesta extends Fragment {
             return null;
         }
         protected void onPostExecute(String file_url) {
+            //Despues de ser ejecutada la accion
+
+            //El dialogo de progreso desaparece
             pDialog.dismiss();
 
+            //Obtiene el color elegido del semaforo para que los otros dos se apaguen
             if(estado.equals("rojo")){
                 sem1.setImageResource(R.drawable.rojoprendido);
                 sem2.setImageResource(R.drawable.amarilloapagado);
                 sem3.setImageResource(R.drawable.verdeapagado);
 
+            //Obtiene el color elegido del semaforo para que los otros dos se apaguen
             }
             if(estado.equals("amarillo")){
                 sem1.setImageResource(R.drawable.rojoapagado);
                 sem2.setImageResource(R.drawable.amarilloprendido);
                 sem3.setImageResource(R.drawable.verdeapagado);
 
+            //Obtiene el color elegido del semaforo para que los otros dos se apaguen
             }
             if(estado.equals("verde")){
                 sem1.setImageResource(R.drawable.rojoapagado);
@@ -263,6 +293,8 @@ public class Registroesta extends Fragment {
     }
 
     private boolean isNetworkAvailable() {
+        //Obtiene verdadero o falso segun la verificaion de conexion a internet
+
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();

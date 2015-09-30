@@ -13,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+/*
+	Adaptador de la lista para Noticias
+	https://github.com/GeekyTheory/Tutorial-Android-Lector-de-noticias
+ */
 public class   Noticias_Adapter extends ArrayAdapter<Object> {
 	Context context;
 	private ArrayList<Noticias> noticias;
