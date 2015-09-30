@@ -70,6 +70,7 @@ public class Directorio extends Fragment {
                 String data=(String)parent.getItemAtPosition(position);
                 Log.v("pos", String.valueOf(data));
                 showPopup(getActivity(), data);
+
             }
         });
 
