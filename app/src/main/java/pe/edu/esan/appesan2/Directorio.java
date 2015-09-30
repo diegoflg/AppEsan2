@@ -31,18 +31,18 @@ import android.widget.TextView;
  * Modulo que muestra la pagina web de Conexion ESAN mediante un webView
  */
 public class Directorio extends Fragment {
-    ListView listViewSearch;
-    SearchView searchView;
-    private String data;
+    ListView listViewSearch;//Se crea un ListView llamado listViewSearch
+    SearchView searchView;//Se crea un SearchView llamado searchView
+    private String data;//Se crea un String llamado data
 
-    @Override
+    @Override//Override ue se ejecuta al crearse el view
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.lay_directorio, container, false);
-        setRetainInstance(true);
+        final View rootView = inflater.inflate(R.layout.lay_directorio, container, false);//Se relaciona el View con su respectivo XML que es lay_directorio
+        setRetainInstance(true);//Genera que no se afecte el fragmento en los cambios de configuracion
 
 
-        listViewSearch = (ListView) rootView.findViewById(R.id.listViewD);
-        searchView = (SearchView) rootView.findViewById(R.id.searchViewD);
+        listViewSearch = (ListView) rootView.findViewById(R.id.listViewD);//Se relaciona listViewSearch con el listViewD de su respectivo xml
+        searchView = (SearchView) rootView.findViewById(R.id.searchViewD);//Se relaciona searchView con el searchViewD de su respectivo xml
 
 
         //FUENTE PARA TÍTULO EN TABHOST:
@@ -53,16 +53,16 @@ public class Directorio extends Fragment {
         String font_pathB = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TB = Typeface.createFromAsset(getActivity().getAssets(),font_pathB);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
-        String[] values = new String[]{getString(R.string.d1),getString(R.string.d2),getString(R.string.d3),getString(R.string.d4),getString(R.string.d5),getString(R.string.d6),getString(R.string.d7),getString(R.string.d10),getString(R.string.d11),getString(R.string.d12),getString(R.string.d13),getString(R.string.d14),getString(R.string.d15),getString(R.string.d16),getString(R.string.d17),getString(R.string.d18)};
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
-        listViewSearch.setAdapter(adapter);
-        listViewSearch.setTextFilterEnabled(false);
-        setHasOptionsMenu(true);
+        String[] values = new String[]{getString(R.string.d1),getString(R.string.d2),getString(R.string.d3),getString(R.string.d4),getString(R.string.d5),getString(R.string.d6),getString(R.string.d7),getString(R.string.d10),getString(R.string.d11),getString(R.string.d12),getString(R.string.d13),getString(R.string.d14),getString(R.string.d15),getString(R.string.d16),getString(R.string.d17),getString(R.string.d18)};//Array con valores que seran los que apareceran en el listview
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);//adaptador que sirve para que en el listview aparezca el arreglo values
+        listViewSearch.setAdapter(adapter);//se le agrega el adaptador dapter a listViewSearch
+        listViewSearch.setTextFilterEnabled(false);// Se desabilita el filtro de texto
+        setHasOptionsMenu(true);//Report that this fragment would like to participate in populating the options menu by receiving a call to
 
-        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-        final TextView textView = (TextView) searchView.findViewById(id);
-        textView.setHint("Buscar...");
-        textView.setTypeface(TB);
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);//se crea el entero id que tendra de valor el identificador del searchview
+        final TextView textView = (TextView) searchView.findViewById(id);//Se relaciona textView con el id de su respectivo xml
+        textView.setHint("Buscar...");//apareze en texto buscar el textView
+        textView.setTypeface(TB);//Se le agregan los estilos al textView
 
         listViewSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
