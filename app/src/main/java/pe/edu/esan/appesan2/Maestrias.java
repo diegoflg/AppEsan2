@@ -26,34 +26,60 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by educacionadistancia on 24/07/2015.
+ *Modulo para mostrar en una lista las maestrias de esan
+ * junto a un webview que muestra la pagina de la maestria escogida
  */
 public class Maestrias extends Fragment {
+    //Declaracion de variables
+
+    //Elemento que permite ver una pagina web
     WebView wbM;
+
+    //Adaptador del Expandable List View
     ExpandableListAdapter listAdapter;
+
+    //Vista de Lista expandible
     ExpandableListView expListView;
+
+    //Datos padres de la lista
     List<String> listDataHeader;
+
+    //Datos hijos de la lista
     HashMap<String, List<String>> listDataChild;
+
+    //SlidingUpPanel
     com.sothree.slidinguppanel.SlidingUpPanelLayout sliding2;
+
+    //Cuadro de texto para el titulo del SllindUpPanel
     TextView titulo;
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        //Guarda es estado actual de fragmento
         super.onSaveInstanceState(outState);
+
+        //Guarda el estado actual de la vista web
         wbM.saveState(outState);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        //Restaura el estado del fragmento
         super.onActivityCreated(savedInstanceState);
+
+        //Restaura el estado de la vista web
         wbM.restoreState(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Infla la vista con el layout correspondiente
         View rootView   = inflater.inflate(R.layout.lay_maestrias, container, false);
+
+        //Retiene el estado del fragmento
         setRetainInstance(true);
 
+        //Se declara y da valor a un dialogo de progreso
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
         //FUENTE Y COLOR PARA TEXTOS:
@@ -61,22 +87,41 @@ public class Maestrias extends Fragment {
         Typeface TFEE = Typeface.createFromAsset(getActivity().getAssets(), font_pathEE);
         //llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
+        //Se le da valor al cuadro de texto llamando al elemento correspondiente del layout
         titulo = (TextView)rootView.findViewById(R.id.titulo);
+
+        //Se le asigna la fuente al texto dentro del cuadro de texto
         titulo.setTypeface(TFEE);
 
 
-
+        //Se da el valor a la vista web segun el elemento dentro del layout
         wbM = (WebView)rootView.findViewById(R.id.wbM);
+
+        //Carga la pagina web segun la cadena de texto dado
         wbM.loadUrl("http://www.esan.edu.pe/mba/tiempo-completo/");
+
         wbM.getSettings().setUseWideViewPort(true);
         wbM.getSettings().setLoadWithOverviewMode(true);
+
+        //Se dispone los controles para el zoom de la pagina
         wbM.getSettings().setBuiltInZoomControls(true);
+
+        //Se da soporte de zoom a la pagina web
         wbM.getSettings().setSupportZoom(true);
+
+        //Opcion desactivada: no muestran los botones de zoom en el webview. No afecta el funcionamiento del zoom
         wbM.getSettings().setDisplayZoomControls(false);
+
+        //Activa el uso de JavaScript
         wbM.getSettings().setJavaScriptEnabled(true);
+
+        //Carga las imagenes de la pagina web automaticamente
         wbM.getSettings().setLoadsImagesAutomatically(true);
+
+        //Bloquea la carga de imagenes de la pagina web
         wbM.getSettings().setBlockNetworkImage(true);
 
+        //Se obtiene el tamaño de la pantalla del celular
         WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
@@ -84,8 +129,11 @@ public class Maestrias extends Fragment {
         int height = size.y;
         int aa=height/8;
 
+        //Se da valor al sliding con el elemento del layout
         sliding2 =(com.sothree.slidinguppanel.SlidingUpPanelLayout)rootView.findViewById(R.id.sliding_layout2);
+
         //sliding2.setAnchorPoint(aa);
+
         sliding2.setPanelHeight(aa);
 
 
@@ -95,18 +143,24 @@ public class Maestrias extends Fragment {
 
         // preparing list data
         prepareListData();
+
+        //Crea la lista expandible en el fragmento actual con los datos padre e hijos
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader,listDataChild);
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
 
+        //la lista expandible es clickeada
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 Toast.makeText(getActivity(), listDataHeader.get(groupPosition) + " : " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+
+                //segun la posicion del padre
                 switch (groupPosition) {
                     case 0:
                         //MBA
+                        //segun la posicion del hijo
                         switch (childPosition) {
                             case 0:
                                 //MBA Tiempo Completo
@@ -133,6 +187,7 @@ public class Maestrias extends Fragment {
 
                     case 1:
                         //MSc
+                        //segun la posicion del hijo
                         switch (childPosition) {
                             //MAESTRÍAS ESPECIALIZADAS CON CONCENTRACIÓN EN NEGOCIOS
                             case 0:
@@ -226,6 +281,7 @@ public class Maestrias extends Fragment {
 
                     switch (keyCode) {
                         case KeyEvent.KEYCODE_BACK:
+                            //si el webview puede regresar de pagina regresara
                             if (webView.canGoBack()) {
                                 webView.goBack();
                                 return true;
@@ -245,10 +301,15 @@ public class Maestrias extends Fragment {
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                //cuando la pagina comienza a cargar
+
+                //muestra el dialogo de progreso
                 dialog.show();
 
+                //declara y crea una variable de tiempo
                 final Timer t = new Timer();
 
+                //actividad que se realiza con la variable del tiempo
                 t.schedule(new TimerTask() {
                     public void run() {
 
@@ -260,12 +321,18 @@ public class Maestrias extends Fragment {
 
             @Override
             public void onPageFinished(WebView view, String url) {
+                //Metodo que ocurre cuando termina de cargar la pagina web
+
+                //el dialogo de progreso desaparece
                 dialog.dismiss();
 
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                //Este metodo sirve para abrir la pagina web dentro o fuera de la aplicacion
+                //Si retorna verdadero la pagina se abrira fuera de la aplicacion en un navegador
+                //Si retorna falso la pagina se abrira dentro de la aplicacion
                 return false;
             }
         });
@@ -273,14 +340,21 @@ public class Maestrias extends Fragment {
     }
 
     private void prepareListData(){
+        //Perpara los datos de la lista
+
+        //Crea una nueva cadena de padres
         listDataHeader = new ArrayList<String>();
+
+        //Crea una nueva cadena de hijos
         listDataChild = new HashMap<String, List<String>>();
 
-        // Adding child data
+        // Adding parent data
+        //Añade los datos padres
         listDataHeader.add("MBA Maestría en Administración");
         listDataHeader.add("MSc Maestrías Especializadas");
 
         // Adding child data
+        //Añade los datos hijos
         List<String> MBA = new ArrayList<String>();
         MBA.add("MBA Tiempo Completo");
         MBA.add("MBA Tiempo Parcial");
@@ -306,6 +380,7 @@ public class Maestrias extends Fragment {
         //Maestrías en ingestigación - 1er paso al programa doctoral
         MSc.add("Investigación en Ciencias de la Administración");
 
+        //Da los datos de padre con su lista de respectivos hijos a la lista expandible
         listDataChild.put(listDataHeader.get(0), MBA); // Header, Child data
         listDataChild.put(listDataHeader.get(1), MSc);
     }

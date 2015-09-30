@@ -19,7 +19,8 @@ import android.widget.TextView;
 import pl.polidea.view.ZoomView;
 
 /**
- * Created by Diegoflg on 7/13/2015.
+ * Clase que permitia la vista del horario del alumno registrado en la base de datos interna
+ * Esta clase no se muestra actualmente en la aplicacion pero puede ser utilizada
  */
 public class Horario extends Fragment {
     private TextView tvHorario;

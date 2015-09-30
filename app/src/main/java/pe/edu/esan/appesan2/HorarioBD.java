@@ -5,7 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by Diegoflg on 7/21/2015.
+ * Base de datos que guardaba datos de usuario, curso, dia, hora y salon para mandarlos luego
+ * a la ventana de Horario, sin embargo esta clase ya no es utilizada en la aplicacion. Es decir, es
+ * una clase extra que puede, si se desea, ser utilizada de nuevo.
  */
 public class HorarioBD extends SQLiteOpenHelper {
 
