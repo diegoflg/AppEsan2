@@ -67,7 +67,7 @@ public class Career extends Fragment {
         myWebView.getSettings().setLoadWithOverviewMode(true);
         myWebView.getSettings().setBuiltInZoomControls(true);
         myWebView.getSettings().setSupportZoom(true);
-      //myWebView.getSettings().setAppCachePath(getActivity().getApplicationContext().getCacheDir().getAbsolutePath());
+        //myWebView.getSettings().setAppCachePath(getActivity().getApplicationContext().getCacheDir().getAbsolutePath());
         myWebView.getSettings().setDomStorageEnabled(true);
         myWebView.getSettings().setAppCachePath("/data/data/pe.edu.esan.appesan2/cache");
         myWebView.getSettings().setAllowFileAccess(true);
@@ -85,12 +85,9 @@ public class Career extends Fragment {
         }else{
             Log.i(TAG, "CON INTERNET");
             myWebView.loadUrl("http://careercenter.esan.edu.pe/");
-
             myWebView.getSettings().setCacheMode( WebSettings.LOAD_DEFAULT );
 
         }
-
-
 
 
 
@@ -121,7 +118,7 @@ public class Career extends Fragment {
 
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
-            dialog.show();
+            dialog.show();//Se muestra el ProgressDialog
 
             t.schedule(new TimerTask() {
                 public void run() {
@@ -134,8 +131,8 @@ public class Career extends Fragment {
 
         @Override
         public void onPageFinished(WebView view, String url){
-            dialog.dismiss();
-            t.cancel();
+            dialog.dismiss();//Se quita el ProgressDialog
+            t.cancel();//Se cancela el Timer
 
         }
 
@@ -147,7 +144,7 @@ public class Career extends Fragment {
         return rootView;
     }
 
-    private boolean isNetworkAvailable() {
+    private boolean isNetworkAvailable() {//Se verifia la conexion a internet
         ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();

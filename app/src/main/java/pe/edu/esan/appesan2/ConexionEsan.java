@@ -14,7 +14,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by educacionadistancia on 24/07/2015.
+ * Modulo que muestra la pagina web de Conexion ESAN mediante un webView
  */
 public class ConexionEsan extends Fragment {
     WebView ceWB;
@@ -49,11 +49,11 @@ public class ConexionEsan extends Fragment {
         ceWB.getSettings().setBuiltInZoomControls(true);
         ceWB.getSettings().setSupportZoom(true);
         ceWB.getSettings().setDisplayZoomControls(false);
-        final Timer t = new Timer();
+        final Timer t = new Timer();//Se crea el Timer
 
 
 
-        ceWB.setOnKeyListener(new View.OnKeyListener() {
+        ceWB.setOnKeyListener(new View.OnKeyListener() {//Se retrocede dentro del webView al presionar atras
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
@@ -76,7 +76,7 @@ public class ConexionEsan extends Fragment {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon){
 
-            dialog.show();
+            dialog.show();//Se muestra el ProgressDialog
 
 
             t.schedule(new TimerTask() {

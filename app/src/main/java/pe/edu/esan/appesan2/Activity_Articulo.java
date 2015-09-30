@@ -12,6 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+/**
+ * Este es el Fragmento que se abre cuando le das click a una oticia en la clase Noticia,
+ * en este fragmento se muestra la noticia completa.
+ */
+
 public class Activity_Articulo extends Fragment{
 
 	Noticias articulo;
@@ -37,6 +42,10 @@ public class Activity_Articulo extends Fragment{
 							fragment = new Noticia();
 							fragmentManager.beginTransaction().
 									replace(R.id.container, fragment).commit();
+
+							/**
+							 * Se regresa al framento Noticia al presionar atras
+							 */
 							break;
 					}
 				}

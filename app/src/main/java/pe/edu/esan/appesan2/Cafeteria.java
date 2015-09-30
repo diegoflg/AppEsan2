@@ -33,10 +33,10 @@ import java.util.Calendar;
 public class Cafeteria extends Fragment {
 
     private static final String DEBUG_TAG = "HttpExample";
-    ArrayList<Team> teams1 = new ArrayList<Team>();
-    ArrayList<Team> teams2 = new ArrayList<Team>();
-    ArrayList<Team> teams3 = new ArrayList<Team>();
-    ArrayList<Team> teams4 = new ArrayList<Team>();
+    ArrayList<Team> teams1 = new ArrayList<Team>();//Diferentes arrays para cada tipo de menus, economico de Delisabores,
+    ArrayList<Team> teams2 = new ArrayList<Team>();//economico de la Ruta
+    ArrayList<Team> teams3 = new ArrayList<Team>();//ejecutivo
+    ArrayList<Team> teams4 = new ArrayList<Team>();//dieta
     ProgressDialog pb;
 
 
@@ -145,12 +145,12 @@ public class Cafeteria extends Fragment {
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         int height = displaymetrics.heightPixels;
-        double width = displaymetrics.widthPixels;
-        width=width*0.13;
-        int y = (int)Math.round(width);
+        double width = displaymetrics.widthPixels;//se obtiene el ancho de la pantalla del dispositivo
+        width=width*0.13;//se obtiene el 13 porciento el ancho
+        int y = (int)Math.round(width);//se redondea el 13 porciento del ancho
 
-        listview.setPadding(y,0,0,0);
-        listview.setVisibility(View.INVISIBLE);
+        listview.setPadding(y,0,0,0);//a el listview se le pone de pading izquierdo el 13 porciento del ancho para que el list view cuadre dentro del fondo de cafeteria(hoja.jpg)
+        listview.setVisibility(View.INVISIBLE);//el list view se pone invisible, se pondra visible al apretar el boton de seleccion de menu
 
 
 
@@ -168,7 +168,7 @@ public class Cafeteria extends Fragment {
         spec.setIndicator("Delisabores");
         mTabHost.addTab(spec);
 
-        mTabHost.setCurrentTab(0);
+        mTabHost.setCurrentTab(0);//El tabHost inicial sera el de la Ruta
 
         //FUENTE PARA TÍTULO EN TABHOST:
         String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
@@ -189,7 +189,7 @@ public class Cafeteria extends Fragment {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         Calendar calendar = Calendar.getInstance();
 
-        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        int day = calendar.get(Calendar.DAY_OF_WEEK);//Se obtiene el dia actual para mostrar en cafeteria solo el menu del dia actual
         String dia=String.valueOf(day);
 
         diadelasemana=day;
@@ -198,14 +198,14 @@ public class Cafeteria extends Fragment {
         pb.setTitle("Cargando");
                         pb.setMessage("Please Wait....");
                        pb.setCancelable(false);
-                       pb.show();
+                       pb.show();//se inicia el progressDialog
 
 
 
 
 
 
-        if(isNetworkAvailable()==true){
+        if(isNetworkAvailable()==true){//Se verifica la conexion a internet
                         go(v);
         }else{
             Toast t=Toast.makeText(getActivity(),"No hay coneccion a internet", Toast.LENGTH_SHORT);
@@ -427,10 +427,13 @@ public class Cafeteria extends Fragment {
                 processJson(object);
             }
         }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms");
+        //se descargaran los datos almacenados en el google drive, el link de arriba es un link especial con los datos del google drive listos para ser leidos con JSON
     }
 
 
     private void processJson(JSONObject object) {
+
+        //En este metodo de leen los datos
 
         try {
             JSONArray columns = object.getJSONArray("rows");
@@ -442,8 +445,8 @@ public class Cafeteria extends Fragment {
                     String dia = rows.getJSONObject(diadelasemana).getString("v");
                     String tipo = rows.getJSONObject(1).getString("v");
 
-                    team1 = new Team(dia, tipo);
-                    teams1.add(team1);
+                    team1 = new Team(dia, tipo);//Se crea las variables team por cada tipo de menu
+                    teams1.add(team1);//y se agregan al array teams
                 }
 
 
@@ -490,12 +493,12 @@ public class Cafeteria extends Fragment {
 
 
 
-            adapter1 = new TeamsAdapter(getActivity(), R.layout.team, teams1);
+            adapter1 = new TeamsAdapter(getActivity(), R.layout.team, teams1);//Se crean los adaptadores
             adapter2 = new TeamsAdapter(getActivity(), R.layout.team, teams2);
             adapter3 = new TeamsAdapter(getActivity(), R.layout.team, teams3);
             adapter4 = new TeamsAdapter(getActivity(), R.layout.team, teams4);
 
-            pb.dismiss();
+            pb.dismiss();//se cancela el progress Dialog porque los arrays estan listos con la informacion cargada
 
 
         } catch (JSONException e) {

@@ -1,8 +1,9 @@
 package pe.edu.esan.appesan2;
 
 /**
- * Created by Diegoflg on 8/4/2015.
- */
+ * Clase en donde se guardan datos para ser usados entre dos o mas clases.
+ * Se guara el el user y el pass, idioma del app en lang, un entero en menu que sirve para saber si has hecho click en impresiones
+        */
 public class Datah {
     private int data=0;
     private int lang=0;

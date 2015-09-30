@@ -23,6 +23,10 @@ import android.widget.PopupWindow;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+
+/**
+ * Modulo que muestra la pagina web de Conexion ESAN mediante un webView
+ */
 public class Directorio extends Fragment {
     ListView listViewSearch;
     SearchView searchView;

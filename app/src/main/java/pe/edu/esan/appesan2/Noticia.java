@@ -16,12 +16,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by Diegoflg on 7/13/2015.
+ * Modulo de noticias en donde se muestra noticias del blog del mba de esan que es:
+ * http://www.esan.edu.pe/mba/
  */
 public class Noticia extends Fragment {
     public ArrayList<Noticias> array_Noticias = new ArrayList<Noticias>();
     private Noticias_Adapter adapter;
-    private String URL = "http://feeds.feedburner.com/mbaEsan";
+    private String URL = "http://feeds.feedburner.com/mbaEsan";// Usamos feedburner para que transforme el formato de http://www.esan.edu.pe/mba/blog/ a uno mas facil de leer
     ListView lista;
 
     @Override

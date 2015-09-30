@@ -46,6 +46,12 @@ public class CursosMooc extends Fragment {
         tvmooc.setTypeface(TTV);
 
 
+        /**
+         * Los Listeners de abajo abriran el Fragmento Webfragment para mostrar los respectivos links de los Cursos MOOC
+         *
+         */
+
+
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,12 +59,12 @@ public class CursosMooc extends Fragment {
                 Webfragment fragment;
                 fragment = new Webfragment();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("url", "https://es.coursera.org/");
-                fragment.setArguments(bundle);
+                Bundle bundle = new Bundle();//Se crean un Bundle, que es un paquete en donde puedes poner datos
+                bundle.putString("url", "https://es.coursera.org/");//Se pone en el Bundle la url del boton que presionaste
+                fragment.setArguments(bundle);//Se envia al fragmento el Bundle, para que el fragmento en su propia clase pueda saber que url mostrar
 
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, fragment)
+                        .replace(R.id.container, fragment)//El Webfragment remplaza al fragmento actual
                         .commit();
             }});
 
