@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by educacionadistancia on 22/09/2015.
+ * Modulo que sirve como adaptador a la lista expandible usada en Educacion Ejecutiva y Maestrias
+ * Esta clase es un adaptador customizado
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;

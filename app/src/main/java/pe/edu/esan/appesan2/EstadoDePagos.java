@@ -12,9 +12,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by Diegoflg on 7/24/2015.
+ * Modulo de estado de pagos que tiene una base de datos interna
+ * Ya no esta siendo utilizado
  */
 public class EstadoDePagos extends Fragment {
+    //Declaracion de variables
     //Para fuente
     TextView ttvv, concepto, monto, vencimiento;
     TextView tvpag1,tvpag2,tvpag3,tvpag4,tvpag5,tvpag6,tvpag7,tvpag8,tvpag9,tvpag10,tvpag11,tvpag12;
@@ -24,21 +26,38 @@ public class EstadoDePagos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        //Se crea y se infla o da valor a la vista del fragmento con el layout correspondiente
         View rootView = inflater.inflate(R.layout.lay_estado, container, false);
 
-
+        //Se retiene el estado del fragmento
         setRetainInstance(true);
 
         //FUENTE PARA TEXVIEWS :
         String font_pathTTV = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
         Typeface TTV = Typeface.createFromAsset(getActivity().getAssets(), font_pathTTV);
+
+        //Se da valor al cuadro de texto segun el layout
         ttvv= (TextView)rootView.findViewById(R.id.ttvv);
+
+        //Se asigna el tipo de fuente al cuadro de texto
         ttvv.setTypeface(TTV);
+
+        //Se da valor al cuadro de texto segun el layout
         concepto= (TextView)rootView.findViewById(R.id.concepto);
+
+        //Se asigna el tipo de fuente al cuadro de texto
         concepto.setTypeface(TTV);
+
+        //Se da valor al cuadro de texto segun el layout
         monto= (TextView) rootView.findViewById(R.id.monto);
+
+        //Se asigna el tipo de fuente al cuadro de texto
         monto.setTypeface(TTV);
+
+        //Se da valor al cuadro de texto segun el layout
         vencimiento= (TextView) rootView.findViewById(R.id.vencimiento);
+
+        //Se asigna el tipo de fuente al cuadro de texto
         vencimiento.setTypeface(TTV);
 
         String font_pathConcepto = "font/HelveticaNeue-Bold.ttf"; //ruta de la fuente
