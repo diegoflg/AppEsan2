@@ -21,24 +21,43 @@ import java.util.TimerTask;
 public class Webfragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Se determina la vista del fragmento, es decir se da el valor de su layout
         View rootView = inflater.inflate(R.layout.webfragment, container, false);
-        Bundle bundle = this.getArguments();//Recive un paquete del fragmento CursosMOOC
+
+        Bundle bundle = this.getArguments();//Recibe un paquete del fragmento CursosMOOC
         String link = bundle.getString("url");//De ese paquete obtiene el link que se abrira en el webView
 
+        //Se crea una variable y se le da su valor respectivo segun su layout
         final WebView wb = (WebView) rootView.findViewById(R.id.webfragment);
 
+        //Se crea un dialogo de progreso y se le da ciertos valores como donde aparecera y su contenido
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+        //Se crea una variable de tiempo
         final Timer t = new Timer();
 
+        //Se carga el link
+        wb.loadUrl(link);
 
-        wb.loadUrl(link);//Se carga el link
         wb.getSettings().setUseWideViewPort(true);
+
         wb.getSettings().setLoadWithOverviewMode(true);
+
+        //Se dispone los controles para el zoom de la pagina
         wb.getSettings().setBuiltInZoomControls(true);
+
+        //Se da soporte de zoom a la pagina web
         wb.getSettings().setSupportZoom(true);
+
+        //Opcion desactivada: no muestran los botones de zoom en el webview. No afecta el funcionamiento del zoom
         wb.getSettings().setDisplayZoomControls(false);
-        wb.getSettings().setJavaScriptEnabled(true);//Se permite el uso de java script
+
+        //Se permite el uso de java script
+        wb.getSettings().setJavaScriptEnabled(true);
+
+        //Se da la opcion de que las imagenes que contiene la pagina se carguen automaticamente
         wb.getSettings().setLoadsImagesAutomatically(true);
+
         rootView.setFocusableInTouchMode(true);
         rootView.requestFocus();
 
@@ -53,7 +72,7 @@ public class Webfragment extends Fragment {
                             if (webView.canGoBack()) {
                                 webView.goBack();
                                 return true;
-                                //Si el webView puede retroceder al presionar atras retrocedera
+                                //Si el webView puede retroceder al presionar atras retrocedera a la pagina anterior
                             } else {
                                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                                 CursosMooc fragment;
@@ -129,27 +148,33 @@ public class Webfragment extends Fragment {
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                //Metodo cuando la pagina web comienza a cargar
 
+                //El dialogo o ventana de progreso de la pagina aparece
                 dialog.show();
 
+                //El dialogo o ventena de progreso desparece depues de 4 segundos
                 t.schedule(new TimerTask() {
                     public void run() {
 
                         dialog.dismiss(); // when the task active then close the dialog
                         t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
                     }
-                }, 4000); // after 2 second (or 2000 miliseconds), the task will be active.
+                }, 4000); // after 4 second (or 4000 miliseconds), the task will be active.
 
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
-
+            //Metodo usado cuando la pagina termina de cargar
 
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                //Metodo para configurar donde se abrira la pagina web
+                //Si es falso se abre en la misma aplicacion
+                //Si es verdadero se abre afuera de la aplicacion, en un Chrome o cualquier navegador disponible del celular
                 return false;
         }});
         return rootView;

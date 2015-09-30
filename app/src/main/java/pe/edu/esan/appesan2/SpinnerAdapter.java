@@ -36,11 +36,21 @@ public class SpinnerAdapter extends ArrayAdapter<ItemData> {
 
     public View getView(int position, View convertView, ViewGroup parent ){
         View itemView=inflater.inflate(groupid,parent,false);
+        //Se obtienen los elementos a traves del id dados en el layout de la clase
         ImageView imageView=(ImageView)itemView.findViewById(R.id.img);
+
+        //Se da una imagen al ImageView segun su posicion
         imageView.setImageResource(list.get(position).getImageId());
+
+        //Se obtienen los elementos a traves del id dados en el layout de la clase
         TextView textView=(TextView)itemView.findViewById(R.id.txt);
+
+        //Se da un texto como valor segun su posicion
         textView.setText(list.get(position).getText());
+
+        //Se da el estilo de la fuente
         textView.setTypeface(TF);
+
         return itemView;
     }
 
