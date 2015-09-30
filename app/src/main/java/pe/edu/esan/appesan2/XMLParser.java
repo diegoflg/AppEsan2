@@ -17,7 +17,7 @@ import android.content.Context;
 
 /**
  * Clase que es usada por la libreria de lector de RSS para leer el XML del RSS.
- *
+ * https://github.com/GeekyTheory/Tutorial-Android-Lector-de-noticias
  */
 
 public class XMLParser {
