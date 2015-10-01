@@ -26,14 +26,14 @@ public class AdminBD extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(sqlCreate);
+        db.execSQL(sqlCreate);//Se ejecuta la sentencia SQL
     }
 
-    @Override
+    @Override//Override que se ejecuta en actualizacion
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         db.execSQL("DROP TABLE IF EXIST Persona");
-        db.execSQL(sqlCreate);
+        db.execSQL(sqlCreate);//Se ejecuta la sentencia
 
     }
 }

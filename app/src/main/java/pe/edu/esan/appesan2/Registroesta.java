@@ -86,7 +86,7 @@ public class Registroesta extends Fragment {
         //Cuando el semaforo rojo es clickeado
                 //Si es que existe conexion a internet
                 if(isNetworkAvailable()==true){
-                    sem1.setImageResource(R.drawable.rojoprendido);//Se aciva la imagen del rojo predido
+                    sem1.setImageResource(R.drawable.rojoprendido);//Se activa la imagen del rojo predido
                     sem2.setImageResource(R.drawable.amarilloapagado);//Se apaga la luz amarilla
                     sem3.setImageResource(R.drawable.verdeapagado);//Se apaga la luz verde
                     libres="rojo";

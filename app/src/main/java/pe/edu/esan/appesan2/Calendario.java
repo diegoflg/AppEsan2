@@ -151,7 +151,7 @@ public class Calendario extends Fragment{
         }//Give the host application a chance to take over the control when a new url is about to be loaded in the current WebView.
         });
 
-        return c;
+        return c;//Se retorna el View
 
         }
     private boolean isNetworkAvailable() {

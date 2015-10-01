@@ -18,13 +18,13 @@ public class NotasBD extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(sqlCreateNotas);
+        db.execSQL(sqlCreateNotas);//Se ejecuta la sentencia sql
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXIST Notas");
-        db.execSQL(sqlCreateNotas);
+        db.execSQL(sqlCreateNotas);//Se ejecuta la sentencia sql
     }
 }
 
