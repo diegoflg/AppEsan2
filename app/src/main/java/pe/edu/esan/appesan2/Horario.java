@@ -23,21 +23,35 @@ import pl.polidea.view.ZoomView;
  * Esta clase no se muestra actualmente en la aplicacion pero puede ser utilizada
  */
 public class Horario extends Fragment {
+    //Se declaran variables
+
+    //Se crea un cuadro de texto
     private TextView tvHorario;
+
+    //Se crea un elemento del tipo tabla
     private GridView gridView;
+
+    //Se declara una variable del tipo texto
     String TAG="estado";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //Se crea una vista y se infla con el layout correspondiente
         View rootView = inflater.inflate(R.layout.lay_horario, container, false);
 
+        //Se retiene el fragmento
         setRetainInstance(true);
 
-
+        //Se declara una variable del tipo Zoom
         ZoomView zoomView;
+
+        //Se crea un nuevo zoom
         zoomView = new ZoomView(getActivity());
+
+        //Se añade el zoom a la vista
         zoomView.addView(rootView);
 
+        //Se crea una cadena de texto en forma de matriz
         final String[] numbers = new String[] { "-", "Lunes", "Martes",
                 "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo", "07:00-08:00", "1",
                 "2", "3", "4", "5", "6","7", "08:00-09:00", "1",
@@ -56,23 +70,36 @@ public class Horario extends Fragment {
                 "2", "3", "4", "5", "6","7", "21:00-22:00", "1",
                 "2", "3", "4", "5", "6","7" };
 
+        //Se da valor al gridview con el elemento definido en el layout
         gridView=(GridView)rootView.findViewById(R.id.gridView1);
+
+        //Se crea un nuevo adaptador
         MyAdapter adapter = new MyAdapter(getActivity().getBaseContext(), R.layout.item, numbers);
+
+        //Se le asigna un adaptador al elemento gridview
         gridView.setAdapter(adapter);
+
 
         String font_path = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
         Typeface TF = Typeface.createFromAsset(getActivity().getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
+        //Se da valor al cuadro de texto segun el elemento en el layout
         tvHorario = (TextView)rootView.findViewById(R.id.textView2);
+
+        //Se da color al texto dentro del cuadro de texto
         tvHorario.setTextColor(Color.parseColor("#C90039"));
+
+        //Se le da una fuente al texto del cuadro de texto
         tvHorario.setTypeface(TF);
 
+        //Retorna la vista del zoom
         return zoomView;
     }
 
     @Override
     public void onAttach(final Activity activity)
     {
+        //Metodo adjutar
         super.onAttach(activity);
         Log.d(TAG, this + ": onAttach(" + activity + ")");
     }
@@ -80,6 +107,7 @@ public class Horario extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState)
     {
+        //Metodo que restaura el estado del fragmento
         super.onActivityCreated(savedInstanceState);
         Log.d(TAG, this + ": onActivityCreated()");
     }
@@ -88,6 +116,7 @@ public class Horario extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
+        //Metodo que crea el fragmento y lo guarda
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, this + ": onViewCreated()");
     }
@@ -95,6 +124,7 @@ public class Horario extends Fragment {
     @Override
     public void onDestroyView()
     {
+        //Metodo que destruye la vista
         super.onDestroyView();
         Log.d(TAG, this + ": onDestroyView()");
     }
@@ -102,6 +132,7 @@ public class Horario extends Fragment {
     @Override
     public void onDetach()
     {
+        //Metodo que desconecta el fragmento
         super.onDetach();
         Log.d(TAG, this + ": onDetach()");
     }
@@ -109,6 +140,7 @@ public class Horario extends Fragment {
     @Override
     public void onStart()
     {
+        //Metodo que inicia el fragmento
         super.onStart();
         Log.d(TAG, this + ": onStart()");
     }
@@ -116,6 +148,7 @@ public class Horario extends Fragment {
     @Override
     public void onResume()
     {
+        //Metodo que resume el fragmento
         super.onResume();
         Log.d(TAG, this + ": onResume()");
     }
@@ -123,6 +156,7 @@ public class Horario extends Fragment {
     @Override
     public void onPause()
     {
+        //Metodo que pausa el fragmento
         super.onPause();
         Log.d(TAG, this + ": onPause()");
     }
@@ -130,6 +164,7 @@ public class Horario extends Fragment {
     @Override
     public void onStop()
     {
+        //Metodo que detiene el fragmento
         super.onStop();
         Log.d(TAG, this + ": onStop()");
     }
@@ -137,14 +172,21 @@ public class Horario extends Fragment {
     @Override
     public void onDestroy()
     {
+        //Metodo que destruye el fragmento
         super.onDestroy();
         Log.d(TAG, this + ": onDestroy()");
     }
 
     public class MyAdapter extends ArrayAdapter<String> {
+        //Declaracion de variables
+
+        //Creacion de variable matriz de texto
         String[] objects;
+
+        //Creacion de contexto
         Context context;
 
+        //Metodo propio de la clase
         public MyAdapter(Context context, int textViewResourceId, String[] objects) {
             super(context, textViewResourceId, objects);
             this.context = context;
@@ -153,94 +195,142 @@ public class Horario extends Fragment {
 
         @Override
         public View getView(int position, android.view.View convertView, android.view.ViewGroup parent) {
+            //Creacion de variable del tipo de cuadro de texto
             TextView tv;
 
             String font_path = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
             Typeface fuenteGV = Typeface.createFromAsset(getActivity().getAssets(),font_path);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
+            //Verificaion de la vista del layout
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 tv = (TextView)inflater.inflate(R.layout.item,parent,false);
             } else {
                 tv = (TextView) convertView;
             }
+
+            //Se da valor al texto dentro del cuadro
             tv.setText(objects[position]);
+
+            //Se da el tamaño del texto del cuadro
             tv.setTextSize(10);
+
+            //Se da la posicion general del cuadro
             tv.setGravity(Gravity.CENTER);
+
+            //Se da una altura al cuadro de texto
             tv.setHeight(50);
+
+            //Se da un ancho al cuadro de texto
             tv.setWidth(70);
+
+            //Se verifica las posiciones
             if (position == 1 || position == 2 || position == 3 || position == 4 || position == 5 || position == 6 || position == 7) {
+                //Se da color de fondo al cuadro
                 tv.setBackgroundColor(Color.parseColor("#C90039"));
+
+                //Se da color al texto de cuadro
                 tv.setTextColor(Color.WHITE);
+
+                //Se le asigna la fuente al cuadro
                 tv.setTypeface(fuenteGV);
+
             }else{
+                //Se le da color al fondo del cuadro
                 tv.setBackgroundColor(Color.WHITE);
+
+                //Se le da color al texto del cuadro
                 tv.setTextColor(Color.parseColor("#6B6C6E"));
+
+                //Se le asigna la fuente al cuadro
                 tv.setTypeface(fuenteGV);
             }
 
             if(position>16 && position<24){
+                //Se le da un color de fondo al cuadro de texto
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
 
             if(position>32 && position<40){
+                //Se le da un color de fondo al cuadro de texto
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
 
             if(position>48 && position<56){
+                //Se le da un color de fondo al cuadro de texto
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
 
             if(position>64 && position<72){
+                //Se le da un color de fondo al cuadro de texto
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
 
             if(position>80 && position<88){
+                //Se le da un color de fondo al cuadro de texto
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
 
             if(position>96 && position<104){
+                //Se le da un color de fondo al cuadro de texto
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
             if(position>112 && position<120){
+                //Se le da un color de fondo al cuadro de texto
                 tv.setBackgroundColor(Color.parseColor("#E6E6E6"));
             }
 
+            //Se crea la base de datos segun la clase HorarioBD
             HorarioBD adminH = new HorarioBD(getContext(), "BDHORARIO1", null, 1);
+
+            //Se permite la escritura y lectura de la base de datos
             SQLiteDatabase bdH = adminH.getWritableDatabase();
 
+
+            //Se crea el cursor y se le da valor
             Cursor filahorarios = bdH.rawQuery("select curso,dia,hora,salon from Horario" , null);
             Log.v("cursor", "cursor");
 
+            //Se declaran variables de tipo texto
             String curs,di,hor,sa;
 
             if (filahorarios.moveToFirst())
             {
+                //Se le asigna valores a los textos
                 curs=filahorarios.getString(0);
                 di=filahorarios.getString(1);
                 hor=filahorarios.getString(2);
                 sa=filahorarios.getString(3);
 
+                //se crea una variable del tipo entero
                 int pos;
+
+                //Se le da valor al entero
                 pos=encontrarposicion(di, hor);
                 Log.v("pos", String.valueOf(pos));
 
+                //Se verifica la posicion
                 if(position==pos){
                     tv.setText(curs+sa);
                 }
 
+
                 filahorarios.moveToNext();
+
+                //Se da valores a los textos
                 curs=filahorarios.getString(0);
                 di=filahorarios.getString(1);
                 hor=filahorarios.getString(2);
                 sa=filahorarios.getString(3);
                 pos=encontrarposicion(di, hor);
 
+                //Se verifica la posicion
                 if(position==pos){
                     tv.setText(curs+sa);
                 }
 
                 filahorarios.moveToNext();
+                //Se da valores a los textos
                 curs=filahorarios.getString(0);
                 di=filahorarios.getString(1);
                 hor=filahorarios.getString(2);
@@ -252,11 +342,14 @@ public class Horario extends Fragment {
                 Log.v("dia", (filahorarios.getString(1)));
                 Log.v("hor", (filahorarios.getString(2)));
 
+                //Se verifica la posicion
                 if(position==pos){
                     tv.setText(curs+sa);
                 }
 
                 filahorarios.moveToNext();
+
+                //Se da valores a los textos
                 curs=filahorarios.getString(0);
                 di=filahorarios.getString(1);
                 hor=filahorarios.getString(2);
@@ -267,20 +360,26 @@ public class Horario extends Fragment {
                 Log.v("dia", (filahorarios.getString(1)));
                 Log.v("hor", (filahorarios.getString(2)));
 
+                //Se verifica la posicion
                 if(position==pos){
                     tv.setText(curs+sa);
                 }
             }
 
+            //Se cierra la base de datos
             bdH.close();
+
+            //Retorna la vista del cuadro de texto
             return tv;
         }
     }
 
+    //Encuentra la posicion del cuadro segun el dia y la hora
     public int encontrarposicion(String finddia,String findhora){
 
+        //Si el dia encontrado es LUNES
         if(finddia.equals("Lunes")){
-
+            //Dependiendo a la hora encontrada se devuelve el numero de posicion
             if(findhora.equals("7:00-8:00")){
                 Log.v("entro", "lunes de 7 a 8");
                 return 9;
@@ -330,8 +429,9 @@ public class Horario extends Fragment {
             }
         }
 
+        //Si el dia encontrado es MARTES
         if(finddia.equals("Martes")){
-
+            //Dependiendo a la hora encontrada se devuelve el numero de posicion
             if(findhora.equals("7:00-8:00")){
                 Log.v("entro", "lunes de 7 a 8");
                 return 10;
@@ -381,8 +481,9 @@ public class Horario extends Fragment {
             }
         }
 
+        //Si el dia encontrado es MIERCOLES
         if(finddia.equals("Miercoles")){
-
+            //Dependiendo a la hora encontrada se devuelve el numero de posicion
             if(findhora.equals("7:00-8:00")){
                 Log.v("entro", "lunes de 7 a 8");
                 return 11;
