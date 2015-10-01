@@ -57,7 +57,7 @@ public class Career extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.lay_noticia, container, false);//Se relaciona el View con su respectivo XML
+        View rootView = inflater.inflate(R.layout.lay_noticia, container, false);//Se relaciona el View con su respectivo XML, lay_noticia
 
         setRetainInstance(true);//Genera que no se afecte el fragmento en los cambios de configuracion
         final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);//Se crea el ProgressDialog
