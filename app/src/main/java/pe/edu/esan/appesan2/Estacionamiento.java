@@ -42,6 +42,7 @@ public class Estacionamiento extends Fragment implements
     // The minimum distance to change Updates in meters
 
 
+    //Se declaran variables
     private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "users";
