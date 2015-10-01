@@ -17,16 +17,28 @@ import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 
 
+/**
+ * Actividad principal que se abre despues de hacer login correctamente, aqui se encuentra el navigationDrawer y
+ * todos los fragmentos de la aplicacion se abren en esta actividad.
+ */
+
+
 public class MainActivity2Activity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-    private static String TAG = "MUNDO ESAN";
+    private static String TAG = "MUNDO ESAN";//Tag para diferenciar los logs
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
-    int prueba=0;
+    private NavigationDrawerFragment mNavigationDrawerFragment;//Se crea el NavigationDrawerFragment llamado mNavigationDrawerFragment
+    int prueba=0;// Se crea un entero llamado prueba con un valor inicializado en 0
 
+
+
+    /**
+     * Fragmentos creados de prueba, algunos no estan en uso, porquee el funcionamiento
+     * creando las variables de los fragmentos y llamandolos directamente era el mismo
+     */
     private Noticia mTaskFragment1;
     private Horario mTaskFragment2;
     private Notas mTaskFragment3;
@@ -43,13 +55,13 @@ public class MainActivity2Activity extends ActionBarActivity
     private Career mTaskFragment14;
     private Estacionamiento mTaskFragment15;
 
-    FragmentManager fragmentManager = getSupportFragmentManager();
+    FragmentManager fragmentManager = getSupportFragmentManager();//Se obtiene la clase que maneja los fragmentos llamandola fragmentManager
 
 
 
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(Configuration newConfig) {//Called by the system when the device configuration changes while your component is running.
         super.onConfigurationChanged(newConfig);
 
     }
@@ -57,15 +69,15 @@ public class MainActivity2Activity extends ActionBarActivity
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
-    private CharSequence mTitle;
-    public int tipo=1;
-    public int menu=0;
+    private CharSequence mTitle;//Se crea el CharSequence llamado mTitle
+    public int tipo=1;// Se crea un entero llamado tipo con un valor inicializado en 1
+    public int menu=0;// Se crea un entero llamado menu con un valor inicializado en 0
 
-    public void comenzo(){
+    public void comenzo(){//metodo que cambia el valor de prueba a 3
         this.prueba=3;
     }
 
-    @Override
+    @Override//Override que se ejecuta cuando hay algun saveInstance
     protected void onSaveInstanceState(Bundle savedInstanceState) {
 
 
@@ -97,31 +109,33 @@ public class MainActivity2Activity extends ActionBarActivity
             // Restore value of members from saved state
 
 
-            mTaskFragment4 = fragmentManager.getFragment(savedInstanceState, "Calendario");
+            mTaskFragment4 = fragmentManager.getFragment(savedInstanceState, "Calendario");//se restaura calendario
         }
 
-        Intent i=getIntent();
-        Bundle b=i.getExtras();
+        Intent i=getIntent();//Se crea el Intent i y se obtienen los valores del Intent recibido al crear la actividad
+        Bundle b=i.getExtras();//Se crea el Bundle b y se obtiene el Bundle recibido al crear la actividad
 
-        tipo=b.getInt("tipo");
+        tipo=b.getInt("tipo");//la variable tipo obtendra el valor del dato "tipo" almacenado en el bundle.
+        // tipo es el tipo de usuario que hizo login
+        //dependiendo de cada tipo de usuario se mostrara un navigationDrawer diferente
 
-        Log.v("tipo", String.valueOf(tipo));
+        Log.v("tipo", String.valueOf(tipo));//log para identificar que tipo es el que ingreso
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.esan);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);//Set whether to include the application home affordance in the action bar.
+        getSupportActionBar().setIcon(R.drawable.esan);//Se pone de icono en el ActionBar el icon esan almaccenado en la carpeta drawable
 
-        final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
-        ab.setDisplayHomeAsUpEnabled(true);
-
-
+        final ActionBar ab = getSupportActionBar();//Se crea el ActionBar llamado ab
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu);//Set an alternate drawable to display next to the icon/logo/title when DISPLAY_HOME_AS_UP is enabled.
+            ab.setDisplayHomeAsUpEnabled(true);//Set whether home should be displayed as an "up" affordance. Set this to true if selecting "home" returns up by a single level in your UI rather than back to the top level or front page.
 
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
+
+
+        mNavigationDrawerFragment = (NavigationDrawerFragment)//Se relaciona el navigation drawer con su respectivo fragment
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        mTitle = getTitle();//Se obtiene el titulo de fragmento
 
-        mNavigationDrawerFragment.ini(tipo);
+        mNavigationDrawerFragment.ini(tipo);//Se ejecuta el metodo ini() de mNavigationDrawerFragment que inicia el mNavigationDrawerFragment con el tipo respectivo
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -136,28 +150,28 @@ public class MainActivity2Activity extends ActionBarActivity
 
     }
 
-    @Override
+    @Override//override que se ejecuta cuando de hace click a algun item del navigationDrawer
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
 
-        Fragment fragment=null;
-        menu=position;
+        Fragment fragment=null;//Se crea el Fragment fragment con valor inicial nulo
+        menu=position;//el entero menu obtendraa el valor de la posicion clickeada en el navigationDrawer
 
-        Log.i("iniciart1", String.valueOf(menu));
+        Log.i("iniciart1", String.valueOf(menu));//log para verificaciones
 
 
-        if(tipo==1){
+        if(tipo==1){//Si el tipo es igual a 1:
 
-            switch (position){
-                case 0:
+            switch (position){//Dependiendo de la posicion mostrara algun fragmento
+                case 0://Si das click al item que esta en la posicion 0 parara lo siguiente:
                     //fragment= new Noticia();
-                    Datah.getInstance().setMenu(0);
+                    Datah.getInstance().setMenu(0);//Se guardara en Datah el valor de 0 indicando que este fragmento no es estacionamiento
+                    // para evitar que estacionamiento suene si esta abierto otro fragmento
 
-
-                    if(fragmentManager.findFragmentByTag("Noticia") != null){
-                        fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Noticia")).commit();
-                    }else{
-                        fragmentManager.beginTransaction().add(R.id.container, new Noticia(), "Noticia").commit();
+                    if(fragmentManager.findFragmentByTag("Noticia") != null){//Si ya existe el framente noticia
+                        fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Noticia")).commit();//lo mostramos
+                    }else{//si no existe
+                        fragmentManager.beginTransaction().add(R.id.container, new Noticia(), "Noticia").commit();//lo agregamos
                     }
 
                     //Los otros se esconden
@@ -935,7 +949,7 @@ public class MainActivity2Activity extends ActionBarActivity
                     break;
 
                 case 12:
-                    Datah.getInstance().setMenu(1);
+                    Datah.getInstance().setMenu(1);//Identificamos que se ha hecho click en estacionamiento
                     //fragment = new estacionamiento
 
 
@@ -1121,37 +1135,37 @@ public class MainActivity2Activity extends ActionBarActivity
     }
 
 
-    public void onSectionAttached(int number) {
+    public void onSectionAttached(int number) {//Se identifica la seccion atachada
 
-        if(tipo==1){
+        if(tipo==1){//Si es tipo 1
 
-            String[] stringArray = getResources().getStringArray(R.array.section_titles);
+            String[] stringArray = getResources().getStringArray(R.array.section_titles);//Se obtienen los titulos guardados en strings en el array section_titles
             if (number >= 1) {
                 mTitle = stringArray[number - 1];
             }
         }
 
-        if(tipo==2){
+        if(tipo==2){//Si es tipo 2
 
-            String[] stringArray = getResources().getStringArray(R.array.section_titles2);
+            String[] stringArray = getResources().getStringArray(R.array.section_titles2);//Se obtienen los titulos guardados en strings en el array section_titles2
             if (number >= 1) {
                 mTitle = stringArray[number - 1];
             }
         }
     }
 
-    public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+    public void restoreActionBar() {//Metodo que restaura el actionBar
+        ActionBar actionBar = getSupportActionBar();//Se crea el ActionBar llamado actionBar que obtiene el actionbar usado
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);//Se pone en modo standard
+        actionBar.setDisplayShowTitleEnabled(true);//Se activa el titulo
+        actionBar.setTitle(mTitle);//se agrega el titulo
     }
 
 
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {//Initialize the contents of the Activity's standard options menu.
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
             // if the drawer is not showing. Otherwise, let the drawer
@@ -1183,25 +1197,27 @@ public class MainActivity2Activity extends ActionBarActivity
 
 
 
-    @Override
+    @Override//Override que se ejecuta cuando presionas el boton atras
     public void onBackPressed() {
-        if (menu==3){
+        if (menu==3){///Si el menu esta en la posicion 3
             //user defined onBackPressed method. Not of Fragment.
-            Cafeteria.onBackPressed();
+            Cafeteria.onBackPressed();//Se ejecutara el metodo onBackPressed() que esta en la clase Cafeteria
     }else{
 
     }
-        if (menu==0){
-            if(fragmentManager.findFragmentByTag("Noticia") != null){
-                fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Noticia")).commit();
+        if (menu==0){////Si el menu esta en la posicion 0
+            if(fragmentManager.findFragmentByTag("Noticia") != null){//y noticias ya ha sido creaado
+                fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Noticia")).commit();//se mostrara noticias
             }else{
-                fragmentManager.beginTransaction().add(R.id.container, new Noticia(), "Noticia").commit();
+                fragmentManager.beginTransaction().add(R.id.container, new Noticia(), "Noticia").commit();//de lo contrario se agregara
             }
 
-            //Los otros se esconden
+            //Los activity articulo se esconde
             if(fragmentManager.findFragmentByTag("ActArt") != null){
                 fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("ActArt")).commit();
             }
+
+            //Esto es para que al presionar atras cuando tienes un articulo de noticia aabierto regrese al menu de noticias
 
         }else{
 
@@ -1255,16 +1271,17 @@ public class MainActivity2Activity extends ActionBarActivity
      * A placeholder fragment containing a simple view.
      */
 
-    private void notify(String notificationTitle, String notificationMessage){
+    private void notify(String notificationTitle, String notificationMessage){//metodo creado para enviar notificaciones fuera de la aplicacion
+        //ACTUALMENTE NO EN USO
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         @SuppressWarnings("deprecation")
-
+//Set up notification
         Notification notification = new Notification(R.drawable.esan,"New Message", System.currentTimeMillis());
         Intent notificationIntent = new Intent(this,NotificationView.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
 
         notification.setLatestEventInfo(MainActivity2Activity.this, notificationTitle,notificationMessage, pendingIntent);
-        notificationManager.notify(9999, notification);
+        notificationManager.notify(9999, notification);//Post a notification to be shown in the status bar.
     }
 
 }
