@@ -253,6 +253,10 @@ public class Estacionamiento extends Fragment implements
         marker1.setOnClickListener(new View.OnClickListener() {//Si se presiona marker 1 pasara lo siguiente:
             @Override
             public void onClick(View v) {//Se detecta el click
+                Log.i("TAG", "ENTRA AL MARKER 1");
+                Log.i("TAG", "ENTRA AL MARKER 1");
+                Log.i("TAG", "ENTRA AL MARKER 1");
+                Log.i("TAG", "ENTRA AL MARKER 1");
                // FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                // EstaMapas fragment = new EstaMapas();
 
