@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 
 /**
- * Este es el Fragmento que se abre cuando le das click a una oticia en la clase Noticia,
+ * Este es el Fragmento que se abre cuando le das click a una noticia en la clase Noticia,
  * en este fragmento se muestra la noticia completa.
  */
 
@@ -72,15 +72,15 @@ public class Activity_Articulo extends Fragment{
 
 	private String populateHTML(int resourceID) {
 		/*
-		En esta parte obtiene los datos Título, fecha de publicación y contenido con los
+		En esta parte obtiene los datos Titulo, fecha de publicacion y contenido con los
 		mismos nombres que se encuentran en el xml del rss.
 		 */
 		String html;
 		html = readTextFromResource(resourceID);
-		//Obtiene el título:
+		//Obtiene el titulo:
 		html = html.replace("_TITLE_", articulo.getTitulo());
 
-		//Obtiene la fecha de publicación:
+		//Obtiene la fecha de publicacion:
 		html = html.replace("_PUBDATE_", "" + articulo.getFecha());
 
 		//Obtiene el contenido:
