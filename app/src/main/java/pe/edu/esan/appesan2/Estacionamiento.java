@@ -160,6 +160,9 @@ public class Estacionamiento extends Fragment implements
                             Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                             t.show();
 
+                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                            mp.start();
+
 
                         }
 
@@ -176,6 +179,9 @@ public class Estacionamiento extends Fragment implements
                         if (Datah.getInstance().getMenu() == 1) {
                             Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                             t.show();
+
+                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                            mp.start();
 
                         }
 
@@ -194,6 +200,9 @@ public class Estacionamiento extends Fragment implements
                         if (Datah.getInstance().getMenu() == 1) {
                             Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                             t.show();
+
+                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                            mp.start();
 
                         }
 
