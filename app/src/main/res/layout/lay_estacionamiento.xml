@@ -163,7 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ir"
-        android:id="@+id/button5"
+        android:id="@+id/btir"
         android:layout_toRightOf="@+id/textView3"
         android:layout_toLeftOf="@+id/btPolo"
         android:layout_toStartOf="@+id/btPolo"
