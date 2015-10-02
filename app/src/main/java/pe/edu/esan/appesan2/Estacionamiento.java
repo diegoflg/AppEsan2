@@ -49,8 +49,12 @@ public class Estacionamiento extends Fragment implements
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_PRODUCTS = "users";
     private static final String TAG_NOMBRE = "username";
+    private static final String TAG_NOMBRE2 = "username2";
+    private static final String TAG_NOMBRE3 = "username3";
     private ImageView sema1e,sema2e,sema3e;
     private String estado="waa";
+    private String estadoalonso="waa";
+    private String estadopolo="waa";
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
     TextView tvlibres, titulo, tit1, tit2;
@@ -141,7 +145,7 @@ public class Estacionamiento extends Fragment implements
             public void run() {
                 Log.v("tipo", "timer");
                 Log.v("es", estado);
-                Log.v("es2", estado2);
+                Log.v("es2", estadoalonso);
 
                 if (estado.equals("rojo")) {
                     btEsan.setBackgroundColor(Color.parseColor("#F0152B"));
@@ -265,6 +269,8 @@ public class Estacionamiento extends Fragment implements
                         JSONObject c = products.getJSONObject(i);
                         estado2=estado;
                         estado=c.getString(TAG_NOMBRE);
+                        estadoalonso=c.getString(TAG_NOMBRE2);
+                        estadopolo=c.getString(TAG_NOMBRE3);
 
                     }
                 }
