@@ -4,6 +4,7 @@ package pe.edu.esan.appesan2;
  * Se importan las siguientes clases:
  *
  */
+import android.app.ExpandableListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -29,6 +31,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Modulo de Cafeteria , que lee la informacion almacenada en el sigiente google drive:
@@ -68,12 +72,12 @@ public class Cafeteria extends Fragment {
     Team team1,team2,team3,team4;//Se instancian los Team team1,team2,team3,team4
 
 
-    ListViewAdapter ladapter;
+   ExpandableListAdapter ladapter;
 
-    String[] titulo = new String[]{
-            "titulo1",
-            "titulo2"
-    };
+
+    List<String> titulo;
+    HashMap<String, List<String>> subtitulos;
+
 
     int[] imagenes = {
             R.drawable.ruta,
@@ -101,21 +105,41 @@ public class Cafeteria extends Fragment {
 
 
 
-        final ListView lista = (ListView) v.findViewById(R.id.listav2);
-        ladapter = new ListViewAdapter(getActivity(), titulo, imagenes);
-        lista.setAdapter(ladapter);
+        final ExpandableListView expListV = (ExpandableListView) v.findViewById(R.id.exlistv2);
 
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        prepareListData();
+
+        ladapter = new ExpandableListAdapter(getActivity(), titulo, subtitulos);
+        expListV.setAdapter(ladapter);
+
+        expListV.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public void onItemClick(AdapterView adapterView, View view, int i, long l) {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                switch (groupPosition){
+                    case 0:
+                        switch (childPosition){
+                            case 0:
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                            break;
 
-            }
-        });
+                            case 1:
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                            break;
 
-        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity().getApplicationContext(), "presiono LARGO " + i, Toast.LENGTH_SHORT).show();
+                            case 2:
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    break;
+
+                    case 1:
+                        switch (childPosition){
+                            case 0:
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    break;
+                }
                 return false;
             }
         });
@@ -217,6 +241,39 @@ public class Cafeteria extends Fragment {
 
 
         return v;
+    }
+
+
+    private void prepareListData(){
+        //Perpara los datos de la lista
+
+        //Crea una nueva cadena de padres
+        titulo = new ArrayList<String>();
+
+        //Crea una nueva cadena de hijos
+        subtitulos = new HashMap<String, List<String>>();
+
+        // Adding parent data
+        //Añade los datos padres
+        titulo.add("La Ruta");
+        titulo.add("DeliSabores");
+
+        // Adding child data
+        //Añade los datos hijos
+        List<String> laruta = new ArrayList<String>();
+        laruta.add("Menú Ejecutivo");
+        laruta.add("Menú Dieta");
+        laruta.add("Menú Económico");
+
+        List<String> DS = new ArrayList<String>();
+        //Maestrías especializadas con concentración en negocios
+        DS.add("Menú Económico");
+
+
+
+        //Da los datos de padre con su lista de respectivos hijos a la lista expandible
+        subtitulos.put(titulo.get(0), laruta); // Header, Child data
+        subtitulos.put(titulo.get(1),DS);
     }
 
 
