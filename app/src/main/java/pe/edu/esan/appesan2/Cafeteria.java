@@ -4,7 +4,7 @@ package pe.edu.esan.appesan2;
  * Se importan las siguientes clases:
  *
  */
-import android.app.ExpandableListActivity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -15,13 +15,12 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -49,6 +48,7 @@ public class Cafeteria extends Fragment {
     ArrayList<Team> teams2 = new ArrayList<Team>();//economico de la Ruta
     ArrayList<Team> teams3 = new ArrayList<Team>();//ejecutivo
     ArrayList<Team> teams4 = new ArrayList<Team>();//dieta
+    ArrayList<Team> teams5 = new ArrayList<Team>(); //Especial de DeliSabores
     ProgressDialog pb;//Se instancia el progress dialog
 
 
@@ -72,9 +72,9 @@ public class Cafeteria extends Fragment {
 
     static ImageView cafeteria11;//Se instancia un ImageView llamado cafeteria11
 
-    TeamsAdapter adapter1,adapter2,adapter3,adapter4;//Se instancian los TeamsAdapter adapter1,adapter2,adapter3,adapter4
+    TeamsAdapter adapter1,adapter2,adapter3,adapter4, adapter5; //Se instancian los TeamsAdapter adapter1,adapter2,adapter3,adapter4
 
-    Team team1,team2,team3,team4;//Se instancian los Team team1,team2,team3,team4
+    Team team1,team2,team3,team4, team5;//Se instancian los Team team1,team2,team3,team4 y team5
 
 
    ListViewAdapter ladapter;
@@ -94,12 +94,7 @@ public class Cafeteria extends Fragment {
     public void onDestroy() {//metodo que se ejecuta cuando el fragmento se destruye
         super.onDestroy();
         pb.dismiss();//Se cancela el progress dialog
-
-
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {//metodo que se ejecuta cuando el fragmento se crea
@@ -159,8 +154,16 @@ public class Cafeteria extends Fragment {
                                 cafet.setVisibility(View.GONE);
                                 listar(1);
                             break;
+                            case 1:
+                                Toast.makeText(getActivity(), "MENU ESPECIAL", Toast.LENGTH_SHORT).show();
+                                listview.setVisibility(View.VISIBLE);
+                                expListV.setVisibility(View.GONE);
+                                cafet.setVisibility(View.GONE);
+                                listar(5);
+                            break;
                         }
                     break;
+
                 }
                 return false;
             }
@@ -244,6 +247,13 @@ public class Cafeteria extends Fragment {
 
         if(isNetworkAvailable()==true){//Se verifica la conexion a internet
                         go(v);
+            try {
+                goME(v);
+            }catch (Exception e){
+                Log.i("ERROR", "HE AQUÍ EL ERROR!");
+            e.printStackTrace();
+        }
+
         }else{
             Toast t=Toast.makeText(getActivity(),"No hay coneccion a internet", Toast.LENGTH_SHORT);//Se crea un Toast que muestra el  "No hay coneccion a internet"
             t.show(); //Se muestra el Tast
@@ -281,6 +291,7 @@ public class Cafeteria extends Fragment {
         List<String> DS = new ArrayList<String>();
         //Maestrías especializadas con concentración en negocios
         DS.add("Menú Económico");
+        DS.add("Menú Especial");
 
 
 
@@ -322,7 +333,9 @@ public class Cafeteria extends Fragment {
 
                 break;
 
-
+            case 5:
+                listview.setAdapter(adapter5);//Si  el valor recibido es 5 se mostrara en el listview el adaptador adapter5
+                break;
         }
     }
 
@@ -354,11 +367,6 @@ public class Cafeteria extends Fragment {
                     teams1.add(team1);//y se agregan al array teams
                 }
 
-
-
-
-
-
                     for (int r = 10; r < 18; ++r) {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
@@ -369,9 +377,6 @@ public class Cafeteria extends Fragment {
                         teams2.add(team2);
                     }
 
-
-
-
                     for (int r = 19; r < 25; ++r) {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
@@ -381,10 +386,6 @@ public class Cafeteria extends Fragment {
                         team3 = new Team(dia, tipo);
                         teams3.add(team3);
                     }
-
-
-
-
 
                     for (int r = 26; r < 32; ++r) {
                         JSONObject column = columns.getJSONObject(r);
@@ -410,8 +411,38 @@ public class Cafeteria extends Fragment {
             e.printStackTrace();
         }
 
+    }
 
+    public void goME(View view) {
+        new DownloadWebpageTask(new AsyncResult() {
+            @Override
+            public void onResult(JSONObject object) {
+                processJsonME(object);
+            }
+        }).execute("https://spreadsheets.google.com/tq?key=1gveCHCpz9InAj0rxDpT0Z7PUdbRq4DOXKHkhs3BMWE4");
+        //se descargaran los datos almacenados en el google drive, el link de arriba es un link especial con los datos del google drive listos para ser leidos con JSON
+    }
 
+    private void processJsonME(JSONObject object) {
+        //En este metodo de leen los datos
+        try {
+            JSONArray columns = object.getJSONArray("rows");//Se crea un JSONArray llamado columns en donde se ingresaran las filas de el google drive
+            for (int r = 1; r < 8; ++r) {
+                JSONObject column = columns.getJSONObject(r);//Se ingresan en colum las columnas del google drive de la columna 1 a la 7 que es en donde se encuentra el menu economico de delisabores
+                JSONArray rows = column.getJSONArray("c");
+                String dia = rows.getJSONObject(diadelasemana).getString("v");//Se obtienen en la variable dia las filas
+                String tipo = rows.getJSONObject(1).getString("v");//se obtiene en tipo la fila 1 del google drive
+
+                team5 = new Team(dia, tipo);//Se crea las variables team por cada tipo de menu
+                teams5.add(team5);//y se agregan al array teams
+            }
+
+            adapter5 = new TeamsAdapter(getActivity(), R.layout.team, teams5);//Se crean los adaptadores que contienen la informacion del menu
+            pb.dismiss();//se cancela el progress Dialog porque los arrays estan listos con la informacion cargada
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -528,9 +559,6 @@ public class Cafeteria extends Fragment {
  */
 
 private boolean isNetworkAvailable() {
-
-
-
     ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
     NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
