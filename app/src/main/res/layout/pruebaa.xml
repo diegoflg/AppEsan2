@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <TextView
+            android:id="@+id/textViewestareg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Estacionamiento"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#f1010101"
+            android:textSize="30sp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ESAN"
+        android:layout_below="@id/textViewestareg"
+        android:textColor="#f1010101"
+        android:layout_marginLeft="20dp"/>
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
