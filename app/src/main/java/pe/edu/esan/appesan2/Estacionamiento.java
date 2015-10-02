@@ -203,6 +203,7 @@ public class Estacionamiento extends Fragment implements
                 }
                 new LoadAllProducts().execute();
                 h.postDelayed(this, delay);
+
             }
         }, delay);
 
