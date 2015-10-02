@@ -55,6 +55,8 @@ public class Cafeteria extends Fragment {
     RelativeLayout lay1;//Se instancia un Relative layout
 
     static ListView listview;//Se instancia un listview
+    static ExpandableListView expListV; //Se instancia una lista expandible
+    static ImageView cafet;
     TabHost mTabHost;//Se instancia el mTabHost
     int num=0;//Se crea un entero llamado num con el valor de 0
     int diadelasemana=0;//Se crea un entero llamado diadelasemana con el valor de 0
@@ -88,7 +90,6 @@ public class Cafeteria extends Fragment {
     };
 
 
-
     @Override
     public void onDestroy() {//metodo que se ejecuta cuando el fragmento se destruye
         super.onDestroy();
@@ -104,16 +105,16 @@ public class Cafeteria extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {//metodo que se ejecuta cuando el fragmento se crea
         final View v= inflater.inflate(R.layout.lay_cafeteria, container, false);//Se relaciona el View con su respectivo XML
         listview = (ListView) v.findViewById(R.id.listview);//Se relaciona listview con el listview en el xml
-
+        cafet = (ImageView)v.findViewById(R.id.imca);
 
         WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);//Se crea un windows manager llamado wm, que obtiene el valor obtenido usando los metodos getActivity().getSystemService(Context.WINDOW_SERVICE)
         Display display = wm.getDefaultDisplay();//Se crea un Display llamado display, que tendra el valor de wm.getDefaultDisplay()
         Point size = new Point();//Se crea un punto
         display.getSize(size);//Se obtiene el tamano de la pantalla del dispositivo
         int widthP = size.x;//se obtiene el alto
-        int espX = widthP - 10;
 
-        final ExpandableListView expListV = (ExpandableListView) v.findViewById(R.id.exlistv2);
+
+        expListV = (ExpandableListView) v.findViewById(R.id.exlistv2);
         prepareListData();
 
         ladapter = new ListViewAdapter(getActivity(), titulo, subtitulos, imagenes);
@@ -127,21 +128,25 @@ public class Cafeteria extends Fragment {
                     case 0:
                         switch (childPosition){
                             case 0:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
-                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
-                                        Toast.LENGTH_SHORT).show();
+                                listview.setVisibility(View.VISIBLE);
+                                expListV.setVisibility(View.GONE);
+                                cafet.setVisibility(View.GONE);
+                                listar(2);
+
                             break;
 
                             case 1:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
-                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
-                                        Toast.LENGTH_SHORT).show();
+                                listview.setVisibility(View.VISIBLE);
+                                expListV.setVisibility(View.GONE);
+                                cafet.setVisibility(View.GONE);
+                                listar(3);
                             break;
 
                             case 2:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
-                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
-                                        Toast.LENGTH_SHORT).show();
+                                listview.setVisibility(View.VISIBLE);
+                                expListV.setVisibility(View.GONE);
+                                cafet.setVisibility(View.GONE);
+                                listar(4);
                             break;
                         }
                     break;
@@ -149,9 +154,10 @@ public class Cafeteria extends Fragment {
                     case 1:
                         switch (childPosition){
                             case 0:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
-                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
-                                        Toast.LENGTH_SHORT).show();
+                                listview.setVisibility(View.VISIBLE);
+                                expListV.setVisibility(View.GONE);
+                                cafet.setVisibility(View.GONE);
+                                listar(1);
                             break;
                         }
                     break;
@@ -248,17 +254,8 @@ public class Cafeteria extends Fragment {
 
         }
 
-
-
-
-
-
-
-
-
         return v;
     }
-
 
     private void prepareListData(){
         //Perpara los datos de la lista
@@ -277,9 +274,9 @@ public class Cafeteria extends Fragment {
         // Adding child data
         //Añade los datos hijos
         List<String> laruta = new ArrayList<String>();
+        laruta.add("Menú Económico");
         laruta.add("Menú Ejecutivo");
         laruta.add("Menú Dieta");
-        laruta.add("Menú Económico");
 
         List<String> DS = new ArrayList<String>();
         //Maestrías especializadas con concentración en negocios
@@ -292,20 +289,13 @@ public class Cafeteria extends Fragment {
         subtitulos.put(titulo.get(1),DS);
     }
 
-
     public static void onBackPressed() {
-
         /**
          * Al dar click a el boton atras, el menu se esconde y vuelve a aparecer las opciones de eleccion de menu
-         *
          */
-
-
-
-
-
-
-
+            listview.setVisibility(View.GONE);
+            expListV.setVisibility(View.VISIBLE);
+            cafet.setVisibility(View.VISIBLE);
     }
 
 
@@ -336,11 +326,6 @@ public class Cafeteria extends Fragment {
         }
     }
 
-
-
-
-
-
     public void go(View view) {
         new DownloadWebpageTask(new AsyncResult() {
             @Override
@@ -350,7 +335,6 @@ public class Cafeteria extends Fragment {
         }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms");
         //se descargaran los datos almacenados en el google drive, el link de arriba es un link especial con los datos del google drive listos para ser leidos con JSON
     }
-
 
     private void processJson(JSONObject object) {
 
@@ -429,9 +413,6 @@ public class Cafeteria extends Fragment {
 
 
     }
-
-
-
 
 
 /**
