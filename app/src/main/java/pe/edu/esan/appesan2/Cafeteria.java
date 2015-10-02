@@ -16,6 +16,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -48,11 +49,6 @@ public class Cafeteria extends Fragment {
 
     static ListView listview;//Se instancia un listview
     TabHost mTabHost;//Se instancia el mTabHost
-    static Button bc1;//Se instancia el boton bc1
-    static Button bc2;//Se instancia el boton bc2
-    static Button bc3;//Se instancia el boton bc3
-    static Button bc4;//Se instancia el boton bc4
-    static Button bc5;//Se instancia el boton bc5
     int num=0;//Se crea un entero llamado num con el valor de 0
     int diadelasemana=0;//Se crea un entero llamado diadelasemana con el valor de 0
     static TextView tv1;//Se instancia un TextView llamado tv1
@@ -72,6 +68,20 @@ public class Cafeteria extends Fragment {
     Team team1,team2,team3,team4;//Se instancian los Team team1,team2,team3,team4
 
 
+    ListViewAdapter ladapter;
+
+    String[] titulo = new String[]{
+            "titulo1",
+            "titulo2"
+    };
+
+    int[] imagenes = {
+            R.drawable.ruta,
+            R.drawable.deli
+    };
+
+
+
     @Override
     public void onDestroy() {//metodo que se ejecuta cuando el fragmento se destruye
         super.onDestroy();
@@ -89,6 +99,28 @@ public class Cafeteria extends Fragment {
         listview = (ListView) v.findViewById(R.id.listview);//Se relaciona listview con el listview en el xml
 
 
+
+
+        final ListView lista = (ListView) v.findViewById(R.id.listav2);
+        ladapter = new ListViewAdapter(getActivity(), titulo, imagenes);
+        lista.setAdapter(ladapter);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView adapterView, View view, int i, long l) {
+
+            }
+        });
+
+        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView adapterView, View view, int i, long l) {
+                Toast.makeText(getActivity().getApplicationContext(), "presiono LARGO " + i, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+
         setRetainInstance(true);//Genera que no se afecte el fragmento en los cambios de configuracion
 
         lay1=(RelativeLayout)v.findViewById(R.id.LaRuta);//Se relaciona el RelativeLayout con el Layout del xml
@@ -97,52 +129,7 @@ public class Cafeteria extends Fragment {
         String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
         Typeface TFL = Typeface.createFromAsset(getActivity().getAssets(),font_pathL);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
 
-        bc1=(Button)v.findViewById(R.id.ec);//Se relaciona el boton bc1 con el boton ec del respectivo XML
-        bc1.setTypeface(TFL);
-        bc1.setTextColor(Color.parseColor("#FFFFFF"));//Se cambia el color del texto del bc1 a #FFFFFF
-        bc2=(Button)v.findViewById(R.id.ej);//Se relaciona el boton bc2 con el boton ej del respectivo XML
-        bc2.setTypeface(TFL);//El bc2 sera de tipo HelveticaNeue-Light
-        bc2.setTextColor(Color.parseColor("#FFFFFF")); //Se cambia el color del texto del bc2 a #FFFFFF
-        bc3=(Button)v.findViewById(R.id.di);//Se relaciona el boton bc3 con el boton di del respectivo XML
-        bc3.setTypeface(TFL);
-        bc3.setTextColor(Color.parseColor("#FFFFFF"));//Se cambia el color del texto del bc3 a #FFFFFF
 
-        bc4=(Button)v.findViewById(R.id.ec2);
-        bc4.setTypeface(TFL);//El bc4 sera de tipo HelveticaNeue-Light
-        bc4.setTextColor(Color.parseColor("#FFFFFF"));//Se cambia el color del texto del bc4 a #FFFFFF
-        bc5=(Button)v.findViewById(R.id.es);
-        bc5.setTypeface(TFL);//El bc5 sera de tipo HelveticaNeue-Light
-        bc5.setTextColor(Color.parseColor("#FFFFFF"));//Se cambia el color del texto del bc5 a #FFFFFF
-
-        tv1=(TextView)v.findViewById(R.id.tvcaf1);
-        tv1.setTypeface(TFL);//El tv1 sera de tipo HelveticaNeue-Light
-        tv1.setTextColor(Color.parseColor("#1A171B"));//Se cambia el color del texto del tv1 a #1A171B
-        tv2=(TextView)v.findViewById(R.id.precio);
-        tv2.setTypeface(TFL);
-        tv2.setTextColor(Color.parseColor("#1A171B"));//Se cambia el color del texto del tv2 a #1A171B
-        tv3=(TextView)v.findViewById(R.id.precio1);
-        tv3.setTypeface(TFL);
-        tv3.setTextColor(Color.parseColor("#1A171B"));
-        tv4=(TextView)v.findViewById(R.id.precio2);
-        tv4.setTypeface(TFL);
-        tv4.setTextColor(Color.parseColor("#1A171B"));
-        tv5=(TextView)v.findViewById(R.id.precio3);
-        tv5.setTypeface(TFL);
-        tv5.setTextColor(Color.parseColor("#1A171B"));
-
-        tv6=(TextView)v.findViewById(R.id.tvcaf2);
-        tv6.setTypeface(TFL);
-        tv6.setTextColor(Color.parseColor("#1A171B"));
-        tv7=(TextView)v.findViewById(R.id.textViewd);
-        tv7.setTypeface(TFL);
-        tv7.setTextColor(Color.parseColor("#1A171B"));
-        tv8=(TextView)v.findViewById(R.id.preciod1);
-        tv8.setTypeface(TFL);
-        tv8.setTextColor(Color.parseColor("#1A171B"));
-        tv9=(TextView)v.findViewById(R.id.preciod2);
-        tv9.setTypeface(TFL);
-        tv9.setTextColor(Color.parseColor("#1A171B"));
-        cafeteria11=(ImageView)v.findViewById(R.id.imca);
 
 
 
@@ -164,12 +151,12 @@ public class Cafeteria extends Fragment {
 
         TabHost.TabSpec spec = mTabHost.newTabSpec("Tab 1");//Se definine el TabSpect
         spec.setContent(R.id.LaRuta);//Se relaciona el spect con el Content del xml con id LaRuta
-        spec.setIndicator("La ruta");//Se pone el nombre la ruta en uno de los tabHost
+        spec.setIndicator("Menu");//Se pone el nombre la ruta en uno de los tabHost
         mTabHost.addTab(spec);//Se insterta el spec al tabHost
 
         spec=mTabHost.newTabSpec("Tab 2");//Se define otro spec para Delisabores
         spec.setContent(R.id.DeliSabores);
-        spec.setIndicator("Delisabores");
+        spec.setIndicator("Platos a la carta");
         mTabHost.addTab(spec);
 
         mTabHost.setCurrentTab(0);//El tabHost inicial sera el de la Ruta
@@ -226,135 +213,7 @@ public class Cafeteria extends Fragment {
 
 
 
-        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override//metodo override que detecta cuando hay algun cambio de tabhost
-            public void onTabChanged(String tabId) {
 
-                /**
-                 * Al cambiar de tab el menu se esconde y vuelve a aparecer las opciones de eleccion de menu
-                 *
-                 */
-
-                bc1.setVisibility(View.VISIBLE);//aparece bc1
-                bc2.setVisibility(View.VISIBLE);//aparece bc2
-                bc3.setVisibility(View.VISIBLE);//aparece bc3
-                bc5.setVisibility(View.VISIBLE);//aparece bc4
-                bc4.setVisibility(View.VISIBLE);
-                listview.setVisibility(View.GONE);//desaparece listview
-                tv1.setVisibility(View.VISIBLE);//aparece tv1
-                tv2.setVisibility(View.VISIBLE);//aparece tv2
-                tv3.setVisibility(View.VISIBLE);//aparece tv3
-                tv4.setVisibility(View.VISIBLE);
-                tv5.setVisibility(View.VISIBLE);
-                tv6.setVisibility(View.VISIBLE);
-                tv7.setVisibility(View.VISIBLE);
-                tv8.setVisibility(View.VISIBLE);
-                tv9.setVisibility(View.VISIBLE);
-                cafeteria11.setVisibility(View.VISIBLE);
-
-
-
-            }
-        });
-
-//economico
-        bc1.setOnClickListener(new View.OnClickListener() {
-            @Override//metodo override que detecta si se ha dado click a bc1
-            public void onClick(View v) {
-
-                bc1.setVisibility(View.GONE);//desaparece bc1
-                bc2.setVisibility(View.GONE);
-                bc3.setVisibility(View.GONE);
-                listview.setVisibility(View.VISIBLE);//aparece listview
-                tv1.setVisibility(View.GONE);
-                tv2.setVisibility(View.GONE);
-                tv3.setVisibility(View.GONE);
-                tv4.setVisibility(View.GONE);
-                tv5.setVisibility(View.GONE);
-                cafeteria11.setVisibility(View.GONE);
-
-                listar(2);//Al clickear el bc1 se ejecua el metodo listar con el numero 2 que representa el menu qe se mostrara
-
-
-
-            }
-        });
-//ejeecutio
-        bc2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                bc1.setVisibility(View.GONE);
-                bc2.setVisibility(View.GONE);
-                bc3.setVisibility(View.GONE);
-                listview.setVisibility(View.VISIBLE);
-                tv1.setVisibility(View.GONE);
-                tv2.setVisibility(View.GONE);
-                tv3.setVisibility(View.GONE);
-                tv4.setVisibility(View.GONE);
-                tv5.setVisibility(View.GONE);
-                cafeteria11.setVisibility(View.GONE);
-                listar(3);
-
-
-            }
-        });
-
-//dieta
-        bc3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                bc1.setVisibility(View.GONE);
-                bc2.setVisibility(View.GONE);
-                bc3.setVisibility(View.GONE);
-                listview.setVisibility(View.VISIBLE);
-                tv1.setVisibility(View.GONE);
-                tv2.setVisibility(View.GONE);
-                tv3.setVisibility(View.GONE);
-                tv4.setVisibility(View.GONE);
-                tv5.setVisibility(View.GONE);
-                cafeteria11.setVisibility(View.GONE);
-
-                listar(4);
-
-
-
-            }
-        });
-
-        bc4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                bc4.setVisibility(View.GONE);
-                bc5.setVisibility(View.GONE);
-                listview.setVisibility(View.VISIBLE);
-                tv6.setVisibility(View.GONE);
-                tv7.setVisibility(View.GONE);
-                tv8.setVisibility(View.GONE);
-                tv9.setVisibility(View.GONE);
-                cafeteria11.setVisibility(View.GONE);
-
-                listar(1);
-
-
-            }
-        });
-
-
-        bc5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-
-
-            }
-        });
 
 
         return v;
@@ -370,22 +229,7 @@ public class Cafeteria extends Fragment {
 
 
 
-        bc1.setVisibility(View.VISIBLE);
-        bc2.setVisibility(View.VISIBLE);
-        bc3.setVisibility(View.VISIBLE);
-        bc5.setVisibility(View.VISIBLE);
-        bc4.setVisibility(View.VISIBLE);
-        listview.setVisibility(View.GONE);
-        tv1.setVisibility(View.VISIBLE);
-        tv2.setVisibility(View.VISIBLE);
-        tv3.setVisibility(View.VISIBLE);
-        tv4.setVisibility(View.VISIBLE);
-        tv5.setVisibility(View.VISIBLE);
-        tv6.setVisibility(View.VISIBLE);
-        tv7.setVisibility(View.VISIBLE);
-        tv8.setVisibility(View.VISIBLE);
-        tv9.setVisibility(View.VISIBLE);
-        cafeteria11.setVisibility(View.VISIBLE);
+
 
 
 
