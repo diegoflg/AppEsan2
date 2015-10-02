@@ -36,16 +36,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ListView
+                    <ExpandableListView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/listav2">
+                        android:id="@+id/exlistv2">
 
 
-                    </ListView>
-
-
-
+                    </ExpandableListView>
 
                 </RelativeLayout>
 
