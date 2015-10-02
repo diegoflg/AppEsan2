@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<com.sothree.slidinguppanel.SlidingUpPanelLayout
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:clickable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sliding_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    sothree:umanoPanelHeight="50dp"
-    sothree:umanoShadowHeight="5dp"
     >
-
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:background="@drawable/ffond2"
-        android:clickable="true">
 
 
         <TextView
@@ -35,132 +23,157 @@
             android:textColor="#f1010101"
             android:textSize="30sp"/>
 
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/parte1e"
-            android:src="@drawable/parte1"
-            android:layout_below="@+id/textViewestareg"
-            android:layout_marginLeft="20dp"
-            />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sema1e"
-            android:src="@drawable/rojoapagado"
-            android:layout_above="@+id/sema2e"
-            android:layout_toRightOf="@+id/parte1e"
-            android:layout_toEndOf="@+id/parte1e"
-            android:layout_below="@+id/textViewestareg"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sema2e"
-            android:src="@drawable/amarilloapagado"
-            android:layout_above="@+id/sema3e"
-            android:layout_toRightOf="@+id/parte1e"
-            android:layout_toEndOf="@+id/parte1e" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/sema3e"
-            android:src="@drawable/verdeprendido"
-            android:layout_alignBottom="@+id/parte1e"
-            android:layout_toRightOf="@+id/parte1e"
-            android:layout_toEndOf="@+id/parte1e"
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/parte2e"
-            android:src="@drawable/parte2"
-            android:layout_toRightOf="@+id/sema1e"
-            android:layout_below="@+id/textViewestareg"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/textViewestareg"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/sep1"
+        />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/textlibres"
-            android:layout_below="@+id/sema1e"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="ESAN"
+            android:id="@+id/textView"
+            android:layout_toLeftOf="@+id/textViewestareg"
+            android:layout_below="@id/sep1"
+            android:layout_marginTop="30dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btEsan"
+            android:background="#ffff0000"
+            android:layout_alignTop="@+id/textView"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/parte2e"
-            android:layout_marginLeft="30dp"
-            android:text="cargando"
-            android:textStyle="bold"
-            android:textColor="#f1010101" />
+            android:layout_marginRight="26dp"
+            android:layout_marginEnd="26dp" />
+             />
 
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="#ffededed">
-        <!-- Your main sliding panel inside here -->
-        <TextView
-            android:id="@+id/titulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|top"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Subir panel para más estacionamientos"
-            android:textSize="16sp" />
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/btEsan"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/sep2"
+        />
 
         <TextView
-            android:id="@+id/tit1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titulo"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Av. El Polo cdra. 9 s/n"
-            android:textSize="13sp"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Alonso de la Molina"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/sep2"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_marginTop="30dp" />
 
-        <ImageView
-            android:id="@+id/marker1"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tit1"
-            android:layout_marginLeft="50dp"
-            android:layout_marginStart="50dp"
-            android:src="@drawable/markerc"/>
+            android:id="@+id/btAlonso"
+            android:background="#ffff0000"
+            android:layout_alignTop="@+id/textView3"
+            android:layout_alignLeft="@+id/btEsan"
+            android:layout_alignStart="@+id/btEsan" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/btAlonso"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/sep3"
+         />
 
         <TextView
-            android:id="@+id/tit2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titulo"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_toRightOf="@+id/tit1"
-            android:layout_toEndOf="@+id/tit1"
-            android:text="Av. Alonso de Molina 1520"
-            android:textSize="13sp"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="El Polo"
+            android:id="@+id/textView4"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/sep3"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_alignStart="@+id/textView3" />
 
-        <ImageView
-            android:id="@+id/marker2"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tit2"
-            android:layout_marginLeft="95dp"
-            android:layout_marginStart="95dp"
-            android:layout_toRightOf="@+id/marker1"
-            android:layout_toEndOf="@+id/marker1"
-            android:src="@drawable/markerv"/>
+            android:id="@+id/btPolo"
+            android:background="#ffff0000"
+            android:layout_alignTop="@+id/textView4"
+            android:layout_alignLeft="@+id/btAlonso"
+            android:layout_alignStart="@+id/btAlonso" />
 
-    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Av. El Polo cdra. 9"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Av. Alonso de Molina 1520 "
+        android:id="@+id/textView6"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Av. Alonso de Molina 1652 "
+        android:id="@+id/textView7"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/btPolo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/sep4"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ir"
+        android:id="@+id/button5"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toLeftOf="@+id/btPolo"
+        android:layout_toStartOf="@+id/btPolo"
+        android:layout_above="@+id/sep4" />
 
 
-</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</RelativeLayout>
+
+
+
+
 
 
