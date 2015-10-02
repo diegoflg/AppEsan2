@@ -474,6 +474,12 @@ public class MainActivity extends ActionBarActivity {
             us=et1.getText().toString();
             pass=et2.getText().toString();
 
+        if(us.contains("@")){
+            Log.i("ACCEDER", "EL USUARIO CONTIENE UN ARROBA");
+        }else{
+            Log.i("ACCEDER", "EL USUARIO NO CONTIENE UN ARROBA");
+        }
+
         //Se crea una base de datos del tipo AdminBD
             AdminBD admin= new AdminBD(this, "BDESAN4",null, 1);
 
