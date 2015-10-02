@@ -8,15 +8,18 @@ import android.app.ExpandableListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ExpandableListView;
@@ -72,7 +75,7 @@ public class Cafeteria extends Fragment {
     Team team1,team2,team3,team4;//Se instancian los Team team1,team2,team3,team4
 
 
-   ExpandableListAdapter ladapter;
+   ListViewAdapter ladapter;
 
 
     List<String> titulo;
@@ -103,15 +106,20 @@ public class Cafeteria extends Fragment {
         listview = (ListView) v.findViewById(R.id.listview);//Se relaciona listview con el listview en el xml
 
 
-
+        WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);//Se crea un windows manager llamado wm, que obtiene el valor obtenido usando los metodos getActivity().getSystemService(Context.WINDOW_SERVICE)
+        Display display = wm.getDefaultDisplay();//Se crea un Display llamado display, que tendra el valor de wm.getDefaultDisplay()
+        Point size = new Point();//Se crea un punto
+        display.getSize(size);//Se obtiene el tamano de la pantalla del dispositivo
+        int widthP = size.x;//se obtiene el alto
+        int espX = widthP - 10;
 
         final ExpandableListView expListV = (ExpandableListView) v.findViewById(R.id.exlistv2);
-
         prepareListData();
 
-        ladapter = new ExpandableListAdapter(getActivity(), titulo, subtitulos);
+        ladapter = new ListViewAdapter(getActivity(), titulo, subtitulos, imagenes);
         expListV.setAdapter(ladapter);
-
+        expListV.expandGroup(0);
+        expListV.expandGroup(1);
         expListV.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -119,15 +127,21 @@ public class Cafeteria extends Fragment {
                     case 0:
                         switch (childPosition){
                             case 0:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
+                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
+                                        Toast.LENGTH_SHORT).show();
                             break;
 
                             case 1:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
+                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
+                                        Toast.LENGTH_SHORT).show();
                             break;
 
                             case 2:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
+                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
+                                        Toast.LENGTH_SHORT).show();
                             break;
                         }
                     break;
@@ -135,7 +149,9 @@ public class Cafeteria extends Fragment {
                     case 1:
                         switch (childPosition){
                             case 0:
-                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " + subtitulos.get(titulo.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), titulo.get(groupPosition) + " : " +
+                                        subtitulos.get(titulo.get(groupPosition)).get(childPosition),
+                                        Toast.LENGTH_SHORT).show();
                             break;
                         }
                     break;

@@ -39,9 +39,12 @@
                     <ExpandableListView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/exlistv2">
-
-
+                        android:divider="#C90039"
+                        android:childDivider="#C90039"
+                        android:dividerHeight="2dp"
+                        android:id="@+id/exlistv2"
+                        android:indicatorLeft="250dp"
+                        android:indicatorRight="300dp">
                     </ExpandableListView>
 
                 </RelativeLayout>
