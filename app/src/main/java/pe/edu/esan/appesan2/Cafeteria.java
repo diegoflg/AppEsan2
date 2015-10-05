@@ -2,20 +2,16 @@ package pe.edu.esan.appesan2;
 
 /**
  * Se importan las siguientes clases:
- *
  */
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +21,6 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,20 +51,7 @@ public class Cafeteria extends Fragment {
     static ListView listview;//Se instancia un listview
     static ExpandableListView expListV; //Se instancia una lista expandible
     static ImageView cafet;
-    TabHost mTabHost;//Se instancia el mTabHost
-    int num=0;//Se crea un entero llamado num con el valor de 0
     int diadelasemana=0;//Se crea un entero llamado diadelasemana con el valor de 0
-    static TextView tv1;//Se instancia un TextView llamado tv1
-    static TextView tv2;//Se instancia un TextView llamado tv2
-    static TextView tv3;//Se instancia un TextView llamado tv3
-    static TextView tv4;//Se instancia un TextView llamado tv4
-    static TextView tv5;//Se instancia un TextView llamado tv5
-    static TextView tv6;//Se instancia un TextView llamado tv6
-    static TextView tv7;//Se instancia un TextView llamado tv7
-    static TextView tv8;//Se instancia un TextView llamado tv8
-    static TextView tv9;//Se instancia un TextView llamado tv9
-
-    static ImageView cafeteria11;//Se instancia un ImageView llamado cafeteria11
 
     TeamsAdapter adapter1,adapter2,adapter3,adapter4, adapter5; //Se instancian los TeamsAdapter adapter1,adapter2,adapter3,adapter4
 
@@ -106,8 +87,6 @@ public class Cafeteria extends Fragment {
         Display display = wm.getDefaultDisplay();//Se crea un Display llamado display, que tendra el valor de wm.getDefaultDisplay()
         Point size = new Point();//Se crea un punto
         display.getSize(size);//Se obtiene el tamano de la pantalla del dispositivo
-        int widthP = size.x;//se obtiene el alto
-
 
         expListV = (ExpandableListView) v.findViewById(R.id.exlistv2);
         prepareListData();
@@ -174,56 +153,14 @@ public class Cafeteria extends Fragment {
 
         lay1=(RelativeLayout)v.findViewById(R.id.LaRuta);//Se relaciona el RelativeLayout con el Layout del xml
 
-        //FUENTE Y COLOR PARA CUALQUIER OBJETO DENTRO DE CUALQUIER TABHOST:
-        String font_pathL = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
-        Typeface TFL = Typeface.createFromAsset(getActivity().getAssets(),font_pathL);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-
-
-
-
-
         DisplayMetrics displaymetrics = new DisplayMetrics();//Se instancia una clase DisplayMetrics
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);//Se ejecutan los metodos mencionados para obtener las medidas de la pantalla
-        int height = displaymetrics.heightPixels;
         double width = displaymetrics.widthPixels;//se obtiene el ancho de la pantalla del dispositivo
         width=width*0.13;//se obtiene el 13 porciento el ancho
         int y = (int)Math.round(width);//se redondea el 13 porciento del ancho
 
         listview.setPadding(y, 0, 0, 0);//a el listview se le pone de pading izquierdo el 13 porciento del ancho para que el list view cuadre dentro del fondo de cafeteria(hoja.jpg)
         listview.setVisibility(View.INVISIBLE);//el list view se pone invisible, se pondra visible al apretar el boton de seleccion de menu
-
-
-
-
-        mTabHost = (TabHost) v.findViewById(R.id.tabHost2);//Se relaciona mTabHost con tabHost2 de su respectivo XML
-        mTabHost.setup();//Se ejecuta el metodo setup() del mTabHost
-
-        TabHost.TabSpec spec = mTabHost.newTabSpec("Tab 1");//Se definine el TabSpect
-        spec.setContent(R.id.LaRuta);//Se relaciona el spect con el Content del xml con id LaRuta
-        spec.setIndicator("Menu");//Se pone el nombre la ruta en uno de los tabHost
-        mTabHost.addTab(spec);//Se insterta el spec al tabHost
-
-        spec=mTabHost.newTabSpec("Tab 2");//Se define otro spec para Delisabores
-        spec.setContent(R.id.DeliSabores);
-        spec.setIndicator("Platos a la carta");
-        mTabHost.addTab(spec);
-
-        mTabHost.setCurrentTab(0);//El tabHost inicial sera el de la Ruta
-
-        //FUENTE PARA TÍTULO EN TABHOST:
-        String font_pathT = "font/HelveticaNeue-Roman.ttf"; //ruta de la fuente
-        Typeface TFT = Typeface.createFromAsset(getActivity().getAssets(),font_pathT);//llamanos a la CLASS TYPEFACE y la definimos con un CREATE desde ASSETS con la ruta STRING
-
-        for(int i=0;i<mTabHost.getTabWidget().getChildCount();i++)//For que sirve para cambiaar el color de los tabs y fuentes de las letras
-        {
-            mTabHost.getTabWidget().setStripEnabled(true);
-
-            TextView tv = (TextView) mTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            tv.setTextColor(Color.parseColor("#FFFFFF"));//Se cambia el texto tv a el color #FFFFFF
-            tv.setTypeface(TFT);//El tv sera de tipo HelveticaNeue-Light
-        }
-        mTabHost.getTabWidget().getChildAt(0).setBackgroundColor(Color.parseColor("#C90039")); //Se cambia de color de fondo a el hijo 0  del tab a #C90039
-        mTabHost.getTabWidget().getChildAt(1).setBackgroundColor(Color.parseColor("#C90039")); //Se cambia de color de fondo a el hijo 1  del tab a #C90039
 
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);//Se  verifica la conexion a internet
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -435,17 +372,10 @@ public class Cafeteria extends Fragment {
 
 /**
     private void processJson(JSONObject object) {
-
-
-
         try {
             JSONArray columns = object.getJSONArray("rows");
 
             if (mTabHost.getCurrentTab()==1){
-
-
-
-
 
                 for (int r = 1; r < 8; ++r) {
                     JSONObject column = columns.getJSONObject(r);
@@ -460,14 +390,11 @@ public class Cafeteria extends Fragment {
                     Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
                     teams.add(team);
                 }
-
             }
 
             if (mTabHost.getCurrentTab()==0){
 
                 if(rb1.isChecked()){
-
-
                         for (int r = 10; r < 18; ++r) {
                             JSONObject column = columns.getJSONObject(r);
                             JSONArray rows = column.getJSONArray("c");
@@ -481,8 +408,6 @@ public class Cafeteria extends Fragment {
                             Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
                             teams.add(team);
                         }
-
-
                 }
 
                 if(rb2.isChecked()){
@@ -501,13 +426,9 @@ public class Cafeteria extends Fragment {
                         Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
                         teams.add(team);
                     }
-
-
                 }
 
                 if(rb3.isChecked()){
-
-
                     for (int r = 26; r < 32; ++r) {
                         JSONObject column = columns.getJSONObject(r);
                         JSONArray rows = column.getJSONArray("c");
@@ -521,27 +442,14 @@ public class Cafeteria extends Fragment {
                         Team team = new Team(dia, entrada, plato, postre, refresco,sabado);
                         teams.add(team);
                     }
-
-
                 }
-
-
             }
-
-
-
-
             final TeamsAdapter adapter = new TeamsAdapter(getActivity(), R.layout.team, teams);
             listview.setAdapter(adapter);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-
-
     }
  */
 
@@ -551,18 +459,7 @@ private boolean isNetworkAvailable() {
     return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     /**
      * Se revisa si hay conexion a internet
-     *
      */
 }
-
-
-
-
-
-
-
-
-
-
 
 }
