@@ -23,10 +23,13 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,6 +101,8 @@ public class Registroesta extends Fragment {
         sem7=(ImageView)v.findViewById(R.id.sema7);
         sem8=(ImageView)v.findViewById(R.id.sema9);
         sem9=(ImageView)v.findViewById(R.id.sema8);
+
+
 
         new LoadAllProducts().execute();// Este metodo busca el estado actual del estacionamiento en la base de datos
 
@@ -589,8 +594,8 @@ public class Registroesta extends Fragment {
                 break;
 
             case 7:
-                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de El Polo a verde?");
-                popim.setImageResource(R.drawable.verdeprendido);
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de El Polo a rojo?");
+                popim.setImageResource(R.drawable.rojoprendido);
 
                 break;
 

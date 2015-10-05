@@ -29,9 +29,19 @@ package pe.edu.esan.appesan2;
         import com.google.android.gms.common.api.GoogleApiClient;
         import com.google.android.gms.location.LocationServices;
         import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+
+        import org.apache.http.HttpResponse;
+        import org.apache.http.HttpStatus;
+        import org.apache.http.StatusLine;
+        import org.apache.http.client.ClientProtocolException;
+        import org.apache.http.client.HttpClient;
+        import org.apache.http.client.methods.HttpGet;
+        import org.apache.http.impl.client.DefaultHttpClient;
         import org.json.JSONArray;
         import org.json.JSONException;
         import org.json.JSONObject;
+
+        import java.io.IOException;
         import java.util.ArrayList;
         import java.util.List;
 
@@ -135,6 +145,8 @@ public class Estacionamiento extends Fragment implements
         btAlonso=(Button)v.findViewById(R.id.btAlonso);
         btPolo=(Button)v.findViewById(R.id.btPolo);
         btir=(Button)v.findViewById(R.id.btir);
+
+
 
 
         final Handler h = new Handler();
