@@ -247,13 +247,6 @@ public class Cafeteria extends Fragment {
 
         if(isNetworkAvailable()==true){//Se verifica la conexion a internet
                         go(v);
-            try {
-                goME(v);
-            }catch (Exception e){
-                Log.i("ERROR", "HE AQUÍ EL ERROR!");
-            e.printStackTrace();
-        }
-
         }else{
             Toast t=Toast.makeText(getActivity(),"No hay coneccion a internet", Toast.LENGTH_SHORT);//Se crea un Toast que muestra el  "No hay coneccion a internet"
             t.show(); //Se muestra el Tast
@@ -344,8 +337,10 @@ public class Cafeteria extends Fragment {
             @Override
             public void onResult(JSONObject object) {
                 processJson(object);
+                processJsonME(object);
             }
-        }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms");
+        }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms",
+                    "https://spreadsheets.google.com/tq?key=1gveCHCpz9InAj0rxDpT0Z7PUdbRq4DOXKHkhs3BMWE4");
         //se descargaran los datos almacenados en el google drive, el link de arriba es un link especial con los datos del google drive listos para ser leidos con JSON
     }
 
@@ -413,15 +408,7 @@ public class Cafeteria extends Fragment {
 
     }
 
-    public void goME(View view) {
-        new DownloadWebpageTask(new AsyncResult() {
-            @Override
-            public void onResult(JSONObject object) {
-                processJsonME(object);
-            }
-        }).execute("https://spreadsheets.google.com/tq?key=1gveCHCpz9InAj0rxDpT0Z7PUdbRq4DOXKHkhs3BMWE4");
-        //se descargaran los datos almacenados en el google drive, el link de arriba es un link especial con los datos del google drive listos para ser leidos con JSON
-    }
+
 
     private void processJsonME(JSONObject object) {
         //En este metodo de leen los datos
