@@ -46,7 +46,7 @@ public class XMLParser {
 			Document dom = builder.parse(this.url.openConnection().getInputStream());
 			Element root = dom.getDocumentElement();
 			NodeList items = root.getElementsByTagName("item");
-			for (int i=0;i<11;i++){
+			for (int i=0;i<12;i++){
 				noticia = new Noticias();
 				Node item = items.item(i);
 				NodeList properties = item.getChildNodes();

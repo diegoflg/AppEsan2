@@ -148,7 +148,7 @@ public class Estacionamiento extends Fragment implements
                 Log.v("es2", estadoalonso);
 
                 if (estado.equals("rojo")) {
-                    btEsan.setBackgroundColor(Color.parseColor("#F0152B"));
+                    btEsan.setBackgroundResource(R.drawable.brojo);
 
 
                     if (estado.equals(estado2)) {
@@ -160,8 +160,8 @@ public class Estacionamiento extends Fragment implements
                             Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                             t.show();
 
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
+                           // MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                          //  mp.start();
 
 
                         }
@@ -170,7 +170,7 @@ public class Estacionamiento extends Fragment implements
 
                 }
                 if (estado.equals("amarillo")) {
-                    btEsan.setBackgroundColor(Color.parseColor("#F7F020"));
+                    btEsan.setBackgroundResource(R.drawable.bamarillo);
                     if (estado.equals(estado2)) {
 
 
@@ -180,8 +180,6 @@ public class Estacionamiento extends Fragment implements
                             Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                             t.show();
 
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
 
                         }
 
@@ -190,7 +188,7 @@ public class Estacionamiento extends Fragment implements
 
                 }
                 if (estado.equals("verde")) {
-                    btEsan.setBackgroundColor(Color.parseColor("#15AE0D"));
+                    btEsan.setBackgroundResource(R.drawable.bverde);
 
                     if (estado.equals(estado2)) {
 
@@ -201,8 +199,7 @@ public class Estacionamiento extends Fragment implements
                             Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                             t.show();
 
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
+
 
                         }
 

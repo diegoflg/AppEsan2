@@ -90,7 +90,13 @@ public class   Noticias_Adapter extends ArrayAdapter<Object> {
 		placeHolder.content.setTypeface(TFD);
 		placeHolder.content.setTextColor(Color.parseColor("#1A171B"));
 
-		imageLoader.get(noticias.get(position).getImagen(), ImageLoader.getImageListener(placeHolder.picture, R.drawable.esan, R.drawable.esan));
+		try{
+			imageLoader.get(noticias.get(position).getImagen(), ImageLoader.getImageListener(placeHolder.picture, R.drawable.esan, R.drawable.esan));
+		}catch (Exception e){
+
+		}
+
+
 		return (convertView);
 	}
 
