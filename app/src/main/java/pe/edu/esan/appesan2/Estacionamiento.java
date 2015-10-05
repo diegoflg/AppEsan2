@@ -59,6 +59,8 @@ public class Estacionamiento extends Fragment implements
     JSONParser jParser = new JSONParser();
     TextView tvlibres, titulo, tit1, tit2;
     String estado2;
+    String estado22;
+    String estado23;
     private String tt;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -69,7 +71,6 @@ public class Estacionamiento extends Fragment implements
 
     //PARA FUENTE:
     TextView textViewestareg;
-    com.sothree.slidinguppanel.SlidingUpPanelLayout sliding;
 
     //ELEMENTOS PERTENECIENTES AL SLIDING UP PANEL
 
@@ -169,6 +170,56 @@ public class Estacionamiento extends Fragment implements
                     }
 
                 }
+                if (estadoalonso.equals("rojo")) {
+                    btAlonso.setBackgroundResource(R.drawable.brojo);
+
+
+                    if (estadoalonso.equals(estado22)) {
+
+
+                    } else {
+
+                        if (Datah.getInstance().getMenu() == 1) {
+                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                            t.show();
+
+                            // MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                            //  mp.start();
+
+
+                        }
+
+                    }
+
+                }
+
+                if (estadopolo.equals("rojo")) {
+                    btPolo.setBackgroundResource(R.drawable.brojo);
+
+
+                    if (estadopolo.equals(estado23)) {
+
+
+                    } else {
+
+                        if (Datah.getInstance().getMenu() == 1) {
+                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                            t.show();
+
+                            // MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                            //  mp.start();
+
+
+                        }
+
+                    }
+
+                }
+
+
+
+
+
                 if (estado.equals("amarillo")) {
                     btEsan.setBackgroundResource(R.drawable.bamarillo);
                     if (estado.equals(estado2)) {
@@ -187,10 +238,90 @@ public class Estacionamiento extends Fragment implements
 
 
                 }
+
+                if (estadoalonso.equals("amarillo")) {
+                    btAlonso.setBackgroundResource(R.drawable.bamarillo);
+                    if (estado.equals(estado22)) {
+
+
+                    } else {
+
+                        if (Datah.getInstance().getMenu() == 1) {
+                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                            t.show();
+
+
+                        }
+
+                    }
+
+
+                }
+                if (estadopolo.equals("amarillo")) {
+                    btPolo.setBackgroundResource(R.drawable.bamarillo);
+                    if (estadopolo.equals(estado23)) {
+
+
+                    } else {
+
+                        if (Datah.getInstance().getMenu() == 1) {
+                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                            t.show();
+
+
+                        }
+
+                    }
+
+
+                }
+
                 if (estado.equals("verde")) {
                     btEsan.setBackgroundResource(R.drawable.bverde);
 
                     if (estado.equals(estado2)) {
+
+
+                    } else {
+
+                        if (Datah.getInstance().getMenu() == 1) {
+                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                            t.show();
+
+
+
+                        }
+
+                    }
+
+
+                }
+
+                if (estadoalonso.equals("verde")) {
+                    btAlonso.setBackgroundResource(R.drawable.bverde);
+
+                    if (estadoalonso.equals(estado22)) {
+
+
+                    } else {
+
+                        if (Datah.getInstance().getMenu() == 1) {
+                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                            t.show();
+
+
+
+                        }
+
+                    }
+
+
+                }
+
+                if (estadopolo.equals("verde")) {
+                    btPolo.setBackgroundResource(R.drawable.bverde);
+
+                    if (estadopolo.equals(estado23)) {
 
 
                     } else {
@@ -274,6 +405,8 @@ public class Estacionamiento extends Fragment implements
                     for (int i = 0; i < products.length(); i++) {
                         JSONObject c = products.getJSONObject(i);
                         estado2=estado;
+                        estado22=estadoalonso;
+                        estado23=estadopolo;
                         estado=c.getString(TAG_NOMBRE);
                         estadoalonso=c.getString(TAG_NOMBRE2);
                         estadopolo=c.getString(TAG_NOMBRE3);

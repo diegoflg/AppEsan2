@@ -1,16 +1,27 @@
 package pe.edu.esan.appesan2;
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -92,23 +103,14 @@ public class Registroesta extends Fragment {
 
 
 
+
+
+
         sem1.setOnClickListener(new View.OnClickListener() {//se detecta si se hizo click a este boton(bombilla roja del semaforo)
             @Override
             public void onClick(View v) {
-                //Cuando el semaforo rojo es clickeado
-                //Si es que existe conexion a internet
-                if (isNetworkAvailable() == true) {
-                    sem1.setImageResource(R.drawable.rojoprendido);//Se activa la imagen del rojo predido
-                    sem2.setImageResource(R.drawable.amarilloapagado);//Se apaga la luz amarilla
-                    sem3.setImageResource(R.drawable.verdeapagado);//Se apaga la luz verde
-                    libres = "rojo";
-                    new CreateUser().execute();// se ejecuta este metodo, que guarda el estado "rojo" en la base de datos
-                    //Si no existe conexion a internet
-                } else {
-                    Toast.makeText(getActivity(), "No hay conexion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
+                showPopup(getActivity(),1);
 
             }
         });
@@ -116,20 +118,11 @@ public class Registroesta extends Fragment {
         sem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                showPopup(getActivity(),2);
                 //Cuando el semaforo amarillo es clickeado
                 //Si es que existe conexion a internet
-                if (isNetworkAvailable() == true) {
-                    sem1.setImageResource(R.drawable.rojoapagado);
-                    sem2.setImageResource(R.drawable.amarilloprendido);
-                    sem3.setImageResource(R.drawable.verdeapagado);
-                    libres = "amarillo";
-                    new CreateUser().execute();
 
-                    //Si no existe conexion a internet
-                } else {
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -138,20 +131,10 @@ public class Registroesta extends Fragment {
         sem3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showPopup(getActivity(),3);
                 //Cuando el semaforo verde es clickeado
                 //Si es que existe conexion a internet
-                if (isNetworkAvailable() == true) {
-                    sem1.setImageResource(R.drawable.rojoapagado);
-                    sem2.setImageResource(R.drawable.amarilloapagado);
-                    sem3.setImageResource(R.drawable.verdeprendido);
-                    libres = "verde";
-                    new CreateUser().execute();
 
-                    //Si no existe conexion a internet
-                } else {
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -160,20 +143,10 @@ public class Registroesta extends Fragment {
         sem4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showPopup(getActivity(),4);
                 //Cuando el semaforo verde es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
-                    sem4.setImageResource(R.drawable.rojoprendido);
-                    sem5.setImageResource(R.drawable.amarilloapagado);
-                    sem6.setImageResource(R.drawable.verdeapagado);
-                    libres2="rojo";
-                    new CreateUser2().execute();
 
-                    //Si no existe conexion a internet
-                }else{
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -182,20 +155,9 @@ public class Registroesta extends Fragment {
         sem5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showPopup(getActivity(),5);
                 //Cuando el semaforo verde es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
-                    sem4.setImageResource(R.drawable.rojoapagado);
-                    sem5.setImageResource(R.drawable.amarilloprendido);
-                    sem6.setImageResource(R.drawable.verdeapagado);
-                    libres2="amarillo";
-                    new CreateUser2().execute();
-
-                    //Si no existe conexion a internet
-                }else{
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -204,20 +166,10 @@ public class Registroesta extends Fragment {
         sem6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showPopup(getActivity(),6);
                 //Cuando el semaforo verde es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
-                    sem4.setImageResource(R.drawable.rojoapagado);
-                    sem5.setImageResource(R.drawable.amarilloapagado);
-                    sem6.setImageResource(R.drawable.verdeprendido);
-                    libres2="verde";
-                    new CreateUser2().execute();
 
-                    //Si no existe conexion a internet
-                }else{
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -227,20 +179,10 @@ public class Registroesta extends Fragment {
         sem7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showPopup(getActivity(),7);
                 //Cuando el semaforo verde es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
-                    sem7.setImageResource(R.drawable.rojoprendido);
-                    sem8.setImageResource(R.drawable.amarilloapagado);
-                    sem9.setImageResource(R.drawable.verdeapagado);
-                    libres3="rojo";
-                    new CreateUser3().execute();
 
-                    //Si no existe conexion a internet
-                }else{
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -249,20 +191,10 @@ public class Registroesta extends Fragment {
         sem8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showPopup(getActivity(),8);
                 //Cuando el semaforo verde es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
-                    sem7.setImageResource(R.drawable.rojoapagado);
-                    sem8.setImageResource(R.drawable.amarilloprendido);
-                    sem9.setImageResource(R.drawable.verdeapagado);
-                    libres3="amarillo";
-                    new CreateUser3().execute();
 
-                    //Si no existe conexion a internet
-                }else{
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -271,20 +203,10 @@ public class Registroesta extends Fragment {
         sem9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showPopup(getActivity(),9);
                 //Cuando el semaforo verde es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
-                    sem7.setImageResource(R.drawable.rojoapagado);
-                    sem8.setImageResource(R.drawable.amarilloapagado);
-                    sem9.setImageResource(R.drawable.verdeprendido);
-                    libres3="verde";
-                    new CreateUser3().execute();
 
-                    //Si no existe conexion a internet
-                }else{
-                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
-                    Log.d("internet", "no hay");
-                }
 
 
             }
@@ -581,6 +503,301 @@ public class Registroesta extends Fragment {
             }
 
         }
+    }
+
+
+    private void showPopup(final Activity context, final int opc) {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        double width = displaymetrics.widthPixels;
+
+        Log.v("tamano",String.valueOf(height));
+        Log.v("tamano",String.valueOf(width));
+
+        double popupHeight = height*0.52;
+        double popupWidth = width*0.625;
+
+
+        LinearLayout viewGroup = (LinearLayout) context.findViewById(R.id.popup3);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = layoutInflater.inflate(R.layout.popup3, viewGroup);
+
+        // Creating the PopupWindow
+        final PopupWindow popup = new PopupWindow(context);
+        popup.setContentView(layout);
+        popup.setWidth((int) Math.round(popupHeight));
+        popup.setHeight((int) Math.round(popupWidth));
+        popup.setFocusable(true);
+        popup.setOutsideTouchable(false);
+
+        // Displaying the popup at the specified location, + offsets.
+        popup.showAtLocation(layout, Gravity.CENTER, 0, 0);
+
+        // FUENTE PARA TEXTO EN POPUP Y BOTONES:
+        String font_pathPP = "font/HelveticaNeue-Light.ttf"; //ruta de la fuente
+        Typeface TPP = Typeface.createFromAsset(getActivity().getAssets(),font_pathPP);//llamanos a la CLASS TYPEFACE y la definimos
+        // con un CREATE desde ASSETS con la ruta STRING
+
+        // Getting a reference to Close button, and close the popup when clicked.
+        Button close = (Button) layout.findViewById(R.id.call3);
+        Button call = (Button) layout.findViewById(R.id.close3);
+        final ImageView popim=(ImageView)layout.findViewById(R.id.pop3im);
+        call.setTypeface(TPP);
+        close.setTypeface(TPP);
+
+
+        final TextView tv1 = (TextView) layout.findViewById(R.id.pop3tv1);
+        tv1.setTypeface(TPP);
+
+
+
+        switch(opc) {
+            case 1:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de ESAN a rojo?");
+                popim.setImageResource(R.drawable.rojoprendido);
+
+                break;
+
+            case 2:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de ESAN a amarillo?");
+                popim.setImageResource(R.drawable.amarilloprendido);
+
+                break;
+
+            case 3:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de ESAN a verde?");
+                popim.setImageResource(R.drawable.verdeprendido);
+
+                break;
+
+            case 4:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de Alonso de la Molina a rojo?");
+                popim.setImageResource(R.drawable.rojoprendido);
+
+                break;
+
+            case 5:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de Alonso de la Molina a amarillo?");
+                popim.setImageResource(R.drawable.amarilloprendido);
+
+                break;
+
+            case 6:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de Alonso de la Molina a verde?");
+                popim.setImageResource(R.drawable.verdeprendido);
+                break;
+
+            case 7:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de El Polo a verde?");
+                popim.setImageResource(R.drawable.verdeprendido);
+
+                break;
+
+            case 8:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de El Polo a amarillo?");
+                popim.setImageResource(R.drawable.amarilloprendido);
+
+                break;
+
+            case 9:
+                tv1.setText("Esta seguro que desea cambiar el estado del estacionamiento de El Polo a verde?");
+                popim.setImageResource(R.drawable.verdeprendido);
+
+                break;
+        }
+
+
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+
+
+                switch(opc) {
+                    case 1:
+
+                        if (isNetworkAvailable() == true) {
+                            sem1.setImageResource(R.drawable.rojoprendido);//Se activa la imagen del rojo predido
+                            sem2.setImageResource(R.drawable.amarilloapagado);//Se apaga la luz amarilla
+                            sem3.setImageResource(R.drawable.verdeapagado);//Se apaga la luz verde
+                            libres = "rojo";
+                            new CreateUser().execute();// se ejecuta este metodo, que guarda el estado "rojo" en la base de datos
+
+
+                            //Si no existe conexion a internet
+                        } else {
+                            Toast.makeText(getActivity(), "No hay conexio,n a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+                        break;
+
+                    case 2:
+
+                        if (isNetworkAvailable() == true) {
+                            sem1.setImageResource(R.drawable.rojoapagado);
+                            sem2.setImageResource(R.drawable.amarilloprendido);
+                            sem3.setImageResource(R.drawable.verdeapagado);
+                            libres = "amarillo";
+                            new CreateUser().execute();
+
+                            //Si no existe conexion a internet
+                        } else {
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+                        break;
+
+                    case 3:
+
+                        if (isNetworkAvailable() == true) {
+                            sem1.setImageResource(R.drawable.rojoapagado);
+                            sem2.setImageResource(R.drawable.amarilloapagado);
+                            sem3.setImageResource(R.drawable.verdeprendido);
+                            libres = "verde";
+                            new CreateUser().execute();
+
+                            //Si no existe conexion a internet
+                        } else {
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+
+
+                        break;
+
+                    case 4:
+                        if(isNetworkAvailable()==true){
+                            sem4.setImageResource(R.drawable.rojoprendido);
+                            sem5.setImageResource(R.drawable.amarilloapagado);
+                            sem6.setImageResource(R.drawable.verdeapagado);
+                            libres2="rojo";
+                            new CreateUser2().execute();
+
+                            //Si no existe conexion a internet
+                        }else{
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+
+
+                        break;
+
+                    case 5:
+                        if(isNetworkAvailable()==true){
+                            sem4.setImageResource(R.drawable.rojoapagado);
+                            sem5.setImageResource(R.drawable.amarilloprendido);
+                            sem6.setImageResource(R.drawable.verdeapagado);
+                            libres2="amarillo";
+                            new CreateUser2().execute();
+
+                            //Si no existe conexion a internet
+                        }else{
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+
+
+                        break;
+
+                    case 6:
+
+                        if(isNetworkAvailable()==true){
+                            sem4.setImageResource(R.drawable.rojoapagado);
+                            sem5.setImageResource(R.drawable.amarilloapagado);
+                            sem6.setImageResource(R.drawable.verdeprendido);
+                            libres2="verde";
+                            new CreateUser2().execute();
+
+                            //Si no existe conexion a internet
+                        }else{
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+
+
+                        break;
+
+                    case 7:
+
+                        if(isNetworkAvailable()==true){
+                            sem7.setImageResource(R.drawable.rojoprendido);
+                            sem8.setImageResource(R.drawable.amarilloapagado);
+                            sem9.setImageResource(R.drawable.verdeapagado);
+                            libres3="rojo";
+                            new CreateUser3().execute();
+
+                            //Si no existe conexion a internet
+                        }else{
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+
+
+                        break;
+
+                    case 8:
+
+                        if(isNetworkAvailable()==true){
+                            sem7.setImageResource(R.drawable.rojoapagado);
+                            sem8.setImageResource(R.drawable.amarilloprendido);
+                            sem9.setImageResource(R.drawable.verdeapagado);
+                            libres3="amarillo";
+                            new CreateUser3().execute();
+
+                            //Si no existe conexion a internet
+                        }else{
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+
+
+                        break;
+
+                    case 9:
+
+
+
+
+                        if(isNetworkAvailable()==true){
+                            sem7.setImageResource(R.drawable.rojoapagado);
+                            sem8.setImageResource(R.drawable.amarilloapagado);
+                            sem9.setImageResource(R.drawable.verdeprendido);
+                            libres3="verde";
+                            new CreateUser3().execute();
+
+                            //Si no existe conexion a internet
+                        }else{
+                            Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                            Log.d("internet", "no hay");
+                        }
+
+
+
+                        break;
+
+
+                }
+            }
+        });
+
+
     }
 
     private boolean isNetworkAvailable() {
