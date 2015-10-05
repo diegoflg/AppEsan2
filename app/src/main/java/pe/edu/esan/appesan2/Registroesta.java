@@ -37,10 +37,11 @@ public class Registroesta extends Fragment {
     //Declaracion de variables
 
     //Para el semaforo
-    private ImageView sem1,sem2,sem3;
+    private ImageView sem1,sem2,sem3,sem4,sem5,sem6,sem7,sem8,sem9;
 
     //Dato del color activo del semaforo
     private String libres;
+    private String libres2;
 
     //Dialogo de progreso de carga
     private ProgressDialog pDialog;
@@ -48,12 +49,14 @@ public class Registroesta extends Fragment {
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
     private static final String REGISTER_URL = "http://www.estacionamientoesan.site88.net/cas/register.php";
+    private static final String REGISTER_URL2 = "http://www.estacionamientoesan.site88.net/cas/register2.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
     private static String url_all_empresas = "http://www.estacionamientoesan.site88.net/esconnect/get_all_empresas.php";
     private static final String TAG_PRODUCTS = "users";
     private static final String TAG_NOMBRE = "username";
+    private static final String TAG_NOMBRE2 = "username2";
     private String estado="waa";
     JSONArray products = null;
     JSONParser jParser = new JSONParser();
@@ -75,6 +78,12 @@ public class Registroesta extends Fragment {
 
         //Semaforo verde
         sem3=(ImageView)v.findViewById(R.id.sema3);
+        sem4=(ImageView)v.findViewById(R.id.sema4);
+        sem5=(ImageView)v.findViewById(R.id.sema6);
+        sem6=(ImageView)v.findViewById(R.id.sema5);
+        sem7=(ImageView)v.findViewById(R.id.sema7);
+        sem8=(ImageView)v.findViewById(R.id.sema8);
+        sem9=(ImageView)v.findViewById(R.id.sema9);
 
         new LoadAllProducts().execute();// Este metodo busca el estado actual del estacionamiento en la base de datos
 
@@ -83,20 +92,19 @@ public class Registroesta extends Fragment {
         sem1.setOnClickListener(new View.OnClickListener() {//se detecta si se hizo click a este boton(bombilla roja del semaforo)
             @Override
             public void onClick(View v) {
-        //Cuando el semaforo rojo es clickeado
+                //Cuando el semaforo rojo es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
+                if (isNetworkAvailable() == true) {
                     sem1.setImageResource(R.drawable.rojoprendido);//Se activa la imagen del rojo predido
                     sem2.setImageResource(R.drawable.amarilloapagado);//Se apaga la luz amarilla
                     sem3.setImageResource(R.drawable.verdeapagado);//Se apaga la luz verde
-                    libres="rojo";
+                    libres = "rojo";
                     new CreateUser().execute();// se ejecuta este metodo, que guarda el estado "rojo" en la base de datos
-                //Si no existe conexion a internet
-                }else{
+                    //Si no existe conexion a internet
+                } else {
                     Toast.makeText(getActivity(), "No hay conexion a internet", Toast.LENGTH_LONG).show();
                     Log.d("internet", "no hay");
                 }
-
 
 
             }
@@ -105,17 +113,17 @@ public class Registroesta extends Fragment {
         sem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        //Cuando el semaforo amarillo es clickeado
+                //Cuando el semaforo amarillo es clickeado
                 //Si es que existe conexion a internet
-                if(isNetworkAvailable()==true){
+                if (isNetworkAvailable() == true) {
                     sem1.setImageResource(R.drawable.rojoapagado);
                     sem2.setImageResource(R.drawable.amarilloprendido);
                     sem3.setImageResource(R.drawable.verdeapagado);
-                    libres="amarillo";
+                    libres = "amarillo";
                     new CreateUser().execute();
 
-                //Si no existe conexion a internet
-                }else{
+                    //Si no existe conexion a internet
+                } else {
                     Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
                     Log.d("internet", "no hay");
                 }
@@ -145,6 +153,73 @@ public class Registroesta extends Fragment {
 
             }
         });
+
+        sem4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Cuando el semaforo verde es clickeado
+                //Si es que existe conexion a internet
+                if(isNetworkAvailable()==true){
+                    sem4.setImageResource(R.drawable.rojoprendido);
+                    sem5.setImageResource(R.drawable.amarilloapagado);
+                    sem6.setImageResource(R.drawable.verdeapagado);
+                    libres2="rojo";
+                    new CreateUser2().execute();
+
+                    //Si no existe conexion a internet
+                }else{
+                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                    Log.d("internet", "no hay");
+                }
+
+
+            }
+        });
+
+        sem5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Cuando el semaforo verde es clickeado
+                //Si es que existe conexion a internet
+                if(isNetworkAvailable()==true){
+                    sem4.setImageResource(R.drawable.rojoapagado);
+                    sem5.setImageResource(R.drawable.amarilloprendido);
+                    sem6.setImageResource(R.drawable.verdeapagado);
+                    libres2="amarillo";
+                    new CreateUser2().execute();
+
+                    //Si no existe conexion a internet
+                }else{
+                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                    Log.d("internet", "no hay");
+                }
+
+
+            }
+        });
+
+        sem6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Cuando el semaforo verde es clickeado
+                //Si es que existe conexion a internet
+                if(isNetworkAvailable()==true){
+                    sem4.setImageResource(R.drawable.rojoapagado);
+                    sem5.setImageResource(R.drawable.amarilloapagado);
+                    sem6.setImageResource(R.drawable.verdeprendido);
+                    libres2="verde";
+                    new CreateUser2().execute();
+
+                    //Si no existe conexion a internet
+                }else{
+                    Toast.makeText(getActivity(), "No hay coneccion a internet", Toast.LENGTH_LONG).show();
+                    Log.d("internet", "no hay");
+                }
+
+
+            }
+        });
+
 
 
 
@@ -190,6 +265,78 @@ public class Registroesta extends Fragment {
                 //Posting user data to script
                 JSONObject json = jsonParser.makeHttpRequest(
                         REGISTER_URL, "POST", params);
+
+                // full json response
+                Log.d("Registering attempt", json.toString());
+
+                // json success element
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    Log.d("User Created!", json.toString());
+                    return json.getString(TAG_MESSAGE);
+                }else{
+                    Log.d("Registering Failure!", json.getString(TAG_MESSAGE));
+                    return json.getString(TAG_MESSAGE);
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+
+        }
+
+        protected void onPostExecute(String file_url) {
+            //Metodo que se hace terminada la ejecucion de la accion
+
+            // dismiss the dialog once product deleted
+            pDialog.dismiss();
+            if (file_url != null){
+                Toast.makeText(getActivity(), file_url, Toast.LENGTH_LONG).show();
+            }
+
+
+
+        }
+    }
+
+    class CreateUser2 extends AsyncTask<String, String, String> {//Metodo que guarda el estado en la base de datos
+
+
+        @Override
+        protected void onPreExecute() {
+            //Metodo antes de ser ejecutada la accion
+
+
+            super.onPreExecute();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Creating User...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... args) {
+            //Metodo que se hace en segundo plano
+
+            // TODO Auto-generated method stub
+            // Check for success tag
+            int success;
+            String username2 = libres2;
+            try {
+                // Building Parameters
+                List params = new ArrayList();
+                params.add(new BasicNameValuePair("username2", username2));
+
+
+                Log.d("request!", "starting");
+
+                //Posting user data to script
+                JSONObject json = jsonParser.makeHttpRequest(
+                        REGISTER_URL2, "POST", params);
 
                 // full json response
                 Log.d("Registering attempt", json.toString());
