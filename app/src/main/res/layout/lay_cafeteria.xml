@@ -6,31 +6,30 @@
     android:background="#FFFFFF"
     android:clickable="true">
 
-    <LinearLayout
-        android:id="@+id/linlaycaf"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/imca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/cafet"
+        android:layout_marginBottom="30dp"
+        />
 
-        <RelativeLayout
-            android:id="@+id/LaRuta"
-            android:layout_width="match_parent"
+    <ExpandableListView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ExpandableListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:divider="#C90039"
-                android:childDivider="#C90039"
-                android:dividerHeight="2dp"
-                android:id="@+id/exlistv2"
-                android:indicatorLeft="250dp"
-                android:indicatorRight="300dp">
-            </ExpandableListView>
-
-        </RelativeLayout>
-    </LinearLayout>
+            android:layout_above="@id/imca"
+            android:layout_alignParentTop="true"
+            android:choiceMode="singleChoice"
+            android:divider="#C90039"
+            android:childDivider="#C90039"
+            android:dividerHeight="2dp"
+            android:id="@+id/exlistv2"
+            android:scrollbars="vertical"
+            android:indicatorLeft="250dp"
+            android:indicatorRight="300dp">
+    </ExpandableListView>
 
     <ListView
         android:background="@drawable/hoja"
@@ -43,15 +42,6 @@
         />
 
 
-    <ImageView
-        android:id="@+id/imca"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/cafet"
-        android:layout_marginBottom="30dp"
-        />
 
 
 </RelativeLayout>

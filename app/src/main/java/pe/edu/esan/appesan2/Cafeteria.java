@@ -6,6 +6,7 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -45,9 +46,6 @@ public class Cafeteria extends Fragment {
     ArrayList<Team> teams5 = new ArrayList<Team>(); //Especial de DeliSabores
     ProgressDialog pb;//Se instancia el progress dialog
 
-
-    RelativeLayout lay1;//Se instancia un Relative layout
-
     static ListView listview;//Se instancia un listview
     static ExpandableListView expListV; //Se instancia una lista expandible
     static ImageView cafet;
@@ -67,7 +65,11 @@ public class Cafeteria extends Fragment {
 
     int[] imagenes = {
             R.drawable.ruta,
-            R.drawable.deli
+            R.drawable.deli,
+            R.drawable.cafeteria,
+            R.drawable.cafeteria,
+            R.drawable.cafeteria,
+            R.drawable.cafeteria,
     };
 
 
@@ -95,53 +97,56 @@ public class Cafeteria extends Fragment {
         expListV.setAdapter(ladapter);
         expListV.expandGroup(0);
         expListV.expandGroup(1);
+        expListV.expandGroup(2);
+        expListV.expandGroup(3);
+
         expListV.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                switch (groupPosition){
+                switch (groupPosition) {
                     case 0:
-                        switch (childPosition){
+                        switch (childPosition) {
                             case 0:
                                 listview.setVisibility(View.VISIBLE);
                                 expListV.setVisibility(View.GONE);
                                 cafet.setVisibility(View.GONE);
                                 listar(2);
 
-                            break;
+                                break;
 
                             case 1:
                                 listview.setVisibility(View.VISIBLE);
                                 expListV.setVisibility(View.GONE);
                                 cafet.setVisibility(View.GONE);
                                 listar(3);
-                            break;
+                                break;
 
                             case 2:
                                 listview.setVisibility(View.VISIBLE);
                                 expListV.setVisibility(View.GONE);
                                 cafet.setVisibility(View.GONE);
                                 listar(4);
-                            break;
+                                break;
                         }
-                    break;
+                        break;
 
                     case 1:
-                        switch (childPosition){
+                        switch (childPosition) {
                             case 0:
                                 listview.setVisibility(View.VISIBLE);
                                 expListV.setVisibility(View.GONE);
                                 cafet.setVisibility(View.GONE);
                                 listar(1);
-                            break;
+                                break;
                             case 1:
                                 Toast.makeText(getActivity(), "MENU ESPECIAL", Toast.LENGTH_SHORT).show();
                                 listview.setVisibility(View.VISIBLE);
                                 expListV.setVisibility(View.GONE);
                                 cafet.setVisibility(View.GONE);
                                 listar(5);
-                            break;
+                                break;
                         }
-                    break;
+                        break;
 
                 }
                 return false;
@@ -151,8 +156,6 @@ public class Cafeteria extends Fragment {
 
         setRetainInstance(true);//Genera que no se afecte el fragmento en los cambios de configuracion
 
-        lay1=(RelativeLayout)v.findViewById(R.id.LaRuta);//Se relaciona el RelativeLayout con el Layout del xml
-
         DisplayMetrics displaymetrics = new DisplayMetrics();//Se instancia una clase DisplayMetrics
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);//Se ejecutan los metodos mencionados para obtener las medidas de la pantalla
         double width = displaymetrics.widthPixels;//se obtiene el ancho de la pantalla del dispositivo
@@ -161,6 +164,7 @@ public class Cafeteria extends Fragment {
 
         listview.setPadding(y, 0, 0, 0);//a el listview se le pone de pading izquierdo el 13 porciento del ancho para que el list view cuadre dentro del fondo de cafeteria(hoja.jpg)
         listview.setVisibility(View.INVISIBLE);//el list view se pone invisible, se pondra visible al apretar el boton de seleccion de menu
+        cafet.setVisibility(View.VISIBLE); //La imagen inicia como visible
 
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);//Se  verifica la conexion a internet
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -210,6 +214,8 @@ public class Cafeteria extends Fragment {
         //Añade los datos padres
         titulo.add("La Ruta");
         titulo.add("DeliSabores");
+        titulo.add("Comedor detrás de finanzas");
+        titulo.add("Cafetería 338");
 
         // Adding child data
         //Añade los datos hijos
@@ -219,15 +225,22 @@ public class Cafeteria extends Fragment {
         laruta.add("Menú Dieta");
 
         List<String> DS = new ArrayList<String>();
-        //Maestrías especializadas con concentración en negocios
         DS.add("Menú Económico");
         DS.add("Menú Especial");
 
+        List<String> Cafe26 = new ArrayList<String>();
+        Cafe26.add("Cafetería #26 en mapa");
+
+
+        List<String> Cafe338 = new ArrayList<String>();
+        Cafe338.add("Cafetería 338");
 
 
         //Da los datos de padre con su lista de respectivos hijos a la lista expandible
         subtitulos.put(titulo.get(0), laruta); // Header, Child data
         subtitulos.put(titulo.get(1),DS);
+        subtitulos.put(titulo.get(2), Cafe26);
+        subtitulos.put(titulo.get(3), Cafe338);
     }
 
     public static void onBackPressed() {
