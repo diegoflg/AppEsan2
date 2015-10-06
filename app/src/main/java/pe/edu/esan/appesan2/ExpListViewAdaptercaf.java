@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-public class ListViewAdapter extends BaseExpandableListAdapter {
+public class ExpListViewAdaptercaf extends BaseExpandableListAdapter {
     // Declare Variables
     Context context;
     List<String> titulos;
@@ -24,7 +24,7 @@ public class ListViewAdapter extends BaseExpandableListAdapter {
     int[] imagenes;
     LayoutInflater inflater;
 
-    public ListViewAdapter(Context context, List<String> titulos, HashMap<String, List<String>> subtitulos, int[] imagenes) {
+    public ExpListViewAdaptercaf(Context context, List<String> titulos, HashMap<String, List<String>> subtitulos, int[] imagenes) {
         this.context = context;
         this.titulos = titulos;
         this.subtitulos = subtitulos;
@@ -58,6 +58,8 @@ public class ListViewAdapter extends BaseExpandableListAdapter {
         txtListChild.setText(childText);
         txtListChild.setBackgroundColor(Color.parseColor("#FFFFFF"));
         txtListChild.setTextColor(Color.parseColor("#000000"));
+        txtListChild.setSelected(true);
+        txtListChild.setHighlightColor(Color.parseColor("#C90039"));
         return convertView;
     }
 

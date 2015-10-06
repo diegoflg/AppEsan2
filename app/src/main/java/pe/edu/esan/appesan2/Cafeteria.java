@@ -6,7 +6,6 @@ package pe.edu.esan.appesan2;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -21,7 +20,6 @@ import android.view.WindowManager;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +54,7 @@ public class Cafeteria extends Fragment {
     Team team1,team2,team3,team4, team5;//Se instancian los Team team1,team2,team3,team4 y team5
 
 
-   ListViewAdapter ladapter;
+   ExpListViewAdaptercaf ladapter;
 
 
     List<String> titulo;
@@ -67,9 +65,7 @@ public class Cafeteria extends Fragment {
             R.drawable.ruta,
             R.drawable.deli,
             R.drawable.cafeteria,
-            R.drawable.cafeteria,
-            R.drawable.cafeteria,
-            R.drawable.cafeteria,
+            R.drawable.cafeterianum,
     };
 
 
@@ -93,7 +89,7 @@ public class Cafeteria extends Fragment {
         expListV = (ExpandableListView) v.findViewById(R.id.exlistv2);
         prepareListData();
 
-        ladapter = new ListViewAdapter(getActivity(), titulo, subtitulos, imagenes);
+        ladapter = new ExpListViewAdaptercaf(getActivity(), titulo, subtitulos, imagenes);
         expListV.setAdapter(ladapter);
         expListV.expandGroup(0);
         expListV.expandGroup(1);
@@ -214,7 +210,7 @@ public class Cafeteria extends Fragment {
         //Añade los datos padres
         titulo.add("La Ruta");
         titulo.add("DeliSabores");
-        titulo.add("Comedor detrás de finanzas");
+        titulo.add("Comedor La Tía Veneno");
         titulo.add("Cafetería 338");
 
         // Adding child data
