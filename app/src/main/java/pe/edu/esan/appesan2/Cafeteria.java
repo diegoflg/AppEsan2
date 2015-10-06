@@ -7,11 +7,14 @@ package pe.edu.esan.appesan2;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Point;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +24,22 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Modulo de Cafeteria , que lee la informacion almacenada en el sigiente google drive:
@@ -55,7 +67,7 @@ public class Cafeteria extends Fragment {
 
 
    ExpListViewAdaptercaf ladapter;
-
+    GoogleApiClient mGoogleApiClient;
 
     List<String> titulo;
     HashMap<String, List<String>> subtitulos;
@@ -107,7 +119,6 @@ public class Cafeteria extends Fragment {
                                 expListV.setVisibility(View.GONE);
                                 cafet.setVisibility(View.GONE);
                                 listar(2);
-
                                 break;
 
                             case 1:
@@ -143,7 +154,31 @@ public class Cafeteria extends Fragment {
                                 break;
                         }
                         break;
+                    case 2:
+                        switch (childPosition) {
+                            case 0:
 
+                                /*
+                                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT-5:00"));
+                                Date currentLocalTime = cal.getTime();
+                                DateFormat date = new SimpleDateFormat("HH:mm a");
+                                // you can get seconds by adding  "...:ss" to it
+                                date.setTimeZone(TimeZone.getTimeZone("GMT-5:00"));
+                                String localTime = date.format(currentLocalTime);
+
+                                Toast.makeText(getActivity(), "La hora es: " +localTime, Toast.LENGTH_LONG).show();
+                                 */
+
+                                /*
+                                 Date date = new Date();
+                                DateFormat Lima = new SimpleDateFormat("HH:mm a");
+                                Lima.setTimeZone(TimeZone.getTimeZone("America/Lima"));
+                                Log.i("TIEMPO", "LIMA:" + Lima.format(date));
+                                 */
+
+
+                                break;
+                        }
                 }
                 return false;
             }
