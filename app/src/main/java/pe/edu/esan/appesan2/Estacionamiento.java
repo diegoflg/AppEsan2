@@ -1,6 +1,7 @@
 package pe.edu.esan.appesan2;
 
 
+        import android.app.ProgressDialog;
         import android.content.Context;
         import android.content.Intent;
         import android.graphics.Color;
@@ -76,6 +77,7 @@ public class Estacionamiento extends Fragment implements
     Location mLastLocation;
     double longitude;
     double latitude;
+    int contador=0;
 
     Button btEsan,btPolo,btAlonso,btir;
 
@@ -152,6 +154,14 @@ public class Estacionamiento extends Fragment implements
         final Handler h = new Handler();
         final int delay = 5000; //milliseconds
 
+        //Se crea y se da valor a un dialogo de progreso
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+
+        dialog.show();
+
+        if(contador>0){
+            dialog.dismiss();
+        }
 
 
 
