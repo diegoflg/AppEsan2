@@ -131,7 +131,7 @@ public class Estacionamiento extends Fragment implements
 
         setRetainInstance(true);
 
-
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
 
 
         //FUENTE Y COLOR PARA TEXTVIEWS
@@ -147,26 +147,26 @@ public class Estacionamiento extends Fragment implements
         btAlonso=(Button)v.findViewById(R.id.btAlonso);
         btPolo=(Button)v.findViewById(R.id.btPolo);
         btir=(Button)v.findViewById(R.id.btir);
-
-
-
-
+        final MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
         final Handler h = new Handler();
         final int delay = 5000; //milliseconds
 
-        //Se crea y se da valor a un dialogo de progreso
-        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "Please wait, Loading Page...", true);
+        final Handler hT = new Handler();
+
 
         dialog.show();
-
-        if(contador>0){
-            dialog.dismiss();
-        }
-
-
-
-
         new LoadAllProducts().execute();
+
+        hT.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        }, delay);
+
+
         h.postDelayed(new Runnable() {
             public void run() {
                 Log.v("tipo", "timer");
@@ -224,7 +224,6 @@ public class Estacionamiento extends Fragment implements
                     if (Datah.getInstance().getMenu() == 1) {
                         Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                         t.show();
-                        MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
                         mp.start();
                     }
                 }
@@ -235,7 +234,7 @@ public class Estacionamiento extends Fragment implements
                     if (Datah.getInstance().getMenu() == 1) {
                         Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                         t.show();
-                        MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                        //MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
                         mp.start();
                     }
                 }
@@ -245,7 +244,7 @@ public class Estacionamiento extends Fragment implements
                     if (Datah.getInstance().getMenu() == 1) {
                         Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
                         t.show();
-                        MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                        //MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
                         mp.start();
                     }
                 }
@@ -330,7 +329,6 @@ public class Estacionamiento extends Fragment implements
             return null;
         }
         protected void onPostExecute(String file_url) {
-
 
         }
     }
