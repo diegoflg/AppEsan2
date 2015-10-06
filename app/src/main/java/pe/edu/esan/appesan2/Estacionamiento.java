@@ -153,6 +153,9 @@ public class Estacionamiento extends Fragment implements
         final int delay = 5000; //milliseconds
 
 
+
+
+
         new LoadAllProducts().execute();
         h.postDelayed(new Runnable() {
             public void run() {
@@ -163,133 +166,30 @@ public class Estacionamiento extends Fragment implements
                 if (estado.equals("rojo")) {
                     btEsan.setBackgroundResource(R.drawable.brojo);
 
-
-                    if (estado.equals(estado2)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-
-                        }
-
-                    }
-
                 }
+
                 if (estadoalonso.equals("rojo")) {
                     btAlonso.setBackgroundResource(R.drawable.brojo);
-
-
-                    if (estadoalonso.equals(estado22)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-
-                        }
-
-                    }
 
                 }
 
                 if (estadopolo.equals("rojo")) {
                     btPolo.setBackgroundResource(R.drawable.brojo);
 
-
-                    if (estadopolo.equals(estado23)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-
-                        }
-
-                    }
-
                 }
-
-
-
 
 
                 if (estado.equals("amarillo")) {
                     btEsan.setBackgroundResource(R.drawable.bamarillo);
-                    if (estado.equals(estado2)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-                        }
-
-                    }
-
 
                 }
 
                 if (estadoalonso.equals("amarillo")) {
                     btAlonso.setBackgroundResource(R.drawable.bamarillo);
-                    if (estado.equals(estado22)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-                        }
-
-                    }
-
 
                 }
                 if (estadopolo.equals("amarillo")) {
                     btPolo.setBackgroundResource(R.drawable.bamarillo);
-                    if (estadopolo.equals(estado23)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-                        }
-
-                    }
 
 
                 }
@@ -297,68 +197,47 @@ public class Estacionamiento extends Fragment implements
                 if (estado.equals("verde")) {
                     btEsan.setBackgroundResource(R.drawable.bverde);
 
-                    if (estado.equals(estado2)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-
-                        }
-
-                    }
-
-
                 }
 
                 if (estadoalonso.equals("verde")) {
                     btAlonso.setBackgroundResource(R.drawable.bverde);
-
-                    if (estadoalonso.equals(estado22)) {
-
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-
-                        }
-
-                    }
-
 
                 }
 
                 if (estadopolo.equals("verde")) {
                     btPolo.setBackgroundResource(R.drawable.bverde);
 
-                    if (estadopolo.equals(estado23)) {
+                }
 
-
-                    } else {
-
-                        if (Datah.getInstance().getMenu() == 1) {
-                            Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
-                            t.show();
-
-
-                            MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
-                            mp.start();
-                        }
-
+                if (estado.equals(estado2)) {
+                } else {
+                    if (Datah.getInstance().getMenu() == 1) {
+                        Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                        t.show();
+                        MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                        mp.start();
                     }
+                }
 
 
+                if (estadoalonso.equals(estado22)) {
+                } else {
+                    if (Datah.getInstance().getMenu() == 1) {
+                        Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                        t.show();
+                        MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                        mp.start();
+                    }
+                }
+
+                if (estadopolo.equals(estado23)) {
+                } else {
+                    if (Datah.getInstance().getMenu() == 1) {
+                        Toast t=Toast.makeText(getActivity(), "cambio", Toast.LENGTH_SHORT);
+                        t.show();
+                        MediaPlayer mp = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.hifi);
+                        mp.start();
+                    }
                 }
 
                 if (isNetworkAvailable() == false) {
