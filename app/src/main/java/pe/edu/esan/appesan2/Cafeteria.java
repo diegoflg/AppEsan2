@@ -22,14 +22,23 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.github.simonpercic.rxtime.RxTime;
 import com.google.android.gms.common.api.GoogleApiClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 
 /**
@@ -38,7 +47,7 @@ import java.util.List;
  *
  */
 public class Cafeteria extends Fragment {
-
+    RxTime rxTime = new RxTime();
     private static final String DEBUG_TAG = "HttpExample";
     ArrayList<Team> teams1 = new ArrayList<Team>();//Diferentes arrays para cada tipo de menus, economico de Delisabores,
     ArrayList<Team> teams2 = new ArrayList<Team>();//economico de la Ruta
@@ -147,10 +156,31 @@ public class Cafeteria extends Fragment {
                     case 2:
                         switch (childPosition) {
                             case 0:
+                                rxTime.currentTime()
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new Action1<Long>() {
+                                            @Override
+                                            public void call(Long time) {
+                                                Date date = new Date(time);
+                                                SimpleDateFormat readDate = new SimpleDateFormat("HH:mm:ss.SSS'Z'");
+                                                readDate.setTimeZone(TimeZone.getTimeZone("GMT+05:00")); // missing line
+                                                Log.i("TIEMPO", "Current time:" + time);
+                                                Log.i("TIEMPO", "Current time:" + date);
+
+                                            }
+                                        }, new Action1<Throwable>() {
+                                            @Override
+                                            public void call(Throwable throwable) {
+                                                Log.d("TEST", throwable.getMessage());
+                                            }
+                                        });
+
+
+                               /*
                                 Log.i("TIEMPO","SI ESTÁ SIENDO PRESIONADO");
                                 SntpClient client = new SntpClient();
                                 String dateFromNtpServer = "";
-                                if (client.requestTime("3.us.pool.ntp.org", 30000)) {
+                                if (client.requestTime("pool.ntp.org", 30000)) {
                                     long time = client.getNtpTime();
                                     Log.i("TIEMPO","TIEMPO: "+ time);
 
@@ -159,8 +189,7 @@ public class Cafeteria extends Fragment {
                                         calendar.setTimeInMillis(time);
                                         calendar.getTime();
                                         GMTToEst gmttoest = new GMTToEst();
-                                        dateFromNtpServer = gmttoest
-                                                .ReturnMeEst(calendar.getTime());
+                                        dateFromNtpServer = gmttoest.ReturnMeEst(calendar.getTime());
 
                                         dateFromNtpServer = dateFromNtpServer + "  EST";
                                         Log.i("TIEMPO", "DATEFROM: "+dateFromNtpServer);
@@ -169,7 +198,8 @@ public class Cafeteria extends Fragment {
                                         // TODO: handle exception
                                         dateFromNtpServer = "No Response from NTP";
                                     }
-                                }
+                                */
+
                             break;
                         }
                     break;

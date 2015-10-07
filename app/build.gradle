@@ -37,5 +37,6 @@ dependencies {
     compile 'com.github.jd-alexander:library:1.0.6'
     compile 'com.google.android.gms:play-services:7.3.0'
     compile 'io.nlopez.smartlocation:library:3.0.11'
-
+    compile 'com.github.simonpercic:rxtime:1.0.0'
+    compile 'io.reactivex:rxandroid:1.0.1'
 }
