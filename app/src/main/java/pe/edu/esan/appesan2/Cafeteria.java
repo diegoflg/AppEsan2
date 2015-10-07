@@ -162,8 +162,7 @@ public class Cafeteria extends Fragment {
                                             @Override
                                             public void call(Long time) {
                                                 Date date = new Date(time);
-                                                SimpleDateFormat readDate = new SimpleDateFormat("HH:mm:ss.SSS'Z'");
-                                                readDate.setTimeZone(TimeZone.getTimeZone("GMT+05:00")); // missing line
+
                                                 Log.i("TIEMPO", "Current time:" + time);
                                                 Log.i("TIEMPO", "Current time:" + date);
 
@@ -175,8 +174,11 @@ public class Cafeteria extends Fragment {
                                             }
                                         });
 
-
                                /*
+                               Get the library from http://commons.apache.org/net/download_net.cgi
+
+                               http://stackoverflow.com/questions/9466342/get-data-from-the-internet-android
+
                                 Log.i("TIEMPO","SI ESTÁ SIENDO PRESIONADO");
                                 SntpClient client = new SntpClient();
                                 String dateFromNtpServer = "";
