@@ -9,7 +9,9 @@ import android.content.Context;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -18,6 +20,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,7 +33,12 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -106,7 +116,6 @@ public class Cafeteria extends Fragment {
         expListV.expandGroup(1);
         expListV.expandGroup(2);
 
-
         expListV.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -156,16 +165,47 @@ public class Cafeteria extends Fragment {
                     case 2:
                         switch (childPosition) {
                             case 0:
+                                new LoadTIME().execute();
+
+                               /*
+                                SntpClient client = new SntpClient();
+                                String dateFromNtpServer = "";
+                                if (client.requestTime("0.us.pool.ntp.org", 30000)) {
+
+                                    long time = client.getNtpTime();
+                                    long newTime = time;
+                                    Log.d("shetty", newTime + "....newTime");
+                                    Log.i("TIEMPO","SNTP: "+newTime);
+
+                                    Calendar calendar = Calendar.getInstance();
+                                    try {
+                                        calendar.setTimeInMillis(time);
+                                        calendar.getTime();
+
+                                        GMTToEst gmttoest = new GMTToEst();
+                                        dateFromNtpServer = gmttoest.ReturnMeEst(calendar.getTime());
+
+                                        dateFromNtpServer = dateFromNtpServer + "  EST";
+                                        Log.i("TIEMPO","DATE FROM SERVER NTP: "+dateFromNtpServer);
+                                    } catch (Exception e) {
+                                        // TODO: handle exception
+                                        dateFromNtpServer = "No Response from NTP";
+                                        Log.i("TIEMPO","ERRORTP: "+dateFromNtpServer);
+                                    }
+
+                                }
+
                                 rxTime.currentTime()
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe(new Action1<Long>() {
                                             @Override
                                             public void call(Long time) {
                                                 Date date = new Date(time);
-
-                                                Log.i("TIEMPO", "Current time:" + time);
-                                                Log.i("TIEMPO", "Current time:" + date);
-
+                                                String str=null;
+                                                String outputPattern = "HH:mm:ss a";
+                                                SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+                                                str=outputFormat.format(date);
+                                                Log.i("TIEMPO", "STR Current time: " + str);;
                                             }
                                         }, new Action1<Throwable>() {
                                             @Override
@@ -173,33 +213,6 @@ public class Cafeteria extends Fragment {
                                                 Log.d("TEST", throwable.getMessage());
                                             }
                                         });
-
-                               /*
-                               Get the library from http://commons.apache.org/net/download_net.cgi
-
-                               http://stackoverflow.com/questions/9466342/get-data-from-the-internet-android
-
-                                Log.i("TIEMPO","SI ESTÁ SIENDO PRESIONADO");
-                                SntpClient client = new SntpClient();
-                                String dateFromNtpServer = "";
-                                if (client.requestTime("pool.ntp.org", 30000)) {
-                                    long time = client.getNtpTime();
-                                    Log.i("TIEMPO","TIEMPO: "+ time);
-
-                                    Calendar calendar = Calendar.getInstance();
-                                    try {
-                                        calendar.setTimeInMillis(time);
-                                        calendar.getTime();
-                                        GMTToEst gmttoest = new GMTToEst();
-                                        dateFromNtpServer = gmttoest.ReturnMeEst(calendar.getTime());
-
-                                        dateFromNtpServer = dateFromNtpServer + "  EST";
-                                        Log.i("TIEMPO", "DATEFROM: "+dateFromNtpServer);
-
-                                    } catch (Exception e) {
-                                        // TODO: handle exception
-                                        dateFromNtpServer = "No Response from NTP";
-                                    }
                                 */
 
                             break;
@@ -341,7 +354,7 @@ public class Cafeteria extends Fragment {
                 processJsonME(object);
             }
         }).execute("https://spreadsheets.google.com/tq?key=1_tClHi6uM5g3vxv_0JkBW5Hzrt6T_Gii5Df973aX9ms",
-                    "https://spreadsheets.google.com/tq?key=1gveCHCpz9InAj0rxDpT0Z7PUdbRq4DOXKHkhs3BMWE4");
+                "https://spreadsheets.google.com/tq?key=1gveCHCpz9InAj0rxDpT0Z7PUdbRq4DOXKHkhs3BMWE4");
         //se descargaran los datos almacenados en el google drive, el link de arriba es un link especial con los datos del google drive listos para ser leidos con JSON
     }
 
@@ -526,4 +539,84 @@ private boolean isNetworkAvailable() {
      */
 }
 
+
+    private class LoadTIME extends AsyncTask<Void, Void, Void> {
+    //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
+    //Página web real: http://www.timeanddate.com/worldclock/fullscreen.html?n=131
+    //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/fullscreen.html?n=131#
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            // Here you can do any UI operations like textview.setText("test");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            String url = "http://www.timeanddate.com/worldclock/fullscreen.html?n=131#";
+            Document doc = null;
+            try {
+                doc = Jsoup.connect(url).get();
+                Elements metaElem = doc.select("div[id=i_time]");
+                String name = metaElem.text();
+
+                //Elements topicList = doc.select("h2.topic");
+                //Log.i("TIEMPO", "META: " + metaElem);
+                Log.i("TIEMPO", "NAME : " + name);
+
+                if(name.contains("12:")){
+                    Log.i("TIEMPO", "SI SE PUEDE BUSCAR IGUALDAD");
+                }else{
+                    Log.i("TIEMPO", "NO ES POSIBLE");
+                }
+                //Log.i("TIEMPO", "TOPICLIST : " + topicList);
+
+                /*
+                Elements links = doc.select("a[href]"); // a with href
+                Element masthead = doc.select("div.masthead").first();
+                // div with class=masthead
+                Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
+                Log.i("TIEMPO", "AHREF: " + links);
+                Log.i("TIEMPO", "MASTHEAD: " + masthead);
+                Log.i("TIEMPO", "ResultLinks : " + resultLinks);
+                */
+
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Log.i("TIEMPO", "ERROR");
+            }
+            return null;
+        }
+    }
 }
+
+
+/*
+ try {
+                                    Document doc = Jsoup.connect(url).get();
+                                    Elements metaElem = doc.select("meta");
+                                    String name = metaElem.attr("name");
+                                    Elements topicList = doc.select("h2.topic");
+                                    Log.i("TIEMPO","META: "+metaElem);
+                                    Log.i("TIEMPO","NAME : "+name);
+                                    Log.i("TIEMPO","TOPICLIST : "+topicList);
+
+
+                                    Elements links = doc.select("a[href]"); // a with href
+                                    Element masthead = doc.select("div.masthead").first();
+                                    // div with class=masthead
+                                    Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
+                                    Log.i("TIEMPO","AHREF: "+links);
+                                    Log.i("TIEMPO","MASTHEAD: "+masthead);
+                                    Log.i("TIEMPO","TOPICLIST : "+topicList);
+
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                    Log.i("TIEMPO", "ERROR");
+                                }
+
+ */
