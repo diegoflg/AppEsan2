@@ -166,7 +166,7 @@ public class Cafeteria extends Fragment {
                         switch (childPosition) {
                             case 0:
                                 new LoadTIME().execute();
-
+                                new LoadTIME2().execute();
                                /*
                                 SntpClient client = new SntpClient();
                                 String dateFromNtpServer = "";
@@ -565,7 +565,56 @@ private boolean isNetworkAvailable() {
                 //Log.i("TIEMPO", "META: " + metaElem);
                 Log.i("TIEMPO", "NAME : " + name);
 
-                if(name.contains("12:")){
+                //Log.i("TIEMPO", "TOPICLIST : " + topicList);
+
+                /*
+                Elements links = doc.select("a[href]"); // a with href
+                Element masthead = doc.select("div.masthead").first();
+                // div with class=masthead
+                Elements resultLinks = doc.select("h3.r > a"); // direct a after h3
+                Log.i("TIEMPO", "AHREF: " + links);
+                Log.i("TIEMPO", "MASTHEAD: " + masthead);
+                Log.i("TIEMPO", "ResultLinks : " + resultLinks);
+                */
+
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                Log.i("TIEMPO", "ERROR");
+            }
+            return null;
+        }
+    }
+
+    //SEGUNDA OPCION:
+    private class LoadTIME2 extends AsyncTask<Void, Void, Void> {
+        //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
+        //Página web real: http://www.timeanddate.com/worldclock/fullscreen.html?n=131
+        //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/fullscreen.html?n=131#
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            // Here you can do any UI operations like textview.setText("test");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            String url = "http://www.timeanddate.com/worldclock/peru/lima";
+            Document doc = null;
+            try {
+                doc = Jsoup.connect(url).get();
+                Elements metaElem = doc.select("span[id=fshrmin]");
+                String name = metaElem.text();
+
+
+                //Elements topicList = doc.select("h2.topic");
+                //Log.i("TIEMPO", "META: " + metaElem);
+                Log.i("TIEMPO", "span : " + name);
+
+                if(name.contains("13:")){
                     Log.i("TIEMPO", "SI SE PUEDE BUSCAR IGUALDAD");
                 }else{
                     Log.i("TIEMPO", "NO ES POSIBLE");
@@ -591,7 +640,11 @@ private boolean isNetworkAvailable() {
             return null;
         }
     }
+
 }
+
+
+
 
 
 /*
