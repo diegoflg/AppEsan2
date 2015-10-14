@@ -167,6 +167,9 @@ public class Cafeteria extends Fragment {
                             case 0:
                                 new LoadTIME().execute();
                                 new LoadTIME2().execute();
+
+
+
                                /*
                                 SntpClient client = new SntpClient();
                                 String dateFromNtpServer = "";
@@ -422,8 +425,6 @@ public class Cafeteria extends Fragment {
 
     }
 
-
-
     private void processJsonME(JSONObject object) {
         //En este metodo de leen los datos
         try {
@@ -445,6 +446,7 @@ public class Cafeteria extends Fragment {
             e.printStackTrace();
         }
     }
+
 
 
 /**
@@ -563,7 +565,7 @@ private boolean isNetworkAvailable() {
 
                 //Elements topicList = doc.select("h2.topic");
                 //Log.i("TIEMPO", "META: " + metaElem);
-                Log.i("TIEMPO", "NAME : " + name);
+                //Log.i("TIEMPO", "NAME : " + name);
 
                 //Log.i("TIEMPO", "TOPICLIST : " + topicList);
 
@@ -589,15 +591,11 @@ private boolean isNetworkAvailable() {
 
     //SEGUNDA OPCION:
     private class LoadTIME2 extends AsyncTask<Void, Void, Void> {
+
+
         //Sacado de: http://www.survivingwithandroid.com/2014/04/parsing-html-in-android-with-jsoup.html
         //Página web real: http://www.timeanddate.com/worldclock/fullscreen.html?n=131
         //HTML DE WEB: view-source:http://www.timeanddate.com/worldclock/fullscreen.html?n=131#
-        @Override
-        protected void onPostExecute(Void result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            // Here you can do any UI operations like textview.setText("test");
-        }
 
         @Override
         protected Void doInBackground(Void... params) {
@@ -609,16 +607,22 @@ private boolean isNetworkAvailable() {
                 Elements metaElem = doc.select("span[id=fshrmin]");
                 String name = metaElem.text();
 
+                Elements dia = doc.select("span[id=ctdat]");
+                String diac = dia.text();
 
                 //Elements topicList = doc.select("h2.topic");
                 //Log.i("TIEMPO", "META: " + metaElem);
-                Log.i("TIEMPO", "span : " + name);
+                Log.i("TIEMPO", "span tiempo: " + name);
+                Log.i("TIEMPO", "span dia: " + diac);
 
-                if(name.contains("13:")){
-                    Log.i("TIEMPO", "SI SE PUEDE BUSCAR IGUALDAD");
-                }else{
-                    Log.i("TIEMPO", "NO ES POSIBLE");
+                if(diac.contains("Wednesday")){
+                    if(name.contains("10:")){
+                        Log.i("TIEMPO", "SI SE PUEDE BUSCAR IGUALDAD");
+                    }else{
+                        Log.i("TIEMPO", "NO ES POSIBLE");
+                    }
                 }
+
                 //Log.i("TIEMPO", "TOPICLIST : " + topicList);
 
                 /*
@@ -639,8 +643,15 @@ private boolean isNetworkAvailable() {
             }
             return null;
         }
-    }
 
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            // Here you can do any UI operations like textview.setText("test");
+        }
+
+    }
 }
 
 
