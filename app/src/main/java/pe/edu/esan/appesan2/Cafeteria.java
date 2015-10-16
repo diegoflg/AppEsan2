@@ -168,7 +168,18 @@ public class Cafeteria extends Fragment {
                                 new LoadTIME().execute();
                                 new LoadTIME2().execute();
 
+                                Calendar diaI = Calendar.getInstance();
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy");
+                                String dateFormate = dateFormat.format(diaI.getTime());
+                                Log.i("DÍA ACTUAL", "DIA HOY: "+dateFormate);
 
+                                Date diaF = new Date(diaI.getTimeInMillis() + 604800000L); //7*24*60*60*1000
+                                String dateFinalFormate = dateFormat.format(diaF);
+                                Log.i("DÍA ACTUAL", "DÍA FINAL: " + dateFinalFormate);
+
+                                Date diaF2 = new Date(diaI.getTimeInMillis() + 1296000000L); //15*24*60*60*1000
+                                String dateFinalFormate2 = dateFormat.format(diaF2);
+                                Log.i("DÍA ACTUAL", "DÍA FINAL: " + dateFinalFormate2);
 
                                /*
                                 SntpClient client = new SntpClient();
